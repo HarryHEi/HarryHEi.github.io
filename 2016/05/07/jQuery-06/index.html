@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jQuery-06 Ajax | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简易服务器使用python可以开启一个简易的服务器1python -m SimpleHTTPServer 8080 load() 方法载入远程HTML文件，并加载到DOM中，默认使用GET方式，如果传递参数，自动转为POST  第一个参数是URL地址 第二个参数是发送到服务器的数据 第三个参数是回调函数(无论是否载入成功都会执行)  载入一个名为test.html的文件，加载到名为restest的">
+<meta name="keywords" content="jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery-06 Ajax">
+<meta property="og:url" content="http://yoursite.com/2016/05/07/jQuery-06/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="简易服务器使用python可以开启一个简易的服务器1python -m SimpleHTTPServer 8080 load() 方法载入远程HTML文件，并加载到DOM中，默认使用GET方式，如果传递参数，自动转为POST  第一个参数是URL地址 第二个参数是发送到服务器的数据 第三个参数是回调函数(无论是否载入成功都会执行)  载入一个名为test.html的文件，加载到名为restest的">
+<meta property="og:updated_time" content="2017-03-15T04:49:13.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery-06 Ajax">
+<meta name="twitter:description" content="简易服务器使用python可以开启一个简易的服务器1python -m SimpleHTTPServer 8080 load() 方法载入远程HTML文件，并加载到DOM中，默认使用GET方式，如果传递参数，自动转为POST  第一个参数是URL地址 第二个参数是发送到服务器的数据 第三个参数是回调函数(无论是否载入成功都会执行)  载入一个名为test.html的文件，加载到名为restest的">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jQuery-06" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/07/jQuery-06/" class="article-date">
+  <time datetime="2016-05-07T03:04:19.000Z" itemprop="datePublished">2016-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery-06 Ajax
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简易服务器"><a href="#简易服务器" class="headerlink" title="简易服务器"></a>简易服务器</h1><p>使用python可以开启一个简易的服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python -m SimpleHTTPServer 8080</div></pre></td></tr></table></figure></p>
+<h1 id="load-方法"><a href="#load-方法" class="headerlink" title="load() 方法"></a>load() 方法</h1><p>载入远程HTML文件，并加载到DOM中，默认使用GET方式，如果传递参数，自动转为POST</p>
+<ul>
+<li>第一个参数是URL地址</li>
+<li>第二个参数是发送到服务器的数据</li>
+<li>第三个参数是回调函数(无论是否载入成功都会执行)</li>
+</ul>
+<p>载入一个名为test.html的文件，加载到名为restest的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#restest&quot;).load(&quot;test.html&quot;)</div></pre></td></tr></table></figure></p>
+<p>可以筛选加载指定内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#restest&quot;).load(&quot;index.html .dongmanRange a&quot;)</div></pre></td></tr></table></figure></p>
+<h1 id="get"><a href="#get" class="headerlink" title=".get()"></a>.get()</h1><p>通过GET请求载入信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(function()</div><div class="line">&#123;</div><div class="line">    $(&quot;#test_send&quot;).click(function()</div><div class="line">    &#123;</div><div class="line">        $.get(&quot;temp.html&quot;,function(data) //data就是返回的内容</div><div class="line">        &#123;</div><div class="line">            alert(data);</div><div class="line">        &#125;);</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>后面Ajax的内容涉及到PHP的JSON，等级太低，看不太懂，这本书的阅读就先到这边了~<br>总的来说，这本书是一本不错的工具书，不过使用的jQuery版本比较低，配合官方手册一起看更佳~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/07/jQuery-06/" data-id="cj5c7k38q0011m0u4nbx9340z" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/08/myDjango-0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          myDjango-0 基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/04/jQuery-05/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">jQuery-05 表单和表格</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

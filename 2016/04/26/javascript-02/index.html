@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript-02 DOM | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DOM文档：D(Document)当创建一个网页并加载到Web浏览器中时，DOM就在幕后悄然而生，把网页文档转化为一个文档对象。 对象：O(Object)JavaScript对象分为三种类型  用户自定义对象：由程序员自行创建的对象 内建对象：内建在JavaScript的对象，如Array，Math等 宿主对象：由浏览器提供的对象  对编写脚本来说非常重要的宿主对象中最基础的对象是window对象">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript-02 DOM">
+<meta property="og:url" content="http://yoursite.com/2016/04/26/javascript-02/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="DOM文档：D(Document)当创建一个网页并加载到Web浏览器中时，DOM就在幕后悄然而生，把网页文档转化为一个文档对象。 对象：O(Object)JavaScript对象分为三种类型  用户自定义对象：由程序员自行创建的对象 内建对象：内建在JavaScript的对象，如Array，Math等 宿主对象：由浏览器提供的对象  对编写脚本来说非常重要的宿主对象中最基础的对象是window对象">
+<meta property="og:updated_time" content="2017-03-14T13:32:14.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript-02 DOM">
+<meta name="twitter:description" content="DOM文档：D(Document)当创建一个网页并加载到Web浏览器中时，DOM就在幕后悄然而生，把网页文档转化为一个文档对象。 对象：O(Object)JavaScript对象分为三种类型  用户自定义对象：由程序员自行创建的对象 内建对象：内建在JavaScript的对象，如Array，Math等 宿主对象：由浏览器提供的对象  对编写脚本来说非常重要的宿主对象中最基础的对象是window对象">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-javascript-02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/26/javascript-02/" class="article-date">
+  <time datetime="2016-04-26T02:58:40.000Z" itemprop="datePublished">2016-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript-02 DOM
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="文档：D-Document"><a href="#文档：D-Document" class="headerlink" title="文档：D(Document)"></a>文档：D(Document)</h2><p>当创建一个网页并加载到Web浏览器中时，DOM就在幕后悄然而生，把网页文档转化为一个文档对象。</p>
+<h2 id="对象：O-Object"><a href="#对象：O-Object" class="headerlink" title="对象：O(Object)"></a>对象：O(Object)</h2><p>JavaScript对象分为三种类型</p>
+<ul>
+<li>用户自定义对象：由程序员自行创建的对象</li>
+<li>内建对象：内建在JavaScript的对象，如Array，Math等</li>
+<li>宿主对象：由浏览器提供的对象</li>
+</ul>
+<p>对编写脚本来说非常重要的宿主对象中最基础的对象是window对象</p>
+<p>window对象对应着浏览器窗口本身，这个对象的属性和方法统称为BOM(浏览器对象模型)，或者称为窗口对象模型</p>
+<p>BOM提供window.open和window.blur等方法，这些方法负责窗口的弹出和下拉等操作</p>
+<p>document对象的主要功能是处理网页内容</p>
+<h2 id="模型：M-Model"><a href="#模型：M-Model" class="headerlink" title="模型：M(Model)"></a>模型：M(Model)</h2><p>DOM代表模型(Model)，或者也可以说代表地图(Map)，含义是某种事物的表现形式</p>
+<p>DOM把一份文档表示为一棵树，一棵家谱树(节点树)，可以把各元素的关系简明表示出来</p>
+<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><p>节点(node)这个词是个网络术语，它表示网络中的一个连接点，一个网络就是节点构成的集合</p>
+<p>DOM也是由节点构成的集合，只不过节点是文档树上的树枝、树叶而已</p>
+<h3 id="元素节点"><a href="#元素节点" class="headerlink" title="元素节点"></a>元素节点</h3><p>DOM的原子是<strong>元素节点</strong>(element node)</p>
+<p>标签的名字就是元素的名字：例如文本段落元素”P”，无序清单元素”ul”，列表项元素”li”</p>
+<p>其中没有被其他元素包含的元素”html”被称为根元素</p>
+<h3 id="文本节点"><a href="#文本节点" class="headerlink" title="文本节点"></a>文本节点</h3><p>元素节点内部包含的节点为文本节点，不过并不是每个元素节点都包含文本节点</p>
+<h3 id="属性节点"><a href="#属性节点" class="headerlink" title="属性节点"></a>属性节点</h3><p>属性节点用来对元素做出更具体的描述，例如几乎所有元素都有一个title属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p title=&quot;message&quot;&gt;welcome!&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>并非所有的元素都包含某个属性，但是所有属性都被元素包含</p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>CSS(层叠样式表)告诉浏览器应该如何显示一份文档的内容</p>
+<h3 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h3><p>有三种DOM方法可以获得元素节点，分别是通过元素ID、通过标签名字和通过类名字</p>
+<h4 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById"></a>getElementById</h4><p>顾名思义就是通过元素ID获取元素节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.getElementById(&quot;myname&quot;);</div></pre></td></tr></table></figure></p>
+<p>对应着id为“myname”的标签div<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#...</div><div class="line">    &lt;div id=&quot;myname&quot;&gt;</div><div class="line">        Javascript</div><div class="line">    &lt;/div&gt;</div><div class="line">#...</div></pre></td></tr></table></figure></p>
+<p>如果使用typeof观察返回值类型，可以直到类型为对象(Object)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(typeof document.getElementById(&quot;myname&quot;));</div></pre></td></tr></table></figure></p>
+<h4 id="getElementsByTagName"><a href="#getElementsByTagName" class="headerlink" title="getElementsByTagName"></a>getElementsByTagName</h4><p>更具标签的名字获取元素节点和getElementById()类似，不过返回的是一个数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getElementsByTagName(&quot;li&quot;);</div></pre></td></tr></table></figure></p>
+<p>可以通过length属性查看元素个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(document.getElementsByTagName(&quot;p&quot;).length);</div></pre></td></tr></table></figure></p>
+<p>可以把读取的元素节点赋值给一个变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps = document.getElementsByTagName(&quot;p&quot;);</div></pre></td></tr></table></figure></p>
+<p>可以把通配符作为参数，匹配所有元素节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps = document.getElementsByTagName(&quot;*&quot;);</div></pre></td></tr></table></figure></p>
+<p>可以把getElementById()和getElementsByTagName结合起来用<br>先找出id属性为allcontent的元素节点，然后找出该节点内的所有元素并统计个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var cont = document.getElementById(&quot;allcontent&quot;);</div><div class="line">var items = cont.getElementsByTagName(&quot;*&quot;);</div><div class="line">alert(items.length);</div></pre></td></tr></table></figure></p>
+<h4 id="getElementsByClassName"><a href="#getElementsByClassName" class="headerlink" title="getElementsByClassName"></a>getElementsByClassName</h4><p>HTML5 DOM新增的方法，通过class属性访问元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var res = document.getElementsByClassName(&quot;linkp&quot;);</div><div class="line">alert(res.length);</div></pre></td></tr></table></figure></p>
+<p>同样的，也可以结合使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var cont = document.getElementById(&quot;allcontent&quot;);</div><div class="line">var res = cont.getElementsByClassName(&quot;linkp&quot;);</div><div class="line">alert(res.length);</div></pre></td></tr></table></figure></p>
+<p>如果浏览器不支持这个方法，可以自己实现一个类似功能的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function getElementsByClassName (node, classname) </div><div class="line">&#123;</div><div class="line">    if (node.getElementsByClassName)</div><div class="line">    &#123;</div><div class="line">        return node.getElementsByClassName(classname);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        var results = new Array();</div><div class="line">        var elems = node.getElementsByTagName(&quot;*&quot;)</div><div class="line">        for (var i=0; i&lt;items.length; i++)</div><div class="line">        &#123;</div><div class="line">            if (items.className.indexof(classname) != -1)</div><div class="line">            &#123;</div><div class="line">                results[results.length] = elems[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return results;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第一个参数node表示开始节点，第二个参数是类名，如果节点已经存在了getElementsByClassName函数，直接返回列表值，如果不存在，新函数会循环遍历所有标签，查找带有相应类名的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var cont = document.getElementById(&quot;allcontent&quot;)</div><div class="line">var res = getElementsByClassName(cont, &quot;linkp&quot;)</div><div class="line">alert(res.length)</div></pre></td></tr></table></figure></p>
+<h2 id="获取和设置属性"><a href="#获取和设置属性" class="headerlink" title="获取和设置属性"></a>获取和设置属性</h2><p>得到元素之后，就是获取属性节点的值</p>
+<h3 id="getAttribute"><a href="#getAttribute" class="headerlink" title="getAttribute"></a>getAttribute</h3><p>getAttribute是一个函数，只有一个参数，查询的属性的名字</p>
+<p>getAttribute不属于document对象，只能通过元素节点对象调用</p>
+<p>“class”属性的值，如果没有这个属性，会返回null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var ps = document.getElementsByTagName(&quot;p&quot;)</div><div class="line">for (var i=0; i&lt;ps.length; i++)</div><div class="line">&#123;</div><div class="line">    alert(ps[i].getAttribute(&quot;class&quot;))</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="setAttribute"><a href="#setAttribute" class="headerlink" title="setAttribute"></a>setAttribute</h3><p>setAttribute允许对属性节点的值做出修改，和getAttribute相同，也只能用于元素节点</p>
+<p>改变一个img元素的寬和高<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var bud = document.getElementById(&quot;buding&quot;)</div><div class="line">var gif = bud.getElementsByTagName(&quot;img&quot;)</div><div class="line">gif[0].setAttribute(&quot;width&quot;,&quot;300px&quot;)</div><div class="line">gif[0].setAttribute(&quot;height&quot;,&quot;300px&quot;)</div></pre></td></tr></table></figure></p>
+<p>如果设置的属性之前存在，会直接覆盖掉，虽然属性已经改变了，但是如果查看网页源码，属性并没有改变，所以DOM实现的是先静态显示再动态刷新，动态刷新不会影响静态的内容</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/26/javascript-02/" data-id="cj5c7k3980019m0u4gv10kik0" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/27/javascript-03/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          javascript-03 图片库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/26/javascript-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">javascript-01 语法和数据结构</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

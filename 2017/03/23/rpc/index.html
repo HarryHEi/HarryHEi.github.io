@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>rpc远程调用 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介RPC（Remote Procedure Call Protocol）是基于TCP或者RPC等传输协议的远程过程调用协议。 使用参考：    github示例    文档 python的bsonrpc库通过类装饰器的方式构造RPC服务  @service_class装饰RPC服务类 @request装饰提供RPC调用的函数 @rpc_request增加一个JSONRpc/BSONRpc对象作为">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rpc远程调用">
+<meta property="og:url" content="http://yoursite.com/2017/03/23/rpc/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="简介RPC（Remote Procedure Call Protocol）是基于TCP或者RPC等传输协议的远程过程调用协议。 使用参考：    github示例    文档 python的bsonrpc库通过类装饰器的方式构造RPC服务  @service_class装饰RPC服务类 @request装饰提供RPC调用的函数 @rpc_request增加一个JSONRpc/BSONRpc对象作为">
+<meta property="og:updated_time" content="2017-03-31T01:03:40.265Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rpc远程调用">
+<meta name="twitter:description" content="简介RPC（Remote Procedure Call Protocol）是基于TCP或者RPC等传输协议的远程过程调用协议。 使用参考：    github示例    文档 python的bsonrpc库通过类装饰器的方式构造RPC服务  @service_class装饰RPC服务类 @request装饰提供RPC调用的函数 @rpc_request增加一个JSONRpc/BSONRpc对象作为">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-rpc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/23/rpc/" class="article-date">
+  <time datetime="2017-03-23T07:39:37.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      rpc远程调用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>RPC（Remote Procedure Call Protocol）是基于TCP或者RPC等传输协议的远程过程调用协议。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>参考：<br>    <a href="https://github.com/seprich/py-bson-rpc" target="_blank" rel="external">github示例</a><br>    <a href="http://seprich.github.io/py-bson-rpc/index.html" target="_blank" rel="external">文档</a></p>
+<p>python的<code>bsonrpc</code>库通过类装饰器的方式构造RPC服务</p>
+<ul>
+<li><code>@service_class</code>装饰RPC服务类</li>
+<li><code>@request</code>装饰提供RPC调用的函数</li>
+<li><code>@rpc_request</code>增加一个JSONRpc/BSONRpc对象作为参数</li>
+<li><code>@notification</code>用于通知，有个字符串参数</li>
+</ul>
+<p>两种方式通知：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@rpc_request</div><div class="line">def long_process(self, rpc, a, b, c):</div><div class="line">	print(rpc.client_info)</div><div class="line">	# 2 ways to send notifications:</div><div class="line">	rpc.invoke_notification(&apos;report_progress&apos;, &apos;Stage 1&apos;)</div><div class="line">	client = rpc.get_peer_proxy()</div><div class="line">	client.n.report_progress(&apos;Stage 2&apos;)</div></pre></td></tr></table></figure>
+<p>构建一个RPC类，然后将创建好的套接字作为参数传递给<code>JSONRpc</code>对象</p>
+<p>下面是一个RPC客户端，主动<code>connect</code>PRC服务器，然后保存<code>self.server</code>用作调用远程方法</p>
+<p>因为是TCP连接，在客户端调用<code>close()</code>方法之前，服务器也可通过RPC调用客户端服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">import socket</div><div class="line">from bsonrpc import JSONRpc, request, service_class, notification</div><div class="line"></div><div class="line">@service_class</div><div class="line">class MyRpcServer(object):</div><div class="line"></div><div class="line">    @request</div><div class="line">    def my_double(self, a):</div><div class="line">        return a*2</div><div class="line"></div><div class="line">    @notification</div><div class="line">    def report_progress(self, mes):</div><div class="line">        print mes</div><div class="line"></div><div class="line">class ClientServer(object):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">        self.s.connect((&apos;localhost&apos;, 6000))</div><div class="line">        self.rpc = JSONRpc(self.s, MyRpcServer())</div><div class="line">        self.server = self.rpc.get_peer_proxy()</div><div class="line"></div><div class="line">    def add(self, a, b):</div><div class="line">        return self.server.my_progress_add(a, b)</div><div class="line"></div><div class="line">    def close(self):</div><div class="line">        self.rpc.close()</div><div class="line"></div><div class="line">c = ClientServer()</div><div class="line">print c.add(2, 2)</div></pre></td></tr></table></figure>
+<p>服务端和客户端类似，不同的是服务器需要等待客户端服务，因此使用线程会比较方便</p>
+<p>通过使用单例模式，程序的其他地方可以通过实例化一个RPC类获取<code>client</code>，用来调用客户端方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">import socket</div><div class="line">from bsonrpc import service_class, request, JSONRpc, rpc_request</div><div class="line">import threading</div><div class="line">import time</div><div class="line"></div><div class="line"></div><div class="line">@service_class</div><div class="line">class MyRpcServer(object):</div><div class="line"></div><div class="line">    def __new__(cls):</div><div class="line">        &quot;&quot;&quot;单例模式&quot;&quot;&quot;</div><div class="line">        if &quot;_sin&quot; not in cls.__dict__:</div><div class="line">            cls._sin = super(MyRpcServer, cls).__new__(cls)</div><div class="line">        return cls._sin</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        if &apos;client&apos; not in self.__dict__:</div><div class="line">            self.client = None</div><div class="line"></div><div class="line">    @request</div><div class="line">    def my_add(self, num_1, num_2):</div><div class="line">        return num_1 + num_2</div><div class="line"></div><div class="line">    @rpc_request</div><div class="line">    def my_progress_add(self, rpc, num_1, num_2):</div><div class="line">        print rpc.client_info</div><div class="line">        self.client = rpc.get_peer_proxy()</div><div class="line">        self.client.n.report_progress(&apos;hi&apos;)</div><div class="line">        result = self.client.my_double(3)</div><div class="line">        print result</div><div class="line">        return num_1 + num_2</div><div class="line"></div><div class="line"></div><div class="line">class ServiceServer(threading.Thread):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">        self.ss.bind((&apos;localhost&apos;, 6000))</div><div class="line">        self.ss.listen(10)</div><div class="line"></div><div class="line">        threading.Thread.__init__(self)</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        while True:</div><div class="line">            _s, _address = self.ss.accept()</div><div class="line">            JSONRpc(_s,</div><div class="line">                    MyRpcServer(),</div><div class="line">                    client_info=_address)</div><div class="line"></div><div class="line">s = ServiceServer()</div><div class="line">s.start()</div><div class="line">time.sleep(5)</div><div class="line">c = MyRpcServer()</div><div class="line">res = c.client.my_double(5)</div><div class="line">print id(c), res</div><div class="line">b = MyRpcServer()</div><div class="line">res = b.client.my_double(10)</div><div class="line">print id(b), res</div></pre></td></tr></table></figure>
+<p>其实JSONRpc()函数返回的就是一个rpc对象，可以在线程中保存，以便获得client对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class ServiceServer(threading.Thread):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">        self.ss.bind((&apos;localhost&apos;, 6000))</div><div class="line">        self.ss.listen(10)</div><div class="line">        self.rpc = None</div><div class="line"></div><div class="line">        threading.Thread.__init__(self)</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        while True:</div><div class="line">            _s, _address = self.ss.accept()</div><div class="line">            self.rpc = JSONRpc(_s,</div><div class="line">                               MyRpcServer(),</div><div class="line">                               client_info=_address)</div><div class="line">            print &quot;name&quot;, _s.getsockname()</div></pre></td></tr></table></figure>
+<p>然后这样获得client</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">s = ServiceServer()</div><div class="line">s.start()</div><div class="line">time.sleep(5)</div><div class="line">client = s.rpc.get_peer_proxy()</div><div class="line">print client.my_double(5)  # 调用客户端方法</div></pre></td></tr></table></figure>
+<p>试着用循环处理多个客户端（并没有这个必要）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class ServiceServer(threading.Thread):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">        self.ss.bind((&apos;localhost&apos;, 6000))</div><div class="line">        self.ss.listen(10)</div><div class="line">        self.rpcs = []</div><div class="line"></div><div class="line">        threading.Thread.__init__(self)</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        while True:</div><div class="line">            _s, _address = self.ss.accept()</div><div class="line">            self.rpcs.append(JSONRpc(_s,</div><div class="line">                                     MyRpcServer(),</div><div class="line">                                     client_info=_address))</div><div class="line"></div><div class="line">s = ServiceServer()</div><div class="line">s.start()</div><div class="line">while True:</div><div class="line">    time.sleep(5)</div><div class="line">    for rpc in s.rpcs[:]:</div><div class="line">        try:</div><div class="line">            client = rpc.get_peer_proxy()</div><div class="line">            print client.my_double(5)</div><div class="line">        except BsonRpcError:</div><div class="line">            rpc.close()</div><div class="line">            s.rpcs.remove(rpc)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/23/rpc/" data-id="cj5c7k437004lm0u43iyw7baq" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/24/thread2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          socket并发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/23/mqtt/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">mqtt</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

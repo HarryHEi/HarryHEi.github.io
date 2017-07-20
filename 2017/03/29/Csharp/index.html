@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C#面向对象 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="抽空研究了一下C#，稍微整理了下。 类和C++相比，C#省去了指针（内存）的直接操作，类也有一些细节上的变化。 和C++类似，C#使用virtual和override关键字继承类方法，使用new关键字隐藏方法 123456789101112131415161718192021222324class Animal&amp;#123;    public int num_of_legs;    public">
+<meta name="keywords" content="C#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#面向对象">
+<meta property="og:url" content="http://yoursite.com/2017/03/29/Csharp/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="抽空研究了一下C#，稍微整理了下。 类和C++相比，C#省去了指针（内存）的直接操作，类也有一些细节上的变化。 和C++类似，C#使用virtual和override关键字继承类方法，使用new关键字隐藏方法 123456789101112131415161718192021222324class Animal&amp;#123;    public int num_of_legs;    public">
+<meta property="og:updated_time" content="2017-03-31T02:26:59.522Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#面向对象">
+<meta name="twitter:description" content="抽空研究了一下C#，稍微整理了下。 类和C++相比，C#省去了指针（内存）的直接操作，类也有一些细节上的变化。 和C++类似，C#使用virtual和override关键字继承类方法，使用new关键字隐藏方法 123456789101112131415161718192021222324class Animal&amp;#123;    public int num_of_legs;    public">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Csharp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/29/Csharp/" class="article-date">
+  <time datetime="2017-03-29T02:35:14.000Z" itemprop="datePublished">2017-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C#面向对象
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>抽空研究了一下C#，稍微整理了下。</p>
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>和C++相比，C#省去了指针（内存）的直接操作，类也有一些细节上的变化。</p>
+<p>和C++类似，C#使用<code>virtual</code>和<code>override</code>关键字继承类方法，使用<code>new</code>关键字隐藏方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Animal</div><div class="line">&#123;</div><div class="line">    public int num_of_legs;</div><div class="line">    public string food;</div><div class="line">    public Animal(int num, string f)</div><div class="line">    &#123;</div><div class="line">        num_of_legs = num;</div><div class="line">        food = f;</div><div class="line">    &#125;</div><div class="line">    public virtual string say()  // 使用virtual关键字创建虚函数</div><div class="line">    &#123;</div><div class="line">        return &quot;...&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Dog : Animal</div><div class="line">&#123;</div><div class="line">    public Dog(int num, string f):</div><div class="line">        base(num, f)&#123;&#125;</div><div class="line">    public override string say()  // 这里的override关键词不能省略</div><div class="line">    &#123;</div><div class="line">        return &quot;汪!!&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>子类使用base关键字访问基类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Cat : Animal</div><div class="line">&#123;</div><div class="line">    public Cat(int num, string f):</div><div class="line">        base(num, f)&#123;&#125;</div><div class="line">    public override string say()</div><div class="line">    &#123;</div><div class="line">        return &quot;喵?&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class BigCat : Cat</div><div class="line">&#123;</div><div class="line">    public BigCat(int num, string f):</div><div class="line">        base(num, f)&#123;&#125;</div><div class="line">    public override string say()</div><div class="line">    &#123;</div><div class="line">        return base.say() + &quot;喵?喵?&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>C#有个叫<code>interface</code>（接口）的东西（作用相当于契约），看上去和类差不多，但是接口不能被实例化</p>
+<p>接口不能定义变量，只能定义某种方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">interface IAnimal</div><div class="line">&#123;</div><div class="line">    int num_of_legs &#123; get; &#125;  // 定义属性方法</div><div class="line">    string food &#123; get; &#125;</div><div class="line">    string say();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Animal : IAnimal</div><div class="line">&#123;</div><div class="line">    public int num_of_legs &#123; get; &#125;</div><div class="line">    public string food &#123; get; &#125;</div><div class="line">    public Animal(int num, string f)</div><div class="line">    &#123;</div><div class="line">        num_of_legs = num;</div><div class="line">        food = f;</div><div class="line">    &#125;</div><div class="line">    public virtual string say()</div><div class="line">    &#123;</div><div class="line">        return &quot;...&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以通过引用操作接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Bird bird = new Bird(2, &quot;rice&quot;, 10);  // 一个Bird实例</div><div class="line">IAnimal animal = bird;  // IAnimal引用</div><div class="line">MessageBox.Show(animal.say());</div></pre></td></tr></table></figure>
+<p>可以通过<code>is</code>查看是否实现了接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">BigCat big_cat = new BigCat(4, &quot;fish&quot;);</div><div class="line">if(big_cat is IAnimal)</div><div class="line">	MessageBox.Show(big_cat.say());</div></pre></td></tr></table></figure>
+<p>C#允许类使用<code>as</code>向下强制转换</p>
+<p>如果向下转换失败，<code>as</code>语句返回null</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Animal animal = new BigCat(4, &quot;fish&quot;);  // 把BigCat向上强制转换成Animal</div><div class="line">if (animal is BigCat)  // 通过is判断其是否实现了BigCat</div><div class="line">&#123;</div><div class="line">    BigCat big_cat = animal as BigCat;  // 向下强制转换</div><div class="line">    MessageBox.Show(big_cat.say());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接口的继承</p>
+<p>接口也可继承方法，然后建立新类实现方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">interface IAnimal</div><div class="line">&#123;</div><div class="line">    int num_of_legs &#123; get; &#125;</div><div class="line">    string food &#123; get; &#125;</div><div class="line">    string say();</div><div class="line">&#125;</div><div class="line"></div><div class="line">interface IFlyAnimal : IAnimal</div><div class="line">&#123;</div><div class="line">    int size_of_wings &#123; get; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Bird : IFlyAnimal</div><div class="line">&#123;</div><div class="line">    public Bird(int num, string f, int s)</div><div class="line">    &#123;</div><div class="line">        num_of_legs = num;</div><div class="line">        food = f;</div><div class="line">        size_of_wings = s;</div><div class="line">    &#125;</div><div class="line">    public string food &#123; get; &#125;</div><div class="line">    public int num_of_legs &#123; get; &#125;</div><div class="line">    public int size_of_wings &#123; get; &#125;</div><div class="line"></div><div class="line">    public virtual string say()</div><div class="line">    &#123;</div><div class="line">        return &quot;...&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实现新类的时候可以同时继承基类和接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Bird : Animal, IFlyAnimal</div><div class="line">&#123;</div><div class="line">    public Bird(int num, string f, int s) :</div><div class="line">        base(num, f)</div><div class="line">    &#123;</div><div class="line">        size_of_wings = s;</div><div class="line">    &#125;</div><div class="line">    public int size_of_wings &#123; get; &#125;</div><div class="line">    public override string say()</div><div class="line">    &#123;</div><div class="line">        return &quot;啾！&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接口作用</p>
+<p>接口用起来就像一个指针，它可以用来表示实现了某个接口的所有类。</p>
+<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>抽象类和类相似，可以继承、储存变量或者实现方法，但是和接口一样，不能实例化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">abstract class Animal : IAnimal</div><div class="line">&#123;</div><div class="line">    public int num_of_legs &#123; get; set; &#125;</div><div class="line">    public string food &#123; get; set; &#125;</div><div class="line">    public Animal(int num, string f)</div><div class="line">    &#123;</div><div class="line">        num_of_legs = num;</div><div class="line">        food = f;</div><div class="line">    &#125;</div><div class="line">    public virtual string say()</div><div class="line">    &#123;</div><div class="line">        return &quot;...&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="实现比较方法"><a href="#实现比较方法" class="headerlink" title="实现比较方法"></a>实现比较方法</h1><p>C#的类先继承接口然后在实现方法，下面实现一个比较方法</p>
+<p>Card类先继承<code>IComparable&lt;Card&gt;</code>接口，然后实现<code>CompareTo</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">class Card : IComparable&lt;Card&gt;</div><div class="line">&#123;</div><div class="line">    private Suit suit;</div><div class="line">    private Value value;</div><div class="line">    public Card(Suit suit, Value value)</div><div class="line">    &#123;</div><div class="line">        this.suit = suit;</div><div class="line">        this.value = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 先比较花色然后比较数字大小</div><div class="line">    public int CompareTo(Card other)</div><div class="line">    &#123;</div><div class="line">        if (suit == other.suit)</div><div class="line">        &#123;</div><div class="line">            if (value &gt; other.value)</div><div class="line">                return 1;</div><div class="line">            else if (value &lt; other.value)</div><div class="line">                return -1;</div><div class="line">            else</div><div class="line">                return 0;</div><div class="line">        &#125;</div><div class="line">        else if (suit &gt; other.suit)</div><div class="line">            return 1;</div><div class="line">        else</div><div class="line">            return -1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public string get_name()</div><div class="line">    &#123;</div><div class="line">        return suit + &quot; &quot; + value;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/29/Csharp/" data-id="cj5c7k37q0007m0u4xgw6xadf" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/01/construct/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          二进制数据处理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/24/thread2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">socket并发</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

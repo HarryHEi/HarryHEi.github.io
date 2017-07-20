@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>myDjango-2 表单、路由、静态文件 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Request 对象Request 对象包含的信息HttpRequest对象包含请求URL的一些信息123456789request.path    # 除了域名以外的请求路径request.get_host()    # 主机名request.get_full_path()    # 包含查询字符串request.is_secure()    # 是否通过https访问# request.MET">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="myDjango-2 表单、路由、静态文件">
+<meta property="og:url" content="http://yoursite.com/2016/05/13/myDjango-2/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="Request 对象Request 对象包含的信息HttpRequest对象包含请求URL的一些信息123456789request.path    # 除了域名以外的请求路径request.get_host()    # 主机名request.get_full_path()    # 包含查询字符串request.is_secure()    # 是否通过https访问# request.MET">
+<meta property="og:updated_time" content="2017-03-15T04:50:38.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="myDjango-2 表单、路由、静态文件">
+<meta name="twitter:description" content="Request 对象Request 对象包含的信息HttpRequest对象包含请求URL的一些信息123456789request.path    # 除了域名以外的请求路径request.get_host()    # 主机名request.get_full_path()    # 包含查询字符串request.is_secure()    # 是否通过https访问# request.MET">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-myDjango-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/13/myDjango-2/" class="article-date">
+  <time datetime="2016-05-13T00:59:02.000Z" itemprop="datePublished">2016-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      myDjango-2 表单、路由、静态文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Request-对象"><a href="#Request-对象" class="headerlink" title="Request 对象"></a>Request 对象</h1><h2 id="Request-对象包含的信息"><a href="#Request-对象包含的信息" class="headerlink" title="Request 对象包含的信息"></a>Request 对象包含的信息</h2><p>HttpRequest对象包含请求URL的一些信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">request.path    # 除了域名以外的请求路径</div><div class="line">request.get_host()    # 主机名</div><div class="line">request.get_full_path()    # 包含查询字符串</div><div class="line">request.is_secure()    # 是否通过https访问</div><div class="line"></div><div class="line"># request.META是一个普通字典，如果键不存在，会返回KeyError异常</div><div class="line">request.META[&apos;HTTP_REFERER&apos;]    # 进站前链接网页</div><div class="line">request.META[&apos;HTTP_USER_AGENT&apos;]    # 用户浏览器user-agent字符串</div><div class="line">request.META[&apos;REMOTE_ADDR&apos;]    # 客户端IP</div></pre></td></tr></table></figure></p>
+<h2 id="提交数据信息"><a href="#提交数据信息" class="headerlink" title="提交数据信息"></a>提交数据信息</h2><p>request.GET 和 request.POST 都是类字典对象，通过它们可以访问GET和POST数据</p>
+<h1 id="表单处理"><a href="#表单处理" class="headerlink" title="表单处理"></a>表单处理</h1><h2 id="使用GET"><a href="#使用GET" class="headerlink" title="使用GET"></a>使用GET</h2><h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><p>表单中定义action为search，重定向到search视图函数<br>文件：<strong>/myDjango/myDjango/templates/search_pic.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;% block content %&#125;</div><div class="line">&lt;form action=&quot;/search/&quot; method=&apos;get&apos;&gt;</div><div class="line">    &lt;input type=&apos;text&apos; name=&apos;cont&apos;&gt;</div><div class="line">    &lt;input type=&apos;submit&apos; value=&apos;Search&apos;&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="视图函数"><a href="#视图函数" class="headerlink" title="视图函数"></a>视图函数</h3><p>search_pic是表单页面的视图<br>search视图函数从URL中获得GET参数<br>文件：<strong>/myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def search_pic(request):</div><div class="line">    return render_to_response(&quot;search_pic.html&quot;)</div><div class="line"></div><div class="line">def search(request):</div><div class="line">    if &apos;cont&apos; in request.GET:</div><div class="line">        message = &apos;You searched for: %r&apos; % request.GET[&apos;cont&apos;]</div><div class="line">    else:</div><div class="line">        message = &apos;You submitted an empty form.&apos;</div><div class="line">    return HttpResponse(message)</div></pre></td></tr></table></figure></p>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>针对两个视图函数定义两个路由<br>文件：<strong>/myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, url, include</div><div class="line"></div><div class="line">from myDjango.views import hello, current_datetime, hours_ahead, search_pic, search</div><div class="line">from toon.views import showpic</div><div class="line">from django.contrib import admin</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    #...</div><div class="line">    url(r&apos;^search-pic/$&apos;, search_pic),</div><div class="line">    url(r&apos;^search/$&apos;, search),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="使用POST"><a href="#使用POST" class="headerlink" title="使用POST"></a>使用POST</h2><h3 id="表单-1"><a href="#表单-1" class="headerlink" title="表单"></a>表单</h3><p>action改为’’，post是在本页提交，URL不会发生变化</p>
+<p>csrf_token用来防止跨站请求攻击<br>文件：<strong>/myDjango/myDjango/templates/search_pic.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% block content %&#125;</div><div class="line">&lt;form action=&quot;&quot; method=&apos;post&apos;&gt;</div><div class="line">    &#123;% csrf_token %&#125;</div><div class="line">    &lt;input type=&apos;text&apos; name=&apos;cont&apos;&gt;</div><div class="line">    &lt;input type=&apos;submit&apos; value=&apos;Search&apos; name=&quot;submit&quot;&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="视图函数-1"><a href="#视图函数-1" class="headerlink" title="视图函数"></a>视图函数</h3><p>search_pic是表单页面的视图<br>和之前类似，不过这次是POST数据</p>
+<p>HttpResponseRedirect把页面重定向到某个页面<br>这里不能使用render_to_render来输出，因为可能造成数据的重复<br>文件：<strong>/myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from django.http import HttpResponseRedirect</div><div class="line">from django.shortcuts import render_to_response</div><div class="line"></div><div class="line">def search_pic(request):</div><div class="line">    if request.POST.get(&apos;cont&apos;):</div><div class="line">        return HttpResponseRedirect(&quot;index.html&quot;)</div><div class="line">    return render_to_response(&apos;search_pic.html&apos;)</div></pre></td></tr></table></figure></p>
+<p>如果需要传递参数，可以使用render<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from django.shortcuts import render_to_response, render</div><div class="line"></div><div class="line">def search_pic(request):</div><div class="line">    if request.POST.get(&apos;cont&apos;):</div><div class="line">        print &quot;ok&quot;</div><div class="line">        return render(request, &quot;index.html&quot;,\</div><div class="line">            &#123;&quot;label&quot;:&quot;thanks&quot;&#125;)</div><div class="line">    return render_to_response(&apos;search_pic.html&apos;)</div></pre></td></tr></table></figure></p>
+<h3 id="路由-1"><a href="#路由-1" class="headerlink" title="路由"></a>路由</h3><p>只需要定义一个路由<br>文件：<strong>/myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    #...</div><div class="line">    url(r&apos;^search-pic/$&apos;, search_pic),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="Form-类"><a href="#Form-类" class="headerlink" title="Form 类"></a>Form 类</h2><p>Django带有一个form库，称为django.forms<br>使用这个库可以处理HTML表单及验证<br>文件：<strong>/myDjango/myDjango/forms.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">from django import forms</div><div class="line"></div><div class="line">class testform(forms.Form):</div><div class="line">    cont = forms.CharField()</div></pre></td></tr></table></figure></p>
+<p>在shell下操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from myDjango.forms import testform</div><div class="line"></div><div class="line">&gt;&gt;&gt; f=testform()</div><div class="line">&gt;&gt;&gt; print f</div><div class="line">&lt;tr&gt;&lt;th&gt;&lt;label for=&quot;id_cont&quot;&gt;Cont:&lt;/label&gt;&lt;/th&gt;&lt;td&gt;&lt;input id=&quot;id_cont&quot; name=&quot;cont&quot; type=&quot;text&quot; /&gt;&lt;/td&gt;&lt;/tr&gt;</div><div class="line"></div><div class="line">&gt;&gt;&gt; print f[&apos;cont&apos;]</div><div class="line">&lt;input id=&quot;id_cont&quot; name=&quot;cont&quot; type=&quot;text&quot; /&gt;</div><div class="line"></div><div class="line">&gt;&gt;&gt; f.errors</div><div class="line">&#123;&#125;</div><div class="line"></div><div class="line">&gt;&gt;&gt; f[&apos;cont&apos;].errors</div><div class="line">[]</div><div class="line"></div><div class="line">&gt;&gt;&gt; f.is_valid()</div><div class="line">False</div><div class="line"></div><div class="line">&gt;&gt;&gt; f=testform(&#123;&quot;cont&quot;:&quot;test&quot;&#125;)</div><div class="line">&gt;&gt;&gt; f.is_valid()</div><div class="line">True</div></pre></td></tr></table></figure></p>
+<h3 id="视图函数-2"><a href="#视图函数-2" class="headerlink" title="视图函数"></a>视图函数</h3><p>is_valid()验证过之后，从cleaned_data字典中获得参数<br>文件：<strong>/myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def search_pic(request):</div><div class="line">    if request.method == &apos;POST&apos;:</div><div class="line">        print request.POST</div><div class="line">        form = testform(request.POST)</div><div class="line">        if form.is_valid():</div><div class="line">            d = form.cleaned_data[&apos;cont&apos;]</div><div class="line">            print d</div><div class="line">            return render(request, &quot;index.html&quot;, &#123;&quot;label&quot;:d&#125;)</div><div class="line">    else:</div><div class="line">        form = testform()</div><div class="line">    return render(request, &apos;search_pic.html&apos;, &#123;&quot;form&quot;:form&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="渲染表单"><a href="#渲染表单" class="headerlink" title="渲染表单"></a>渲染表单</h3><p>使用form.as_table整齐排列<br>文件：<strong>/myDjango/myDjango/templates/search_pic.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;% block content %&#125;</div><div class="line">&lt;form action=&quot;&quot; method=&apos;post&apos;&gt;</div><div class="line">    &#123;% csrf_token %&#125;</div><div class="line">    &lt;table&gt;</div><div class="line">        &#123;&#123; form.as_table &#125;&#125;</div><div class="line">    &lt;/table&gt;</div><div class="line">    &lt;input type=&apos;submit&apos; value=&apos;Search&apos; name=&quot;submit&quot;&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="改字段显示"><a href="#改字段显示" class="headerlink" title="改字段显示"></a>改字段显示</h3><p>当指定一个字段时，Django使用默认Widget，也可以使用自定义Widget<br>即type=”textarea”<br>文件：<strong>/myDjango/myDjango/forms.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class testform(forms.Form):</div><div class="line">    cont = forms.CharField()</div><div class="line">    comment = forms.CharField(widget=forms.Textarea)</div></pre></td></tr></table></figure></p>
+<h3 id="设置最大长度"><a href="#设置最大长度" class="headerlink" title="设置最大长度"></a>设置最大长度</h3><p>同样的，最小长度为min_length<br>文件：<strong>/myDjango/myDjango/forms.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class testform(forms.Form):</div><div class="line">    cont = forms.CharField(max_length=100)</div><div class="line">    comment = forms.CharField(widget=forms.Textarea)</div></pre></td></tr></table></figure></p>
+<h3 id="初始值"><a href="#初始值" class="headerlink" title="初始值"></a>初始值</h3><p>在视图函数中传入<br>文件：<strong>/myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def search_pic(request):</div><div class="line">    if request.method == &apos;POST&apos;:</div><div class="line">        #...</div><div class="line">    else:</div><div class="line">        form = testform(initial=&#123;&quot;cont&quot;:&quot;lalala&quot;&#125;)</div><div class="line">    return render(request, &apos;search_pic.html&apos;, &#123;&quot;form&quot;:form&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="自定义校验规则"><a href="#自定义校验规则" class="headerlink" title="自定义校验规则"></a>自定义校验规则</h3><p>Django的form系统自动寻找匹配函数的方法，该方法以clean_开头，以字段名称结束<br>如果有这样的方法，它将在默认校验结束后调用</p>
+<p>下例在字数不足时会抛出ValidationError异常，追加到错误列表中<br>文件：<strong>/myDjango/myDjango/forms.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class testform(forms.Form):</div><div class="line">    cont = forms.CharField(max_length=100)</div><div class="line">    comment = forms.CharField(widget=forms.Textarea)</div><div class="line">    def clean_cont(self):</div><div class="line">        cont = self.cleaned_data[&apos;cont&apos;]</div><div class="line">        if len(cont) &lt; 4:</div><div class="line">            raise forms.ValidationError(&quot;not enough words&quot;)</div><div class="line">        return cont</div></pre></td></tr></table></figure></p>
+<h3 id="指定标签"><a href="#指定标签" class="headerlink" title="指定标签"></a>指定标签</h3><p>HTML表单中自动生成的标签默认是按照规则生成的：用空格代替下划线，首字母大写。<br>也可以自定义标签，使用label<br>文件：<strong>/myDjango/myDjango/forms.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class testform(forms.Form):</div><div class="line">    cont = forms.CharField(max_length=100, label=&quot;cont&quot;)</div><div class="line">    comment = forms.CharField(widget=forms.Textarea, label=&quot;com&quot;)</div><div class="line">    #...</div></pre></td></tr></table></figure></p>
+<h3 id="Form设计"><a href="#Form设计" class="headerlink" title="Form设计"></a>Form设计</h3><p>每个部件单独渲染，然后设置CSS样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;% block content %&#125;</div><div class="line">&lt;form action=&quot;&quot; method=&apos;post&apos;&gt;</div><div class="line">    &#123;% csrf_token %&#125;</div><div class="line">    &lt;div class=&quot;cont&quot;&gt;</div><div class="line">        &#123;&#123; form.cont.errors &#125;&#125;</div><div class="line">        &lt;label for=&quot;id_cont&quot;&gt;Cont&lt;/label&gt;</div><div class="line">        &#123;&#123; form.cont &#125;&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;cont&quot;&gt;</div><div class="line">        &#123;&#123; form.comment.errors &#125;&#125;</div><div class="line">        &lt;label for=&quot;id_comment&quot;&gt;Comment&lt;/label&gt;</div><div class="line">        &#123;&#123; form.comment &#125;&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;input type=&apos;submit&apos; value=&apos;Search&apos; name=&quot;submit&quot;&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="路由-2"><a href="#路由-2" class="headerlink" title="路由"></a>路由</h1><p>为了防止在路由中导入视图函数的语句过长，可以导入视图文件本身<br>文件：<strong>/myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, url, include</div><div class="line"></div><div class="line">from myDjango import views</div><div class="line">from toon.views import showpic</div><div class="line">from django.contrib import admin</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^admin/&apos;, include(admin.site.urls)),</div><div class="line">    url(r&apos;^$&apos;, views.hello),</div><div class="line">    url(r&apos;^time$&apos;, views.current_datetime),</div><div class="line">    url(r&apos;^time/plus/(\d+)/$&apos;, views.hours_ahead),</div><div class="line">    url(r&apos;^toon/&apos;,include(&apos;toon.urls&apos;)),</div><div class="line">    url(r&apos;^search-pic/$&apos;, views.search_pic),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>Django一次匹配每个URL模式，直到匹配到第一个<br>成功捕获的URL以字符串形式传给视图函数</p>
+<p>当Django找不到匹配请求的URL正则表达式时，会进入错误处理视图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">handler404 —— django.conf.urls.handler404  django.views.defaults.page_not_found</div><div class="line">handler500 —— django.conf.urls.handler500  django.views.defaults.server_error</div><div class="line">handler403 —— django.conf.urls.handler403  django.views.defaults.permission_denied</div><div class="line">handler400 —— django.conf.urls.handler400  django.views.defaults.bad_request</div></pre></td></tr></table></figure></p>
+<h2 id="包含其他的URL"><a href="#包含其他的URL" class="headerlink" title="包含其他的URL"></a>包含其他的URL</h2><p>URL可以包含其他URL模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^toon/&apos;,include(extra_patterns)),</div><div class="line">]</div><div class="line">extra_patterns = [</div><div class="line">    url(r&apos;^pic/&apos;, views.showpic),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>或者写在里面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^some/&apos;, include([</div><div class="line">        url(r&apos;^history/$&apos;, views.history),</div><div class="line">        url(r&apos;^edit/$&apos;, views.edit),</div><div class="line">        url(r&apos;^discuss/$&apos;, views.discuss),</div><div class="line">        url(r&apos;^permissions/$&apos;, views.permissions),</div><div class="line">    ])),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="捕获参数"><a href="#捕获参数" class="headerlink" title="捕获参数"></a>捕获参数</h2><p>路由<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    #...</div><div class="line">    url(r&apos;^hello/(?P&lt;name&gt;\w+)$&apos;, views.hello),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>视图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def hello(request, name=&quot;none&quot;):</div><div class="line">    return render_to_response(&quot;index.html&quot;,&#123;&quot;label&quot;:name&#125;)</div></pre></td></tr></table></figure></p>
+<p>参数的嵌套<br>匹配一个/hello/name=<name>格式的URL<br>当URL为 /hello/name=harryx 时，传入一个值为harryx的name参数给视图函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    #..</div><div class="line">    url(r&apos;^hello/(?:name=(?P&lt;name&gt;\w+)/)?$&apos;, views.hello),</div><div class="line">]</div></pre></td></tr></table></figure></name></p>
+<p>路由传递参数<br>url函数有可选的第三个参数，以字典形式传递参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    #...</div><div class="line">    url(r&apos;^hello/(?:name=(?P&lt;name&gt;\w+)/)?$&apos;, views.hello, &#123;&quot;test&quot;:&quot;lalala&quot;&#125;),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>视图函数接收参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">def hello(request, name=&quot;none&quot;, test=&quot;test&quot;):</div><div class="line">    return render_to_response(&quot;index.html&quot;,\</div><div class="line">        &#123;&quot;label&quot;:name+test&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="URL反向解析"><a href="#URL反向解析" class="headerlink" title="URL反向解析"></a>URL反向解析</h2><p>定义路由<br>把URL命名为”year”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    #..</div><div class="line">    url(r&apos;^hello/([0-9]&#123;4&#125;)/$&apos;, views.hello, name=&quot;year&quot;),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>在模板中使用url模板标签，反向解析地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% url &quot;year&quot; 2013 %&#125;</div></pre></td></tr></table></figure></p>
+<p>在视图函数中使用reverse解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">from django.core.urlresolvers import reverse</div><div class="line"></div><div class="line">reverse(&quot;year&quot;, args=(2016,))</div></pre></td></tr></table></figure></p>
+<h3 id="带命名空间的URL名字"><a href="#带命名空间的URL名字" class="headerlink" title="带命名空间的URL名字"></a>带命名空间的URL名字</h3><p>因为在Django项目中可能会有很多应用，可以在命名空间下命名<br>文件：<strong>myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^toon/&apos;,include(&apos;toon.urls&apos;, namespace=&quot;toon&quot;)),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>文件：<strong>myDjango/toon/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^pic/&apos;, views.showpic, name=&quot;pic&quot;),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>文件：<strong>myDjango/myDjango/templates/toon/pic.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;&#123;% url &quot;toon:pic&quot; %&#125;&quot;&gt;test&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="通用视图"><a href="#通用视图" class="headerlink" title="通用视图"></a>通用视图</h3><p>路由<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^$&apos;, views.IndexView.as_view(), name=&quot;index&quot;),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>视图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class IndexView(generic.ListView):</div><div class="line">    template_name = &apos;toon/index.html&apos;</div><div class="line">    context_object_name = &apos;pic_list&apos;</div><div class="line"></div><div class="line">    def get_queryset(self):</div><div class="line">        return Pic.objects.order_by(&apos;picname&apos;)</div></pre></td></tr></table></figure></p>
+<p>模板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% for p in pic_list %&#125;</div><div class="line">    &lt;li&gt;&#123;&#123; p.picname &#125;&#125;&lt;/li&gt;</div><div class="line">&#123;% endfor %&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="静态文件"><a href="#静态文件" class="headerlink" title="静态文件"></a>静态文件</h1><p>这里把静态文件static放在根目录下<br>setting.py配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">STATIC_URL = &apos;/static/&apos;</div><div class="line"></div><div class="line">STATICFILES_DIRS = (</div><div class="line">    os.path.join(BASE_DIR, &quot;static&quot;),</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>在模板文件中导入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">    &#123;% load staticfiles %&#125;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#123;% static &apos;myDjango/test.css&apos; %&#125;&quot; /&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>Django框架先了解到这边</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/13/myDjango-2/" data-id="cj5c7k42c003vm0u4djmr544u" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/18/SICP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          SICP 笔记(一)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/11/myDjango-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">myDjango-1 数据库</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

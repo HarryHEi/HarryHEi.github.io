@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript-09 动画 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JavaScript实现动画效果动画就是让元素的位置随着时间不断发生变化 位置网页元素在浏览器窗口里的位置是一种表示性的信息，通常由CSS负责设置123456example&amp;#123;    position: absolute;    top: 50px;    left: 100px;&amp;#125; DOM代码如下123example.style.position = &amp;quot;absolut">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript-09 动画">
+<meta property="og:url" content="http://yoursite.com/2016/04/30/javascript-09/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="JavaScript实现动画效果动画就是让元素的位置随着时间不断发生变化 位置网页元素在浏览器窗口里的位置是一种表示性的信息，通常由CSS负责设置123456example&amp;#123;    position: absolute;    top: 50px;    left: 100px;&amp;#125; DOM代码如下123example.style.position = &amp;quot;absolut">
+<meta property="og:updated_time" content="2017-03-14T13:32:22.007Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript-09 动画">
+<meta name="twitter:description" content="JavaScript实现动画效果动画就是让元素的位置随着时间不断发生变化 位置网页元素在浏览器窗口里的位置是一种表示性的信息，通常由CSS负责设置123456example&amp;#123;    position: absolute;    top: 50px;    left: 100px;&amp;#125; DOM代码如下123example.style.position = &amp;quot;absolut">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-javascript-09" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/30/javascript-09/" class="article-date">
+  <time datetime="2016-04-30T08:14:36.000Z" itemprop="datePublished">2016-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript-09 动画
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript实现动画效果"><a href="#JavaScript实现动画效果" class="headerlink" title="JavaScript实现动画效果"></a>JavaScript实现动画效果</h1><p>动画就是让元素的位置随着时间不断发生变化</p>
+<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><p>网页元素在浏览器窗口里的位置是一种表示性的信息，通常由CSS负责设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">example</div><div class="line">&#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 50px;</div><div class="line">    left: 100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>DOM代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">example.style.position = &quot;absolute&quot;;</div><div class="line">example.style.left = &quot;100px&quot;;</div><div class="line">example.style.top = &quot;50px&quot;;</div></pre></td></tr></table></figure></p>
+<p>posion合法值有static、fixed、relative、和absolute四种</p>
+<p>static是默认值，有关元素会按照在标记的先后顺序出现在窗口</p>
+<p>relative与static相似，区别是还可以通过float属性从文档的正常显示脱离开</p>
+<p>如果某个元素position属性设置为absolute，就可以放到容器的任何位置，容器要么是文档本身，要么是有一个fixed或者absolute属性的父元素，显示位置由top、left、right、bottom等元素决定，可以用百分比或者像素设置这些元素属性值</p>
+<p>创建一个标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;cartoon&quot;&gt;</div><div class="line">    &lt;p&gt;hello harryx&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>使用JavaScript指定位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">addLoadEvent(</div><div class="line">    function positionCartoon()</div><div class="line">    &#123;</div><div class="line">        var cartoon = document.getElementById(&quot;cartoon&quot;);</div><div class="line">        cartoon.style.position = &quot;absolute&quot;;</div><div class="line">        cartoon.style.left = &quot;50px&quot;;</div><div class="line">        cartoon.style.top = &quot;100px&quot;;</div><div class="line">    &#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>改变元素的位置就是执行函数去改变这个元素的style.top或者style.left等属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function moveCartoon()</div><div class="line">&#123;</div><div class="line">    var cartoon = document.getElementById(&quot;cartoon&quot;);</div><div class="line">    cartoon.style.left = &quot;200px&quot;;</div><div class="line">    cartoon.style.top = &quot;50px&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>JavaScript函数setTimeout能够让某个函数经过一段预定时间后才开始执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setTimeout(&quot;function&quot;, interval)</div></pre></td></tr></table></figure></p>
+<p>第一个参数是一个字符串，是将要执行的函数的名字<br>第二个参数是一个数值，以毫秒为单位设定了需要多长时间后才开始执行第一个参数给出的函数</p>
+<p>把函数的调用赋值给一个变量，之后可以使用clearTimeout函数取消等待执行的某个函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">variable = setTimeout(&quot;function&quot;, interval)</div><div class="line">clearTimeout(variable)</div></pre></td></tr></table></figure></p>
+<p>修改一下positionCartoon函数，让它隔一段时间后执行moveCartoon函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">addLoadEvent(</div><div class="line">    function positionCartoon()</div><div class="line">    &#123;</div><div class="line">        var cartoon = document.getElementById(&quot;cartoon&quot;);</div><div class="line">        cartoon.style.position = &quot;absolute&quot;;</div><div class="line">        cartoon.style.left = &quot;50px&quot;;</div><div class="line">        cartoon.style.top = &quot;100px&quot;;</div><div class="line">        movement = setTimeout(&quot;moveCartoon()&quot;, 1000);</div><div class="line">    &#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>让元素渐变移动，主要逻辑如下</p>
+<ol>
+<li>获得元素的当前位置</li>
+<li>如果元素已经到达目的地，退出这个函数</li>
+<li>如果尚未到达目的地，则把它向目的地移近一点</li>
+<li>经过一段时间后重复步骤1</li>
+</ol>
+<p>注意，在获得当前位置时是以字符串形式返回，要使用parseInt()函数提取数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function moveCartoon()</div><div class="line">&#123;</div><div class="line">    var cartoon = document.getElementById(&quot;cartoon&quot;);</div><div class="line">    var xpos = parseInt(cartoon.style.left);</div><div class="line">    var ypos = parseInt(cartoon.style.top);</div><div class="line">    if (xpos == 200 &amp;&amp; ypos == 100) return true;</div><div class="line">    if (xpos &lt; 200) xpos++;</div><div class="line">    if (xpos &gt; 200) xpos--;</div><div class="line">    if (ypos &lt; 100) ypos++;</div><div class="line">    if (ypos &gt; 100) ypos--;</div><div class="line">    cartoon.style.left = xpos + &quot;px&quot;;</div><div class="line">    cartoon.style.top = ypos + &quot;px&quot;;</div><div class="line">    movement = setTimeout(&quot;moveCartoon()&quot;, 50);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h2><h3 id="创建moveElement函数"><a href="#创建moveElement函数" class="headerlink" title="创建moveElement函数"></a>创建moveElement函数</h3><p>与之前的函数不同的是，moveElement函数可以输入参数</p>
+<ul>
+<li>打算移动的元素id</li>
+<li>该元素的目的地</li>
+<li>两次移动的间隔时间</li>
+</ul>
+<p>定义一个moveElement函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function moveElemeng(elementID, finalX, finalY, interval)</div><div class="line">&#123;</div><div class="line">    var elem = document.getElementById(elementID);</div><div class="line">    var xpos = parseInt(elem.style.left);</div><div class="line">    var ypos = parseInt(elem.style.top);</div><div class="line">    if (xpos == finalX &amp;&amp; ypos == finalY) return true;</div><div class="line">    if (xpos &lt; finalX) xpos++;</div><div class="line">    if (xpos &gt; finalX) xpos--;</div><div class="line">    if (ypos &lt; finalY) ypos++;</div><div class="line">    if (ypos &gt; finalY) ypos--;</div><div class="line">    elem.style.left = xpos + &quot;px&quot;;</div><div class="line">    elem.style.top = ypos + &quot;px&quot;;</div><div class="line">    repeat = &quot;moveElemeng(&quot;+&quot;&apos;&quot;+elementID+&quot;&apos;&quot;+&quot;,&quot;+finalX+&quot;,&quot;+finalY+&quot;,&quot;+interval+&quot;)&quot;;</div><div class="line">    moment = setTimeout(repeat, interval)    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">addLoadEvent(</div><div class="line">    function positionCartoon()</div><div class="line">    &#123;</div><div class="line">        var cartoon = document.getElementById(&quot;cartoon&quot;);</div><div class="line">        cartoon.style.position = &quot;absolute&quot;;</div><div class="line">        cartoon.style.left = &quot;50px&quot;;</div><div class="line">        cartoon.style.top = &quot;100px&quot;;</div><div class="line">        moveElemeng(&quot;cartoon&quot;,200,100,10)</div><div class="line">    &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function()</div><div class="line">    &#123;</div><div class="line">        var logop = document.getElementById(&quot;logop&quot;);</div><div class="line">        logop.style.left = &quot;200px&quot;;</div><div class="line">        logop.style.top = &quot;0px&quot;;</div><div class="line">        moveElemeng(&quot;logop&quot;,200,30,5);</div><div class="line">    &#125;</div><div class="line">)</div><div class="line"></div><div class="line">function moveElemeng(elementID, finalX, finalY, interval)</div><div class="line">&#123;</div><div class="line">    var elem = document.getElementById(elementID);</div><div class="line">    var xpos = parseInt(elem.style.left);</div><div class="line">    var ypos = parseInt(elem.style.top);</div><div class="line">    if (xpos == finalX &amp;&amp; ypos == finalY) return true;</div><div class="line">    if (xpos &lt; finalX) xpos++;</div><div class="line">    if (xpos &gt; finalX) xpos--;</div><div class="line">    if (ypos &lt; finalY) ypos++;</div><div class="line">    if (ypos &gt; finalY) ypos--;</div><div class="line">    elem.style.left = xpos + &quot;px&quot;;</div><div class="line">    elem.style.top = ypos + &quot;px&quot;;</div><div class="line">    repeat = &quot;moveElemeng(&quot;+&quot;&apos;&quot;+elementID+&quot;&apos;&quot;+&quot;,&quot;+finalX+&quot;,&quot;+finalY+&quot;,&quot;+interval+&quot;)&quot;;</div><div class="line">    moment = setTimeout(repeat, interval)    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h1><p>HTML5添加了新的标记元素</p>
+<h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>通过canvas元素标签可以实现与静态图片的交互，创建一个画布<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;canvas id=&quot;draw-in-me&quot; width=&quot;120&quot; height=&quot;40&quot;&gt;</div><div class="line">&lt;/canvas&gt;</div></pre></td></tr></table></figure></p>
+<p>然后使用JavaScript作画<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">addLoadEvent( </div><div class="line">    function draw()</div><div class="line">    &#123;</div><div class="line">        var canvas = document.getElementById(&quot;draw-in-me&quot;);</div><div class="line">        if (canvas.getContext)</div><div class="line">        &#123;</div><div class="line">            var cxt=canvas.getContext(&quot;2d&quot;);</div><div class="line">            cxt.moveTo(10,10);</div><div class="line">            cxt.lineTo(150,50);</div><div class="line">            cxt.lineTo(10,50);</div><div class="line">            cxt.stroke();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h2 id="音频和视频"><a href="#音频和视频" class="headerlink" title="音频和视频"></a>音频和视频</h2><p>HTML5的video元素为在文档中嵌入影片以及与影片的交互提供了一种标准方式，同时也把操作简化成一个标签</p>
+<p>video 元素为在文档中嵌入影片以及与影片交互定义了一种标准方式，同时也简化成一个标签<br>这里嵌入了一个mp4视频，同时给出了浏览器不支持video时的下载链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;video src=&quot;./static/mv/badapple.mp4&quot;&gt;</div><div class="line">    &lt;!-- 不支持时替换内容 --&gt;</div><div class="line">    &lt;a href=&quot;./static/mv/badapple.mp4&quot;&gt;Download movie.mp4&lt;/a&gt;</div><div class="line">&lt;/video&gt;</div></pre></td></tr></table></figure></p>
+<p>audio元素用法也差不多<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;audio src=&quot;./static/mv/badapple.mp3&quot;&gt;</div><div class="line">    &lt;!-- 不支持时替换内容 --&gt;</div><div class="line">    &lt;a href=&quot;./static/mv/badapple.mp3&quot;&gt;&lt;/a&gt;</div><div class="line">&lt;/audio&gt;</div></pre></td></tr></table></figure></p>
+<p>为保证每个人都能看到视频，必须作多种格式的视频并在video元素中包含多个来源</p>
+<p>为了确保HTML5的兼容性，至少包含下列三个版本</p>
+<ul>
+<li>基于H.264和ACC的MP4</li>
+<li>WebM (VP8 + Vorbis)</li>
+<li>基于Theora视频和Vorbis音频的Ogg文件</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这本书就读到这边了，总的来说是本通俗易懂的书，对js的DOM编程有了一定的概念，也稍微了解了下HTML5，那么，继续学习吧！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/30/javascript-09/" data-id="cj5c7k39r001om0u4mre0dm2g" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/01/jQuery-01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          jQuery-01 简述
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/30/javascript-08/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">javascript-08 style属性</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

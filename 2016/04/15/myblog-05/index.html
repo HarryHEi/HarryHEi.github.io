@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>myblog-05 管理账户 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="管理账户修改密码在登录的前提下，提供修改密码的功能 添加表单文件：app/auth/forms.py123456class ChangePasswordForm(Form):    old_password = PasswordField(&amp;apos;Old password&amp;apos;, validators=[Required()])    password = PasswordField(&amp;">
+<meta name="keywords" content="flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="myblog-05 管理账户">
+<meta property="og:url" content="http://yoursite.com/2016/04/15/myblog-05/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="管理账户修改密码在登录的前提下，提供修改密码的功能 添加表单文件：app/auth/forms.py123456class ChangePasswordForm(Form):    old_password = PasswordField(&amp;apos;Old password&amp;apos;, validators=[Required()])    password = PasswordField(&amp;">
+<meta property="og:updated_time" content="2017-03-15T04:50:09.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="myblog-05 管理账户">
+<meta name="twitter:description" content="管理账户修改密码在登录的前提下，提供修改密码的功能 添加表单文件：app/auth/forms.py123456class ChangePasswordForm(Form):    old_password = PasswordField(&amp;apos;Old password&amp;apos;, validators=[Required()])    password = PasswordField(&amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-myblog-05" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/15/myblog-05/" class="article-date">
+  <time datetime="2016-04-15T11:53:37.000Z" itemprop="datePublished">2016-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      myblog-05 管理账户
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="管理账户"><a href="#管理账户" class="headerlink" title="管理账户"></a>管理账户</h1><h2 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h2><p>在登录的前提下，提供修改密码的功能</p>
+<h3 id="添加表单"><a href="#添加表单" class="headerlink" title="添加表单"></a>添加表单</h3><p>文件：<strong>app/auth/forms.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class ChangePasswordForm(Form):</div><div class="line">    old_password = PasswordField(&apos;Old password&apos;, validators=[Required()])</div><div class="line">    password = PasswordField(&apos;New password&apos;, validators=[</div><div class="line">        Required(), EqualTo(&apos;password2&apos;, message=&apos;Passwords must match&apos;)])</div><div class="line">    password2 = PasswordField(&apos;Confirm new password&apos;, validators=[Required()])</div><div class="line">    submit = SubmitField(&apos;Update Password&apos;)</div></pre></td></tr></table></figure></p>
+<h3 id="视图函数"><a href="#视图函数" class="headerlink" title="视图函数"></a>视图函数</h3><p>文件：<strong>app/auth/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">from .forms import ChangePasswordForm</div><div class="line"></div><div class="line">@auth.route(&apos;/change-password&apos;, methods=[&apos;GET&apos;, &apos;POST&apos;])</div><div class="line">@login_required</div><div class="line">def change_password():</div><div class="line">    form = ChangePasswordForm()</div><div class="line">    if form.validate_on_submit():</div><div class="line">        if current_user.verify_password(form.old_password.data):</div><div class="line">            current_user.password = form.password.data</div><div class="line">            db.session.add(current_user)</div><div class="line">            flash(&apos;Your password has been updated.&apos;)</div><div class="line">            return redirect(url_for(&apos;main.index&apos;))</div><div class="line">        else:</div><div class="line">            flash(&apos;Invalid password.&apos;)</div><div class="line">    return render_template(&quot;auth/change_password.html&quot;, form=form)</div></pre></td></tr></table></figure></p>
+<h3 id="编写页面"><a href="#编写页面" class="headerlink" title="编写页面"></a>编写页面</h3><p>文件：<strong>app/templates/auth/change_password.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &quot;base.html&quot; %&#125;</div><div class="line">&#123;% import &quot;bootstrap/wtf.html&quot; as wtf %&#125;</div><div class="line"></div><div class="line">&#123;% block title %&#125;Change Password&#123;% endblock %&#125;</div><div class="line"></div><div class="line">&#123;% block page_content %&#125;</div><div class="line">&lt;div class=&quot;page-header&quot;&gt;</div><div class="line">    &lt;h1&gt;Change Your Password&lt;/h1&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=&quot;col-md-4&quot;&gt;</div><div class="line">    &#123;&#123; wtf.quick_form(form) &#125;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="添加改变密码的标签"><a href="#添加改变密码的标签" class="headerlink" title="添加改变密码的标签"></a>添加改变密码的标签</h3><p>提供一个菜单，可以选择登出或者更改密码<br>文件 <strong>app/templates/base.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;% if current_user.is_authenticated %&#125;</div><div class="line">&lt;li class=&quot;dropdown&quot;&gt;</div><div class="line">    &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;Account &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;&lt;/a&gt;</div><div class="line">    &lt;ul class=&quot;dropdown-menu&quot;&gt;</div><div class="line">        &lt;li&gt;&lt;a href=&quot;&#123;&#123; url_for(&apos;auth.change_password&apos;) &#125;&#125;&quot;&gt;Change Password&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;a href=&quot;&#123;&#123; url_for(&apos;auth.logout&apos;) &#125;&#125;&quot;&gt;Log Out&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/li&gt;</div><div class="line">&#123;% else %&#125;</div><div class="line">&lt;li&gt;&lt;a href=&quot;&#123;&#123; url_for(&apos;auth.login&apos;) &#125;&#125;&quot;&gt;Log In&lt;/a&gt;&lt;/li&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="忘记密码"><a href="#忘记密码" class="headerlink" title="忘记密码"></a>忘记密码</h2><p>使用邮件令牌提供给用户修改密码</p>
+<h3 id="添加表单-1"><a href="#添加表单-1" class="headerlink" title="添加表单"></a>添加表单</h3><p>提供两个表单，一个用于输入需要重置密码的邮件地址，另一个用于通过邮件确认后给与用户重置密码<br>文件：<strong>app/auth/forms.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class PasswordResetRequestForm(Form):</div><div class="line">    email = StringField(&apos;Email&apos;, validators=[Required(), Length(1, 64),</div><div class="line">                                             Email()])</div><div class="line">    submit = SubmitField(&apos;Reset Password&apos;)</div><div class="line"></div><div class="line"></div><div class="line">class PasswordResetForm(Form):</div><div class="line">    email = StringField(&apos;Email&apos;, validators=[Required(), Length(1, 64),</div><div class="line">                                             Email()])</div><div class="line">    password = PasswordField(&apos;New Password&apos;, validators=[</div><div class="line">        Required(), EqualTo(&apos;password2&apos;, message=&apos;Passwords must match&apos;)])</div><div class="line">    password2 = PasswordField(&apos;Confirm password&apos;, validators=[Required()])</div><div class="line">    submit = SubmitField(&apos;Reset Password&apos;)</div><div class="line"></div><div class="line">    def validate_email(self, field):</div><div class="line">        if User.query.filter_by(email=field.data).first() is None:</div><div class="line">            raise ValidationError(&apos;Unknown email address.&apos;)</div></pre></td></tr></table></figure></p>
+<h3 id="编写页面-1"><a href="#编写页面-1" class="headerlink" title="编写页面"></a>编写页面</h3><p>在登录界面提供重置密码的链接<br>文件：<strong>app/templates/auth/login.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;Forgot your password? </div><div class="line">    &lt;a href=&quot;&#123;&#123; url_for(&apos;auth.password_reset_request&apos;) &#125;&#125;&quot;&gt;Click here to reset it&lt;/a&gt;.</div><div class="line">&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>显示给用户，用来输入邮件，或者重置密码<br>文件：<strong>app/templates/auth/reset_password.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &quot;base.html&quot; %&#125;</div><div class="line">&#123;% import &quot;bootstrap/wtf.html&quot; as wtf %&#125;</div><div class="line"></div><div class="line">&#123;% block title %&#125;Password Reset&#123;% endblock %&#125;</div><div class="line"></div><div class="line">&#123;% block page_content %&#125;</div><div class="line">&lt;div class=&quot;page-header&quot;&gt;</div><div class="line">    &lt;h1&gt;Reset Your Password&lt;/h1&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=&quot;col-md-4&quot;&gt;</div><div class="line">    &#123;&#123; wtf.quick_form(form) &#125;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="视图函数-1"><a href="#视图函数-1" class="headerlink" title="视图函数"></a>视图函数</h3><p>视图函数提供两个路由，一个提供重置密码的链接，另一个是邮件发送给用户的链接<br>文件：<strong>app/auth/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">from .forms import PasswordResetRequestForm, PasswordResetForm</div><div class="line"></div><div class="line">@auth.route(&apos;/reset&apos;, methods=[&apos;GET&apos;, &apos;POST&apos;])</div><div class="line">def password_reset_request():</div><div class="line">    if not current_user.is_anonymous:</div><div class="line">        return redirect(url_for(&apos;main.index&apos;))</div><div class="line">    form = PasswordResetRequestForm()</div><div class="line">    if form.validate_on_submit():</div><div class="line">        user = User.query.filter_by(email=form.email.data).first()</div><div class="line">        if user:</div><div class="line">            token = user.generate_reset_token()</div><div class="line">            send_email(user.email, &apos;Reset Your Password&apos;,</div><div class="line">                       &apos;auth/email/reset_password&apos;,</div><div class="line">                       user=user, token=token,</div><div class="line">                       next=request.args.get(&apos;next&apos;))</div><div class="line">        flash(&apos;An email with instructions to reset your password has been &apos;</div><div class="line">              &apos;sent to you.&apos;)</div><div class="line">        return redirect(url_for(&apos;auth.login&apos;))</div><div class="line">    return render_template(&apos;auth/reset_password.html&apos;, form=form)</div><div class="line"></div><div class="line"></div><div class="line">@auth.route(&apos;/reset/&lt;token&gt;&apos;, methods=[&apos;GET&apos;, &apos;POST&apos;])</div><div class="line">def password_reset(token):</div><div class="line">    if not current_user.is_anonymous:</div><div class="line">        return redirect(url_for(&apos;main.index&apos;))</div><div class="line">    form = PasswordResetForm()</div><div class="line">    if form.validate_on_submit():</div><div class="line">        user = User.query.filter_by(email=form.email.data).first()</div><div class="line">        if user is None:</div><div class="line">            return redirect(url_for(&apos;main.index&apos;))</div><div class="line">        if user.reset_password(token, form.password.data):</div><div class="line">            flash(&apos;Your password has been updated.&apos;)</div><div class="line">            return redirect(url_for(&apos;auth.login&apos;))</div><div class="line">        else:</div><div class="line">            return redirect(url_for(&apos;main.index&apos;))</div><div class="line">    return render_template(&apos;auth/reset_password.html&apos;, form=form)</div></pre></td></tr></table></figure></p>
+<h3 id="用户添加重置密码功能"><a href="#用户添加重置密码功能" class="headerlink" title="用户添加重置密码功能"></a>用户添加重置密码功能</h3><p>文件：<strong>models.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def generate_reset_token(self, expiration=3600):</div><div class="line">    s = Serializer(current_app.config[&apos;SECRET_KEY&apos;], expiration)</div><div class="line">    return s.dumps(&#123;&apos;reset&apos;: self.id&#125;)</div><div class="line"></div><div class="line">def reset_password(self, token, new_password):</div><div class="line">    s = Serializer(current_app.config[&apos;SECRET_KEY&apos;])</div><div class="line">    try:</div><div class="line">        data = s.loads(token)</div><div class="line">    except:</div><div class="line">        return False</div><div class="line">    if data.get(&apos;reset&apos;) != self.id:</div><div class="line">        return False</div><div class="line">    self.password = new_password</div><div class="line">    db.session.add(self)</div><div class="line">    return True</div></pre></td></tr></table></figure></p>
+<h3 id="邮件内容"><a href="#邮件内容" class="headerlink" title="邮件内容"></a>邮件内容</h3><p>文件：<strong>app/templates/auth/email/reset_password.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;Dear &#123;&#123; user.name &#125;&#125;,&lt;/p&gt;</div><div class="line">&lt;p&gt;Welcome to &lt;b&gt;Harry&apos;s blog&lt;/b&gt;!&lt;/p&gt;</div><div class="line">&lt;p&gt;To confirm your account please &lt;a href=&quot;&#123;&#123; url_for(&apos;auth.confirm&apos;, token=token, _external=True) &#125;&#125;&quot;&gt;click here&lt;/a&gt;.&lt;/p&gt;</div><div class="line">&lt;p&gt;Alternatively, you can paste the following link in your browser&apos;s address bar:&lt;/p&gt;</div><div class="line">&lt;p&gt;&#123;&#123; url_for(&apos;auth.confirm&apos;, token=token, _external=True) &#125;&#125;&lt;/p&gt;</div><div class="line">&lt;p&gt;Sincerely,&lt;/p&gt;</div><div class="line">&lt;p&gt;Harry&lt;/p&gt;</div><div class="line">&lt;p&gt;&lt;small&gt;Note: replies to this email address are not monitored.&lt;/small&gt;&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>文件：<strong>app/templates/auth/email/reset_password.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Dear &#123;&#123; user.name &#125;&#125;,</div><div class="line"></div><div class="line">To reset your password click on the following link:</div><div class="line"></div><div class="line">&#123;&#123; url_for(&apos;auth.password_reset&apos;, token=token, _external=True) &#125;&#125;</div><div class="line"></div><div class="line">If you have not requested a password reset simply ignore this message.</div><div class="line"></div><div class="line">Sincerely,</div><div class="line"></div><div class="line">Harry</div><div class="line"></div><div class="line">Note: replies to this email address are not monitored.</div></pre></td></tr></table></figure></p>
+<h2 id="修改邮件地址"><a href="#修改邮件地址" class="headerlink" title="修改邮件地址"></a>修改邮件地址</h2><p>修改邮件地址前，需要向新邮件地址发送确认邮件</p>
+<h3 id="添加表单-2"><a href="#添加表单-2" class="headerlink" title="添加表单"></a>添加表单</h3><p>文件：<strong>app/auth/forms.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class ChangeEmailForm(Form):</div><div class="line">    email = StringField(&apos;New Email&apos;, validators=[Required(), Length(1, 64),</div><div class="line">                                                 Email()])</div><div class="line">    password = PasswordField(&apos;Password&apos;, validators=[Required()])</div><div class="line">    submit = SubmitField(&apos;Update Email Address&apos;)</div><div class="line"></div><div class="line">    def validate_email(self, field):</div><div class="line">        if User.query.filter_by(email=field.data).first():</div><div class="line">            raise ValidationError(&apos;Email already registered.&apos;)</div></pre></td></tr></table></figure></p>
+<h3 id="用户模型添加更改邮件功能"><a href="#用户模型添加更改邮件功能" class="headerlink" title="用户模型添加更改邮件功能"></a>用户模型添加更改邮件功能</h3><p>文件：<strong>models.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">def generate_email_change_token(self, new_email, expiration=3600):</div><div class="line">    s = Serializer(current_app.config[&apos;SECRET_KEY&apos;], expiration)</div><div class="line">    return s.dumps(&#123;&apos;change_email&apos;: self.id, &apos;new_email&apos;: new_email&#125;)</div><div class="line"></div><div class="line">def change_email(self, token):</div><div class="line">    s = Serializer(current_app.config[&apos;SECRET_KEY&apos;])</div><div class="line">    try:</div><div class="line">        data = s.loads(token)</div><div class="line">    except:</div><div class="line">        return False</div><div class="line">    if data.get(&apos;change_email&apos;) != self.id:</div><div class="line">        return False</div><div class="line">    new_email = data.get(&apos;new_email&apos;)</div><div class="line">    if new_email is None:</div><div class="line">        return False</div><div class="line">    if self.query.filter_by(email=new_email).first() is not None:</div><div class="line">        return False</div><div class="line">    self.email = new_email</div><div class="line">    db.session.add(self)</div><div class="line">    return True</div></pre></td></tr></table></figure></p>
+<h3 id="编写页面-2"><a href="#编写页面-2" class="headerlink" title="编写页面"></a>编写页面</h3><p>文件：<strong>app/templates/auth/login.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &quot;base.html&quot; %&#125;</div><div class="line">&#123;% import &quot;bootstrap/wtf.html&quot; as wtf %&#125;</div><div class="line"></div><div class="line">&#123;% block title %&#125;Change Email Address&#123;% endblock %&#125;</div><div class="line"></div><div class="line">&#123;% block page_content %&#125;</div><div class="line">&lt;div class=&quot;page-header&quot;&gt;</div><div class="line">    &lt;h1&gt;Change Your Email Address&lt;/h1&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=&quot;col-md-4&quot;&gt;</div><div class="line">    &#123;&#123; wtf.quick_form(form) &#125;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="添加改变邮件的标签"><a href="#添加改变邮件的标签" class="headerlink" title="添加改变邮件的标签"></a>添加改变邮件的标签</h3><p>提供一个菜单，可以选择修改邮件地址<br>文件 <strong>app/templates/base.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;li&gt;&lt;a href=&quot;&#123;&#123; url_for(&apos;auth.change_email_request&apos;) &#125;&#125;&quot;&gt;Change Email&lt;/a&gt;&lt;/li&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="编写视图函数"><a href="#编写视图函数" class="headerlink" title="编写视图函数"></a>编写视图函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">from .forms import ChangeEmailForm</div><div class="line"></div><div class="line">@auth.route(&apos;/change-email&apos;, methods=[&apos;GET&apos;, &apos;POST&apos;])</div><div class="line">@login_required</div><div class="line">def change_email_request():</div><div class="line">    form = ChangeEmailForm()</div><div class="line">    if form.validate_on_submit():</div><div class="line">        if current_user.verify_password(form.password.data):</div><div class="line">            new_email = form.email.data</div><div class="line">            token = current_user.generate_email_change_token(new_email)</div><div class="line">            send_email(new_email, &apos;Confirm your email address&apos;,</div><div class="line">                       &apos;auth/email/change_email&apos;,</div><div class="line">                       user=current_user, token=token)</div><div class="line">            flash(&apos;An email with instructions to confirm your new email &apos;</div><div class="line">                  &apos;address has been sent to you.&apos;)</div><div class="line">            return redirect(url_for(&apos;main.index&apos;))</div><div class="line">        else:</div><div class="line">            flash(&apos;Invalid email or password.&apos;)</div><div class="line">    return render_template(&quot;auth/change_email.html&quot;, form=form)</div><div class="line"></div><div class="line"></div><div class="line">@auth.route(&apos;/change-email/&lt;token&gt;&apos;)</div><div class="line">@login_required</div><div class="line">def change_email(token):</div><div class="line">    if current_user.change_email(token):</div><div class="line">        flash(&apos;Your email address has been updated.&apos;)</div><div class="line">    else:</div><div class="line">        flash(&apos;Invalid request.&apos;)</div><div class="line">    return redirect(url_for(&apos;main.index&apos;))</div></pre></td></tr></table></figure>
+<h3 id="编写邮件内容"><a href="#编写邮件内容" class="headerlink" title="编写邮件内容"></a>编写邮件内容</h3><p>文件：<strong>app/templates/auth/email/change_email.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;Dear &#123;&#123; user.name &#125;&#125;,&lt;/p&gt;</div><div class="line">&lt;p&gt;To confirm your new email address &lt;a href=&quot;&#123;&#123; url_for(&apos;auth.change_email&apos;, token=token, _external=True) &#125;&#125;&quot;&gt;click here&lt;/a&gt;.&lt;/p&gt;</div><div class="line">&lt;p&gt;Alternatively, you can paste the following link in your browser&apos;s address bar:&lt;/p&gt;</div><div class="line">&lt;p&gt;&#123;&#123; url_for(&apos;auth.change_email&apos;, token=token, _external=True) &#125;&#125;&lt;/p&gt;</div><div class="line">&lt;p&gt;Sincerely,&lt;/p&gt;</div><div class="line">&lt;p&gt;Harry&lt;/p&gt;</div><div class="line">&lt;p&gt;&lt;small&gt;Note: replies to this email address are not monitored.&lt;/small&gt;&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>文件：<strong>app/templates/auth/email/change_email.txt</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Dear &#123;&#123; user.name &#125;&#125;,</div><div class="line"></div><div class="line">To confirm your new email address click on the following link:</div><div class="line"></div><div class="line">&#123;&#123; url_for(&apos;auth.change_email&apos;, token=token, _external=True) &#125;&#125;</div><div class="line"></div><div class="line">Sincerely,</div><div class="line"></div><div class="line">Harry</div><div class="line"></div><div class="line">Note: replies to this email address are not monitored.</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/15/myblog-05/" data-id="cj5c7k3ag0026m0u4s0h9a0ae" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/16/myblog-06/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          myblog-06 角色和权限
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/14/myblog-04/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">myblog-04 用户注册</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

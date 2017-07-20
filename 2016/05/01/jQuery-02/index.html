@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jQuery-02 jQuery选择器 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="jQuery选择器选择器是jQuery的根基，在jQuery中，对事件处理，遍历DOM和Ajax操作都依赖于选择器 jQuery中的选择器完全继承了CSS风格 使用jQuery选择器不仅比传统DOM操作简介，并且能避免错误 基本选择器   选择器 描述 返回 示例     #id 根据给定id匹配一个元素 单个元素 $(“#test”)   .class 根据类匹配元素 集合元素 $(“.test">
+<meta name="keywords" content="jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery-02 jQuery选择器">
+<meta property="og:url" content="http://yoursite.com/2016/05/01/jQuery-02/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="jQuery选择器选择器是jQuery的根基，在jQuery中，对事件处理，遍历DOM和Ajax操作都依赖于选择器 jQuery中的选择器完全继承了CSS风格 使用jQuery选择器不仅比传统DOM操作简介，并且能避免错误 基本选择器   选择器 描述 返回 示例     #id 根据给定id匹配一个元素 单个元素 $(“#test”)   .class 根据类匹配元素 集合元素 $(“.test">
+<meta property="og:updated_time" content="2017-03-15T04:48:36.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery-02 jQuery选择器">
+<meta name="twitter:description" content="jQuery选择器选择器是jQuery的根基，在jQuery中，对事件处理，遍历DOM和Ajax操作都依赖于选择器 jQuery中的选择器完全继承了CSS风格 使用jQuery选择器不仅比传统DOM操作简介，并且能避免错误 基本选择器   选择器 描述 返回 示例     #id 根据给定id匹配一个元素 单个元素 $(“#test”)   .class 根据类匹配元素 集合元素 $(“.test">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jQuery-02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/01/jQuery-02/" class="article-date">
+  <time datetime="2016-05-01T07:37:48.000Z" itemprop="datePublished">2016-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery-02 jQuery选择器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h1><p>选择器是jQuery的根基，在jQuery中，对事件处理，遍历DOM和Ajax操作都依赖于选择器</p>
+<p>jQuery中的选择器完全继承了CSS风格</p>
+<p>使用jQuery选择器不仅比传统DOM操作简介，并且能避免错误</p>
+<h2 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#id</td>
+<td>根据给定id匹配一个元素</td>
+<td>单个元素</td>
+<td>$(“#test”)</td>
+</tr>
+<tr>
+<td>.class</td>
+<td>根据类匹配元素</td>
+<td>集合元素</td>
+<td>$(“.test”)</td>
+</tr>
+<tr>
+<td>element</td>
+<td>根据给定元素名匹配元素</td>
+<td>集合元素</td>
+<td>$(“p”)</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配所有元素</td>
+<td>匹配所有元素</td>
+<td>集合元素</td>
+<td>$(“*”)</td>
+</tr>
+<tr>
+<td>a,b,c,…</td>
+<td>匹配每个元素</td>
+<td>集合元素</td>
+<td>$(“div,p,.myclass”)</td>
+</tr>
+</tbody>
+</table>
+<p>可以使用基本选择器完成大部分工作</p>
+<h2 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h2><table>
+<thead>
+<tr>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“div span”)</td>
+<td>选取div里面所有span子元素</td>
+</tr>
+<tr>
+<td>$(“div &gt; span”)</td>
+<td>选组div里面span子元素</td>
+</tr>
+<tr>
+<td>$(“.one + div”)</td>
+<td>class为one的下一个兄弟元素</td>
+</tr>
+<tr>
+<td>$(“.one ~ div”)</td>
+<td>class为one的后面所有兄弟元素</td>
+</tr>
+</tbody>
+</table>
+<p>第一个和第二个比较常用，后面两种方法可以用更加简单的代替<br>使用<code>next()</code>方法代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.one&quot;).next(&quot;div&quot;);</div></pre></td></tr></table></figure></p>
+<p>使用<code>nextAll()</code>方法代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.one&quot;).nextAll(&quot;div&quot;)</div></pre></td></tr></table></figure></p>
+<p><code>siblings()</code>与前后位置无关，只要是同辈节点都能匹配<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.one&quot;).sibling(&quot;div&quot;)</div></pre></td></tr></table></figure></p>
+<h2 id="过滤选择器"><a href="#过滤选择器" class="headerlink" title="过滤选择器"></a>过滤选择器</h2><h3 id="基本过滤选择器"><a href="#基本过滤选择器" class="headerlink" title="基本过滤选择器"></a>基本过滤选择器</h3><table>
+<thead>
+<tr>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“div:first”)</td>
+<td>div元素中的第一个div元素</td>
+</tr>
+<tr>
+<td>$(“div:last”)</td>
+<td>div元素的最后一个div元素</td>
+</tr>
+<tr>
+<td>$(“div:not(.myClass)”)</td>
+<td>选取class不是myclass的div元素</td>
+</tr>
+<tr>
+<td>$(“div:even”)</td>
+<td>选取索引是偶数的div元素(0开始)</td>
+</tr>
+<tr>
+<td>$(“div:odd”)</td>
+<td>奇数</td>
+</tr>
+<tr>
+<td>$(“div:eq(index)”)</td>
+<td>选取索引等于index的div元素</td>
+</tr>
+<tr>
+<td>$(“div:gt(index)”)</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>$(“div:lt(index)”)</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>$(“div:header”)</td>
+<td>选取所有h1,h2,h3…</td>
+</tr>
+<tr>
+<td>$(“div:animated”)</td>
+<td>选取当前正在执行动画的所有元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="内容过滤选择器"><a href="#内容过滤选择器" class="headerlink" title="内容过滤选择器"></a>内容过滤选择器</h3><p>内容过滤选择器主要体现在它所包含的子元素或文本内容上</p>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“div:contains(‘你’)”)</td>
+<td>选取内容含有‘你’的元素</td>
+</tr>
+<tr>
+<td>$(“div:empty”)</td>
+<td>选取不包含子元素的div空元素</td>
+</tr>
+<tr>
+<td>$(“div:has(p)”)</td>
+<td>选取含有p元素的div元素</td>
+</tr>
+<tr>
+<td>$(“div:parent”)</td>
+<td>选取拥有子元素(包括文本元素)的div元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="可见性过滤选择器"><a href="#可见性过滤选择器" class="headerlink" title="可见性过滤选择器"></a>可见性过滤选择器</h3><p>可见性过滤器是根据元素的可见和不可见状态来选择相应的元素</p>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“:hidden”)</td>
+<td>选取所有不可见元素</td>
+</tr>
+<tr>
+<td>$(“div:visible”)</td>
+<td>选取所有可见div元素</td>
+</tr>
+</tbody>
+</table>
+<p>显示所有隐藏的元素，show()和hide()可以有两个参数，分别是速度(ms)和结束后执行的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function()</div><div class="line">&#123;</div><div class="line">    $v = $(&quot;:hidden&quot;);</div><div class="line">    $v.show();</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="属性过滤选择器"><a href="#属性过滤选择器" class="headerlink" title="属性过滤选择器"></a>属性过滤选择器</h3><p>属性过滤器的过滤规则是通过元素的属性来获取相应的元素</p>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“div[id]”)</td>
+<td>选取具有属性id的div元素</td>
+</tr>
+<tr>
+<td>$(“div[title=test]”)</td>
+<td>选取title为”test”的div元素</td>
+</tr>
+<tr>
+<td>$(“div[title!=test]”)</td>
+<td>不为</td>
+</tr>
+<tr>
+<td>$(“div[title^=t]”)</td>
+<td>以”t”开始</td>
+</tr>
+<tr>
+<td>$(“div[title$=t]”)</td>
+<td>以”t”结束</td>
+</tr>
+<tr>
+<td>$(“div[title*=e]”)</td>
+<td>含有”t”</td>
+</tr>
+<tr>
+<td>$(“div[…][…]”)</td>
+<td>允许多个过滤器复合</td>
+</tr>
+</tbody>
+</table>
+<h3 id="子元素过滤选择器"><a href="#子元素过滤选择器" class="headerlink" title="子元素过滤选择器"></a>子元素过滤选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:nth-child(index/even/…)</td>
+<td>每个父元素下第index个子元素(1开始)</td>
+</tr>
+<tr>
+<td>:first-child</td>
+<td>每个父目录下第一个子元素</td>
+</tr>
+<tr>
+<td>:last-child</td>
+<td>最后一个</td>
+</tr>
+<tr>
+<td>:only-child</td>
+<td>是唯一子元素的子元素</td>
+</tr>
+</tbody>
+</table>
+<p>使用css()方法改变class为’haschildren’的第一个子元素的字体大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function()</div><div class="line">&#123;</div><div class="line">    var $v = $(&quot;.has_children:first-child&quot;);</div><div class="line">    $v.css(&quot;font-size&quot;,&quot;30px&quot;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="表单对象属性过滤选择器"><a href="#表单对象属性过滤选择器" class="headerlink" title="表单对象属性过滤选择器"></a>表单对象属性过滤选择器</h3><p>此选择器主要对所选择的表单元素进行过滤</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:enabled</td>
+<td>选取所有可用元素</td>
+</tr>
+<tr>
+<td>:disabled</td>
+<td>选取所有不可用元素</td>
+</tr>
+<tr>
+<td>:checked</td>
+<td>选取所有被选中元素(单选框，复选框)</td>
+</tr>
+<tr>
+<td>:selected</td>
+<td>选取所有被选中元素(下拉表)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="表单选择器"><a href="#表单选择器" class="headerlink" title="表单选择器"></a>表单选择器</h2><p>jQuery加入了表单选择器，能方便地获得表单的某个或某类型元素</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:input</td>
+<td>选取所有input、textarea、select和button元素</td>
+</tr>
+<tr>
+<td>:text</td>
+<td>选取所有单行文本框</td>
+</tr>
+<tr>
+<td>:password</td>
+<td>密码框</td>
+</tr>
+<tr>
+<td>:radio</td>
+<td>单选框</td>
+</tr>
+<tr>
+<td>:checkbox</td>
+<td>多选框</td>
+</tr>
+<tr>
+<td>:submit</td>
+<td>提交按钮</td>
+</tr>
+<tr>
+<td>:image</td>
+<td>图像按钮</td>
+</tr>
+<tr>
+<td>:reset</td>
+<td>重置按钮</td>
+</tr>
+<tr>
+<td>:button</td>
+<td>所有按钮</td>
+</tr>
+<tr>
+<td>:file</td>
+<td>上传域</td>
+</tr>
+<tr>
+<td>:hidden</td>
+<td>不可见元素</td>
+</tr>
+</tbody>
+</table>
+<h1 id="选择器中的注意事项"><a href="#选择器中的注意事项" class="headerlink" title="选择器中的注意事项"></a>选择器中的注意事项</h1><h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>选择器中如果含有’.’、’#’、’(‘或者’]’等，需要使用转义字符转义</p>
+<p>找到href为‘#’的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function()</div><div class="line">&#123;</div><div class="line">    var $v = $(&quot;[href=\\#]&quot;); //转义字符&apos;#&apos;</div><div class="line">    alert($v.length)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="选择器中含有空格"><a href="#选择器中含有空格" class="headerlink" title="选择器中含有空格"></a>选择器中含有空格</h2><p>缺少或者添加空格，含义可能因此而变得不一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(&quot;.links:hidden&quot;) //隐藏的并且class为‘links’的元素</div><div class="line">$(&quot;.links :hidden&quot;) //class为‘links’的元素里面的隐藏元素(子元素)</div></pre></td></tr></table></figure></p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>建立一个显示动漫排行的文档<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;dongmanRange&quot;&gt;</div><div class="line">    &lt;h2&gt;动漫排行&lt;/h2&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li&gt;1 &lt;a href=&quot;#&quot;&gt;海贼王&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;2 &lt;a href=&quot;#&quot;&gt;七龙珠&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;3 &lt;a href=&quot;#&quot;&gt;火影忍者&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;4 &lt;a href=&quot;#&quot;&gt;死神&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;5 &lt;a href=&quot;#&quot;&gt;名侦探柯南&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;6 &lt;a href=&quot;#&quot;&gt;妖精的尾巴&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;7 &lt;a href=&quot;#&quot;&gt;东京食尸鬼&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;8 &lt;a href=&quot;#&quot;&gt;银魂&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;9 &lt;a href=&quot;#&quot;&gt;刀剑神域&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;10 &lt;a href=&quot;#&quot;&gt;约会大作战&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &lt;div class=&quot;showmore&quot;&gt;</div><div class="line">        &lt;a href=&quot;#&quot;&gt;显示全部&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>实现以下效果</p>
+<ul>
+<li>一开始只显示前五个，后面的全部隐藏</li>
+<li>当用户点击显示全部按钮之后，显示全部列表，高亮显示推荐，并把按钮内容改为“收回”</li>
+<li>当用户点击“收回时”，隐藏6个以外的所有列表，并把按钮内容改为“显示全部”</li>
+</ul>
+<p>JavaScript代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function() //等待DOM加载完成</div><div class="line">&#123;</div><div class="line">    var $overtop5 = $(&quot;ul li:gt(4)&quot;); //选取ul下所有li元素，筛选出li元素index大于4的</div><div class="line">    $overtop5.hide(); //隐藏</div><div class="line"></div><div class="line">    var $button = $(&quot;.showmore &gt; a&quot;); //选取class为showmore的子元素a</div><div class="line">    $button.click(function() //添加onclick事件</div><div class="line">    &#123;</div><div class="line">        if ($overtop5.is(&quot;:hidden&quot;)) //如果属性是隐藏</div><div class="line">        &#123;</div><div class="line">            $overtop5.show(); //显示</div><div class="line">            $button.text(&quot;收回&quot;); //按钮内容改为&quot;收回&quot;</div><div class="line">            $(&quot;ul li&quot;).filter(&quot;:contains(&apos;火影&apos;),:contains(&apos;刀剑&apos;),:contains(&apos;银魂&apos;)&quot;) //filter参数可以是多个选择器的集合</div><div class="line">                .addClass(&quot;promoted&quot;); //高亮</div><div class="line">            return false; //阻止链接跳转</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">        &#123;</div><div class="line">            $overtop5.hide(); //隐藏</div><div class="line">            $button.text(&quot;全部显示&quot;); //按钮内容改为&quot;全部显示&quot;</div><div class="line">            $(&quot;ul li&quot;).filter(&quot;:contains(&apos;火影&apos;),:contains(&apos;刀剑&apos;),:contains(&apos;银魂&apos;)&quot;) //filter参数可以是多个选择器的集合</div><div class="line">                .removeClass(&quot;promoted&quot;); //去除高亮</div><div class="line">            return false; //阻止链接跳转</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/01/jQuery-02/" data-id="cj5c7k38m000ym0u4g3dxhrp1" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/02/jQuery-03/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          jQuery-03 DOM操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/01/jQuery-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">jQuery-01 简述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>requests 爬虫 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基础传递参数1234import requestsparam = &amp;#123;&amp;apos;page&amp;apos;:&amp;apos;2&amp;apos;&amp;#125; r =requests.get(&amp;quot;http://119.29.137.50&amp;quot;,params=param) 响应内容123456789import requestsfrom PIL import Imagefrom StringI">
+<meta name="keywords" content="spider">
+<meta property="og:type" content="article">
+<meta property="og:title" content="requests 爬虫">
+<meta property="og:url" content="http://yoursite.com/2016/05/09/requests/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="基础传递参数1234import requestsparam = &amp;#123;&amp;apos;page&amp;apos;:&amp;apos;2&amp;apos;&amp;#125; r =requests.get(&amp;quot;http://119.29.137.50&amp;quot;,params=param) 响应内容123456789import requestsfrom PIL import Imagefrom StringI">
+<meta property="og:updated_time" content="2017-03-15T04:52:32.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="requests 爬虫">
+<meta name="twitter:description" content="基础传递参数1234import requestsparam = &amp;#123;&amp;apos;page&amp;apos;:&amp;apos;2&amp;apos;&amp;#125; r =requests.get(&amp;quot;http://119.29.137.50&amp;quot;,params=param) 响应内容123456789import requestsfrom PIL import Imagefrom StringI">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-requests" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/09/requests/" class="article-date">
+  <time datetime="2016-05-09T02:16:39.000Z" itemprop="datePublished">2016-05-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      requests 爬虫
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">param = &#123;&apos;page&apos;:&apos;2&apos;&#125; </div><div class="line">r =requests.get(&quot;http://119.29.137.50&quot;,params=param)</div></pre></td></tr></table></figure>
+<h2 id="响应内容"><a href="#响应内容" class="headerlink" title="响应内容"></a>响应内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line">from PIL import Image</div><div class="line">from StringIO import StringIO</div><div class="line"></div><div class="line">r =requests.get(&quot;http://119.29.137.50&quot;)</div><div class="line">print r.text #打印内容</div><div class="line"></div><div class="line">r =requests.get(&quot;http://7xrooc.com1.z0.glb.clouddn.com/avatar.jpg&quot;)</div><div class="line">i = Image.open(StringIO(r.content)).save(&quot;temp.jpg&quot;,&quot;JPEG&quot;) #数据流形式打开并保存</div></pre></td></tr></table></figure>
+<h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>使用内置解码器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">param = &#123;&quot;ak&quot;:&quot;asd&quot;,&quot;location&quot;:&quot;北京&quot;,&quot;output&quot;:&quot;json&quot;&#125; </div><div class="line">r =requests.get(&quot;http://api.map.baidu.com/telematics/v3/weather&quot;,params=param)</div><div class="line">print r.json()</div></pre></td></tr></table></figure></p>
+<p>访问原始套接字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">param = &#123;&quot;ak&quot;:&quot;asd&quot;,&quot;location&quot;:&quot;北京&quot;,&quot;output&quot;:&quot;json&quot;&#125; </div><div class="line">r =requests.get(&quot;http://api.map.baidu.com/telematics/v3/weather&quot;,params=param,stream=True)</div><div class="line">print r.raw.read()</div></pre></td></tr></table></figure></p>
+<p>文本流保存文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">param = &#123;&quot;ak&quot;:&quot;asd&quot;,&quot;location&quot;:&quot;北京&quot;,&quot;output&quot;:&quot;json&quot;&#125; </div><div class="line">r =requests.get(&quot;http://api.map.baidu.com/telematics/v3/weather&quot;,params=param,stream=True)</div><div class="line"></div><div class="line">with open(&quot;temp.txt&quot;, &apos;wb&apos;) as fd:</div><div class="line">    for chunk in r.iter_content():</div><div class="line">        fd.write(chunk)</div></pre></td></tr></table></figure></p>
+<h2 id="请求头和post数据"><a href="#请求头和post数据" class="headerlink" title="请求头和post数据"></a>请求头和post数据</h2><p>添加一个字典<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">data = &#123;</div><div class="line">    &quot;name&quot;:&quot;Python&quot;,</div><div class="line">    &quot;submit&quot;:&quot;Submit&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">header = &#123;</div><div class="line">    &quot;User-Agent&quot;:&quot;Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:46.0) Gecko/20100101 Firefox/46.0&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">r =requests.post(&quot;http://119.29.137.50&quot;,headers=header,data=data)</div><div class="line">print r.text</div></pre></td></tr></table></figure></p>
+<h2 id="cookies"><a href="#cookies" class="headerlink" title="cookies"></a>cookies</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">r =requests.get(&quot;http://119.29.137.50&quot;)</div><div class="line">print r.cookies</div></pre></td></tr></table></figure>
+<p>发送cookies到服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">cookies = dict(cookies_are=&apos;working&apos;)</div><div class="line">r =requests.get(&quot;http://119.29.137.50&quot;,cookies=cookies)</div><div class="line">print r.text</div></pre></td></tr></table></figure></p>
+<h2 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">r =requests.get(&quot;http://119.29.137.50&quot;,timeout=0.001)</div><div class="line">print r.text</div></pre></td></tr></table></figure>
+<h1 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h1><h2 id="会话对象"><a href="#会话对象" class="headerlink" title="会话对象"></a>会话对象</h2><p>会话对象能够保持某些参数，比如cookies</p>
+<h2 id="beautifusoup"><a href="#beautifusoup" class="headerlink" title="beautifusoup"></a>beautifusoup</h2><p>用beautifulsoup处理抓到的页面<br>按类查找标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line">from bs4 import BeautifulSoup</div><div class="line"></div><div class="line">html = s.get(url)</div><div class="line">soup = BeautifulSoup(html.text, &quot;lxml&quot;)</div><div class="line">links = soup.find_all(&quot;span&quot;,class_=&quot;rating_num&quot;)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/09/requests/" data-id="cj5c7k433004fm0u4yghsagn8" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spider/">spider</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/11/myDjango-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          myDjango-1 数据库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/08/myDjango-0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">myDjango-0 基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

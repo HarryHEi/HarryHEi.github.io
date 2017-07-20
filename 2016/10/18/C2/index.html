@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C++ Primer | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="标准IO库IO类 IO对象不可复制或赋值 不能储存在容器中 形参和返回类型不能为流类型 IO操作通常以引用方式传递和返回流 读写IO对象会改变其状态，所以不能是const引用  12ofstream &amp;amp;print(ofstream&amp;amp;); //引用while (print(out2))&amp;#123;..&amp;#125; getline用于逐行读取，保留空格，不保存空格  badbit 标志">
+<meta name="keywords" content="c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ Primer">
+<meta property="og:url" content="http://yoursite.com/2016/10/18/C2/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="标准IO库IO类 IO对象不可复制或赋值 不能储存在容器中 形参和返回类型不能为流类型 IO操作通常以引用方式传递和返回流 读写IO对象会改变其状态，所以不能是const引用  12ofstream &amp;amp;print(ofstream&amp;amp;); //引用while (print(out2))&amp;#123;..&amp;#125; getline用于逐行读取，保留空格，不保存空格  badbit 标志">
+<meta property="og:updated_time" content="2017-03-14T13:28:45.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ Primer">
+<meta name="twitter:description" content="标准IO库IO类 IO对象不可复制或赋值 不能储存在容器中 形参和返回类型不能为流类型 IO操作通常以引用方式传递和返回流 读写IO对象会改变其状态，所以不能是const引用  12ofstream &amp;amp;print(ofstream&amp;amp;); //引用while (print(out2))&amp;#123;..&amp;#125; getline用于逐行读取，保留空格，不保存空格  badbit 标志">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/18/C2/" class="article-date">
+  <time datetime="2016-10-18T11:08:13.000Z" itemprop="datePublished">2016-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++ Primer
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="标准IO库"><a href="#标准IO库" class="headerlink" title="标准IO库"></a>标准IO库</h1><h2 id="IO类"><a href="#IO类" class="headerlink" title="IO类"></a>IO类</h2><ul>
+<li>IO对象不可复制或赋值</li>
+<li>不能储存在容器中</li>
+<li>形参和返回类型不能为流类型</li>
+<li>IO操作通常以引用方式传递和返回流</li>
+<li>读写IO对象会改变其状态，所以不能是const引用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ofstream &amp;print(ofstream&amp;); //引用</div><div class="line">while (print(out2))&#123;..&#125;</div></pre></td></tr></table></figure>
+<p>getline用于逐行读取，保留空格，不保存空格</p>
+<ul>
+<li><code>badbit</code> 标志着系统级故障</li>
+<li><code>failbit</code> 标志者可恢复错误</li>
+<li><code>eofbit</code> 遇到文件结束符</li>
+</ul>
+<p>如果达到文件结束位置，eofbit和failbit都会被置位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">string i;</div><div class="line">while(cin&gt;&gt;i) //每次读取一个单词，读取到文件结束符退出循环</div><div class="line">&#123;</div><div class="line">    cout &lt;&lt; i &lt;&lt; endl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行clear()之后，复位所有标志位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">string i,j;</div><div class="line">while(cin &gt;&gt; j)</div><div class="line">&#123;</div><div class="line">    while(cin &gt;&gt; i) //如果这里输入文件结束符</div><div class="line">    &#123;</div><div class="line">        cout &lt;&lt; i &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line">    cin.clear(); //复位标志位，因此不会退出循环</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>输出操作可能不直接输出到屏幕，而是先存入缓冲区</li>
+<li>如果程序异常终止，缓冲区不会被刷新</li>
+<li>可以手动刷新缓冲区</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cout &lt;&lt; &quot;asd&quot; &lt;&lt; endl; //换行、刷新缓冲区</div><div class="line">cout &lt;&lt; &quot;sad&quot; &lt;&lt; flush; //刷新缓冲区</div><div class="line">cout &lt;&lt; &quot;dsa&quot; &lt;&lt; ends; //空格、刷新缓冲区</div><div class="line">cout &lt;&lt; unitbuf; //后面的所有操作都会立即刷新缓冲区</div><div class="line">//...</div><div class="line">cout &lt;&lt; nounitbuf; //回到正常的缓冲方式</div></pre></td></tr></table></figure>
+<p>关联输入和输出流，任何读取操作都会先刷新输出流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cin.tie(nullptr); //cin绑定为空指针</div><div class="line">ostream *old_tie = cin.tie(&amp;cout); //cin绑定cout返回一个指向cout的指针</div></pre></td></tr></table></figure>
+<h2 id="文件流"><a href="#文件流" class="headerlink" title="文件流"></a>文件流</h2><h3 id="使用文件流对象"><a href="#使用文件流对象" class="headerlink" title="使用文件流对象"></a>使用文件流对象</h3><p>文件流对象的创建和绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//定义文件对象</div><div class="line">ifstream infile;</div><div class="line">ofstream outfile;</div><div class="line">fstream f;</div><div class="line"></div><div class="line">//捆绑文件</div><div class="line">infile.open(&quot;in.txt&quot;);</div><div class="line">outfile.open(&quot;out.txt&quot;);</div><div class="line">f.open(&quot;text.txt&quot;)</div><div class="line"></div><div class="line">//直接初始化</div><div class="line">ifstream infile(&quot;in.txt&quot;);</div><div class="line">fstream f(&quot;text.txt&quot;)</div><div class="line"></div><div class="line">//检查文件是否成功打开</div><div class="line">if (!infile)&#123;.... return -1&#125;</div><div class="line"></div><div class="line">//重新捆绑需要先关闭文件</div><div class="line">ifstream infile(&quot;in.txt&quot;);</div><div class="line">infile.close(); //关闭文件</div><div class="line">infile.open(&quot;another.txt&quot;);</div><div class="line"></div><div class="line">//清除状态</div><div class="line">//一旦文件流发生错误，必须通过clear()方法清除状态，否则会影响后续该对象的使用</div><div class="line">infile.clear();</div><div class="line"></div><div class="line">//指定模式打开文件</div><div class="line">ofstream outfile(&quot;text.txt&quot;, ofstream::out | ofstream::trunc);</div></pre></td></tr></table></figure>
+<p>确认成功读取文件之后再操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">string s;</div><div class="line">fstream f(&quot;text.txt&quot;);</div><div class="line">if (f)</div><div class="line">&#123;</div><div class="line">    while(getline(f,s))</div><div class="line">        cout &lt;&lt; s &lt;&lt; endl;</div><div class="line">    f.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="文件模式"><a href="#文件模式" class="headerlink" title="文件模式"></a>文件模式</h3><ul>
+<li>只可以对ofstream或者fstream对象设置为out</li>
+<li>只可以对ifstream或者fstream对象设置为in</li>
+<li>只有当设置了out才能设置trunc，默认out + trunc</li>
+<li>ofstream默认out，ifstream默认in，fstream默认in + out</li>
+<li>ofstream默认会清空，除非制定app模式 </li>
+</ul>
+<h2 id="字符串流"><a href="#字符串流" class="headerlink" title="字符串流"></a>字符串流</h2><p>在sstream头文件中定义</p>
+<p>istringstream 从string读取数据<br>ostringstream 向string写入数据<br>stringstream 读取或者写入数据</p>
+<p>方法</p>
+<ul>
+<li><code>sstream.str()</code> 返回sstream保存的string的拷贝</li>
+<li><code>sstream.str(s)</code> 将string s拷贝到sstream中</li>
+</ul>
+<p>使用istringstream</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">string line,word;</div><div class="line">getline(cin, line); //得到一个以空格隔开的字符串</div><div class="line">istringstream s(line); //将字符串与s绑定</div><div class="line">while(s &gt;&gt; word) //逐个输出空格隔开的单词</div><div class="line">&#123;</div><div class="line">    cout &lt;&lt; word &lt;&lt; endl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用ostringstream</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ostringstream words;</div><div class="line">string s;</div><div class="line">while(cin &gt;&gt; s) //输入的数据空格隔开，逐个存到words字符串流</div><div class="line">&#123;</div><div class="line">    words &lt;&lt; s &lt;&lt; &quot;;&quot;;</div><div class="line">&#125;</div><div class="line">cout &lt;&lt; words.str() &lt;&lt; endl; //输出所有内容</div></pre></td></tr></table></figure>
+<h1 id="顺序容器"><a href="#顺序容器" class="headerlink" title="顺序容器"></a>顺序容器</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>P292</p>
+<p><code>vector</code> 可变大小数组，尾部插入速度快（push_back）<br><code>deque</code> 双端队列，头尾插入速度快（push_front、push_back）<br><code>list</code> 双向链表，任何位置插入速度都很快，占用空间大<br><code>forward_list</code> 单向链表<br><code>array</code> 固定大小数组，不能添加或者删除元素<br><code>string</code> 字符串，尾部插入速度快</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>P305</p>
+<ul>
+<li>同类型容器，同类型元素可以直接用于初始化</li>
+<li>如果使用迭代器初始化，可以是不同容器类型，不同元素类型（如果能进行转换）</li>
+<li>同容器同元素可以直接用于赋值</li>
+<li>swap交换除了array以外的顺序容器速度很快，因为只交换了数据结构，元素本身不变</li>
+<li>只有相同容器类型，相同元素类型可以比较大小</li>
+<li>array定义时需要指定大小</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//初始化为：1234560000</div><div class="line">array&lt;int, 10&gt; a = &#123;1,2,3,4,5,6&#125;;</div></pre></td></tr></table></figure>
+<p>assign赋值</p>
+<p>赋值操作需要左右两边类型相同，顺序容器（除了array）定义了assign成员，允许不同但是相容的类型赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vector&lt;const char*&gt; vc=&#123;&quot;asdasd&quot;, &quot;asdasd&quot;&#125;;</div><div class="line">list&lt;string&gt; vs;</div><div class="line">vs.assign(vc.begin(), vc.end());</div></pre></td></tr></table></figure>
+<p>insert插入元素</p>
+<p>第一个参数是一个迭代器，后面可以接收更多参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt; iv;</div><div class="line">iv.insert(iv.begin(),10,2); //在开头插入10个2</div><div class="line">iv.insert(iv.end(),&#123;1,2,3,4,5,6,7&#125;); //在最后插入1234567</div><div class="line">list&lt;int&gt; ls&#123;1,2,3,4,5&#125;;</div><div class="line">iv.insert(iv.end(), ls.begin(), ls.end()); //使用迭代器插入</div></pre></td></tr></table></figure>
+<p>insert的返回值</p>
+<p>C++11 insert返回一个迭代器<br>但是linux用的g++并不能，折腾好久，坑，好想早点换电脑装VS - -</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">auto tp = iv.insert(iv.begin(),100); //如果是插入一个元素，返回插入的元素的迭代器</div><div class="line">cout &lt;&lt; *tp &lt;&lt; endl;</div></pre></td></tr></table></figure>
+<p>emplace将参数传递给构造函数，使用构造函数构造元素</p>
+<p><code>emplace_back</code>、<code>emplace</code>、<code>emplace_front</code><br>对应<br><code>push_back</code>、<code>insert</code>、<code>push_front</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vector&lt;Sales_data&gt; vsd;</div><div class="line">vsd.emplace_back(&quot;hello&quot;, 2, 1);</div></pre></td></tr></table></figure>
+<p><code>front</code>和<code>back</code>（除了forward_list）成员函数，返回第一个和最后一个元素值</p>
+<p>at（string、vector、deque和array）使用下标返回元素的引用，越界抛出out_of_range异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vector&lt;Sales_data&gt; vsd;</div><div class="line">vsd.emplace_back(&quot;hello&quot;, 2, 1);</div><div class="line">auto s = vsd.at(0); //第一个元素的引用</div><div class="line">auto &amp;s = vsd.front(); //和上面的等价</div></pre></td></tr></table></figure>
+<p>删除元素<br><code>pop_back</code>、<code>erase</code>（返回被删除元素之后的元素的迭代器）、<code>pop_front</code><br>对应<br><code>push_back</code>、<code>insert</code>、<code>push_front</code></p>
+<ul>
+<li>删除deque中的首尾外的元素，会使所有迭代器、引用、指针失效</li>
+<li>指向vector、string中删除点之后的位置的迭代器、引用、指针失效</li>
+<li>vector不支持push_front</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vector&lt;Sales_data&gt; vsd;</div><div class="line">vsd.insert(vsd.begin(), 10, Sales_data(&quot;world&quot;,3,2)); //插入是个元素</div><div class="line"> //删除一半元素，p指向被删除的最后一个元素的下一个元素</div><div class="line">auto p = vsd.erase(vsd.begin(),vsd.begin() + vsd.size()/2);</div><div class="line">//删除所有元素，下面两个等价</div><div class="line">vsd.erase(vsd.begin(),vsd.end());</div><div class="line">vsd.clear()</div></pre></td></tr></table></figure>
+<p>forward_list拥有特殊的访问操作（操作实现方式不同），没有insert、emplace、erase操作（P313）</p>
+<ul>
+<li><code>before_begin()</code>、<code>cbefore_begin()</code> 首元素前一个位置的迭代器</li>
+<li><code>insert_after</code> 在某迭代器后插入</li>
+<li><code>emplace_after</code> 在某迭代器后插入，使用构造函数构造</li>
+<li><code>erase_after</code> 删除某迭代器后元素</li>
+</ul>
+<p>删除<code>forward_list&lt;int&gt;</code>里面的奇数元素 ，关键在于保存要删除元素的前一项的迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">forward_list&lt;int&gt; fvi&#123;1,2,3,4,5,6,7,1,2,4&#125;;</div><div class="line">auto fp = fvi.begin(); //第一个元素</div><div class="line">auto pre = fvi.before_begin(); //第一个元素的前一个元素</div><div class="line">while(fp != fvi.end())</div><div class="line">&#123;</div><div class="line">    if (*fp%2 != 0)</div><div class="line">    &#123;</div><div class="line">        fp = fvi.erase_after(pre); /删除值为奇数的元素，fp为下个元素的迭代器</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        //两个迭代器都向后移动</div><div class="line">        ++fp; </div><div class="line">        ++pre;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>resize用于改变容器大小（array除外）</p>
+<p><code>c.resize(n)</code> 调整大小为n<br><code>c.resize(n, t)</code> 调整大小为n，如果需要添加元素，则添加t</p>
+<h2 id="容器对象实现"><a href="#容器对象实现" class="headerlink" title="容器对象实现"></a>容器对象实现</h2><ul>
+<li>vector将元素连续存储，每个元素紧挨着前一个元素存储</li>
+<li>当需要获取新的内存空间时，vector和string的实现通常会分配比新的空间需求大的空间</li>
+<li><code>c.capacity()</code>不重新分配内存空间的话，可以容纳的元素数量</li>
+<li><code>c.reserve(n)</code>分配至少容纳n个元素的空间</li>
+</ul>
+<h2 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h2><p>除了通用的构造方式外，string还支持下标方式构造函数</p>
+<ul>
+<li><code>string s(cp, n)</code> 数组cp的前n个元素（其实就是字符，下同）</li>
+<li><code>string s(s2, p)</code> string s2 下标p开始的元素</li>
+<li><code>string s(s2, p, n)</code> string s2 下标p开始的n个元素</li>
+</ul>
+<p>substr 返回一个string（类似切片）</p>
+<ul>
+<li>如果只有一个参数，获取整个字符串</li>
+<li>如果有两个参数，第一个参数是开始位置，第二个参数是拷贝的字符数</li>
+<li>如果第一个参数超过范围，会抛出out_of_range异常</li>
+<li>如果第二个参数超过范围，substr会调整数值，只拷贝到string末尾</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">string s(&quot;hello world!&quot;);</div><div class="line">cout &lt;&lt; s.substr(0, 5) &lt;&lt; endl; //输出hello</div><div class="line">cout &lt;&lt; s.substr(0, 1) &lt;&lt; endl; //输出h</div><div class="line">cout &lt;&lt; s.substr(0, s.size()) &lt;&lt; endl; //输出整个字符串</div><div class="line">cout &lt;&lt; s.substr(0) &lt;&lt; endl; //输出整个字符串</div></pre></td></tr></table></figure>
+<p><code>insert</code> 和 <code>erase</code> 可以用下标代替迭代器（P323）</p>
+<p><code>append</code> 在末尾插入元素（可以不止一个字符）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.append(&quot;welcome!&quot;);</div></pre></td></tr></table></figure>
+<p><code>replace</code> 是调用erase和insert的一种简写形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">string s(&quot;hello world!&quot;);</div><div class="line">s.replace(6, 6, &quot;harry!&quot;); //从第6个开始，删除6个元素，插入&quot;harry!&quot;</div><div class="line">cout &lt;&lt; s &lt;&lt; endl; //输出 hello harry!</div></pre></td></tr></table></figure>
+<p>使用<code>substr</code>和<code>replace</code>实现字符串的替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">void fun(string &amp;s, const string &amp;oldstr, const string &amp;newstr)</div><div class="line">&#123;</div><div class="line">    string::size_type n = 0;</div><div class="line">    while(n != s.size())</div><div class="line">    &#123;</div><div class="line">        if (s.substr(n, oldstr.size()) == oldstr)</div><div class="line">        &#123;</div><div class="line">            s.replace(n, oldstr.size(), newstr);</div><div class="line">            n += oldstr.size();</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">            ++n;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main () </div><div class="line">&#123;  </div><div class="line">    string s(&quot;hello world!&quot;);</div><div class="line">    fun(s, &quot;world&quot;, &quot;harryx&quot;);</div><div class="line">    cout &lt;&lt; s &lt;&lt; endl; 输出：hello harryx!</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>string 搜索操作</p>
+<ul>
+<li>搜索成功返回一个<code>string:size_type</code>的下标</li>
+<li>搜索失败返回<code>string:npos</code>，（无符号类型-1，相当于非常大）</li>
+<li>区分大小写</li>
+<li>除了一个字符或者字符串或者指针参数，还可以添加一个位置参数，表示搜索开始的位置，默认0</li>
+<li>或者添加两个参数<code>(cp, pos, n)</code>，从字符串中位置pos开始，查找指针cp指向的数组的前n个字符</li>
+<li><code>rfind</code>逆向搜索</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">string s(&quot;hello world!&quot;);</div><div class="line">auto p1 = s.find(&quot;o&quot;); //p1等于4</div><div class="line">auto p2 = s.find_first_of(&quot;abcde&quot;); //p2等于1</div><div class="line">auto p3 = s.find_last_of(&quot;abcde&quot;); //p3等于10</div><div class="line">auto p4 = s.find_first_not_of(&quot;abcde&quot;); //p4等于0</div><div class="line">auto p5 = s.find_last_not_of(&quot;abcde&quot;); //p5等于11</div><div class="line">cout &lt;&lt; p &lt;&lt; endl;</div></pre></td></tr></table></figure>
+<p><code>compare</code>比较</p>
+<ul>
+<li><code>s.compare(s2)</code> s和s2比较</li>
+<li><code>s.compare(pos, n, s2)</code> s中的pos开始的n个字符和s2比较</li>
+<li><code>s.compare(pos1, n1, s2, pos2, n2)</code> s中pos1开始的n1个字符和s2中pos2开始的n2个字符比较</li>
+<li><code>s.compare(cp)</code> s和cp指向的c风格字符串比较</li>
+<li><code>s.compare(pos, n, cp)</code></li>
+<li><code>s.compare(pos1, n1, cp, n2)</code></li>
+</ul>
+<p>数值转换</p>
+<p>to_string(val) 数值转换为字符串<br><code>stoi(s, p, b)</code> 字符串转换为各种类型，b为基数，默认10<br><code>stol(s, p, b)</code> p是指针，保存s中第一个非数值字符下标，默认0<br><code>stoul(s, p, b)</code><br><code>stoll(s, p, b)</code><br><code>stoull(s, p, b)</code><br><code>stof(s, p)</code><br><code>stod(s, p)</code><br><code>stold(s, p)</code></p>
+<h1 id="泛型算法"><a href="#泛型算法" class="headerlink" title="泛型算法"></a>泛型算法</h1><p>P367</p>
+<ul>
+<li>大多数泛型算法都定义在头文件 <code>algorithm</code> 中</li>
+<li>迭代器使得算法不依赖于容器</li>
+<li>泛型算法不会直接改变容器大小</li>
+<li>向目的位置迭代器写入数据的泛型算法假定目标容量足够大，否则结果是未定义的</li>
+<li><code>fill_n</code>需要目标容器具有足够大的元素空间<code>resize</code>，不仅仅是空间<code>reserve</code></li>
+</ul>
+<h2 id="只读"><a href="#只读" class="headerlink" title="只读"></a>只读</h2><p><code>find</code>算法，前两个参数是迭代器或者指针，第三个参数是一个值<br>类似的还有<code>count</code>算法，计算某个元素出现次数<br><code>fill(v.begin(), v.end(), 0)</code>写入元素，要注意容器的容量大小<br><code>fill_n(v.begin(), 10, 1)</code> 写入多个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//查找vector中的某个元素，返回一个迭代器</div><div class="line">vector&lt;int&gt; vi&#123;1,2,3,4,5&#125;;</div><div class="line">auto res = find(vi.begin(), vi.end(), 3);</div><div class="line">cout &lt;&lt; *res &lt;&lt; endl;</div><div class="line"></div><div class="line">//查找数组中的某个元素，返回一个指针</div><div class="line">int ia[] = &#123;1,2,3,4,5,6,7,7&#125;;</div><div class="line">auto res = find(begin(ia), end(ia), 4);</div><div class="line">cout &lt;&lt; *res &lt;&lt; endl;</div></pre></td></tr></table></figure>
+<h2 id="写操作"><a href="#写操作" class="headerlink" title="写操作"></a>写操作</h2><p><code>back_inserter</code> 插入迭代器，定义在<code>iterator</code>头文件，<br>接收一个指向容器的引用，返回一个绑定的插入迭代器<br>插入元素，并且不会出现容器不够大的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt; vi; //空的容器</div><div class="line">auto it = back_inserter(vi); //绑定插入迭代器</div><div class="line">*it = 20; //插入一个 20</div></pre></td></tr></table></figure>
+<p>将插入迭代器<code>back_inserter</code>和<code>fill_n</code>结合使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt; vi;</div><div class="line">fill_n(back_inserter(vi), 10, 2 ); //添加 10 个 2</div></pre></td></tr></table></figure>
+<p>copy 拷贝容器的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int a[] = &#123;1,2,3,4,5&#125;;</div><div class="line">//获取数组大小然后定义一个同样大小的空数组</div><div class="line">int b[sizeof(a)/sizeof(*a)];</div><div class="line">auto ret = copy(begin(a), end(a), b); //拷贝，ret指向b的end()</div></pre></td></tr></table></figure>
+<p>将插入迭代器<code>back_inserter</code>和<code>copy</code>结合使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">list&lt;int&gt; ii&#123;1,2,3,4,5&#125;;</div><div class="line">vector&lt;int&gt; vi;</div><div class="line">copy(ii.begin(), ii.end(), back_inserter(vi));</div></pre></td></tr></table></figure>
+<h2 id="定制操作"><a href="#定制操作" class="headerlink" title="定制操作"></a>定制操作</h2><p>可以向泛型算法传递函数参数，使用指定方式操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sort(v.begin(), v.end(), isShorter);使用制定函数isShorter进行排序</div></pre></td></tr></table></figure>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>lambda 表达式形式</p>
+<p>捕获列表是lambda所在函数中定义的局部变量的列表，通常为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[捕获列表](参数列表) -&gt; 返回类型 &#123;函数体&#125;</div></pre></td></tr></table></figure>
+<p>如果忽略返回类型，lambda根据代码推断出返回类型<br>但是必须有捕获列表和函数体<br>忽略参数列表和返回类型的lambda表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">auto f = [] &#123;return 10;&#125;;</div><div class="line">cout &lt;&lt; f() &lt;&lt; endl;</div></pre></td></tr></table></figure>
+<p>传递参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">auto f = [](int i, int j) &#123;return i + j;&#125;;</div><div class="line">cout &lt;&lt; f(1, 2) &lt;&lt; endl;</div></pre></td></tr></table></figure>
+<p>捕获参数</p>
+<ul>
+<li>如果需要使用函数中的变量，lambda必须在捕获列表中指明</li>
+<li>捕获列表只能用于局部非static变量</li>
+<li>lambda可以直接使用局部static变量和所在函数外声明的名字</li>
+<li>捕获的值在捕获时拷贝</li>
+<li>可以捕获引用，必须确保在lambda执行时，引用变量是存在的</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int a = 100, b = 200;</div><div class="line">//捕获a和b</div><div class="line">auto f = [a, b](int i, int j) &#123;return i + j + a + b;&#125;;</div></pre></td></tr></table></figure>
+<p>隐式捕获</p>
+<p>在捕获列表中可以只写一个&amp;或者=，代表引用或者值捕获</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int a = 100, b = 200;</div><div class="line">//使用一个=符号，表示值捕获</div><div class="line">auto f = [=](int i, int j) &#123;return i + j + a + b;&#125;;</div></pre></td></tr></table></figure>
+<p>混合捕获</p>
+<ul>
+<li>使用混合捕获时，第一个捕获的变量必须是&amp;或者=</li>
+<li>显示捕获的变量必须使用与隐式捕获不同的方式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int a = 100, &amp;b = a;</div><div class="line">auto f = [=, &amp;b](int i, int j) &#123;return i + j + a + b;&#125;;</div></pre></td></tr></table></figure>
+<p>可变lambda</p>
+<p>如果希望改变捕获的变量的值，需要加一个关键字mutable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int a = 100;</div><div class="line">//如果没有mutable关键字会报错，原捕获的变量是只读的</div><div class="line">auto f = [a]() mutable &#123;return ++a;&#125;;</div><div class="line">a = 0;</div><div class="line">auto res = f(); //res=101，a=0，值在创建时拷贝，且不会改变原值</div></pre></td></tr></table></figure>
+<p>指定返回类型</p>
+<p>如果有多个return语句，需要指定返回类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">auto f = [](int a) -&gt; int </div><div class="line">    &#123;if(a%2==0) return a;else return 0;&#125;;</div><div class="line">auto j = f(2);</div></pre></td></tr></table></figure>
+<h3 id="参数绑定"><a href="#参数绑定" class="headerlink" title="参数绑定"></a>参数绑定</h3><ul>
+<li><code>bind</code>函数可以绑定函数的参数，在头文件<code>functional</code>中</li>
+<li>占位符<code>_n</code>在<code>std::placeholders</code>命名空间中，n表示第一个参数</li>
+<li>不能拷贝ostream或者其他引用参数，只能使用<code>ref</code>传递<code>bind(fun, ref(os), _1, 100)</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">int addnum(int i, int j)</div><div class="line">&#123;</div><div class="line">    return i+j;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main () </div><div class="line">&#123;  </div><div class="line">    //_1是一个占位符，给定参数1，生成新的可调用对象addone</div><div class="line">    auto addone = bind(addnum, placeholders::_1, 1);</div><div class="line">    cout &lt;&lt; addone(1) &lt;&lt; endl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>在头文件<code>iterator</code>中定义了额外的几个迭代器</p>
+<ul>
+<li>插入迭代器（insert），绑定到一个容器，执行插入操作</li>
+<li>流迭代器（stream），绑定到输入输出流，可以遍历所有IO流</li>
+<li>反向迭代器（reverse），向前移动的迭代器</li>
+<li>移动迭代器（move），不拷贝元素，而是移动</li>
+</ul>
+<h3 id="插入迭代器"><a href="#插入迭代器" class="headerlink" title="插入迭代器"></a>插入迭代器</h3><p>接受一个容器，生成一个迭代器，能实现向给定容器添加元素</p>
+<p><code>it = t</code> 在 it 制定的当前位置插入值 t，根据选择的迭代器的不同调用方法<br><code>*it, ++it, it++</code> 这些操作虽然存在，不会做任何事，每个操作都返回 It</p>
+<ul>
+<li><code>back_inserter</code>创建一个使用<code>push_back</code>的迭代器</li>
+<li><code>front_inserter</code>创建一个使用<code>push_front</code>的迭代器</li>
+<li><code>inserter</code> 创建一个使用insert的迭代器，此函数接受第二个参数，是一个指向给定容器的迭代器，元素被插入到给定迭代器之前</li>
+</ul>
+<p>只有在容器支持某个操作时才能使用对应迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt; vec;</div><div class="line">auto it = inserter(vec, vec.end());</div><div class="line">*it = 10; //在尾部插入一个10</div></pre></td></tr></table></figure>
+<p>使用front_inserter倒过来拷贝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">list&lt;int&gt; a&#123;1,2,3,4&#125;;</div><div class="line">list&lt;int&gt; b;</div><div class="line">//b为4,3,2,1</div><div class="line">copy(a.begin(), a.end(), front_inserter(b));</div></pre></td></tr></table></figure>
+<h3 id="流迭代器"><a href="#流迭代器" class="headerlink" title="流迭代器"></a>流迭代器</h3><ul>
+<li><code>istream_iterator</code>读取输入流</li>
+<li><code>ostream_iterator</code>向输出流写数据</li>
+</ul>
+<h4 id="istream-iterator操作"><a href="#istream-iterator操作" class="headerlink" title="istream_iterator操作"></a>istream_iterator操作</h4><ul>
+<li><code>istream_iterator</code>可以绑定一个输入流，可以是cin或者一个文件流</li>
+<li><code>*in, ++in, in++</code>读取值、读取下一个值和读取并移动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//绑定cin，接受整数输入，如果接受到错误输入，迭代器和尾后迭代器相等</div><div class="line">istream_iterator&lt;int&gt; int_it(cin), eof;</div><div class="line">//eof为空迭代器，作为尾后迭代器</div><div class="line">//使用输入的数字初始化vec</div><div class="line">vector&lt;int&gt; vec(int_it, eof);</div><div class="line"></div><div class="line">//同理，使用文件流</div><div class="line">ifstream f(&quot;text.txt&quot;);</div><div class="line">istream_iterator&lt;string&gt; str_it(f), eof;</div><div class="line">vector&lt;string&gt; vec(str_it, eof);</div></pre></td></tr></table></figure>
+<h4 id="ostream-iterator操作"><a href="#ostream-iterator操作" class="headerlink" title="ostream_iterator操作"></a>ostream_iterator操作</h4><ul>
+<li><code>ostream_iterator</code>可以提供第二个参数，一个C风格字符串，每个元素后都会打印这个字符串</li>
+<li>只要对象有<code>&lt;&lt;</code>操作，都可以绑定ostream_iterator</li>
+<li><code>out = val</code>使用<code>&lt;&lt;</code>操作，将val写入到out</li>
+<li><code>out++,++out,*out</code>操作存在，但是不做任何事</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt; vec&#123;1,2,3,4,5&#125;;</div><div class="line">ostream_iterator&lt;int&gt; out_it(cout, &quot;\n&quot;);</div><div class="line">//通过copy输出元素</div><div class="line">copy(vec.begin(), vec.end(), out_it);//输出12345</div></pre></td></tr></table></figure>
+<p>将一个文件里面的数字按照奇偶性分别写到两个文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//打开文件</div><div class="line">fstream in(&quot;text.txt&quot;);</div><div class="line">fstream out1(&quot;out1.txt&quot;, ofstream::out);</div><div class="line">fstream out2(&quot;out2.txt&quot;, ofstream::out);</div><div class="line">//绑定流</div><div class="line">istream_iterator&lt;int&gt; in_it(in), eof;</div><div class="line">ostream_iterator&lt;int&gt; out_it1(out1, &quot; &quot;);</div><div class="line">ostream_iterator&lt;int&gt; out_it2(out2, &quot; &quot;);</div><div class="line">//逐个写入</div><div class="line">while(in_it != eof)</div><div class="line">&#123;</div><div class="line">    if ((*in_it) % 2 == 0)</div><div class="line">        out_it1 = *in_it++;</div><div class="line">    else</div><div class="line">        out_it2 = *in_it++;</div><div class="line">&#125;</div><div class="line">//关闭文件</div><div class="line">in.close();</div><div class="line">out1.close();</div><div class="line">out2.close();</div></pre></td></tr></table></figure>
+<h3 id="反向迭代器"><a href="#反向迭代器" class="headerlink" title="反向迭代器"></a>反向迭代器</h3><p>P364</p>
+<ul>
+<li>除了forward_list，其他容器都支持反向迭代器<code>reverse_iterator</code></li>
+<li><code>v.rbegin()</code>是最后一个元素，<code>v.rend()</code>是第一个元素的前一个位置</li>
+</ul>
+<p>反向打印vector的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vector&lt;string&gt; vec&#123;&quot;hello&quot;,&quot;world&quot;,&quot;byebye&quot;&#125;;</div><div class="line">ostream_iterator&lt;string&gt; out_it(cout, &quot;,&quot;);</div><div class="line">copy(vec.rbegin(),vec.rend(), out_it);//输出：byebye,world,hello</div></pre></td></tr></table></figure>
+<h1 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h1><p>map（保存键-值对）和multimap（关键字可重复出现的map）定义在头文件map中<br>set（保存关键字）和multiset（关键字可重复出现的set）定义在头文件set中<br>无序容器定义在头文件unordered_map和unordered_set中</p>
+<h2 id="使用关联容器"><a href="#使用关联容器" class="headerlink" title="使用关联容器"></a>使用关联容器</h2><ul>
+<li>关联容器不支持顺序容器中位置相关的操作，比如push_front、push_back</li>
+<li>初始化map必须提供关键字和值的类型</li>
+<li>map和set关键字必须唯一，multimap和multiset没有此限制</li>
+</ul>
+<p>范围for从map中提取的元素是个pair类型对象<br>pair是个模板类型，保存first、second公有数据成员</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">map&lt;string, size_t&gt; word_count;</div><div class="line">++word_count[&quot;harryx&quot;];</div><div class="line">cout &lt;&lt; word_count[&quot;harryx&quot;] &lt;&lt; endl; //输出1</div><div class="line">for (auto w:word_count)</div><div class="line">&#123;</div><div class="line">    cout &lt;&lt; w.first &lt;&lt; w.second &lt;&lt; endl;//输出harryx1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>set用于检测某个值是否存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">set&lt;string&gt; extr&#123;&quot;fuck&quot;, &quot;shit&quot;&#125;;</div><div class="line">string word;</div><div class="line">while(cin &gt;&gt; word)</div><div class="line">&#123;</div><div class="line">    if(extr.find(word) == extr.end())</div><div class="line">        cout &lt;&lt; word &lt;&lt; endl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>关键字类型的要求</p>
+<ul>
+<li>有序容器（map、set、multimap、multiset）的关键字必须定义元素的比较方法</li>
+<li>可以指定自定义的比较方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//自定义比较函数</div><div class="line">bool compareSD(const Sales_data &amp;sd1, const Sales_data &amp;sd2)</div><div class="line">&#123;</div><div class="line">    return sd1.avg_price() &lt; sd2.avg_price();</div><div class="line">&#125;</div><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    //两个自定义类型的实例</div><div class="line">    Sales_data sd1&#123;&quot;hello&quot;,2,2&#125;,sd2&#123;&quot;asd&quot;,3,3&#125;;</div><div class="line">    //第一个关键字是类类型，如果是map，第二个关键字是值，第三个是函数指针</div><div class="line">    //第二个关键字是个函数指针（用decltype获取函数类型，加上*号制定为指针）</div><div class="line">    //  函数指针相当于bool (*)(const Sales_data &amp;, const Sales_data &amp;)</div><div class="line">    //用compareSD初始化bookstore对象，添加元素时用compareSD排序</div><div class="line">    set&lt;Sales_data, decltype(compareSD)*&gt; bookstore(compareSD);</div><div class="line">    //赋值</div><div class="line">    bookstore = &#123;sd1,sd2&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="pair类型"><a href="#pair类型" class="headerlink" title="pair类型"></a>pair类型</h2><ul>
+<li>定义在头文件<code>utility</code>中</li>
+<li>保存两个数据成员，类似容器，是一个用来生成特定类型的模板</li>
+<li>两个数据成员可以是不同类型</li>
+<li>pair的数据称原是public的，分别命名为first和second</li>
+</ul>
+<p><code>pair&lt;string, size_t&gt; asam{&quot;harryx&quot;, 20};</code></p>
+<p>操作</p>
+<ul>
+<li><code>make_pair(v1, v2)</code> 返回一个用v1和v2初始化的pair，自动推导类型</li>
+<li>同类型比较大小，先比较first再比较second</li>
+</ul>
+<p>构造一个pair的函数</p>
+<ul>
+<li>返回vec的最后一个元素作为first，大小作为second</li>
+<li>如果vec为空，返回一个默认构造值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">pair&lt;string, int&gt;</div><div class="line">process(vector&lt;string&gt; &amp;vec)</div><div class="line">&#123;</div><div class="line">    if(!vec.empty())</div><div class="line">        //较早版本需要显式构造值</div><div class="line">        //return pair&lt;string, int&gt;(vec.back(), vec.size());</div><div class="line">        return &#123;vec.back(), vec.size()&#125;;</div><div class="line">    else</div><div class="line">        return pair&lt;string, int&gt;();</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    vector&lt;string&gt; vec&#123;&quot;asd&quot;,&quot;dsa&quot;,&quot;sad&quot;&#125;;</div><div class="line">    pair&lt;string, int&gt; p;</div><div class="line">    p = process(vec);</div><div class="line">    cout &lt;&lt; p.first &lt;&lt; &quot; &quot; &lt;&lt; p.second &lt;&lt; endl;//输出：sad 3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>读取string和int 的序列，作为pair保存在vector中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    vector&lt;pair&lt;string, int&gt;&gt; vec;</div><div class="line">    istringstream ist;</div><div class="line">    string line, word;</div><div class="line">    int num;</div><div class="line">    //读取空格相隔的string 和int 流</div><div class="line">    while(getline(cin, line))</div><div class="line">    &#123;</div><div class="line">        //字符串流绑定</div><div class="line">        ist.str(line);</div><div class="line">        //先读取一个字符</div><div class="line">        while(ist &gt;&gt; word)</div><div class="line">        &#123;</div><div class="line">            //尝试读取后面的数字，如果出错就提醒</div><div class="line">            if(ist &gt;&gt; num)</div><div class="line">            &#123;</div><div class="line">                vec.push_back(pair&lt;string, int&gt;(word, num));</div><div class="line">                cout &lt;&lt; &quot;Ok!Now store &quot; &lt;&lt; word &lt;&lt; &quot; &quot; &lt;&lt; num &lt;&lt; endl;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                &#123;</div><div class="line">                    cout &lt;&lt; word &lt;&lt; &quot; bad input&quot; &lt;&lt; endl;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">        //清除错误标记</div><div class="line">        ist.clear();</div><div class="line">    &#125;</div><div class="line">    //输出</div><div class="line">    for (auto p:vec)</div><div class="line">    &#123;</div><div class="line">        cout &lt;&lt; p.first &lt;&lt; &quot; &quot; &lt;&lt; p.second &lt;&lt;  endl;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="关联容器操作"><a href="#关联容器操作" class="headerlink" title="关联容器操作"></a>关联容器操作</h2><p>除了一般的容器操作，关联容器定义了额外的类型别名</p>
+<ul>
+<li><code>key_type</code> 容器的关键字的类型</li>
+<li><code>mapped_type</code> 只适用与map，每个关键字所关联的类型</li>
+<li><code>value_type</code> 对于set，与key_type相同，对于map，为pair<const key_type,="" mapped_type=""></const></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set&lt;string&gt;::key_type v1;//v1是string 类型</div><div class="line">set&lt;string&gt;::value_type v2;//v2同样是string类型</div><div class="line">map&lt;string, int&gt;::key_type v3;//v3是string类型</div><div class="line">map&lt;string, int&gt;::mapped_type v4;//v4是int类型</div><div class="line">map&lt;string, int&gt;::value_type v5;//v5是pair&lt;const string, int&gt;类型</div></pre></td></tr></table></figure>
+<h3 id="关联容器的迭代器"><a href="#关联容器的迭代器" class="headerlink" title="关联容器的迭代器"></a>关联容器的迭代器</h3><ul>
+<li>map和set类型都支持begin和end操作，可以通过迭代器遍历容器</li>
+<li>解引用关联容器的迭代器，会得到一个类型为容器的<code>value_type</code>的值的引用</li>
+<li>可以通过迭代器改变容器的second的值，但不能改变first的值</li>
+<li>set的迭代器是只读的</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">map&lt;string, int&gt; m(&#123;&quot;a&quot;, 1&#125;, &#123;&quot;b&quot;, 2&#125;, &#123;&quot;c&quot;, 3&#125;);</div><div class="line">auto mp = m.begin();</div><div class="line">//mp 是pair&lt;const string, int&gt;的引用</div><div class="line">cout &lt;&lt; mp -&gt; first;</div><div class="line">cout &lt;&lt; &quot; &quot; &lt;&lt; mp -&gt; second;</div></pre></td></tr></table></figure>
+<ul>
+<li>关联容器一般不使用泛型算法</li>
+<li>如果对关联容器使用算法，一般作为源序列或者目的位置</li>
+<li>关联容器没有push_back()操作，所以不能使用back_inserter</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt; vec&#123;1,2,3,4,5,6,7,8,9&#125;;</div><div class="line">multiset&lt;int&gt; mus&#123;1,2,3&#125;;</div><div class="line">//把vec的元素插入到mus中</div><div class="line">copy(vec.begin(), vec.end(), inserter(mus, mus.end()));</div><div class="line">//因为是顺序搜索，输出1,1,2,2,3,3,4,5,6,7,8,9</div><div class="line">for(auto s:mus)</div><div class="line">&#123;</div><div class="line">    cout &lt;&lt; s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h3><ul>
+<li>关联容器的<code>insert</code>成员向容器中添加元素，类似的还有<code>emplace</code></li>
+<li>向map和set插入已经存在的元素对容器没有影响</li>
+<li>map的元素类型是pair</li>
+</ul>
+<p>向set添加元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt; vec&#123;1,2,3&#125;;</div><div class="line">set&lt;int&gt; se&#123;1,2&#125;;</div><div class="line">se.insert(vec.begin(), vec.end());//1,2,3</div><div class="line">se.insert(&#123;4,5,6&#125;);//1,2,3,4,5,6</div></pre></td></tr></table></figure>
+<p>向map添加元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">map&lt;string, int&gt; m;</div><div class="line">m.insert(&#123;&quot;asd&quot;, 1&#125;);</div><div class="line">m.insert(make_pair(&quot;sdf&quot;, 2));</div><div class="line">m.insert(pair&lt;string, int&gt;(&quot;dfg&quot;, 3));</div><div class="line">m.insert(map&lt;string, int&gt;::value_type(&quot;gfh&quot;, 4));</div></pre></td></tr></table></figure>
+<ul>
+<li>添加单一元素的insert返回一个pair</li>
+<li>如果插入成功，first是指向容器中关键字的迭代器，second是一个bool值，如果关键词存在，bool为false</li>
+<li>如果是允许重复的关联容器，first指向的是新元素的迭代器</li>
+</ul>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><ul>
+<li>erase删除一个元素，返回删除的元素的数量，元素不重复的容器返回0或1</li>
+<li><p>关联容器的元素按照比较顺序存储</p>
+</li>
+<li><p>c.erase(k) 删除关键字k</p>
+</li>
+<li>c.erase(p) 删除迭代器p指定的元素</li>
+<li>c.erase(b, e) 删除迭代器b，e范围的元素</li>
+</ul>
+<h3 id="下标操作"><a href="#下标操作" class="headerlink" title="下标操作"></a>下标操作</h3><ul>
+<li><code>set</code>类型不支持下标，因为元素就是关键字</li>
+<li><code>map</code>和<code>unordered_map</code>可以使用下标</li>
+<li><code>multimap</code>和<code>unordered_multimap</code>不支持下标，因为可能有多个值对应一个元素</li>
+<li>使用一个不存在的元素作为下标，会添加一个元素到容器中</li>
+<li>对一个<code>map</code>进行下标操作会返回一个<code>mapped_type</code>对象，而解引用<code>map</code>迭代器会获得<code>value_type</code>对象</li>
+</ul>
+<h3 id="访问元素"><a href="#访问元素" class="headerlink" title="访问元素"></a>访问元素</h3><ul>
+<li><code>c.find(k)</code> 如果存在元素k，返回一个迭代器指向k，否则返回一个迭代器指向c.end()</li>
+<li><code>c.count(k)</code> 如果存在，返回元素的个数，否则返回0</li>
+<li><code>c.lower_bound(k)</code> 返回一个迭代器，指向第一个关键字不小于k的元素</li>
+<li><code>c.upper_bound(k)</code> 返回一个迭代器，指向第一个关键字大于k的元素</li>
+<li><code>c.equal_range(k)</code> 返回一个迭代器pair，表示关键字等于k的元素的范围，若不存在，pair两个成员都为c.end()</li>
+<li><code>lower_bound</code>和<code>upper_bound</code>都不适用于无序容器</li>
+<li>因为是顺序存储，<code>lower_bound</code>和<code>upper_bound</code>可以用于访问可重复关联容器的某个元素</li>
+</ul>
+<p>使用equal_range访问可重复关联容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">multimap&lt;string, int&gt; s(&#123;&quot;asd&quot;, 1&#125;, &#123;&quot;qwe&quot;, 2&#125;, &#123;&quot;asd&quot;, 2&#125;);</div><div class="line">for (auto pos = s.equal_range(&quot;asd&quot;); pos.first != pos.second; ++pos.first)</div><div class="line">    &#123;</div><div class="line">        cout &lt;&lt; pos.first -&gt; first &lt;&lt; &quot; &quot; &lt;&lt; pos.first -&gt; second &lt;&lt; endl;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="无序容器"><a href="#无序容器" class="headerlink" title="无序容器"></a>无序容器</h2><p>P395</p>
+<ul>
+<li>无序容器不是使用比较运算符来组织元素，而是使用哈希函数（hash function）和关键字类型的==运算符</li>
+<li>提供了与有序容器相同的操作（find，insert等），遍历的顺序也是无序的</li>
+<li>无序容器在存储上组织为一组桶</li>
+</ul>
+<h1 id="动态内存"><a href="#动态内存" class="headerlink" title="动态内存"></a>动态内存</h1><p><code>new</code> 分配内存 <code>delete</code> 释放内存</p>
+<p>使用动态内存的原因：</p>
+<ul>
+<li>程序不知道需要多少对象</li>
+<li>程序不知道所需对象的准确类型</li>
+<li>程序需要在多个对象间共享数据</li>
+</ul>
+<h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p>C++11标准提供了两种智能指针来管理动态对象，外加一个伴随类，定义在头文件<code>memory</code>中：</p>
+<ul>
+<li><code>shared_ptr</code>允许多个指针指向同一对象</li>
+<li><code>unique_ptr</code>“独占”所指对象</li>
+<li><code>weak_ptr</code>弱引用，指向shared_ptr所管理的对象</li>
+</ul>
+<p>P401</p>
+<p><code>shared_ptr</code>和<code>unique_ptr</code></p>
+<h3 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr</h3><p>如果不初始化一个智能指针，会被初始化为一个空指针</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shared_ptr&lt;string&gt; p;//一个空指针</div></pre></td></tr></table></figure>
+<p>操作<br>P401</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p.get(); //返回一个普通指针</div><div class="line">p.unique();//是否唯一</div><div class="line">p.reset(); //如果p是唯一指向其对象的指针，释放</div><div class="line">p.reset(q); //q是内置指针，令p指向q，否则将p置空</div><div class="line">p.reset(q, d); //调用自定义方法d释放q</div></pre></td></tr></table></figure>
+<p>初始化后使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    shared_ptr&lt;string&gt; p = make_shared&lt;string&gt;();//使用make_shared初始化智能指针，指向空string</div><div class="line">    if (p &amp;&amp; p -&gt; empty()) //如果指针不为空，并且指向一个空string</div><div class="line">    &#123;</div><div class="line">        *p = &quot;hello&quot;; //解引用赋值</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; *p &lt;&lt; endl; //输出hello</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>make_shared</code>在动态内存中分配一个对象并初始化它<br>初始化方式类似<code>emplace</code>，传入参数用于初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shared_ptr&lt;string&gt; p = make_shared&lt;string&gt;(&quot;hello&quot;);</div></pre></td></tr></table></figure>
+<p>使用<code>auto</code>简化定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">auto p = make_shared&lt;string&gt;(&quot;asd&quot;);</div></pre></td></tr></table></figure>
+<p>结合使用shared_ptr和new</p>
+<p>用于初始化智能指针的指针必须是动态内存，因为智能指针默认使用delete释放对象</p>
+<p>如果使用自定义其他类型指针上，需要自定义释放操作</p>
+<p>一旦用指向动态内存的指针初始化智能指针，之前的指针就被释放为空悬指针</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shared_ptr&lt;string&gt; p(new string(&quot;hello&quot;));//初始化完，默认调用delete释放动态分配的内存</div></pre></td></tr></table></figure>
+<ul>
+<li><code>shared_ptr</code>使用拷贝方式或者初始化方式赋值，都会使引用计数数递增</li>
+<li>赋值新值或是被销毁会使引用计数递减，一旦计数器变为0，自动释放管理的对象</li>
+<li><code>shared_ptr</code>通过<strong>析构函数</strong>完成销毁工作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p = q;</div><div class="line">auto p(q);</div></pre></td></tr></table></figure>
+<p>自定义释放操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">void fun(dest &amp;d)</div><div class="line">&#123;</div><div class="line">    connection c = connect(d);</div><div class="line">    //自定义释放操作end_connection</div><div class="line">    shared_ptr&lt;connection&gt; p(c, end_connection);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其他操作</p>
+<p>shared_ptr通过reset更新对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p.reset(new string(&quot;a new string&quot;));</div></pre></td></tr></table></figure>
+<p>配合unique操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (!p.unique()) //如果不是唯一用户</div><div class="line">    p.reset(new string(*p)); //分配新的拷贝</div><div class="line">*p += newval; //改变对象值</div></pre></td></tr></table></figure>
+<p>共享底层数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">class StrBlob</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    typedef vector&lt;string&gt;::size_type size_type;</div><div class="line">    //构造函数</div><div class="line">    StrBlob():data(make_shared&lt;vector&lt;string&gt;&gt;())&#123;&#125;</div><div class="line">    StrBlob(initializer_list&lt;string&gt; ils)://多个字符串参数</div><div class="line">        data(make_shared&lt;vector&lt;string&gt;&gt;(ils)) &#123;&#125;</div><div class="line">    //成员函数</div><div class="line">    size_type size() const &#123;return data -&gt; size();&#125;</div><div class="line">    bool empty() const &#123;return data -&gt; empty();&#125;</div><div class="line">    void push_back(const string &amp;t) &#123;data -&gt; push_back(t);&#125;</div><div class="line">    void pop_back() &#123;check(0, &quot;empty&quot;); data -&gt; front();&#125;</div><div class="line">    string&amp; front() &#123;check(0, &quot;empty&quot;); return data -&gt; front();&#125;</div><div class="line">    string&amp; back() &#123;check(0, &quot;empty&quot;); return data -&gt; back();&#125;</div><div class="line"></div><div class="line">private:</div><div class="line">    shared_ptr&lt;vector&lt;string&gt;&gt; data;//vec的指针</div><div class="line">    //检测异常</div><div class="line">    void check(size_type i, const string &amp;msg) const </div><div class="line">        &#123;if (i &gt;= data -&gt; size()) throw out_of_range(msg);&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    StrBlob b1&#123;&quot;a&quot;,&quot;aa&quot;,&quot;aaa&quot;&#125;;</div><div class="line">    StrBlob b2;</div><div class="line">    b2 = b1;</div><div class="line">    cout &lt;&lt; b1.size() &lt;&lt; endl; //3</div><div class="line">    cout &lt;&lt; b2.size() &lt;&lt; endl;//3</div><div class="line">    b1.push_back(&quot;ssss&quot;);</div><div class="line">    cout &lt;&lt; b1.size() &lt;&lt; endl;//4</div><div class="line">    cout &lt;&lt; b2.size() &lt;&lt; endl;//4</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h3><p>初始化<code>unique_ptr</code>需要使用直接初始化的方式<br><code>unique_ptr</code>不支持不同的赋值和拷贝<br>但是可以拷贝或赋值一个将要被销毁的<code>unique_ptr</code><br>P418</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">unique_ptr&lt;string&gt; p(new string);//直接初始化</div><div class="line"></div><div class="line">p = q;//不支持赋值</div><div class="line">unique_ptr&lt;string&gt; p(q);//不支持拷贝</div><div class="line"></div><div class="line">p = nullptr ; //释放对象，p置空</div><div class="line">p.release(); //p放弃对指针的控制权，返回指针，p置空</div><div class="line">p.reset(); //释放p</div><div class="line">p.reset(q); //如果提供了内置指针（动态内存）q，p指向q，否则释放p</div><div class="line">p.reset(nullptr);</div><div class="line"></div><div class="line">unique_ptr&lt;string&gt; p(q.release()); //q控制权转为p</div><div class="line"></div><div class="line">q.release(); //错误做法，并不会释放q，而且丢失了指针</div><div class="line">auto q = p.release();//必须手动释放内存：delete(q)</div></pre></td></tr></table></figure>
+<p>传递unique_ptr参数和返回unique_ptr</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//返回一个unique_ptr</div><div class="line">unique_ptr&lt;int&gt; fun(int p)</div><div class="line">&#123;</div><div class="line">    return unique_ptr&lt;int&gt; (new int(p));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>unique_ptr管理删除器的方式与shared_ptr不同<br>所以必须在尖括号中指定函数类型的指针</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">void f(dest &amp;d)</div><div class="line">&#123;</div><div class="line">    connection c = connect(d);</div><div class="line">    unique_ptr&lt;connection, decltype(end_connection) *&gt;</div><div class="line">        p (c, end_connection);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h3><p>指向shared_ptr管理的对象，不会改变share_ptr的引用计数<br>用shared_ptr初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">weak_ptr&lt;T&gt; w(sp); //sp是shared_ptr</div><div class="line">w = p; //p可以是一个shared_ptr或者一个wek_ptr</div><div class="line">w.reset(); //w置空</div><div class="line">w.use_count(); //与w共享的shared_ptr的数量</div><div class="line">w.expired(); //如果use_count()为0返回true</div><div class="line">w.lock(); //如果use_count()为true，返回空shared_ptr，否则返回一个指向w对象的shared_ptr</div></pre></td></tr></table></figure>
+<p>安全地访问weak_ptr对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//如果不为空，条件成立</div><div class="line">if (shared_ptr&lt;int&gt; p = w.lock())</div><div class="line">&#123;</div><div class="line">    //pass</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>定义一个StrBlob的伴随指针类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">//先申明</div><div class="line">class StrBlobPtr;</div><div class="line">class StrBlob</div><div class="line">&#123;</div><div class="line">friend class StrBlobPtr; //申明为友元</div><div class="line">//...</div><div class="line">    StrBlobPtr begin();</div><div class="line">    StrBlobPtr end();</div><div class="line">    //其他和之前一样</div><div class="line">    //...</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class StrBlobPtr</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    //构造函数</div><div class="line">    StrBlobPtr() : curr(0) &#123;&#125;</div><div class="line">    StrBlobPtr(StrBlob &amp;a, size_t sz=0):</div><div class="line">        wptr(a.data), curr(sz) &#123;&#125; //用shared_ptr初始化弱指针</div><div class="line">    //成员函数</div><div class="line">    string &amp;deref() const; //解引用</div><div class="line">    StrBlobPtr &amp;incr(); //递增</div><div class="line">    bool equal( StrBlobPtr b) const //检查索引值</div><div class="line">        &#123;return this -&gt; curr == b.curr;&#125;</div><div class="line">private:</div><div class="line">    //检查vector是否被释放，索引是否合法</div><div class="line">    shared_ptr&lt;vector&lt;string&gt;&gt; check(size_t sz, const string &amp;msg) const;</div><div class="line">    weak_ptr&lt;vector&lt;string&gt;&gt; wptr; //一个弱指针</div><div class="line">    size_t curr; //位置</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//返回一个指向第一个元素的StrBlobPtr</div><div class="line">StrBlobPtr StrBlob::begin()</div><div class="line">&#123;</div><div class="line">    return StrBlobPtr(*this);</div><div class="line">&#125;</div><div class="line">//最后一个元素后一个位置</div><div class="line">StrBlobPtr StrBlob::end()</div><div class="line">&#123;</div><div class="line">    auto ret = StrBlobPtr(*this, data -&gt; size());</div><div class="line">    return ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">shared_ptr&lt;vector&lt;string&gt;&gt; </div><div class="line">StrBlobPtr::check(size_t sz, const string &amp;msg) const</div><div class="line">&#123;</div><div class="line">    auto ret = wptr.lock(); //如果不存在返回空</div><div class="line">    if (!ret)</div><div class="line">        throw runtime_error(&quot;unbond StrBlob&quot;);</div><div class="line">    if (sz &gt;= ret -&gt; size())</div><div class="line">        throw out_of_range(msg);</div><div class="line">    return ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">string &amp;StrBlobPtr::deref() const</div><div class="line">&#123;</div><div class="line">    auto p = check(curr, &quot;dereference past end&quot;); //检查索引</div><div class="line">    return (*p) [curr]; //取vector元素</div><div class="line">&#125;</div><div class="line"></div><div class="line">StrBlobPtr &amp;StrBlobPtr::incr()</div><div class="line">&#123;</div><div class="line">    check(curr, &quot;increment past end of StrBlobPtr&quot;); //检查索引</div><div class="line">    ++curr; //自增移动</div><div class="line">    return *this;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    StrBlob b&#123;&quot;a&quot;,&quot;aa&quot;,&quot;aaa&quot;&#125;;</div><div class="line">    StrBlobPtr bp = b.begin(), be = b.end();</div><div class="line">    while(!bp.equal(be))</div><div class="line">    &#123;</div><div class="line">        cout &lt;&lt; bp.deref() &lt;&lt; endl; //a aa aaa</div><div class="line">        bp.incr();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="直接管理内存"><a href="#直接管理内存" class="headerlink" title="直接管理内存"></a>直接管理内存</h2><p>可以使用auto从初始化器推断类型<br>因为编译器要从初始化器推断类型，只有当括号中仅有单一初始化器才能用auto</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">auto *p1 = new auto(obj); //p1指向与obj类型相同的对象，用obj初始化</div><div class="line">auto *p2 = new auto&#123;a, b, c&#125;; //错误，只能有单个初始化器</div></pre></td></tr></table></figure>
+<p>可以动态分配const对象，必须初始化，或者隐式初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const int *p1 = new const int(100); //分配并初始化const int</div><div class="line">const int *p2 = new const string; //分配并默认初始化为空串</div></pre></td></tr></table></figure></p>
+<p>如果内存耗尽，new表达式会失败，抛出一个类型为<code>bad_alloc</code>的异常<br>可以改变用new的方式，阻止抛出异常<br>这种形式的new被成为定位new<br><code>bad_alloc</code>和<code>nothow</code>都定义在头文件new中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int *p1 = new int; //如果分配失败，抛出std::bad_alloc</div><div class="line">int *p2 = new (nothow) int; //如果分配失败，返回空指针</div></pre></td></tr></table></figure>
+<p><code>delete</code>表达式必须指向动态分配的内存，或是一个空指针<br>释放一块非new分配的内存，或者相同指针释放多次，行为是未定义的<br>虽然const对象的值不能改变，但是本身是可以被销毁的<br>直到被释放，动态对象一直存在</p>
+<p>动态分配vector、添加元素、打印、删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//动态分配一个vector</div><div class="line">vector&lt;int&gt; *fun1()</div><div class="line">&#123;</div><div class="line">    return new vector&lt;int&gt;;</div><div class="line">&#125;</div><div class="line">//添加元素</div><div class="line">void fun2(vector&lt;int&gt; *p)</div><div class="line">&#123;</div><div class="line">    int temp;</div><div class="line">    while(cin&gt;&gt;temp)</div><div class="line">    &#123;</div><div class="line">        p -&gt; push_back(temp);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//打印</div><div class="line">void fun3(vector&lt;int&gt; *p)</div><div class="line">&#123;</div><div class="line">    for(auto i:*p)</div><div class="line">    &#123;</div><div class="line">        cout &lt;&lt; i &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    auto *p = fun1();</div><div class="line">    fun2(p);</div><div class="line">    fun3(p);</div><div class="line">    delete p;//释放空间</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用智能指针</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//返回一个指向vector的智能指针</div><div class="line">shared_ptr&lt;vector&lt;int&gt;&gt; fun1()</div><div class="line">&#123;</div><div class="line">    return make_shared&lt;vector&lt;int&gt;&gt;();</div><div class="line">&#125;</div><div class="line">//添加元素</div><div class="line">void fun2(shared_ptr&lt;vector&lt;int&gt;&gt; p)</div><div class="line">&#123;</div><div class="line">    int temp;</div><div class="line">    while(cin&gt;&gt;temp)</div><div class="line">    &#123;</div><div class="line">        p -&gt; push_back(temp);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//打印</div><div class="line">void fun3(shared_ptr&lt;vector&lt;int&gt;&gt; p)</div><div class="line">&#123;</div><div class="line">    for(auto i:*p)</div><div class="line">    &#123;</div><div class="line">        cout &lt;&lt; i &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    auto p = fun1();</div><div class="line">    fun2(p);</div><div class="line">    fun3(p);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="动态数组"><a href="#动态数组" class="headerlink" title="动态数组"></a>动态数组</h2><p>分配数组会得到一个元素类型的指针，不是数组类型<br>不能使用begin()和end()操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int *p = new int[get_size()];</div><div class="line"></div><div class="line">int *p = new int[10]; //没有初始化的int</div><div class="line">int *p = new int[10](); //10个初始值为0的int</div><div class="line">int *p = new int[10]&#123;0,1,2,3,4,5,6,7,8,9&#125;;</div></pre></td></tr></table></figure>
+<p>释放</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">delete [] p;</div></pre></td></tr></table></figure>
+<h3 id="智能指针和动态数组"><a href="#智能指针和动态数组" class="headerlink" title="智能指针和动态数组"></a>智能指针和动态数组</h3><p>标准库提供了可以管理new 分配的数组的unique_ptr版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">unique_ptr&lt;int []&gt; up (new int[10]);</div><div class="line">up.release(); //自动调用delete[]销毁指针</div></pre></td></tr></table></figure>
+<p>不支持成员访问运算符（点和箭头）<br>使用下标操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for(size_t i = 0; i != 10; ++i)</div><div class="line">    up[i] = i;</div><div class="line">for(size_t i = 0; i != 10; ++i)</div><div class="line">    cout &lt;&lt; up[i] &lt;&lt; endl;</div></pre></td></tr></table></figure>
+<p>shared_ptr不支持管理动态数组，除非自定义删除器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//使用lambda表达式自定义删除器</div><div class="line">shared_ptr&lt;int&gt; sp(new int[10], [](int *p) &#123; delete [] p;&#125;);</div><div class="line">sp.reset(); //调用删除器释放数组</div></pre></td></tr></table></figure>
+<p>操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">shared_ptr&lt;int&gt; sp(new int[10], [](int *p) &#123; delete [] p;&#125;);</div><div class="line">for(size_t i = 0; i != 10; ++i)</div><div class="line">    *(sp.get() + i) = i;</div><div class="line">for(size_t i = 0; i != 10; ++i)</div><div class="line">    cout &lt;&lt; *(sp.get() + i)  &lt;&lt; endl;</div><div class="line">sp.reset();</div></pre></td></tr></table></figure>
+<h3 id="allocator类"><a href="#allocator类" class="headerlink" title="allocator类"></a>allocator类</h3><p>定义在头文件<code>memory</code>中</p>
+<p>指定对象类型，定义allocator对象，然后根据对象类型确定大小<br>P428</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">allocator&lt;string&gt; alloc; //定义一个allocator对象</div><div class="line">auto const p = alloc.allocate(10); //分配10个未初始化的string</div><div class="line">alloc.construct(p, args); // args传递给构造函数，构造对象</div><div class="line">alloc.destroy(p); //调用析构函数，p必须是一个类型为string*的指针</div><div class="line">alloc.deallocate(p, 10); //释放p开始的10个string的内存，在调用前需要先调用destroy</div></pre></td></tr></table></figure>
+<h2 id="文本查询程序"><a href="#文本查询程序" class="headerlink" title="文本查询程序"></a>文本查询程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">class QueryResult;</div><div class="line">class TextQuery</div><div class="line">&#123;</div><div class="line">friend class QueryResult;</div><div class="line">public:</div><div class="line">    TextQuery(std::ifstream &amp;infile);</div><div class="line">    QueryResult query(std::string s) const;</div><div class="line">private:</div><div class="line">   std::shared_ptr&lt;std::vector&lt;std::string&gt;&gt; ifile; //指向存放每行文本的vector</div><div class="line">   //这里用int表示行号，实际上应该用非负类型</div><div class="line">    std::map&lt;std::string, std::shared_ptr&lt;std::set&lt;int&gt;&gt;&gt; wm; //单词到存放行数的set的映射</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class QueryResult</div><div class="line">&#123;</div><div class="line">friend std::ostream &amp;print(std::ostream &amp;os, const QueryResult &amp;qr);</div><div class="line">public:</div><div class="line">    QueryResult(std::string s, std::shared_ptr&lt;std::set&lt;int&gt;&gt; lp, std::shared_ptr&lt;std::vector&lt;std::string&gt;&gt; fp) : </div><div class="line">        world(s), linep(lp), file(fp)&#123;&#125;</div><div class="line">private:</div><div class="line">    std::string world;</div><div class="line">    std::shared_ptr&lt;std::set&lt;int&gt;&gt; linep;</div><div class="line">    std::shared_ptr&lt;std::vector&lt;std::string&gt;&gt; file;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//构造函数，在构造函数里储存将单词到行号的隐射</div><div class="line">TextQuery::TextQuery(std::ifstream &amp;infile) : ifile(new std::vector&lt;std::string&gt;) //初始化infile</div><div class="line">&#123;</div><div class="line">    std::string s,world;</div><div class="line">    int num(0);</div><div class="line">    while(getline(infile, s))</div><div class="line">    &#123;</div><div class="line">        ++num;</div><div class="line">        ifile -&gt; push_back(s);</div><div class="line">        std::istringstream line(s);</div><div class="line">        while(line &gt;&gt; world)</div><div class="line">        &#123;</div><div class="line">            if(!wm[world]) //如果set还没有创建</div><div class="line">                wm[world].reset(new std::set&lt;int&gt;); //创建一个set</div><div class="line">            wm[world] -&gt; insert(num); //行号插入到set</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//查找</div><div class="line">//返回一个QueryResult类</div><div class="line">QueryResult TextQuery::query(std::string s) const</div><div class="line">&#123;</div><div class="line">    std::shared_ptr&lt;std::set&lt;int&gt;&gt; nodata(new std::set&lt;int&gt;); //一个空set</div><div class="line">    auto res = wm.find(s); //查找函数的本体，查找map对应字符串的行号set</div><div class="line">    if (res == wm.end()) //无内容返回空set</div><div class="line">        return QueryResult(s, nodata, ifile);</div><div class="line">    else //有内容返回set，访问map 的 second成员</div><div class="line">        return QueryResult(s, res -&gt; second, ifile);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//打印存放在QueryResult内的内容</div><div class="line">std::ostream &amp;print(std::ostream &amp;os, const QueryResult &amp;qr)</div><div class="line">&#123;</div><div class="line">    os &lt;&lt; qr.world &lt;&lt; &quot;: \n&quot;;</div><div class="line">    for (auto num:*qr.linep) //对每个指针解引用然后遍历</div><div class="line">    &#123;</div><div class="line">        os &lt;&lt; num &lt;&lt; &quot; &quot;; //行号</div><div class="line">        os &lt;&lt; *(qr.file -&gt; begin() + num - 1) &lt;&lt; std::endl; //用迭代器输出vector的行文本</div><div class="line">    &#125;</div><div class="line">    return os;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main () </div><div class="line">&#123;</div><div class="line">    ifstream infile(&quot;text.txt&quot;);</div><div class="line">    TextQuery tq(infile);</div><div class="line">    print(cout, tq.query(&quot;harry&quot;));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/10/18/C2/" data-id="cj5c7k37o0006m0u4bd7zmgwe" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/23/basic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          数据结构和算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/02/scrapy-harry/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">scrapy_harry</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

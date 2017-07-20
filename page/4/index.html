@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Harryx">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Harryx">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-numpy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/01/numpy/" class="article-date">
+  <time datetime="2016-04-01T12:00:58.000Z" itemprop="datePublished">2016-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/01/numpy/">numpy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="numpy简介"><a href="#numpy简介" class="headerlink" title="numpy简介"></a>numpy简介</h1><p>numpy是一个多维数组对象（ndarray）<br>numpy数组的维度称为秩（rank），每个线性数组称为轴（axes）</p>
+<ul>
+<li>ndarray.ndim:数组的维度秩（rank），即表示轴的个数</li>
+<li>ndarray.shape:返回一个元祖，如果是二位数组，则表示“行数”和“列数”如果是如果是一个三通道图片，则表示“高”“宽”和“通道数”</li>
+<li>ndarray.size:返回数组的元素的总个数，如果是三通道图片，值为“高”<em>“宽”</em>“通道数3”</li>
+<li>ndarray.dtype:返回数组元素的数据类型对象，常见的比如uint8，float64</li>
+<li>ndarray.itemsize:返回数组中每个元素大小，单位为字节，比如uint8是1字节，float64是8字节</li>
+<li>ndarray.data:返回数组元素存储的缓冲区</li>
+</ul>
+<h1 id="创建一个numpy数组"><a href="#创建一个numpy数组" class="headerlink" title="创建一个numpy数组"></a>创建一个numpy数组</h1><h2 id="array"><a href="#array" class="headerlink" title="array()"></a>array()</h2><p>使用array创建一个三维数组，注意参数要用括号括起来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import numpy as np</div><div class="line">&gt;&gt;&gt; a = np.array([[[255,255,255]]])</div><div class="line">&gt;&gt;&gt; a.shape</div><div class="line">(1, 1, 3)</div><div class="line">&gt;&gt;&gt; a[0][0]</div><div class="line">array([255, 255, 255])</div></pre></td></tr></table></figure></p>
+<p>创建一个二位数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import numpy as np</div><div class="line">&gt;&gt;&gt; a = np.array([[1,2,3],[4,5,6]])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2, 3],</div><div class="line">       [4, 5, 6]])</div><div class="line">&gt;&gt;&gt; a.shape</div><div class="line">(2, 3)</div></pre></td></tr></table></figure></p>
+<p>创建数组时可以显式指定元祖的数值类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.array([[[255,255,255]]],dtype=&apos;uint8&apos;)</div><div class="line">&gt;&gt;&gt; a.dtype</div><div class="line">dtype(&apos;uint8&apos;)</div><div class="line">&gt;&gt;&gt; a.itemsize</div><div class="line">1</div><div class="line">&gt;&gt;&gt; a = np.array([[[255,255,255]]],dtype=&apos;float64&apos;)</div><div class="line">&gt;&gt;&gt; a.dtype</div><div class="line">dtype(&apos;float64&apos;)</div><div class="line">&gt;&gt;&gt; a.itemsize</div><div class="line">8</div></pre></td></tr></table></figure></p>
+<h2 id="arange"><a href="#arange" class="headerlink" title="arange()"></a>arange()</h2><p>返回一个数列形式数组<br>第一个参数表示开始的值，第二个参数表示截止的值(不包括)，第三个参数表示步长<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.arange(1,10,2)</div><div class="line">array([1, 3, 5, 7, 9])</div></pre></td></tr></table></figure></p>
+<p>第一个和第三个参数是可选的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.arange(7)</div><div class="line">array([0, 1, 2, 3, 4, 5, 6])</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
+<p>同样，也可以指定类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.arange(7,dtype=&quot;uint8&quot;)</div><div class="line">array([0, 1, 2, 3, 4, 5, 6], dtype=uint8)</div></pre></td></tr></table></figure></p>
+<h1 id="自定义结构数组"><a href="#自定义结构数组" class="headerlink" title="自定义结构数组"></a>自定义结构数组</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; student = np.dtype(&#123;&quot;names&quot;:[&quot;name&quot;, &quot;age&quot;, &quot;weight&quot;], &quot;formats&quot;:[&quot;S32&quot;, &quot;i&quot;, &quot;f&quot;]&#125;, align=True)</div><div class="line">&gt;&gt;&gt; student</div><div class="line">dtype([(&apos;name&apos;, &apos;S32&apos;), (&apos;age&apos;, &apos;&lt;i4&apos;), (&apos;weight&apos;, &apos;&lt;f4&apos;)], align=True)</div><div class="line">&gt;&gt;&gt; a = np.array([(&quot;zhang&quot;, 32, 65.5), (&quot;wang&quot;, 24, 55.2)], dtype = student)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([(&apos;zhang&apos;, 32, 65.5), (&apos;wang&apos;, 24, 55.20000076293945)], </div><div class="line">      dtype=&#123;&apos;names&apos;:[&apos;name&apos;,&apos;age&apos;,&apos;weight&apos;], &apos;formats&apos;:[&apos;S32&apos;,&apos;&lt;i4&apos;,&apos;&lt;f4&apos;], &apos;offsets&apos;:[0,32,36], &apos;itemsize&apos;:40, &apos;aligned&apos;:True&#125;)</div></pre></td></tr></table></figure>
+<h2 id="reshape"><a href="#reshape" class="headerlink" title="reshape"></a>reshape</h2><p>如果一个数组按照特定次序排列，可以使用reshape重定形<br>对一维数组重定形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.arange(9).reshape(3,3)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[0, 1, 2],</div><div class="line">       [3, 4, 5],</div><div class="line">       [6, 7, 8]])</div></pre></td></tr></table></figure></p>
+<p>对二维数组重定形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.array([[1,2,3,4],[7,8,9,10]])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[ 1,  2,  3,  4],</div><div class="line">       [ 7,  8,  9, 10]])</div><div class="line">&gt;&gt;&gt; a.reshape(4,2)</div><div class="line">array([[ 1,  2],</div><div class="line">       [ 3,  4],</div><div class="line">       [ 7,  8],</div><div class="line">       [ 9, 10]])</div></pre></td></tr></table></figure></p>
+<h2 id="水平组合"><a href="#水平组合" class="headerlink" title="水平组合"></a>水平组合</h2><p>使用<strong>hstack</strong>函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2, 3, 4],</div><div class="line">       [5, 6, 7, 8]])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([[ 9, 10, 11],</div><div class="line">       [13, 14, 15]])</div><div class="line">&gt;&gt;&gt; np.hstack((a,b))</div><div class="line">array([[ 1,  2,  3,  4,  9, 10, 11],</div><div class="line">       [ 5,  6,  7,  8, 13, 14, 15]])</div></pre></td></tr></table></figure></p>
+<p>使用<strong>concatenate</strong>函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.concatenate((a,b),axis=1)</div><div class="line">array([[ 1,  2,  3,  4,  9, 10, 11],</div><div class="line">       [ 5,  6,  7,  8, 13, 14, 15]])</div></pre></td></tr></table></figure></p>
+<h2 id="垂直组合"><a href="#垂直组合" class="headerlink" title="垂直组合"></a>垂直组合</h2><p>使用<strong>vstack</strong>函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.vstack((a,b))</div><div class="line">array([[ 1,  2,  3,  4],</div><div class="line">       [ 5,  6,  7,  8],</div><div class="line">       [ 9, 10, 11, 12],</div><div class="line">       [13, 14, 15, 16]])</div></pre></td></tr></table></figure></p>
+<p>使用<strong>concatenate</strong>函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.concatenate((a,b),axis=0)</div><div class="line">array([[ 1,  2,  3,  4],</div><div class="line">       [ 5,  6,  7,  8],</div><div class="line">       [ 9, 10, 11, 12],</div><div class="line">       [13, 14, 15, 16]])</div></pre></td></tr></table></figure></p>
+<h2 id="深度组合"><a href="#深度组合" class="headerlink" title="深度组合"></a>深度组合</h2><p>使用<strong>dstack</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2, 3, 4],</div><div class="line">       [5, 6, 7, 8]])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([[ 9, 10, 11, 12],</div><div class="line">       [13, 14, 15, 16]])</div><div class="line">&gt;&gt;&gt; np.dstack((a,b))</div><div class="line">array([[[ 1,  9],</div><div class="line">        [ 2, 10],</div><div class="line">        [ 3, 11],</div><div class="line">        [ 4, 12]],</div><div class="line">       [[ 5, 13],</div><div class="line">        [ 6, 14],</div><div class="line">        [ 7, 15],</div><div class="line">        [ 8, 16]]])</div></pre></td></tr></table></figure></p>
+<h2 id="行组合"><a href="#行组合" class="headerlink" title="行组合"></a>行组合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2],</div><div class="line">       [3, 4]])</div><div class="line">&gt;&gt;&gt; row_stack((a,a))</div><div class="line">&gt;&gt;&gt; np.row_stack((a,a))</div><div class="line">array([[1, 2],</div><div class="line">       [3, 4],</div><div class="line">       [1, 2],</div><div class="line">       [3, 4]])</div></pre></td></tr></table></figure>
+<h2 id="列组合"><a href="#列组合" class="headerlink" title="列组合"></a>列组合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.column_stack((a,a))</div><div class="line">array([[1, 2, 1, 2],</div><div class="line">       [3, 4, 3, 4]])</div></pre></td></tr></table></figure>
+<h2 id="水平分割"><a href="#水平分割" class="headerlink" title="水平分割"></a>水平分割</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a=np.arange(9).reshape((3,3))</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[0, 1, 2],</div><div class="line">       [3, 4, 5],</div><div class="line">       [6, 7, 8]])</div><div class="line">&gt;&gt;&gt; np.hsplit(a,3)</div><div class="line">[array([[0],</div><div class="line">       [3],</div><div class="line">       [6]]), array([[1],</div><div class="line">       [4],</div><div class="line">       [7]]), array([[2],</div><div class="line">       [5],</div><div class="line">       [8]])]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.split(a,3,axis=1)</div><div class="line">[array([[0],</div><div class="line">       [3],</div><div class="line">       [6]]), array([[1],</div><div class="line">       [4],</div><div class="line">       [7]]), array([[2],</div><div class="line">       [5],</div><div class="line">       [8]])]</div></pre></td></tr></table></figure>
+<h2 id="垂直分割"><a href="#垂直分割" class="headerlink" title="垂直分割"></a>垂直分割</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[0, 1, 2],</div><div class="line">       [3, 4, 5],</div><div class="line">       [6, 7, 8]])</div><div class="line">&gt;&gt;&gt; np.vsplit(a,3)</div><div class="line">[array([[0, 1, 2]]), array([[3, 4, 5]]), array([[6, 7, 8]])]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.split(a,3,axis=0)</div><div class="line">[array([[0, 1, 2]]), array([[3, 4, 5]]), array([[6, 7, 8]])]</div></pre></td></tr></table></figure>
+<h2 id="深度分割"><a href="#深度分割" class="headerlink" title="深度分割"></a>深度分割</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.arange(8).reshape(2,2,2)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[[0, 1],</div><div class="line">        [2, 3]],</div><div class="line"></div><div class="line">       [[4, 5],</div><div class="line">        [6, 7]]])</div><div class="line">&gt;&gt;&gt; np.dsplit(a,2)</div><div class="line">[array([[[0],</div><div class="line">        [2]],</div><div class="line"></div><div class="line">       [[4],</div><div class="line">        [6]]]), array([[[1],</div><div class="line">        [3]],</div><div class="line"></div><div class="line">       [[5],</div><div class="line">        [7]]])]</div></pre></td></tr></table></figure>
+<h1 id="复制和镜像"><a href="#复制和镜像" class="headerlink" title="复制和镜像"></a>复制和镜像</h1><h2 id="简单的赋值"><a href="#简单的赋值" class="headerlink" title="简单的赋值"></a>简单的赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.array([1,2,3,4])</div><div class="line">&gt;&gt;&gt; b = a</div><div class="line">&gt;&gt;&gt; b is a</div><div class="line">True</div><div class="line">&gt;&gt;&gt; a.shape=2,2 #a形状改变</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2],</div><div class="line">       [3, 4]])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([[1, 2],	#b形状也改变了</div><div class="line">       [3, 4]])</div></pre></td></tr></table></figure>
+<h2 id="视图和浅复制"><a href="#视图和浅复制" class="headerlink" title="视图和浅复制"></a>视图和浅复制</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; c = a.view()</div><div class="line">&gt;&gt;&gt; c is a</div><div class="line">False</div><div class="line">&gt;&gt;&gt; c.base is a</div><div class="line">True</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2],</div><div class="line">       [3, 4]])</div><div class="line">&gt;&gt;&gt; c.shape=4, #c形状改变</div><div class="line">&gt;&gt;&gt; c</div><div class="line">array([1, 2, 3, 4])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2], #a形状没有改变</div><div class="line">       [3, 4]])</div><div class="line">&gt;&gt;&gt; c[0]=100 #c数值改变</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[100,   2], #a数值也改变了</div><div class="line">       [  3,   4]])</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a=np.arange(10)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</div><div class="line">&gt;&gt;&gt; b=a[:5]</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([0, 1, 2, 3, 4])</div><div class="line">&gt;&gt;&gt; a[:]=10</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([10, 10, 10, 10, 10])</div></pre></td></tr></table></figure>
+<h2 id="深复制"><a href="#深复制" class="headerlink" title="深复制"></a>深复制</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; b = a.copy()</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10])</div><div class="line">&gt;&gt;&gt; a[:]=9</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([9, 9, 9, 9, 9, 9, 9, 9, 9, 9])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10])</div></pre></td></tr></table></figure>
+<h1 id="json"><a href="#json" class="headerlink" title="json"></a>json</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。<br>ndarray不能被json识别，先使用ndarray.tolist()转化成list，然后在转化成json<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import cv2</div><div class="line">import numpy as np</div><div class="line">import json</div><div class="line"></div><div class="line">#创建一个numpy.ndarray</div><div class="line">a = np.array([[[255,255,255]]])</div><div class="line">print &quot;1:&quot;,type(a)</div><div class="line"></div><div class="line">#ndarray转化成list</div><div class="line">s = a.tolist()</div><div class="line">print &quot;2:&quot;,type(s)</div><div class="line"></div><div class="line">#json编码</div><div class="line">j = json.dumps(s)</div><div class="line">print &quot;3:&quot;,type(j)</div><div class="line"></div><div class="line">#json解码</div><div class="line">l = json.loads(j)</div><div class="line">print &quot;4:&quot;,type(l)</div><div class="line"></div><div class="line">#list转化为numpy.ndarray</div><div class="line">c = np.array(l)</div><div class="line">print &quot;5:&quot;,type(c)</div></pre></td></tr></table></figure></p>
+<p>输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1: &lt;type &apos;numpy.ndarray&apos;&gt;</div><div class="line">2: &lt;type &apos;list&apos;&gt;</div><div class="line">3: &lt;type &apos;str&apos;&gt;</div><div class="line">4: &lt;type &apos;list&apos;&gt;</div><div class="line">5: &lt;type &apos;numpy.ndarray&apos;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Json-自定义"><a href="#Json-自定义" class="headerlink" title="Json 自定义"></a>Json 自定义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line"></div><div class="line">class Student():</div><div class="line">    def __init__(self, name, age, score):</div><div class="line">        self.name = name</div><div class="line">        self.age = age</div><div class="line">        self.score = score</div><div class="line"></div><div class="line">def Student2Dic(std):</div><div class="line">    return &#123;</div><div class="line">        &quot;name&quot;:std.name,</div><div class="line">        &quot;age&quot;:std.age,</div><div class="line">        &quot;score&quot;:std.score</div><div class="line">    &#125;</div><div class="line"></div><div class="line">def Dic2Student(d):</div><div class="line">    return Student(d[&apos;name&apos;], d[&apos;age&apos;], d[&apos;score&apos;])</div><div class="line"></div><div class="line">s = Student(&quot;harry&quot;, 22, 90)</div><div class="line">j = json.dumps(s, default=Student2Dic)</div><div class="line">print type(j),j</div><div class="line">d = json.loads(j, object_hook=Dic2Student)</div><div class="line">print type(d),d</div></pre></td></tr></table></figure>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;type &apos;str&apos;&gt; &#123;&quot;age&quot;: 22, &quot;score&quot;: 90, &quot;name&quot;: &quot;harry&quot;&#125;</div><div class="line">&lt;type &apos;instance&apos;&gt; &lt;__main__.Student instance at 0xb70cd3cc&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>用一个字节存储的布尔类型（True或False）</td>
+</tr>
+<tr>
+<td>inti</td>
+<td>由所在平台决定其大小的整数（一般为int32或int64）</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>一个字节大小，-128 至 127</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>整数，-32768 至 32767</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>整数，-2 <strong>31</strong> 至 2 <strong>32 -1</strong></td>
+</tr>
+<tr>
+<td>int64</td>
+<td>整数，-2 <strong>63</strong> 至 2 <strong>63 - 1</strong></td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>无符号整数，0 至 255</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>无符号整数，0 至 65535</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>无符号整数，0 至 2 ** 32 - 1</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>无符号整数，0 至 2 ** 64 - 1</td>
+</tr>
+<tr>
+<td>float16</td>
+<td>半精度浮点数：16位，正负号1位，指数5位，精度10位</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>单精度浮点数：32位，正负号1位，指数8位，精度23位</td>
+</tr>
+<tr>
+<td>float64或float</td>
+<td>双精度浮点数：64位，正负号1位，指数11位，精度52位</td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>复数，分别用两个32位浮点数表示实部和虚部</td>
+</tr>
+<tr>
+<td>complex128或complex</td>
+<td>复数，分别用两个64位浮点数表示实部和虚部</td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://blog.csdn.net/sunny2038" target="_blank" rel="external">http://blog.csdn.net/sunny2038</a><br><a href="http://www.cnblogs.com/coser/archive/2011/12/14/2287739.html" target="_blank" rel="external">http://www.cnblogs.com/coser/archive/2011/12/14/2287739.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/01/numpy/" data-id="cj5c7k42k0044m0u4nxparv10" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/29/opencv/" class="article-date">
+  <time datetime="2016-03-29T12:01:38.000Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/29/opencv/">opencv</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>因为比赛的需要，学习图像识别，就用比较简单的Python来编写</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>python2.7 安装 opencv 参考：<br><a href="http://www.jianshu.com/p/67293b547261" target="_blank" rel="external">http://www.jianshu.com/p/67293b547261</a></p>
+<h1 id="像素访问"><a href="#像素访问" class="headerlink" title="像素访问"></a>像素访问</h1><p>opencv图像是二维或者三维numpy.array<br>8-bit 灰度图像是一个二维数组<br>24-bit BGR图像是一个三位数组<br>cv2中对图片像素的访问和在numpy中一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img[&lt;height&gt;, &lt;width&gt;, &lt;channel&gt;]</div></pre></td></tr></table></figure></p>
+<p>三个参数分别表示行，列，通道</p>
+<h1 id="读取并显示图像"><a href="#读取并显示图像" class="headerlink" title="读取并显示图像"></a>读取并显示图像</h1><h2 id="最简单的程序"><a href="#最简单的程序" class="headerlink" title="最简单的程序"></a>最简单的程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- coding:utf-8 -*-</div><div class="line"></div><div class="line">&quot;显示一个图形&quot;</div><div class="line"></div><div class="line">import cv2</div><div class="line"></div><div class="line">img = cv2.imread(&quot;pic.jpg&quot;)</div><div class="line">cv2.namedWindow(&quot;Image&quot;)</div><div class="line">cv2.imshow(&quot;Image&quot;, img)</div><div class="line">cv2.waitKey(0)</div><div class="line">cv2.destroyAllWindows()</div></pre></td></tr></table></figure>
+<h3 id="imread"><a href="#imread" class="headerlink" title="imread"></a>imread</h3><p>载入图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imread(&lt;filename&gt;, &lt;flags&gt;)</div></pre></td></tr></table></figure></p>
+<p>以BGR(blue-green-red)格式读取图片，和RGB类似，不过顺序相反<br>第一个参数是文件名<br>第二个参数是载入标识<br>1 : cv2.IMREAD_COLOR (BGR) (默认)<br>0 : cv2.IMREAD_GRAYSCALE (grayscale)<br>-1 : cv2.IMREAD_UNCHANGED (由图片本身决定)</p>
+<ul>
+<li>flags &gt;0返回一个3通道的彩色图像。</li>
+<li>flags =0返回灰度图像。</li>
+<li>flags &lt;0返回包含Alpha通道的加载的图像。</li>
+</ul>
+<h3 id="namedWindow"><a href="#namedWindow" class="headerlink" title="namedWindow"></a>namedWindow</h3><p>创建一个窗口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">namedWindow(&lt;winname&gt;, &lt;flags&gt;)</div></pre></td></tr></table></figure></p>
+<p>第一个参数是窗口名称<br>第二个参数是窗口标识，通常使用默认<br>可以调用<strong>destroyWindow()</strong>或者<strong>destroyAllWindow()</strong>关闭窗口<br>对于已经存在的同名窗口，函数不做任何事</p>
+<h3 id="imshow"><a href="#imshow" class="headerlink" title="imshow"></a>imshow</h3><p>在指定窗口显示一幅图像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imshow(&lt;winname&gt;, &lt;inputarrat&gt;)</div></pre></td></tr></table></figure></p>
+<p>第一个参数是窗口名称<br>第二个参数是显示的图像</p>
+<h3 id="imwrite"><a href="#imwrite" class="headerlink" title="imwrite"></a>imwrite</h3><p>输出图像到文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imwrite(&lt;filename&gt;, &lt;inputarray&gt;, &lt;params&gt;)</div></pre></td></tr></table></figure></p>
+<p>第一个参数是文件名，带上后缀，比如“.jpg”<br>第二个参数是图像数据<br>第三个参数是参数编码，一般不需要填写</p>
+<ul>
+<li>对于JPEG格式图片，这个参数表示0到100的图片质量(IMWRITE_JPEG_QUALITY)<strong>(1)</strong>，默认95</li>
+<li>对于PNG格式图片，这个参数表示压缩级别(IMWRITE_PNG_COMPRESSION)<strong>(16)</strong>从0到9，默认3</li>
+<li>对于PPM，PGM，PBM格式的图片，这个参数表示一个二进制格式标志(IMWRITE_PXM_BINARY)<strong>(32)</strong>，取值0或1，默认为1</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#cv2.imwrite(&quot;lalala.jpg&quot;, img, [1,20])</div><div class="line">cv2.imwrite(&quot;lalala.jpg&quot;, img, [cv2.IMWRITE_JPEG_QUALITY,20])</div></pre></td></tr></table></figure>
+<h2 id="图像操作"><a href="#图像操作" class="headerlink" title="图像操作"></a>图像操作</h2><h3 id="img-shape"><a href="#img-shape" class="headerlink" title="img.shape"></a>img.shape</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(&lt;height&gt;, &lt;width&gt;, &lt;channel&gt;)</div></pre></td></tr></table></figure>
+<p>返回值是一个元组，对应的值是图片的高，宽，通道</p>
+<h3 id="img-ndim查看图片维度"><a href="#img-ndim查看图片维度" class="headerlink" title="img.ndim查看图片维度"></a>img.ndim查看图片维度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#椒盐现象</div><div class="line">def salt(img, n):</div><div class="line">    for a in range(n):</div><div class="line">        i = int(random.random() * img.shape[0])</div><div class="line">        j = int(random.random() * img.shape[1])</div><div class="line">        img[i , j] = [255, 255, 255] #blue, green, red</div></pre></td></tr></table></figure>
+<h3 id="img-split"><a href="#img-split" class="headerlink" title="img.split"></a>img.split</h3><p>分离通道<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">b, g, r = cv2.split(img)</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#这里是镜像</div><div class="line">b = img[:, :, 0]</div><div class="line">g = img[:, :, 1]</div><div class="line">r = img[:, :, 2]</div></pre></td></tr></table></figure></p>
+<h3 id="cv2-merge"><a href="#cv2-merge" class="headerlink" title="cv2.merge"></a>cv2.merge</h3><p>通道合并<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img = cv2.merge(b, g, r)</div></pre></td></tr></table></figure></p>
+<h3 id="np-zeros"><a href="#np-zeros" class="headerlink" title="np.zeros"></a>np.zeros</h3><p>opencv中没有createimage接口，创建图像需要调用numpy的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img = np.zeros(&lt;img.shape&gt;, np.uint8)</div></pre></td></tr></table></figure></p>
+<p>例如创建一个高500，宽400，3通道的图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img = np.zeros((500, 400, 3), np.uint8)</div></pre></td></tr></table></figure></p>
+<h3 id="img-copy"><a href="#img-copy" class="headerlink" title="img.copy()"></a>img.copy()</h3><p>通过拷贝一个numpy的array，拷贝一个图片</p>
+<h3 id="cv2-cvtColor"><a href="#cv2-cvtColor" class="headerlink" title="cv2.cvtColor"></a>cv2.cvtColor</h3><p>改变颜色编码(color-space)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.cvtColor(&lt;image&gt;, &lt;flag&gt;)</div></pre></td></tr></table></figure></p>
+<p>BGR -&gt; GRAY<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div></pre></td></tr></table></figure></p>
+<p>BGR -&gt; HSV<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)</div></pre></td></tr></table></figure></p>
+<h3 id="cv2-calcHist"><a href="#cv2-calcHist" class="headerlink" title="cv2.calcHist"></a>cv2.calcHist</h3><p>绘制直方图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.calcHist([image], channels, mask, histSize, ranges)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>image: 输入图像，用方括号括起来</li>
+<li>channels: 通道数</li>
+<li>mask: 掩膜图像，如果是整幅图，为None</li>
+<li>histSize: 灰度级个数</li>
+<li>ranges: 直方图像素值范围，通常为[0, 256]</li>
+</ul>
+<h2 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h2><h3 id="cv2-erode"><a href="#cv2-erode" class="headerlink" title="cv2.erode"></a>cv2.erode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(&quot;j.png&quot;)</div><div class="line">#定义一个5X5全是1的矩阵</div><div class="line">kernel = np.ones((5,5),np.uint8)</div><div class="line">#腐蚀图像</div><div class="line">erosion = cv2.erode(img, kernel, iterations = 1)</div><div class="line"></div><div class="line">cv2.imwrite(&quot;j2.png&quot;,erosion)</div></pre></td></tr></table></figure>
+<p><img src="http://7xrooc.com1.z0.glb.clouddn.com/ercode.png"></p>
+<h3 id="cv2-dilate"><a href="#cv2-dilate" class="headerlink" title="cv2.dilate"></a>cv2.dilate</h3><p>膨胀图像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(&quot;j.png&quot;)</div><div class="line">#定义一个5X5全是1的矩阵</div><div class="line">kernel = np.ones((5,5),np.uint8)</div><div class="line">#膨胀图像</div><div class="line">erosion = cv2.dilate(img, kernel, iterations = 1)</div><div class="line">cv2.imwrite(&quot;j2.png&quot;,erosion)</div></pre></td></tr></table></figure></p>
+<h3 id="opening"><a href="#opening" class="headerlink" title="opening"></a>opening</h3><p>开运算<br>开运算类似于腐蚀，应用于去除噪声<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(&quot;j.png&quot;)</div><div class="line">#椒盐</div><div class="line">salt(img,200)</div><div class="line">cv2.imwrite(&quot;j2.png&quot;,img)</div><div class="line"></div><div class="line">#opening</div><div class="line">kernel = np.ones((5,5),np.uint8)</div><div class="line">opening = cv2.morphologyEx(img, cv2.MORPH_OPEN,kernel)</div><div class="line"></div><div class="line">cv2.imwrite(&quot;j3.png&quot;,opening)</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xrooc.com1.z0.glb.clouddn.com/salt-open.png"></p>
+<h3 id="closeing"><a href="#closeing" class="headerlink" title="closeing"></a>closeing</h3><p>闭运算<br>闭运算和开运算相反，连接被分开的块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opening = cv2.morphologyEx(img, cv2.MORPH_CLOSE,kernel)</div></pre></td></tr></table></figure></p>
+<h3 id="threshold"><a href="#threshold" class="headerlink" title="threshold"></a>threshold</h3><p>二值化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">retval, result = cv2.threshold(src, thresh, maxval, type[, dst])</div></pre></td></tr></table></figure></p>
+<p>对应参数分别是：图片(灰度图)，阈值，最大值，类型<br>返回值分别为：阈值，结果图像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">import cv2</div><div class="line">import numpy as np</div><div class="line">from matplotlib import pyplot as plt</div><div class="line"></div><div class="line">img = cv2.imread(&apos;pic4.jpg&apos;,0)</div><div class="line">ret,thresh1 = cv2.threshold(img,127,255,cv2.THRESH_BINARY)</div><div class="line">ret,thresh2 = cv2.threshold(img,127,255,cv2.THRESH_BINARY_INV)</div><div class="line">ret,thresh3 = cv2.threshold(img,127,255,cv2.THRESH_TRUNC)</div><div class="line">ret,thresh4 = cv2.threshold(img,127,255,cv2.THRESH_TOZERO)</div><div class="line">ret,thresh5 = cv2.threshold(img,127,255,cv2.THRESH_TOZERO_INV)</div><div class="line"></div><div class="line">titles = [&apos;Original Image&apos;,&apos;BINARY&apos;,&apos;BINARY_INV&apos;,&apos;TRUNC&apos;,&apos;TOZERO&apos;,&apos;TOZERO_INV&apos;]</div><div class="line">images = [img, thresh1, thresh2, thresh3, thresh4, thresh5]</div><div class="line"></div><div class="line">for i in xrange(6):</div><div class="line">    plt.subplot(2,3,i+1),plt.imshow(images[i],&apos;gray&apos;)</div><div class="line">    plt.title(titles[i])</div><div class="line">    plt.xticks([]),plt.yticks([])</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
+<p>自适应二值化，阈值会不断变化<br>cv2.ADAPTIVE_THRESH_MEAN_C的阈值是周围像素的灰度均值;<br>cv2.ADAPTIVE_THRESH_GAUSSIAN_C则是周围像素的高斯窗口加权和。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize,C)</div></pre></td></tr></table></figure></p>
+<p>对应参数分别为：图片(单通道)，最大值，自适应方式，二值化方式，窗口大小，常数C<br>先求窗口灰度均值，然后减去常数C作为阈值<br>返回结果为：目标图像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">import cv2</div><div class="line">import numpy as np</div><div class="line">from matplotlib import pyplot as plt</div><div class="line"></div><div class="line">img = cv2.imread(&apos;pic4.jpg&apos;,0)</div><div class="line">img = cv2.medianBlur(img,5)</div><div class="line"></div><div class="line">ret,th1 = cv2.threshold(img,127,255,cv2.THRESH_BINARY)</div><div class="line">th2 = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_MEAN_C,\</div><div class="line">            cv2.THRESH_BINARY,11,2)</div><div class="line">th3 = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\</div><div class="line">            cv2.THRESH_BINARY,11,2)</div><div class="line"></div><div class="line">titles = [&apos;Original Image&apos;, &apos;Global Thresholding (v = 127)&apos;,</div><div class="line">            &apos;Adaptive Mean Thresholding&apos;, &apos;Adaptive Gaussian Thresholding&apos;]</div><div class="line">images = [img, th1, th2, th3]</div><div class="line"></div><div class="line">for i in xrange(4):</div><div class="line">    plt.subplot(2,2,i+1),plt.imshow(images[i],&apos;gray&apos;)</div><div class="line">    plt.title(titles[i])</div><div class="line">    plt.xticks([]),plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
+<h3 id="bitwise-not"><a href="#bitwise-not" class="headerlink" title="bitwise_not"></a>bitwise_not</h3><p>像素取反，两次取反回归原图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(&quot;pic.jpg&quot;)</div><div class="line">cv2.namedWindow(&quot;Image&quot;)</div><div class="line">result = cv2.bitwise_not(img)</div><div class="line">cv2.imshow(&quot;Image&quot;, result)</div><div class="line">cv2.waitKey(0)</div><div class="line">cv2.destroyAllWindows()</div></pre></td></tr></table></figure></p>
+<p><strong>blur</strong><br>低通滤波<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res = cv2.blur(img,(5,5))</div></pre></td></tr></table></figure></p>
+<p>图片变得平滑（模糊）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- coding:utf-8 -*-</div><div class="line"></div><div class="line">&quot;显示一个图形&quot;</div><div class="line"></div><div class="line">import cv2</div><div class="line">import numpy as np</div><div class="line"></div><div class="line">img = cv2.imread(&quot;pic4.jpg&quot;)</div><div class="line">res = cv2.blur(img,(5,5))</div><div class="line"></div><div class="line">cv2.imshow(&quot;img&quot;,img)</div><div class="line">cv2.imshow(&quot;res&quot;,res)</div><div class="line">cv2.waitKey(0)</div><div class="line">cv2.destroyAllWindows()</div></pre></td></tr></table></figure></p>
+<p>左是处理后的图像，右是原图像<br><img src="http://7xrooc.com1.z0.glb.clouddn.com/blur.png"><br><strong>boxfilter</strong><br>同样也是滤波，效果相同<br>第二个参数-1指的是图像深度由输入图像决定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res = cv2.boxFilter(img, -1, (5,5))</div></pre></td></tr></table></figure></p>
+<h3 id="高斯模糊"><a href="#高斯模糊" class="headerlink" title="高斯模糊"></a>高斯模糊</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res = cv2.GaussianBlur(img,  (5,5), 1.5)</div></pre></td></tr></table></figure>
+<h3 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res = cv2.medianBlur(img, 5)</div></pre></td></tr></table></figure>
+<h1 id="VideoCapture"><a href="#VideoCapture" class="headerlink" title="VideoCapture"></a>VideoCapture</h1><h2 id="摄像头"><a href="#摄像头" class="headerlink" title="摄像头"></a>摄像头</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">import cv2</div><div class="line"></div><div class="line">#创建一个VideoCapture对象</div><div class="line">cap = cv2.VideoCapture(0)</div><div class="line"></div><div class="line">while(True):</div><div class="line">    # 一帧一帧读取</div><div class="line">    ret, frame = cap.read()</div><div class="line"></div><div class="line">    # Our operations on the frame come here</div><div class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    # Display the resulting frame</div><div class="line">    cv2.imshow(&apos;frame&apos;,gray)</div><div class="line">    if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</div><div class="line">        break</div><div class="line"></div><div class="line"># When everything done, release the capture</div><div class="line">cap.release()</div><div class="line">cv2.destroyAllWindows()</div></pre></td></tr></table></figure>
+<p>首先创建一个VideoCapture对象，参数0用于区别多个，通常只有一个摄像头连接，常用0或-1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ret, fram = cap.read()</div></pre></td></tr></table></figure></p>
+<p>ret是一个bool值，如果成功读取图像则返回True，可以通过检测ret的值判断是否读取成功<br>有时候，cap可能初始化失败，可以通过<strong>cap.isOpened()</strong>函数判断cap有没有初始化成功<br><strong>cap.get(propld)</strong>函数，可以获得摄像头画面的一些参数<br>propld是0到18的数字，每个数字代表摄像头画面的一个性能参数(如果摄像头支持)<br>有些参数可以通过<strong>cap.set(propld,value)</strong>修改，value是你想自定义的新值</p>
+<p>比如使用cap.get(3)和cap.get(4)，获得宽和高<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cap = cv2.VideoCapture(0)</div><div class="line">print cap.get(3),cap.get(4)</div></pre></td></tr></table></figure></p>
+<p>获得的是640 X 480，可以改成320 X 240<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ret = cap.set(3,320)</div><div class="line">ret = cap.set(4,240)</div></pre></td></tr></table></figure></p>
+<h2 id="播放视频文件"><a href="#播放视频文件" class="headerlink" title="播放视频文件"></a>播放视频文件</h2><p>和获取摄像头画面相似，只要把参数改为文件目录<br>当显示视频时，要注意<strong>cv2.waitKey()</strong>的时间参数(单位ms)，如果太短或者太长，视频将会变快或者变慢，正常设置为25ms<br>如果不能播放，确认已经安装了ffmpeg或者gstreamer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">import cv2</div><div class="line"></div><div class="line">cap = cv2.VideoCapture(&quot;/home/herui/mv/badapple.mp4&quot;)</div><div class="line"></div><div class="line">while(True):</div><div class="line">    # Capture frame-by-frame</div><div class="line">    ret, frame = cap.read()</div><div class="line"></div><div class="line">    # Display the resulting frame</div><div class="line">    cv2.imshow(&apos;frame&apos;,frame)</div><div class="line">    if cv2.waitKey(25) &amp; 0xFF == ord(&apos;q&apos;):</div><div class="line">        break</div><div class="line"></div><div class="line"># When everything done, release the capture</div><div class="line">cap.release()</div><div class="line">cv2.destroyAllWindows()</div></pre></td></tr></table></figure></p>
+<h2 id="保存视频文件"><a href="#保存视频文件" class="headerlink" title="保存视频文件"></a>保存视频文件</h2><p>保存视频文件必须要指定文件名，FourCC，每秒的帧数(fps)以及每帧大小，还有isColor标识<br>FourCC是一个4-byte编码，用来指定视频编码器<br>FourCC使用cv2.VideoWriter_fourcc(‘M’,’J’,’P’,’G’)或者cv2.VideoWriter_fourcc(*’MJPG’)指定MJPG<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">import cv2</div><div class="line"></div><div class="line">cap = cv2.VideoCapture(0)</div><div class="line"></div><div class="line">print cap.get(3),&apos;*&apos;,cap.get(4)</div><div class="line"></div><div class="line">#定义编码器，创建视频写对象</div><div class="line">fourcc = cv2.VideoWriter_fourcc(*&apos;XVID&apos;)</div><div class="line">out = cv2.VideoWriter(&quot;output.avi&quot;, fourcc,25.0,(640,480))</div><div class="line"></div><div class="line">while(cap.isOpened()):</div><div class="line">    ret, frame = cap.read()</div><div class="line">    if ret == True:</div><div class="line">        #写帧</div><div class="line">        out.write(frame)</div><div class="line"></div><div class="line">        cv2.imshow(&apos;frame&apos;,frame)</div><div class="line">        if cv2.waitKey(50) &amp; 0xFF == ord(&apos;q&apos;):</div><div class="line">            break</div><div class="line">    else:</div><div class="line">        break</div><div class="line"></div><div class="line">#release everything</div><div class="line">cap.release()</div><div class="line">out.release()</div><div class="line">cv2.destroyAllWindows()</div></pre></td></tr></table></figure></p>
+<h1 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>matplotlib是python的一个绘图库，具有和matlab相似的API</p>
+<h1 id="图像转换"><a href="#图像转换" class="headerlink" title="图像转换"></a>图像转换</h1><h2 id="cv2-image-to-PIL-image"><a href="#cv2-image-to-PIL-image" class="headerlink" title="cv2 image to PIL image"></a>cv2 image to PIL image</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(&quot;pic.jpg&quot;)</div><div class="line">img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</div><div class="line">pil_img = Image.fromarray(img)</div><div class="line">pil_img.show()</div></pre></td></tr></table></figure>
+<h2 id="PIL-image-to-cv2-image"><a href="#PIL-image-to-cv2-image" class="headerlink" title="PIL image to cv2 image"></a>PIL image to cv2 image</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">out = Image.open(src).convert(&quot;RGB&quot;)</div><div class="line">cv_img = np.array(out)</div><div class="line">cv_img = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)</div></pre></td></tr></table></figure>
+<h1 id="PIL-filter"><a href="#PIL-filter" class="headerlink" title="PIL filter"></a>PIL filter</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">from PIL import Image,ImageFilter</div><div class="line"> </div><div class="line">#滤镜名称   含义</div><div class="line">#ImageFilter.BLUR   模糊滤镜</div><div class="line">#ImageFilter.CONTOUR    轮廓</div><div class="line">#ImageFilter.EDGE_ENHANCE   边界加强</div><div class="line">#ImageFilter.EDGE_ENHANCE_MORE  边界加强(阀值更大)</div><div class="line">#ImageFilter.EMBOSS     浮雕滤镜</div><div class="line">#ImageFilter.FIND_EDGES     边界滤镜</div><div class="line">#ImageFilter.SMOOTH     平滑滤镜</div><div class="line">#ImageFilter.SMOOTH_MORE    平滑滤镜(阀值更大)</div><div class="line">#ImageFilter.SHARPEN    锐化滤镜</div><div class="line"></div><div class="line">def filterDemo():  </div><div class="line">    img = Image.open(&quot;pic4.jpg&quot;)  </div><div class="line">    #img = inHalf(img)  </div><div class="line">    imgfilted = img.filter(ImageFilter.SHARPEN)  </div><div class="line">    #imgfilted.show()  </div><div class="line">    imgfilted.save(&quot;pic4_1.jpg&quot;)  </div><div class="line">  </div><div class="line">if __name__ == &quot;__main__&quot;:  </div><div class="line">    filterDemo()</div></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://blog.csdn.net/column/details/opencv-tutorial.html" target="_blank" rel="external">http://blog.csdn.net/column/details/opencv-tutorial.html</a><br><a href="http://blog.csdn.net/sunny2038/article/details/9057415" target="_blank" rel="external">http://blog.csdn.net/sunny2038/article/details/9057415</a><br><a href="http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_gui/py_video_display/py_video_display.html" target="_blank" rel="external">http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_gui/py_video_display/py_video_display.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/29/opencv/" data-id="cj5c7k42i0042m0u47cyggxgv" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Tkinter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/27/Tkinter/" class="article-date">
+  <time datetime="2016-03-27T06:58:50.000Z" itemprop="datePublished">2016-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/27/Tkinter/">Tkinter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>在 GUI 程序中,会有一个顶层根窗口对象,它包含着所有小窗口对象,它们共同组成一个完整的 GUI 程序。<br>这些小窗口对象可以是文字标签、按钮、列表框等等。<br>这些独立的 GUI 构件就是所谓的组件。<br>所以当我们说创建一个顶层窗口的时候,我们实际上是指需要一个放置所有组件的地方。</p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>典型的 Python 语句如下行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">top = Tkinter.Tk()</div></pre></td></tr></table></figure></p>
+<p>进入无限循环等待用户操作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Tkinter.mainloop()</div></pre></td></tr></table></figure></p>
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Button</td>
+<td>按钮。类似标签,但提供额外的功能,例如鼠标掠过、按下、释放以及键盘操作/事件</td>
+</tr>
+<tr>
+<td>Canvas</td>
+<td>画布。提供绘图功能(直线、椭圆、多边形、矩形);可以包含图形或位图</td>
+</tr>
+<tr>
+<td>Checkbutton</td>
+<td>选择按钮。一组方框,可以选择其中的任意个(类似 HTML 中的 checkbox)</td>
+</tr>
+<tr>
+<td>Entry</td>
+<td>文本框。单行文字域,用来收集键盘输入(类似 HTML 中的 text)</td>
+</tr>
+<tr>
+<td>Frame</td>
+<td>框架。包含其他组件的纯容器</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>标签。用来显示文字或图片</td>
+</tr>
+<tr>
+<td>Listbox</td>
+<td>列表框。一个选项列表,用户可以从中选择</td>
+</tr>
+<tr>
+<td>Menu</td>
+<td>菜单。点下菜单按钮后弹出的一个选项列表,用户可以从中选择</td>
+</tr>
+<tr>
+<td>Menubutton</td>
+<td>菜单按钮。用来包含菜单的组件(有下拉式、层叠式等等)</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>消息框。类似于标签,但可以显示多行文本</td>
+</tr>
+<tr>
+<td>Radiobutton</td>
+<td>单选按钮。一组按钮,其中只有一个可被“按下”(类似 HTML 中的 radio)</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>进度条。线性“滑块”组件,可设定起始值和结束值,会显示当前位置的精确值</td>
+</tr>
+<tr>
+<td>Scrollbar</td>
+<td>滚动条。对其支持的组件(文本域、画布、列表框、文本框)提供滚动功能</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>文本域。多行文字区域,可用来收集(或显示)用户输入的文字(类似 HTML 中的 textarea)</td>
+</tr>
+<tr>
+<td>Toplevel</td>
+<td>顶级。类似框架,但提供一个独立的窗口容器</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*-coding:utf-8 -*-</div><div class="line"></div><div class="line">from Tkinter import *</div><div class="line"></div><div class="line">root = Tk()</div><div class="line">label = Label(root, text=&apos;Hello World!&apos;)</div><div class="line">label.pack()</div><div class="line">mainloop()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">quit = Button(root, text=&quot;Quit &quot;, command=root.quit,bg=&apos;red&apos;, fg=&apos;white&apos;)</div><div class="line">#bg:背景色红色，fg:前景色白色</div></pre></td></tr></table></figure>
+<p>对 packer 没有其他指令时,组件是按垂直顺序放置的(依次放在其他组件的上面)。<br>要水平放置则需要创建一个框架对象,再用它来添加按钮。</p>
+<p>滑动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*-coding:utf-8 -*-</div><div class="line"></div><div class="line">from Tkinter import *</div><div class="line"></div><div class="line">def resize(ev=None):</div><div class="line">    label.config(text=&apos;%d&apos; % scale.get())</div><div class="line"></div><div class="line">top = Tk()</div><div class="line">top.geometry(&apos;250x150&apos;) #限定顶层窗口尺寸</div><div class="line">label = Label(top, text=&apos;%d&apos;%0)</div><div class="line">label.pack(fill=Y, expand=1)</div><div class="line">scale = Scale(top, from_=10, to=40, orient=HORIZONTAL, command=resize)</div><div class="line">scale.set(12)</div><div class="line">scale.pack(fill=X, expand=1)</div><div class="line">quit = Button(top, text=&quot;QUIT&quot;,command=top.quit, activeforeground=&apos;white&apos;, activebackground=&apos;red&apos;)</div><div class="line">quit.pack()</div><div class="line">mainloop()</div></pre></td></tr></table></figure></p>
+<p>触发函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">#-*-coding:utf-8-*-</div><div class="line"></div><div class="line">import Tkinter</div><div class="line"></div><div class="line">top=Tkinter.Tk()</div><div class="line">top.title(&quot;XZIT&quot;)</div><div class="line">top.geometry(&apos;600x600&apos;)</div><div class="line"></div><div class="line">def printname():</div><div class="line">    mes.insert(&apos;1.0&apos;, &quot;XZIT\n&quot;)</div><div class="line"></div><div class="line">Tkinter.Button(top, text=&quot;开始&quot;, command = printname).pack()</div><div class="line"></div><div class="line">mes = Tkinter.Text()</div><div class="line">mes.pack()</div><div class="line"></div><div class="line">Tkinter.mainloop()</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/27/Tkinter/" data-id="cj5c7k422003lm0u4hazwxdhu" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git_usual" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/24/git_usual/" class="article-date">
+  <time datetime="2016-03-24T13:04:06.000Z" itemprop="datePublished">2016-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/24/git_usual/">git常用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>git本地仓库由三个东西构成:</p>
+<ul>
+<li>工作目录</li>
+<li>暂存区</li>
+<li>HEAD<h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2>切换到工作目录，使用git init初始化仓库<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2>信息配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;name&quot; </div><div class="line">git config --global user. email &quot;somebody@any.com&quot;</div><div class="line">git config --list  #列出配置</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="git-help"><a href="#git-help" class="headerlink" title="git help"></a>git help</h2><p>获得帮助，后面可以添加参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git help commit</div></pre></td></tr></table></figure></p>
+<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add "></a>git add <filename></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add &lt;filename&gt;</div></pre></td></tr></table></figure>
+<p>将文件添加到暂存区，可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure></p>
+<p>添加所有文件</p>
+<h2 id="git-mv"><a href="#git-mv" class="headerlink" title="git mv  "></a>git mv <filename> <newname></newname></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git mv &lt;filename&gt; &lt;newname&gt;</div></pre></td></tr></table></figure>
+<p>使用mv指令更改文件名或者移动文件</p>
+<h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm "></a>git rm <filename></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm &lt;filename&gt;</div></pre></td></tr></table></figure>
+<p>删除文件</p>
+<h2 id="git-commit-m-“some-message”"><a href="#git-commit-m-“some-message”" class="headerlink" title="git commit -m “some message”"></a>git commit -m “some message”</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &quot;some message&quot;</div></pre></td></tr></table></figure>
+<p>将改动提交到HEAD，并标注一段信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -am &quot;some message&quot;</div></pre></td></tr></table></figure></p>
+<p>加上a将会更新暂存区内容并commit</p>
+<h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><p>查看commit id<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log --author=&quot;name&quot;</div></pre></td></tr></table></figure></p>
+<p>查看特定author的提交信息</p>
+<h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>查看工作区状态<br>如果工作区有改动，会和暂存区对比并显示</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>显示工作区和暂存区的不同点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff --staged</div></pre></td></tr></table></figure></p>
+<p>加入参数staged，能够显示与HEAD之间的不同点</p>
+<h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout "></a>git checkout <filename></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout &lt;filename&gt;</div></pre></td></tr></table></figure>
+<p>将某个文件回滚到暂存区的状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout &quot;commit number&quot; -- &quot;filename&quot;</div></pre></td></tr></table></figure></p>
+<p>新分支整合到主分支后面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase</div></pre></td></tr></table></figure></p>
+<p>给某个版本打上标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag ***</div></pre></td></tr></table></figure></p>
+<p>将某个文件回滚到某个commit版本</p>
+<h2 id="git-reset-HEAD"><a href="#git-reset-HEAD" class="headerlink" title="git reset HEAD "></a>git reset HEAD <filename></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset HEAD &lt;filename&gt;</div></pre></td></tr></table></figure>
+<p>将某个文件重置到HEAD里面的版本，注意，后面的版本会被删除</p>
+<h2 id="git-remote-add"><a href="#git-remote-add" class="headerlink" title="git remote add  "></a>git remote add <name> <your url=""></your></name></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add &lt;name&gt; &lt;your url&gt;</div></pre></td></tr></table></figure>
+<p>连接远程仓库</p>
+<h2 id="git-remote-v"><a href="#git-remote-v" class="headerlink" title="git remote -v"></a>git remote -v</h2><p>查看连接的远程仓库</p>
+<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push  :"></a>git push <name> <localbranch>:<obj branch=""></obj></localbranch></name></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push &lt;name&gt; &lt;localbranch&gt;:&lt;obj branch&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch -a #查看所有分支</div><div class="line">git branch -r #查看远程分支</div></pre></td></tr></table></figure>
+<p>本地HEAD推送到远程仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push HarryHEi master:hexo</div></pre></td></tr></table></figure></p>
+<h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull  :"></a>git pull <name> <obj branch="">:<local branch=""></local></obj></name></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull &lt;name&gt; &lt;obj branch&gt;:&lt;local branch&gt;</div></pre></td></tr></table></figure>
+<p>更新本地文件</p>
+<h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><p>创建一个名为.gitignore的文件，push无视某些文件</p>
+<h2 id="git-bisect"><a href="#git-bisect" class="headerlink" title="git bisect"></a>git bisect</h2><p><a href="http://www.oschina.net/translate/letting-git-bisect-help-you" target="_blank" rel="external">http://www.oschina.net/translate/letting-git-bisect-help-you</a><br>使用二分伐查找问题版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#开始</div><div class="line">git bisect start</div><div class="line"></div><div class="line">#如果当前版本为bug版本，就设置为bad</div><div class="line">git bisect bad</div><div class="line"></div><div class="line">#查看最一开始版本号</div><div class="line">git log | tail -n -5  </div><div class="line">#设置最开始版本为good</div><div class="line">#这时候会自动切换到中间版本，并返回版本号</div><div class="line">git bisect good</div><div class="line"></div><div class="line">#检查版本，并继续打上标记</div><div class="line">git bisect good</div><div class="line">git bisect bad</div><div class="line"></div><div class="line">直到找到问题版本</div></pre></td></tr></table></figure>
+<h1 id="git设置proxy"><a href="#git设置proxy" class="headerlink" title="git设置proxy"></a>git设置proxy</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy 127.0.0.1:8787</div></pre></td></tr></table></figure>
+<h1 id="git取消proxy"><a href="#git取消proxy" class="headerlink" title="git取消proxy"></a>git取消proxy</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global --unset http.proxy</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git push origin master</div><div class="line">fatal: unable to access &apos;https://github.com/HarryHEi/HarryHEi.github.io.git/&apos;: Could not resolve host: github.com</div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016/03/24/git_usual/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/24/git_usual/" data-id="cj5c7k38h000um0u48bpwbz34" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-chatroom" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/23/chatroom/" class="article-date">
+  <time datetime="2016-03-23T06:59:26.000Z" itemprop="datePublished">2016-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/23/chatroom/">聊天室</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>聊天室就是允许多人一起聊天，类似于QQ群的结构<br>主要原理就是用户发送消息给服务器，再由服务器发送消息给所有其他人<br>主要包括两个部分:服务器和客户端</p>
+<h1 id="服务器部分"><a href="#服务器部分" class="headerlink" title="服务器部分"></a>服务器部分</h1><p>服务器需要同时监听多个客户端的消息，可以使用select模块<br>注意在windows不能直接使用select<br>select的三个参数分别代表read,write,error<br>定义一个数组connection_lis用来存放连接的客户端套接字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">connection_lis = [tcpSerSock]</div><div class="line">sread, swrite, serror = select.select(connection_lis,[],[])</div></pre></td></tr></table></figure></p>
+<p>当select有返回值时，如果是服务器的socket说明有客户端连接<br>如果是其他客户端的socket，说明客户端发送数据给服务器<br>代码结构像这样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">for s in sread:</div><div class="line">    #新用户连接</div><div class="line">    if s == tcpSerSock:</div><div class="line">        pass</div><div class="line">    #用户数据</div><div class="line">    else:</div><div class="line">       pass</div></pre></td></tr></table></figure></p>
+<p>想要实现聊天，还必须要将用户的消息发送给其他用户<br>因为之前定义了一个用户数组connection_lis<br>直接使用for循环轮询发送消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#广播消息</div><div class="line">def broadcast_data(sock, message):</div><div class="line">    #逐一发送</div><div class="line">    for s in connection_lis:</div><div class="line">        if (s != tcpSerSock) and (s != sock): #除了服务器自身和发送者</div><div class="line">            try:</div><div class="line">                if isinstance(message, bytes):</div><div class="line">                    s.send(message+&quot;\r\n&quot;)</div><div class="line">                else:</div><div class="line">                    s.send(message.encode()+&quot;\r\n&quot;)</div><div class="line">            except:</div><div class="line">                try:</div><div class="line">                    print &quot;不能给客户端[ %s ]发送消息&quot; %s.getpeername()</div><div class="line">                except:</div><div class="line">                    print &quot;不能识别客户端&quot;</div><div class="line">                s.close()   #如果发送失败，断开连接并删除</div><div class="line">                connection_lis.remove(s)</div></pre></td></tr></table></figure></p>
+<p>用户退出<br>注意在broadcast_data之后再删除数组里面的用户socket<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def client_close(sock):</div><div class="line">    broadcast_data(sock, &quot;[ %s ]退出了&quot;%str(sock.getpeername()))</div><div class="line">    print &quot;[ %s ]退出了&quot;%str(sock.getpeername())</div><div class="line">    connection_lis.remove(sock)</div><div class="line">    sock.close()</div></pre></td></tr></table></figure></p>
+<p>全部代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- coding:utf-8 -*-</div><div class="line"></div><div class="line">&quot;聊天服务器&quot;</div><div class="line"></div><div class="line">from socket import *</div><div class="line">import sys</div><div class="line">import select</div><div class="line"></div><div class="line">HOST = &quot;&quot;</div><div class="line">PORT = 21567</div><div class="line">BUFSIZ = 1024</div><div class="line">ADDR = (HOST,PORT)</div><div class="line"></div><div class="line">tcpSerSock = socket(AF_INET, SOCK_STREAM)    #创建服务器套接字</div><div class="line">tcpSerSock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)  #地址复用</div><div class="line">tcpSerSock.bind(ADDR)   #地址绑定到套接字，地址是双元素元祖</div><div class="line">tcpSerSock.listen(5)    #监听，最多允许5个客户连接到服务器</div><div class="line"></div><div class="line">connection_lis = [tcpSerSock]</div><div class="line"></div><div class="line">#广播消息</div><div class="line">def broadcast_data(sock, message):</div><div class="line">    #逐一发送</div><div class="line">    for s in connection_lis:</div><div class="line">        if (s != tcpSerSock) and (s != sock): #除了服务器自身和发送者</div><div class="line">            try:</div><div class="line">                if isinstance(message, bytes):</div><div class="line">                    s.send(message+&quot;\r\n&quot;)</div><div class="line">                else:</div><div class="line">                    s.send(message.encode()+&quot;\r\n&quot;)</div><div class="line">            except:</div><div class="line">                try:</div><div class="line">                    print &quot;不能给客户端[ %s ]发送消息&quot; %s.getpeername()</div><div class="line">                except:</div><div class="line">                    print &quot;不能识别客户端&quot;</div><div class="line">                s.close()   #如果发送失败断开连接，删除</div><div class="line">                connection_lis.remove(s)</div><div class="line"></div><div class="line">def client_close(sock):</div><div class="line">    broadcast_data(sock, &quot;[ %s ]退出了&quot;%str(sock.getpeername()))</div><div class="line">    print &quot;[ %s ]退出了&quot;%str(sock.getpeername())</div><div class="line">    connection_lis.remove(sock)</div><div class="line">    sock.close()</div><div class="line"></div><div class="line">print &quot;聊天室: &quot;, ADDR</div><div class="line"></div><div class="line">print &quot;wait...&quot;</div><div class="line"></div><div class="line">while True:</div><div class="line">    #监听</div><div class="line">    try:</div><div class="line">        sread, swrite, serror = select.select(connection_lis,[],[])</div><div class="line">    except KeyboardInterrupt, e:</div><div class="line">        print &quot; &quot;</div><div class="line">        print &quot;byebye~&quot;</div><div class="line">        sys.exit(1)</div><div class="line"></div><div class="line">    for s in sread:</div><div class="line">        #新用户连接</div><div class="line">        if s == tcpSerSock:</div><div class="line">            try:</div><div class="line">                clientsock, addr = s.accept()</div><div class="line">                print &quot;...新用户连接: &quot;, addr</div><div class="line">                connection_lis.append(clientsock)</div><div class="line">                print &quot;添加到用户&quot;</div><div class="line">                broadcast_data(tcpSerSock, &quot;[%s]加入聊天室\r\n&quot; %str(addr))</div><div class="line">                print &quot;当前人数:&quot;, str(len(connection_lis) - 1)</div><div class="line">            except:</div><div class="line">                print &quot;连接失败&quot;</div><div class="line">        #用户数据</div><div class="line">        else:</div><div class="line">            try:</div><div class="line">                data = s.recv(BUFSIZ)</div><div class="line">                if data.strip() == &quot;&quot;:</div><div class="line">                    client_close(s)</div><div class="line">                    continue</div><div class="line">                else:</div><div class="line">                    broadcast_data(s, &quot;[ %s ]: %s&quot; %(s.getpeername(), str(data)))</div><div class="line">            except:</div><div class="line">                print &quot;用户数据接收失败&quot;</div></pre></td></tr></table></figure></p>
+<h1 id="客户端部分"><a href="#客户端部分" class="headerlink" title="客户端部分"></a>客户端部分</h1><p>客户端主要需要做两件事:监听服务器发送的数据和发送数据给服务器<br>定义一个数组rlist，存放标准输入和套接字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rlist = [sys.stdin, clientserver]</div></pre></td></tr></table></figure></p>
+<p>使用select监听<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sread, swrite, serror = select.select(rlist, [], [])</div></pre></td></tr></table></figure></p>
+<p>select返回数据，如果是clientserver，说明是服务器会送了消息<br>如果时标准输入，说明时用户输入了数据<br>全部代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- coding:utf-8 -*-</div><div class="line"></div><div class="line">&quot;聊天客户端&quot;</div><div class="line"></div><div class="line">from socket import *</div><div class="line">import select</div><div class="line">import sys</div><div class="line">import time</div><div class="line"></div><div class="line">HOST = &quot;localhost&quot;</div><div class="line">PORT = 21567</div><div class="line">BUFSIZ = 1024</div><div class="line">ADDR = (HOST,PORT)</div><div class="line"></div><div class="line">def prompt():</div><div class="line">    sys.stdout.write(&apos;&lt;You&gt;&apos;)</div><div class="line">    sys.stdout.flush()</div><div class="line"></div><div class="line">try:</div><div class="line">    clientserver = socket(AF_INET, SOCK_STREAM)</div><div class="line">    clientserver.connect(ADDR)</div><div class="line">except:</div><div class="line">    print &quot;服务器连接失败&quot;</div><div class="line">    sys.exit(1)</div><div class="line"></div><div class="line">print &quot;成功连接服务器&quot;</div><div class="line"></div><div class="line">while True:</div><div class="line">    rlist = [sys.stdin, clientserver]</div><div class="line">    try:</div><div class="line">        sread, swrite, serror = select.select(rlist, [], [])</div><div class="line">    except KeyboardInterrupt, e:</div><div class="line">        print &quot; &quot;</div><div class="line">        print &quot;byebye~&quot;</div><div class="line">        sys.exit(1)</div><div class="line">    for s in sread:</div><div class="line">        #接收到消息</div><div class="line">        if s == clientserver:</div><div class="line">            data = s.recv(BUFSIZ)</div><div class="line">            if not data:</div><div class="line">                print &quot;服务器没有反应&quot;</div><div class="line">                sys.exit(1)</div><div class="line">            #显示消息</div><div class="line">            else:</div><div class="line">                sys.stdout.write(data)</div><div class="line">                prompt()</div><div class="line"></div><div class="line">        #发送消息</div><div class="line">        else:</div><div class="line">            try:</div><div class="line">                message = sys.stdin.readline()</div><div class="line">                if not message.strip():</div><div class="line">                    clientserver.send(message)</div><div class="line">                    print &quot;正在退出&quot;</div><div class="line">                    time.sleep(1)</div><div class="line">                    sys.exit(1)</div><div class="line">                clientserver.send(message)</div><div class="line">                prompt()</div><div class="line">            except KeyboardInterrupt, e:</div><div class="line">                print &quot;byebye~&quot;</div><div class="line">                sys.exit(1)</div></pre></td></tr></table></figure></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.cnblogs.com/hazir/p/python_chat_room.html" target="_blank" rel="external">http://www.cnblogs.com/hazir/p/python_chat_room.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/23/chatroom/" data-id="cj5c7k380000hm0u43wn479gn" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spider" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/20/spider/" class="article-date">
+  <time datetime="2016-03-20T11:26:19.000Z" itemprop="datePublished">2016-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/20/spider/">爬图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><p>此程序通过urllib2等模块，爬取网页妹子图片</p>
+<h1 id="爬妹子图片"><a href="#爬妹子图片" class="headerlink" title="爬妹子图片"></a>爬妹子图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- coding: utf-8 -*-  </div><div class="line"></div><div class="line">import threading,urllib2,urllib</div><div class="line">import os,re,string,sys,time</div><div class="line">from bs4 import BeautifulSoup</div><div class="line"></div><div class="line">&quot;抓图&quot;</div><div class="line"></div><div class="line">countnum = 0</div><div class="line">obj = &quot;/home/herui/Python_Spider/&quot;</div><div class="line">threads = []</div><div class="line"></div><div class="line"># 获取页面的html</div><div class="line">def get_page(url):</div><div class="line">        req = urllib2.Request(url)</div><div class="line">        try:</div><div class="line">                html = urllib2.urlopen(req)</div><div class="line">                return html</div><div class="line">        except urllib2.URLError, e:</div><div class="line">            if hasattr(e, &quot;code&quot;):</div><div class="line">                print &quot;HTTP error: &quot; + str(e.code)</div><div class="line">            elif hasattr(e, &quot;reason&quot;):</div><div class="line">                print e.reason</div><div class="line"></div><div class="line">#获取分类链接</div><div class="line">def get_fenlei_link(url, html):</div><div class="line">    soup = BeautifulSoup(html, &apos;lxml&apos;)</div><div class="line">    links = soup.find_all(href = re.compile(&quot;/mm/&quot;))[0:5]</div><div class="line">    fenlei_links = []</div><div class="line">    for link in links:</div><div class="line">        longlink = str(link).split(&apos;\&quot;&apos;)[1]</div><div class="line">        fenlei_links.append(url+longlink)</div><div class="line">    return fenlei_links</div><div class="line"></div><div class="line">#获得页面所有图片的链接</div><div class="line">def get_pic_links(url):</div><div class="line">    req = urllib2.Request(url)</div><div class="line">    try:</div><div class="line">        html = urllib2.urlopen(req)</div><div class="line">    except urllib2.URLError, e:</div><div class="line">        if hasattr(e, &quot;code&quot;):</div><div class="line">            print &quot;HTTP error: &quot; + str(e.code)</div><div class="line">        elif hasattr(e, &quot;reason&quot;):</div><div class="line">            print e.reason</div><div class="line">    soup = BeautifulSoup(html, &apos;lxml&apos;)</div><div class="line">    links = soup.find_all(src = re.compile(&quot;.jpg&quot;))</div><div class="line">    pic_url = []</div><div class="line">    for link in links:</div><div class="line">        pic_url.append(re.findall(&quot;http:.*?.jpg&quot;,str(link)))</div><div class="line">    return pic_url</div><div class="line"></div><div class="line"></div><div class="line">#获得每个图包的链接</div><div class="line"># &quot;/mm/xxxxx/xxxxxxxxxxxxxx.html&quot;</div><div class="line">def get_pic_pack_link(page_index):</div><div class="line">    html = urllib2.urlopen(page_index).read()</div><div class="line">    links = re.findall(&quot;/mm/.*?html&quot;, str(html))[1:]</div><div class="line">    return links</div><div class="line"></div><div class="line">#抓取一个图包里面的十个图片</div><div class="line">def get_pack_pic(page_index,index_num, path, packlink ,pack_num):</div><div class="line">    global countnum</div><div class="line">    global obj</div><div class="line">    print &quot;开始下载第%d个图包&quot;%pack_num</div><div class="line">    for i in range(1,11): #每个图抱抓10个</div><div class="line">        name = obj+str(path)+&apos;/&apos;+str(index_num)+str(pack_num)+str(string.zfill(i,5))+&quot;.jpg&quot;</div><div class="line">        if i &lt;= 1:</div><div class="line">            packurl = str(re.findall(&quot;http://.*/&quot;, str(page_index))[0]) + str(str(str(packlink).split(&quot;.&quot;)[0]).split(&quot;/&quot;)[-1]) + &quot;.html&quot;</div><div class="line">        else:</div><div class="line">            packurl = str(re.findall(&quot;http://.*/&quot;, str(page_index))[0]) + str(str(str(packlink).split(&quot;.&quot;)[0]).split(&quot;/&quot;)[-1]) + &quot;-&quot; +str(i) + &quot;.html&quot;</div><div class="line">        try:</div><div class="line">            packhtml = urllib2.urlopen(packurl).read()</div><div class="line">            packpicurl = str(str(re.findall(&quot;http://22mm-img.*?_640.jpg&quot;, packhtml)).split(&quot;=&quot;)[-1]).split(&quot;,&quot;)[-1]</div><div class="line">            packpicurl = re.findall(&quot;http://.*?.jpg&quot;, packpicurl)[0]</div><div class="line">            packpicurl = packpicurl.replace(&quot;big&quot;,&quot;pic&quot;,1)</div><div class="line">        except:</div><div class="line">            continue</div><div class="line">        try:</div><div class="line">            urllib.urlretrieve(packpicurl,name)</div><div class="line">        except:</div><div class="line">            print &quot;图片下载失败&quot;</div><div class="line">            continue</div><div class="line">        countnum += 1</div><div class="line">        print &quot;%s&quot;%str(name) + &quot;下载成功&quot;</div><div class="line"></div><div class="line">#开始</div><div class="line">def start():</div><div class="line">        print &apos;Waiting............&apos;</div><div class="line">        url=&apos;http://www.22mm.cc&apos;</div><div class="line">        html=get_page(url)</div><div class="line">        fenlei_links = get_fenlei_link(url, html)</div><div class="line">        for link in fenlei_links:</div><div class="line">            pagenum = 0</div><div class="line">            while pagenum &lt;= 5:</div><div class="line">                pagenum += 1</div><div class="line">                if pagenum == 1:</div><div class="line">                    path=unicode(str(link).split(&quot;/&quot;)[-2],&apos;utf8&apos;)</div><div class="line">                    if not os.path.exists(path):</div><div class="line">                        os.mkdir(path)</div><div class="line">                    page_index = link+&quot;index&quot;+&quot;.html&quot;</div><div class="line">                else:</div><div class="line">                    page_index = link+&quot;index_&quot;+str(pagenum)+&quot;.html&quot;</div><div class="line">                packlinks = get_pic_pack_link(page_index) #每个分类每页每个图包首地址</div><div class="line">                pack_num = 0</div><div class="line">                for packlink in packlinks:</div><div class="line">                    thread = threading.Thread(target=get_pack_pic,args=(page_index, pagenum, path, packlink, pack_num))</div><div class="line">                    thread.setDaemon(True)</div><div class="line">                    thread.start()</div><div class="line">                    threads.append(thread)</div><div class="line">                    pack_num += 1</div><div class="line">                    print &quot;开始第%s个线程&quot;%pack_num</div><div class="line"></div><div class="line">if __name__ == &quot;__main__&quot;:</div><div class="line">    try:</div><div class="line">        start()</div><div class="line">        for thread in threads:</div><div class="line">            time.sleep(1)</div><div class="line">            while thread.join():</div><div class="line">                pass</div><div class="line">        print &quot;一共下载了%d个图片&quot;%countnum</div><div class="line">    except KeyboardInterrupt, e :</div><div class="line">        print &quot;一共下载了%d个图片&quot;%countnum</div><div class="line">        for thread in threads:</div><div class="line">            sys.exit(1)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/20/spider/" data-id="cj5c7k439004qm0u4exaqy2ju" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spider/">spider</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-threading" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/19/threading/" class="article-date">
+  <time datetime="2016-03-19T12:35:43.000Z" itemprop="datePublished">2016-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/19/threading/">多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么时进程"><a href="#什么时进程" class="headerlink" title="什么时进程"></a>什么时进程</h1><p>进程(有时被称为<strong>重量级进程</strong>)是程序的一次执行。<br><strong>每个进程都有自己的地址空间,内存,数据栈以及其它记录其运行轨迹的辅助数据。</strong><br>操作系统管理在其上运行的所有进程,并为这些进程公平地分配时间。<br>进程也可以通过 fork 和 spawn 操作来完成其它的任务。<br>不过各个进程有自己的内存空间,数据栈等,所以只能使用进程间通讯(IPC),<br>而不能直接共享信息。</p>
+<p><strong>Python 实现多进程</strong><br>Unix/Linux提供一个<strong>fork()</strong>函数调用<br><strong>fork()</strong>函数把当前进程(父进程)复制了一份(子进程)，分别在父进程和子进程返回一个值<br>子进程永远返回0，父进程返回进程的ID，子进程可以通过<strong>getppid()</strong>拿到父进程PID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line"></div><div class="line">pid = os.fork()</div><div class="line"></div><div class="line">if pid == 0:</div><div class="line">    print &quot;my pid is &quot;,os.getppid()</div><div class="line">else:</div><div class="line">    print &quot;my pid is &quot;,pid</div></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">my pid is  19009</div><div class="line">my pid is  1950</div></pre></td></tr></table></figure>
+<h1 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程"></a>什么是线程</h1><p>线程(有时被称为<strong>轻量级进程</strong>)跟进程有些相似,不同的是,所有的线程运行在同一个进程中,<br><strong>共享相同的运行环境。</strong><br>它们可以想像成是在主进程或“主线程”中并行运行的“迷你进程”。<br>线程有开始,顺序执行和结束三部分。<br>它有一个自己的指令指针,记录自己运行到什么地方。<br>线程的运行可能被抢占(中断),或暂时的被挂起(也叫睡眠),让其它的线程运行,这叫做让步。<br><strong>一个进程中的各个线程之间共享同一片数据空间,所以线程之间可以比进程之间更方便地共享数据以及相互通讯。</strong><br>线程一般都是并发执行的,正是由于这种并行和数据共享的机制使得多个任务的合作变为可能。<br>实际上,在单 CPU 的系统中,真正的并发是不可能的,每个线程会被安排成每次只运行一小会,<br>然后就把 CPU 让出来,让其它的线程去运行。<br>在进程的整个运行过程中,每个线程都只做自己的事,在需要的时候跟其它的线程共享运行的结果。<br>当然,这样的共享并不是完全没有危险的。如果多个线程共同访问同一片数据,则由于数据访<br>问的顺序不一样,有可能导致数据结果的不一致的问题。这叫做竞态条件(race condition)。<br>幸运的是,大多数线程库都带有一系列的同步原语,来控制线程的执行和数据的访问。<br>另一个要注意的地方是,由于有的函数会在完成之前阻塞住,在没有特别为多线程做修改的情<br>况下,这种“贪婪”的函数会让 CPU 的时间分配有所倾斜。<br>导致各个线程分配到的运行时间可能不尽相同,不尽公平。</p>
+<h1 id="计算密集型程序和I-O密集型程序"><a href="#计算密集型程序和I-O密集型程序" class="headerlink" title="计算密集型程序和I/O密集型程序"></a>计算密集型程序和I/O密集型程序</h1><p>涉及到网络、磁盘IO的任务都是IO密集型任务，这类任务的特点是CPU消耗很少<br>任务的大部分时间都在等待IO操作完成（因为IO的速度远远低于CPU和内存的速度）。<br><strong>对于IO密集型任务，任务越多，CPU效率越高</strong>，但也有一个限度。<br>常见的大部分任务都是IO密集型任务，比如Web应用。<br><strong>IO密集型任务执行期间，99%的时间都花在IO上，花在CPU上的时间很少。</strong><br>因此，用运行速度极快的C语言替换用Python这样运行速度极低的脚本语言，完全无法提升运行效率。<br>对于IO密集型任务，最合适的语言就是开发效率最高（代码量最少）的语言，脚本语言是首选。</p>
+<p>计算密集型任务的特点是要进行<strong>大量的计算</strong>，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。<br>这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低。<br>所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。<br>Python这样的脚本语言运行效率很低，完全不适合计算密集型任务。</p>
+<h1 id="python-多线程"><a href="#python-多线程" class="headerlink" title="python 多线程"></a>python 多线程</h1><p>Python 代码的执行由 Python 虚拟机(也叫解释器主循环)来控制。<br>Python 在设计之初就考虑到要在主循环中,同时只有一个线程在执行,<br>就像单 CPU 的系统中运行多个进程那样,内存中可以存放多个程序,<br>但任意时刻,只有一个程序在 CPU 中运行。<br>同样地,虽然 Python 解释器中可以“运行”多个线程,但在任意时刻,只有一个线程在解释器中运行。</p>
+<p>python中使用多线程有两种方式，分别是使用函数传递和类包装。<br>python标准库提供了thread和threading两个模块。</p>
+<blockquote>
+<p>这两个模块中,我们不建议使用 thread模块。<br>这样做有很多原因,很明显的一个原因是,当主线程退出的时候,所有其它线程没有被清除<br>就退出了。但另一个模块 threading 就能确保所有“重要的”子线程都退出后,进程才会结束。</p>
+</blockquote>
+<hr>
+<p>thread 模块提为线程提供了一个低级接口</p>
+<p>thread.start_new_thread(function, args[,kwargs])</p>
+<p>创建一个新线程，第二个参数必须是一个元祖，如果只有没有参数<br>或者只有一个，要在括号里加一个‘，’<br>函数返回值是一个整数标识符</p>
+<p>thread.exit()</p>
+<p>结束当前线程，可以在函数中调用，以关闭进程<br>当主线程退出的时候, 所有的线程也随着退出</p>
+<p>thread.get_ident()</p>
+<p>获取当前线程的标识符</p>
+<p>thread.interrupt_main ()</p>
+<p>在主线程触发 KeyboardInterrupt 异常，用于中断线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import thread, time</div><div class="line">thread.start_new_thread(lambda : (thread.interrupt_main(), ), ())</div><div class="line">try:</div><div class="line">    time.sleep(2)</div><div class="line">except KeyboardInterrupt, e:</div><div class="line">    print &apos;error:&apos;, e</div><div class="line">print &apos;over&apos;</div></pre></td></tr></table></figure>
+<hr>
+<p>thread锁</p>
+<p>thread.allocate_lock()</p>
+<p>创建锁</p>
+<p>lock.acquire(waitflag=None)</p>
+<p>获取锁</p>
+<p>lock.release()</p>
+<p>释放锁</p>
+<hr>
+<p>threading</p>
+<p>threading是thread模块的二次封装版本<br>threading 模块为线程提供了一个高级接口</p>
+<p>threading 模块支持守护线程,它们是这样工作的:<br>守护线程一般是一个等待客户请求的服务器,如果没有客户提出请求,它就在那等着。<br>如果主线程要退出的时候,不用等待那些子线程完成,那就设定这些线程的 daemon 属性。<br>即,<strong>在线程开始(调用 thread.start())之前,调用 setDaemon()函数设定线程的 daemon 标志<br>thread.setDaemon(True)就表示这个线程“不重要”<br>如果你想要等待子线程完成再退出,那就什么都不用做,或者显式地调用<br>thread.setDaemon(False)以保证其 daemon 标志为 False。</strong><br>可以调用 thread.isDaemon()函数来判断其 daemon 标志的值。<br>新的子线程会继承其父线程的 daemon 标志。整个 Python 会在所有的非守护<br>线程退出后才会结束,即进程中没有非守护线程存在的时候才结束。</p>
+<p>threading.Thread()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">thread = threading.Thread(target=function,args=(...))</div></pre></td></tr></table></figure>
+<p>继承Thread类，定义run方法，就可以创建一个新线程<br>然后调用start方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line">import time</div><div class="line"></div><div class="line">class Counter:</div><div class="line">    def __init__(self):</div><div class="line">        self.lock = threading.Lock()</div><div class="line">        self.value = 0</div><div class="line"></div><div class="line">    def increment(self):</div><div class="line">        self.lock.acquire() #获取锁</div><div class="line">        self.value += 1</div><div class="line">        self.lock.release() #释放锁</div><div class="line">        return self.value</div><div class="line"></div><div class="line">count = Counter()</div><div class="line"></div><div class="line">class MyThread(threading.Thread):</div><div class="line">    def run(self):</div><div class="line">        for i in range(10):</div><div class="line">            value = count.increment()  # 自增</div><div class="line">            time.sleep(1)</div><div class="line">            print self.getName(),&quot;value: %d&quot;%value</div><div class="line"></div><div class="line"># 依次开启十个线程</div><div class="line">for i in range(10):</div><div class="line">    MyThread().start()</div></pre></td></tr></table></figure>
+<p>类初始化模型<br>def <strong>init</strong>(self, group=None, target=None, name=None, args=(), kwargs{})</p>
+<ul>
+<li>group: 预留</li>
+<li>target: 可调用函数</li>
+<li>name: 线程名</li>
+<li>args,kwargs: 参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*-coding:utf-8 -*-</div><div class="line"></div><div class="line">import threading</div><div class="line">from time import sleep, ctime</div><div class="line"></div><div class="line">class MyThread(threading.Thread):</div><div class="line">    def  __init__(self, target, args, name=&apos;&apos;):</div><div class="line">        super(MyThread, self).__init__()</div><div class="line">        self.target = target</div><div class="line">        self.args = args</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        print &apos;starting&apos;, self.name, &apos;at:&apos;, ctime()</div><div class="line">        self.res = apply(self.target, self.args)</div><div class="line">        print self.name, &apos;finished at:&apos;, ctime()</div><div class="line"></div><div class="line">    def get_res(self):</div><div class="line">        return self.res</div><div class="line"></div><div class="line">def loop(time):</div><div class="line">    sleep(time)</div><div class="line"></div><div class="line">thread = MyThread(loop, (2,))</div><div class="line">thread.start()</div></pre></td></tr></table></figure>
+<p>threading.Thread()的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">thread.getName() 获取线程名称</div><div class="line"></div><div class="line">thread.ident() 获取线程标识符</div><div class="line"></div><div class="line">thread.is_alive()</div><div class="line">thread.isAlive()</div><div class="line">判断线程是否是激活的。从调用start()方法启动线程，到run()方法执行完毕或者</div><div class="line">遇到未处理异常而中断,这段时间线程是激活的。</div><div class="line"></div><div class="line">thread.join([timeout])</div><div class="line">调用join会使主调线路阻塞，直到该线程运行结束或超时，参数timeout是数值类</div><div class="line">型，表示时间，单位秒</div></pre></td></tr></table></figure>
+<p>举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*-coding:utf-8 -*-</div><div class="line"></div><div class="line">import threading</div><div class="line">from time import sleep, ctime</div><div class="line">loops = [4,2]</div><div class="line">def loop(nloop, nsec):</div><div class="line">    print &apos;start loop&apos;, nloop, &apos;at:&apos;, ctime()</div><div class="line">    sleep(nsec)</div><div class="line">    print &apos;loop&apos;, nloop, &apos;done at:&apos;, ctime()</div><div class="line">    </div><div class="line">def main():</div><div class="line">    print &apos;starting at:&apos;, ctime()</div><div class="line">    threads = []</div><div class="line">    nloops = range(len(loops))</div><div class="line"></div><div class="line">    for i in nloops: #创建线程</div><div class="line">        thread = threading.Thread(target=loop,args=(i, loops[i]))</div><div class="line">        threads.append(thread)</div><div class="line">    </div><div class="line">    for thread in threads: #开始所有线程</div><div class="line">        thread.start()</div><div class="line">    </div><div class="line">    for thread in threads: #阻塞等待</div><div class="line">        thread.join()</div><div class="line">    </div><div class="line">    print &apos;all DONE at:&apos;, ctime()</div><div class="line">    </div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>终止线程 自定义线程类</p>
+<p>循环检测Event，然后终止循环<br>重写join方法，在join方法内设置Event</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line">import time</div><div class="line"></div><div class="line">class myThread(threading.Thread):</div><div class="line">    def __init__(self, name=&quot;myThread&quot;):</div><div class="line">        threading.Thread.__init__(self, name=name)</div><div class="line">        self._stopevent = threading.Event()</div><div class="line">    def run(self):</div><div class="line">        while not self._stopevent.isSet():</div><div class="line">            print &quot;loop&quot;</div><div class="line">            self._stopevent.wait(1.0)</div><div class="line">        print &quot;ends&quot;</div><div class="line">    def join(self, timeout=None):</div><div class="line">        self._stopevent.set()</div><div class="line">        threading.Thread.join(self, timeout)</div><div class="line"></div><div class="line">thread = myThread()</div><div class="line">thread.start()</div><div class="line">time.sleep(5) #等待5秒</div><div class="line">thread.join() #终止线程</div></pre></td></tr></table></figure>
+<hr>
+<p>threading模块有threading.Lock和threading.RLock</p>
+<p>RLock允许同一线程中多次获取锁，但是对应着也要多次release，Lock不能在同一线程多次获取锁</p>
+<p>使用Lock</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line">import time</div><div class="line"></div><div class="line"></div><div class="line">class A(threading.Thread):</div><div class="line">    def __init__(self, lock):</div><div class="line">        super(A, self).__init__()</div><div class="line">        self.lock = lock</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        self.lock.acquire()</div><div class="line">        time.sleep(1)</div><div class="line">        print &quot;ok&quot;</div><div class="line">        self.lock.release()</div><div class="line"></div><div class="line">a_lock = threading.Lock()</div><div class="line">a1 = A(a_lock)</div><div class="line">a2 = A(a_lock)</div><div class="line">a3 = A(a_lock)</div><div class="line"></div><div class="line">a1.start()</div><div class="line">a2.start()</div><div class="line">a3.start()</div></pre></td></tr></table></figure>
+<p>因为锁的存在，每隔一秒输出一个ok</p>
+<p>在同一个线程获取多次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line"></div><div class="line">lock = threading.Lock()</div><div class="line">lock.acquire()</div><div class="line">lock.acquire()  # 锁死了</div><div class="line">lock.release()</div><div class="line">lock.release()</div></pre></td></tr></table></figure>
+<p>使用RLock，正常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line"></div><div class="line">lock = threading.Lock()</div><div class="line">lock.acquire()</div><div class="line">lock.acquire()</div><div class="line">lock.release()</div><div class="line">lock.release()  # 需要多次release，与acquire一一对应</div></pre></td></tr></table></figure>
+<hr>
+<p>threading.Condition()</p>
+<p>条件同步机制，一个线程等待特定条件，另一个线程发出特定条件满足的信号，可以传入一个锁参数，默认为一个RLock</p>
+<p>condition.wait([timeout])</p>
+<p>释放占用的锁，挂起线程，直到被唤醒或者超时</p>
+<p>condition.nodify()</p>
+<p>唤醒一个被挂起的线程，不会释放锁</p>
+<p>condition.notify_all()</p>
+<p>condition.notifyAll()</p>
+<p>唤醒所有被挂起的线程</p>
+<p>用poster和geter之间的对话模拟</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-  </div><div class="line">import threading</div><div class="line">import time</div><div class="line">import random</div><div class="line"></div><div class="line"></div><div class="line">class Poster(threading.Thread):</div><div class="line">    def __init__(self, cond, name):</div><div class="line">        super(Poster, self).__init__()</div><div class="line">        self.cond = cond</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        self.cond.acquire()</div><div class="line">        print &quot;我要登录~&quot;</div><div class="line">        self.cond.wait()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;给你一个数据1,你还要啥?&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.wait()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;给你一个数据2,好了没?&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.wait()</div><div class="line">        self.cond.release()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;幸苦了&quot;</div><div class="line"></div><div class="line"></div><div class="line">class Getter(threading.Thread):</div><div class="line">    def __init__(self, cond, name):</div><div class="line">        super(Getter, self).__init__()</div><div class="line">        self.cond = cond</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        self.cond.acquire()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;好的，我要一个数据1!&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.wait()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;我还要一个数据2~&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.wait()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;好了！&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.release()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;多谢合作&quot;</div><div class="line"></div><div class="line">c = threading.Condition(lock)</div><div class="line">poster = Poster(c, &quot;poster&quot;)</div><div class="line">getter = Getter(c, &quot;getter&quot;)</div><div class="line">poster.start()</div><div class="line">getter.start()</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">我要登录~</div><div class="line">好的，我要一个数据1!</div><div class="line">给你一个数据1,你还要啥?</div><div class="line">我还要一个数据2~</div><div class="line">给你一个数据2,好了没?</div><div class="line">好了！</div><div class="line">多谢合作</div><div class="line">幸苦了</div></pre></td></tr></table></figure>
+<p>参考<br><a href="http://python.jobbole.com/81544/" target="_blank" rel="external">http://python.jobbole.com/81544/</a><br><a href="http://python.jobbole.com/81546/" target="_blank" rel="external">http://python.jobbole.com/81546/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/19/threading/" data-id="cj5c7k43i004xm0u405bri9gn" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-spider" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/15/python-spider/" class="article-date">
+  <time datetime="2016-03-15T11:45:06.000Z" itemprop="datePublished">2016-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/15/python-spider/">python_spider</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="爬虫入门"><a href="#爬虫入门" class="headerlink" title="爬虫入门"></a>爬虫入门</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- coding:utf-8 -*-</div><div class="line">&quot;这是个小爬虫&quot;</div><div class="line"></div><div class="line">import urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(&quot;http://herui.blog-harryx.cn&quot;)</div><div class="line"></div><div class="line">print response.read()</div></pre></td></tr></table></figure>
+<p>直接调用urlopen函数返回一个respons对象，并用.read()函数操作这个respon对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">request = urllib2.Request(&quot;http://herui.blog-harryx.cn&quot;)</div><div class="line">response = urllib2.urlopen(request)</div></pre></td></tr></table></figure></p>
+<p>使用Request()函数构造request，可以额外发送其他数据或信息<br>这里我们先设置为空字典<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">from urllib2 import Request, urlopen, URLError, HTTPError  </div><div class="line">import sys</div><div class="line"></div><div class="line">header = &#123;    </div><div class="line"></div><div class="line"> &#125;</div><div class="line"></div><div class="line">request = Request(&quot;http://herui.blog-harryx.cn&quot;, headers=header)</div><div class="line"></div><div class="line">try:</div><div class="line">    response = urlopen(request)</div><div class="line"></div><div class="line">except URLError, e:</div><div class="line">    if hasattr(e, &quot;code&quot;):</div><div class="line">        print &quot;HTTP error: &quot; + str(e.code)</div><div class="line">    elif hasattr(e, &quot;reason&quot;):</div><div class="line">        print e.reason</div><div class="line"></div><div class="line">    sys.exit(1)</div><div class="line"></div><div class="line">print response.read()</div></pre></td></tr></table></figure></p>
+<p>这里使用try-except语句检验错误<br>要注意URLError包含HTTPError，要先检验HTTPError<br>或者使用hasattr()函数检验类是否包含指定参数<br>这里向服务器发出的请求是GET请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">from urllib2 import Request, urlopen, URLError, HTTPError  </div><div class="line">from urllib import urlencode</div><div class="line">import sys</div><div class="line"></div><div class="line">url = &quot;http://localhost:5000&quot;</div><div class="line"></div><div class="line">values = &#123;</div><div class="line">    &quot;name&quot;:&quot;harryx&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">header = &#123;    </div><div class="line"></div><div class="line"> &#125;</div><div class="line"></div><div class="line">data = urlencode(values)</div><div class="line">request = Request(url,data=data, headers=header)</div><div class="line"></div><div class="line">try:</div><div class="line">    response = urlopen(request)</div><div class="line"></div><div class="line">except URLError, e:</div><div class="line">    if hasattr(e, &quot;code&quot;):</div><div class="line">        print &quot;HTTP error: &quot; + str(e.code)</div><div class="line">    elif hasattr(e, &quot;reason&quot;):</div><div class="line">        print e.reason</div><div class="line"></div><div class="line">    sys.exit(1)</div><div class="line"></div><div class="line">print response.read()</div></pre></td></tr></table></figure>
+<p>加入data参数，向本地服务器发出请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 - - [16/Mar/2016 15:27:06] &quot;POST / HTTP/1.1&quot; 200 -</div></pre></td></tr></table></figure></p>
+<p>发出的是POST请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./spider.py &gt; hello.html</div></pre></td></tr></table></figure></p>
+<p>打开网页，可以看到对话框填入了字符串“harryx”</p>
+<h2 id="geturl"><a href="#geturl" class="headerlink" title="geturl()"></a>geturl()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response.geturl()</div></pre></td></tr></table></figure>
+<p>geturl()用来获取真实的URL，urlopen可能会HTTP重定向</p>
+<h2 id="info"><a href="#info" class="headerlink" title="info()"></a>info()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print response.info()</div></pre></td></tr></table></figure>
+<p>返回服务器的响应报文首部，包含获取网页的信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Server: GitHub.com</div><div class="line">Content-Type: text/html; charset=utf-8</div><div class="line">Last-Modified: Sun, 13 Mar 2016 08:07:00 GMT</div><div class="line">Access-Control-Allow-Origin: *</div><div class="line">Expires: Tue, 15 Mar 2016 13:13:57 GMT</div><div class="line">Cache-Control: max-age=600</div><div class="line">X-GitHub-Request-Id: 17EB2B31:0345:1A183C4:56E8083D</div><div class="line">Content-Length: 27069</div><div class="line">Accept-Ranges: bytes</div><div class="line">Date: Wed, 16 Mar 2016 11:18:33 GMT</div><div class="line">Via: 1.1 varnish</div><div class="line">Age: 539</div><div class="line">Connection: close</div><div class="line">X-Served-By: cache-ams4127-AMS</div><div class="line">X-Cache: HIT</div><div class="line">X-Cache-Hits: 1</div><div class="line">X-Timer: S1458127113.611546,VS0,VE0</div><div class="line">Vary: Accept-Encoding</div><div class="line">X-Fastly-Request-ID: ef7713a01a3cf84afdd68ff2640410d72a1774c1</div></pre></td></tr></table></figure></p>
+<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>使用代理服务器的方法如下<br>很好很强大<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">proxy_handler = ProxyHandler(&#123;&quot;http&quot; :&apos;http://121.193.143.249:80&apos;&#125;)  </div><div class="line">null_proxy_handler = ProxyHandler(&#123;&#125;)  </div><div class="line">enable_prosy = False</div><div class="line"></div><div class="line">if enable_prosy:</div><div class="line">    opener = build_opener(proxy_handler)</div><div class="line">else:</div><div class="line">    opener = build_opener(null_proxy_handler)</div><div class="line"></div><div class="line">data = urlencode(values)</div><div class="line">request = Request(url,data=None, headers=header)</div><div class="line">response = opener.open(request,timeout=20)</div></pre></td></tr></table></figure></p>
+<h2 id="cookielib"><a href="#cookielib" class="headerlink" title="cookielib"></a>cookielib</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import cookielib</div><div class="line">cookie = cookielib.CookieJar()</div><div class="line">cookie_handler = HTTPCookieProcessor(cookie)</div><div class="line">opener = build_opener(cookie_handler)</div></pre></td></tr></table></figure>
+<p>注意的是,如果同时使用到代理服务器,需要同时添加proxy_handle<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opener = build_opener(cookie_handler, proxy_handler)</div></pre></td></tr></table></figure></p>
+<h1 id="爬自己本地的flask写的web"><a href="#爬自己本地的flask写的web" class="headerlink" title="爬自己本地的flask写的web"></a>爬自己本地的flask写的web</h1><h2 id="用httpfox查看自己发送的包"><a href="#用httpfox查看自己发送的包" class="headerlink" title="用httpfox查看自己发送的包"></a>用httpfox查看自己发送的包</h2><blockquote>
+<p>csrf_token:1458359238##98ca41f600896093e2e7b12e488d8cd9eb74c3db<br>name:lalala<br>submit:Submit</p>
+</blockquote>
+<p>所以我定义一个字典<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">values = &#123;</div><div class="line">    &quot;csrf_token&quot;:None,</div><div class="line">    &quot;name&quot;:&quot;Python&quot;,</div><div class="line">    &quot;submit&quot;:&quot;Submit&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>csrf_token是个随机值，第一次访问页面时获得，所以后面需要用正则表达式获取，<br>先不管。<br>查看headers里面的内容，照写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">header = &#123;    </div><div class="line">    &quot;User-Agent&quot;:user_agent,</div><div class="line">    &quot;Host&quot;:&quot;localhost:5000&quot;,</div><div class="line">    &quot;Accept&quot;:&quot;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&quot;,</div><div class="line">    &quot;Accept-Language&quot;:&quot;en-US,en;q=0.5&quot;,</div><div class="line">    &quot;Accept-Encoding&quot;:&quot;gzip, deflate&quot;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>header里面还有cookie这一项，所以用cookielib库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import cookielib</div><div class="line"></div><div class="line">cookie = cookielib.CookieJar()</div><div class="line">opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))</div><div class="line">request = urllib2.Request(url, headers=header)</div><div class="line">response = opener.open(request,timeout=20)</div></pre></td></tr></table></figure></p>
+<p>这里先读取一次页面，获得cookie，同时用正则表达式获得csrf_token的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">values[&quot;csrf_token&quot;] = str(re.findall(&apos;\d&#123;10&#125;##\w*&apos;,response.read())).split(&quot;\&apos;&quot;)[1]</div></pre></td></tr></table></figure></p>
+<p>然后使用urllib库里面的urlencode对values的值进行编码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data = urllib.urlencode(values)</div></pre></td></tr></table></figure></p>
+<p>最后读取一次页面，同时上传data数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">try:</div><div class="line">    request = urllib2.Request(url,data=data, headers=header)</div><div class="line">    response = opener.open(request,timeout=20)</div><div class="line"></div><div class="line">except urllib2.URLError, e:</div><div class="line">    if hasattr(e, &quot;code&quot;):</div><div class="line">        print &quot;HTTP error: &quot; + str(e.code)</div><div class="line">    elif hasattr(e, &quot;reason&quot;):</div><div class="line">        print e.reason</div><div class="line"></div><div class="line">    sys.exit(1)</div><div class="line"></div><div class="line">print response.read()</div></pre></td></tr></table></figure></p>
+<p>可以在web端看到一次POST<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 - - [19/Mar/2016 10:47:26] &quot;POST / HTTP/1.1&quot; 302 -</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;page-header&quot;&gt;</div><div class="line">    &lt;h1&gt;Hello, Python!&lt;/h1&gt;</div><div class="line">    </div><div class="line">    &lt;p&gt;Pleased to meet you!&lt;/p&gt;</div><div class="line">    </div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>成功</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p> <a href="http://blog.csdn.net/column/details/why-bug.html" target="_blank" rel="external">http://blog.csdn.net/column/details/why-bug.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/15/python-spider/" data-id="cj5c7k431004cm0u4uszo1qc9" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spider/">spider</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flask-send-mail" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/13/flask-send-mail/" class="article-date">
+  <time datetime="2016-03-13T06:46:29.000Z" itemprop="datePublished">2016-03-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/flask-send-mail/">flask_send_mail</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="SMTP服务器配置"><a href="#SMTP服务器配置" class="headerlink" title="SMTP服务器配置"></a>SMTP服务器配置</h2><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAIL_SERVER</td>
+<td>localhost</td>
+<td>电子邮件服务器的主机名或 IP 地址</td>
+</tr>
+<tr>
+<td>MAIL_PORT</td>
+<td>25</td>
+<td>电子邮件服务器的端口</td>
+</tr>
+<tr>
+<td>MAIL_USE_TLS</td>
+<td>False</td>
+<td>启用传输层安全(Transport Layer Security,TLS)协议</td>
+</tr>
+<tr>
+<td>MAIL_USE_SSL</td>
+<td>False</td>
+<td>启用安全套接层(Secure Sockets Layer,SSL)协议</td>
+</tr>
+<tr>
+<td>MAIL_USERNAME</td>
+<td>None</td>
+<td>邮件账户的用户名</td>
+</tr>
+<tr>
+<td>MAIL_PASSWORD</td>
+<td>None</td>
+<td>邮件账户的密码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="保存密码到环境变量"><a href="#保存密码到环境变量" class="headerlink" title="保存密码到环境变量"></a>保存密码到环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(venv) $ set MAIL_USERNAME=&lt;Gmail username&gt;</div><div class="line">(venv) $ set MAIL_PASSWORD=&lt;Gmail password&gt;</div></pre></td></tr></table></figure>
+<h2 id="使用gmail发送邮件配置"><a href="#使用gmail发送邮件配置" class="headerlink" title="使用gmail发送邮件配置"></a>使用gmail发送邮件配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">app.config[&apos;MAIL_SERVER&apos;] = &apos;smtp.googlemail.com&apos;</div><div class="line">app.config[&apos;MAIL_PORT&apos;] = 587</div><div class="line">app.config[&apos;MAIL_USE_TLS&apos;] = True</div><div class="line">app.config[&apos;MAIL_USERNAME&apos;] = os.environ.get(&apos;MAIL_USERNAME&apos;)</div><div class="line">app.config[&apos;MAIL_PASSWORD&apos;] = os.environ.get(&apos;MAIL_PASSWORD&apos;)</div><div class="line">app.config[&apos;FLASKY_MAIL_SUBJECT_PREFIX&apos;] = &apos;[Flasky]&apos;</div><div class="line">app.config[&apos;FLASKY_MAIL_SENDER&apos;] = &apos;1099143767@qq.com&apos;</div><div class="line">app.config[&apos;FLASKY_ADMIN&apos;] = os.environ.get(&apos;FLASKY_ADMIN&apos;)</div></pre></td></tr></table></figure>
+<h1 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">app.config[&apos;FLASKY_MAIL_SUBJECT_PREFIX&apos;] = &apos;[Flasky]&apos;</div><div class="line">app.config[&apos;FLASKY_MAIL_SENDER&apos;] = &apos;Flasky Admin &lt;flasky@example.com&gt;&apos;</div><div class="line"></div><div class="line">msg = Message(app.config[&apos;FLASKY_MAIL_SUBJECT_PREFIX&apos;] + subject,</div><div class="line">                          sender=app.config[&apos;FLASKY_MAIL_SENDER&apos;], recipients=[to])</div><div class="line">msg.body = render_template(template + &apos;.txt&apos;, **kwargs)</div><div class="line">msg.html = render_template(template + &apos;.html&apos;, **kwargs)</div><div class="line">mail.send(msg)</div></pre></td></tr></table></figure>
+<h2 id="异步发送邮件"><a href="#异步发送邮件" class="headerlink" title="异步发送邮件"></a>异步发送邮件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">def send_async_email(app, msg):</div><div class="line">    with app.app_context():</div><div class="line">        mail.send(msg)</div><div class="line"></div><div class="line">def send_email(to, subject, template, **kwargs):</div><div class="line">    msg = Message(app.config[&apos;FLASKY_MAIL_SUBJECT_PREFIX&apos;] + &apos; &apos; + subject,</div><div class="line">                  sender=app.config[&apos;FLASKY_MAIL_SENDER&apos;], recipients=[to])</div><div class="line">    msg.body = render_template(template + &apos;.txt&apos;, **kwargs)</div><div class="line">    msg.html = render_template(template + &apos;.html&apos;, **kwargs)</div><div class="line">    thr = Thread(target=send_async_email, args=[app, msg])</div><div class="line">    thr.start()</div><div class="line">    return thr</div></pre></td></tr></table></figure>
+<h2 id="发送邮件-1"><a href="#发送邮件-1" class="headerlink" title="发送邮件"></a>发送邮件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">send_email(app.config[&apos;FLASKY_ADMIN&apos;], &apos;New User&apos;,</div><div class="line">           &apos;mail/new_user&apos;, user=user)</div></pre></td></tr></table></figure>
+<p>目标地址是环境变量中的FLASKY_ADMIN，主题是[flasky]New User，<br>调用mail目录下的模板，传递参数user。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from flask.ext.mail import Message</div><div class="line">&gt;&gt;&gt; from flask.ext.mail import Mail</div><div class="line">&gt;&gt;&gt; mail=Mail()</div><div class="line">&gt;&gt;&gt; msg=Message(&quot;test&quot;,sender=&quot;harryx520@qq.com&quot;,recipients=[&quot;harryx520@qq.com&quot;])</div><div class="line">&gt;&gt;&gt; mail.send(msg)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/13/flask-send-mail/" data-id="cj5c7k38g000sm0u4f8wep74x" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flask-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/12/flask-mysql/" class="article-date">
+  <time datetime="2016-03-12T02:52:24.000Z" itemprop="datePublished">2016-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/12/flask-mysql/">flask_mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.config[&quot;SQLALCHEMY_TRACK_MODIFICATIONS&quot;] = True</div><div class="line">app.config[&apos;SQLALCHEMY_DATABASE_URI&apos;] =&apos;mysql://flask:admin@localhost/flaskdb&apos;</div><div class="line">app.config[&apos;SQLALCHEMY_COMMIT_ON_TEARDOWN&apos;] = True</div></pre></td></tr></table></figure>
+<p>SQLALCHEMY_TRACK_MODIFICATIONS<br>如果设置成 True (默认情况)，Flask-SQLAlchemy 将会追踪对象的修改并且发送信号。<br>SQLALCHEMY_DATABASE_URI<br>连接数据库,这里连接mysql: </p>
+<blockquote>
+<p>mysql://username:password@hostname/database</p>
+</blockquote>
+<p>SQLALCHEMY_COMMIT_ON_TEARDOWN<br>将其设为 True时,每次请求结束后都会自动提交数据库中的变动。</p>
+<h1 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class User(db.Model):</div><div class="line">    __tablename__ = &apos;users&apos;</div><div class="line">    id = db.Column(db.Integer, primary_key=True)</div><div class="line">    name = db.Column(db.String(20), unique=True)</div><div class="line"></div><div class="line">    def __repr__(self):</div><div class="line">        return &apos;&lt;User %r&gt;&apos; % self.name</div></pre></td></tr></table></figure>
+<p>可以使用</p>
+<ul>
+<li>ForeignKey() 构造外键</li>
+<li>primary_key=True 定义主键</li>
+<li>unique=True 唯一约束</li>
+<li>index=True 创建索引<br>等等<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">(venv) $ python hello.py shell</div><div class="line">&gt;&gt;&gt; from hello import db</div><div class="line">&gt;&gt;&gt; db.create_all() 					#创建表</div><div class="line">&gt;&gt;&gt; db.drop_all() 					#删除表</div><div class="line">&gt;&gt;&gt; db.session.add(user_somebody) 			#数据添加到会话</div><div class="line">&gt;&gt;&gt; db.session.commit()				#提交会话</div><div class="line">&gt;&gt;&gt; db.session.rollback() 				#数据回滚</div><div class="line">&gt;&gt;&gt; db.session.delete(user_somebody)			#删除某行数据</div><div class="line">&gt;&gt;&gt; User.query.all() 					#查询所有行</div><div class="line">&gt;&gt;&gt; User.query.filter_by(name=somebody).all()		#条件查询</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="常用过滤器"><a href="#常用过滤器" class="headerlink" title="常用过滤器"></a>常用过滤器</h1><blockquote>
+<p>filter()     把过滤器添加到原查询上,返回一个新查询<br>filter_by()     把等值过滤器添加到原查询上,返回一个新查询<br>limit()     使用指定的值限制原查询返回的结果数量,返回一个新查询<br>offset()     偏移原查询返回的结果,返回一个新查询<br>order_by()     根据指定条件对原查询结果进行排序,返回一个新查询<br>group_by()     根据指定条件对原查询结果进行分组,返回一个新查询</p>
+</blockquote>
+<h1 id="常用执行函数"><a href="#常用执行函数" class="headerlink" title="常用执行函数"></a>常用执行函数</h1><blockquote>
+<p>all()         以列表形式返回查询的所有结果<br>first()         返回查询的第一个结果,如果没有结果,则返回 None<br>first_or_404()     返回查询的第一个结果,如果没有结果,则终止请求,返回 404 错误响应<br>get()         返回指定主键对应的行,如果没有对应的行,则返回 None<br>get_or_404()     返回指定主键对应的行,如果没找到指定的主键,则终止请求,返回 404 错误响应<br>count()     返回查询结果的数量<br>paginate()     返回一个 Paginate 对象,它包含指定范围内的结果</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/12/flask-mysql/" data-id="cj5c7k38e000qm0u4p27qyk5q" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pil_mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/12/pil_mysql/" class="article-date">
+  <time datetime="2016-03-12T02:17:24.000Z" itemprop="datePublished">2016-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/12/pil_mysql/">图片插入mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><p>此程序把一个文件夹所有图片存入mysql</p>
+<h1 id="存入图片"><a href="#存入图片" class="headerlink" title="存入图片"></a>存入图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*-coding:utf-8 -*-</div><div class="line">&quot;此程序用于将一个文件夹下所有图片以JPG格式保存到mysql数据库&quot;</div><div class="line"></div><div class="line">import MySQLdb as mdb</div><div class="line">from PIL import Image</div><div class="line">import sys,os</div><div class="line"></div><div class="line">url = &quot;/home/herui/图片/&quot;</div><div class="line">#存放临时文件</div><div class="line">pic2 = &quot;temp.jpg&quot;</div><div class="line">count_false = 0</div><div class="line">count_all = 0</div><div class="line">false_file=[]</div><div class="line"></div><div class="line">try:</div><div class="line">    con = mdb.connect(&quot;localhost&quot;, &quot;flask&quot;, &quot;admin&quot;, &quot;flaskdb&quot;)</div><div class="line">    cur= con.cursor()</div><div class="line"></div><div class="line">    #循环读取图片</div><div class="line">    for root,dirs,files in os.walk(url):</div><div class="line">        for pic in files:</div><div class="line"></div><div class="line">            long_url = os.path.join(root,pic)</div><div class="line">            name = str(pic).split(&apos;.&apos;)[0]</div><div class="line">            name_end = str(pic).split(&apos;.&apos;)[1]</div><div class="line">            print long_url</div><div class="line">            #检测后缀名</div><div class="line">            if name_end in (&quot;jpg&quot;,&quot;JPG&quot;,&quot;png&quot;,&quot;PNG&quot;):</div><div class="line">                count_all += 1</div><div class="line">            #转换图片格式</div><div class="line">                try:</div><div class="line">                    Image.open(long_url).save(pic2,&quot;JPEG&quot;)</div><div class="line">                except:</div><div class="line">                    #记录打开失败的文件</div><div class="line">                    print pic+&quot;打开失败&quot;</div><div class="line">                    false_file.append(long_url)</div><div class="line">                    count_false += 1</div><div class="line">                    continue</div><div class="line"></div><div class="line">                print &quot;格式转换成功~&quot;</div><div class="line"></div><div class="line">                f = open(pic2)</div><div class="line">                img = f.read()</div><div class="line">                f.close()</div><div class="line"></div><div class="line">                print &quot;读取成功～&quot;</div><div class="line"></div><div class="line">                cur.execute(&quot;insert into images set data = &apos;%s&apos; &quot;% mdb.escape_string(img))</div><div class="line"></div><div class="line">    print &quot;更新数据库,总共%d,失败%d&quot; %(count_all,count_false)</div><div class="line"></div><div class="line">    for false_f in false_file:</div><div class="line">        print false_f</div><div class="line"></div><div class="line">    con.commit()</div><div class="line"></div><div class="line">except IOError, e:</div><div class="line">    con.rooback()</div><div class="line">    print &quot;Error %d %s&quot; %(e.args[0], e.args[1])</div><div class="line">    sys.exit(1)</div><div class="line"></div><div class="line">cur.close()</div><div class="line">con.close()</div></pre></td></tr></table></figure>
+<h1 id="读取图片"><a href="#读取图片" class="headerlink" title="读取图片"></a>读取图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- coding:utf-8 -*-</div><div class="line"></div><div class="line">&quot;读取图片&quot;</div><div class="line"></div><div class="line">import MySQLdb as mdb</div><div class="line">import sys</div><div class="line"></div><div class="line">try:</div><div class="line">    con = mdb.connect(&quot;localhost&quot;, &quot;flask&quot;, &quot;admin&quot;, &quot;flaskdb&quot;)</div><div class="line">    cur = con.cursor()</div><div class="line"></div><div class="line">    cur.execute(&quot;select data from images&quot;)</div><div class="line"></div><div class="line">#返回行数</div><div class="line">    numrows = int(cur.rowcount)</div><div class="line">#循环读取图片</div><div class="line">    for row in range(numrows):</div><div class="line">#文件名 </div><div class="line">        pic = &quot;image&quot;+str(row)+&quot;.jpg&quot;</div><div class="line">#写入文件</div><div class="line">        f = open(pic, &quot;wb&quot;)</div><div class="line">        f.write(cur.fetchone()[0])</div><div class="line">        f.close()</div><div class="line"></div><div class="line">        print pic+&quot;OK&quot;</div><div class="line"></div><div class="line">except IOError, e:</div><div class="line">    con.rollback()</div><div class="line">    print &quot;Error %d %s&quot; %(e.args[0], e.args[1])</div><div class="line">    sys.exit(1)</div><div class="line"></div><div class="line">cur.close()</div><div class="line">con.close()</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/12/pil_mysql/" data-id="cj5c7k42x0046m0u4ybjskto0" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Markdown" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/10/Markdown/" class="article-date">
+  <time datetime="2016-03-10T10:17:07.000Z" itemprop="datePublished">2016-03-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/10/Markdown/">Markdown常用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h1><p>使用”#“加空格创建标题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># 标题</div></pre></td></tr></table></figure></p>
+<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><p>使用“**”加粗文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">**加粗**</div></pre></td></tr></table></figure>
+<p><strong>加粗</strong></p>
+<p>使用center标签居中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;center&gt;居中&lt;/center&gt;</div></pre></td></tr></table></figure></p>
+<center>居中</center>
+
+<p>使用“>”引用一段话<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; 引用</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>引用</p>
+</blockquote>
+<ul>
+<li>使用“+”，“-”或者“*”加空格创建无序列表<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ 列表</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>列表</li>
+</ul>
+<p>使用”1.”,”2.”创建有序表格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. 苹果</div><div class="line">2. 香蕉</div></pre></td></tr></table></figure></p>
+<ol>
+<li>苹果</li>
+<li>香蕉</li>
+</ol>
+<h1 id="特殊文本"><a href="#特殊文本" class="headerlink" title="特殊文本"></a>特殊文本</h1><p>添加链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;http://herui.blog-harryx.cn&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[somestring](http://somelink.cn)</div></pre></td></tr></table></figure>
+<p>使用3个”`”添加代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print &quot;hello world!&quot;</div></pre></td></tr></table></figure></p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![](URL)</div></pre></td></tr></table></figure>
+<p>使用html标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;http://somepic.cn&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p><center><img src="http://7xrooc.com1.z0.glb.clouddn.com/IMG_1072.PNG"></center>&gt;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/10/Markdown/" data-id="cj5c7k37w000dm0u4k3nulo1c" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

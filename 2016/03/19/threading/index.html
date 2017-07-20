@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>多线程 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么时进程进程(有时被称为重量级进程)是程序的一次执行。每个进程都有自己的地址空间,内存,数据栈以及其它记录其运行轨迹的辅助数据。操作系统管理在其上运行的所有进程,并为这些进程公平地分配时间。进程也可以通过 fork 和 spawn 操作来完成其它的任务。不过各个进程有自己的内存空间,数据栈等,所以只能使用进程间通讯(IPC),而不能直接共享信息。 Python 实现多进程Unix/Linux提供">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程">
+<meta property="og:url" content="http://yoursite.com/2016/03/19/threading/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="什么时进程进程(有时被称为重量级进程)是程序的一次执行。每个进程都有自己的地址空间,内存,数据栈以及其它记录其运行轨迹的辅助数据。操作系统管理在其上运行的所有进程,并为这些进程公平地分配时间。进程也可以通过 fork 和 spawn 操作来完成其它的任务。不过各个进程有自己的内存空间,数据栈等,所以只能使用进程间通讯(IPC),而不能直接共享信息。 Python 实现多进程Unix/Linux提供">
+<meta property="og:updated_time" content="2017-04-06T04:30:33.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多线程">
+<meta name="twitter:description" content="什么时进程进程(有时被称为重量级进程)是程序的一次执行。每个进程都有自己的地址空间,内存,数据栈以及其它记录其运行轨迹的辅助数据。操作系统管理在其上运行的所有进程,并为这些进程公平地分配时间。进程也可以通过 fork 和 spawn 操作来完成其它的任务。不过各个进程有自己的内存空间,数据栈等,所以只能使用进程间通讯(IPC),而不能直接共享信息。 Python 实现多进程Unix/Linux提供">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-threading" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/19/threading/" class="article-date">
+  <time datetime="2016-03-19T12:35:43.000Z" itemprop="datePublished">2016-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      多线程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么时进程"><a href="#什么时进程" class="headerlink" title="什么时进程"></a>什么时进程</h1><p>进程(有时被称为<strong>重量级进程</strong>)是程序的一次执行。<br><strong>每个进程都有自己的地址空间,内存,数据栈以及其它记录其运行轨迹的辅助数据。</strong><br>操作系统管理在其上运行的所有进程,并为这些进程公平地分配时间。<br>进程也可以通过 fork 和 spawn 操作来完成其它的任务。<br>不过各个进程有自己的内存空间,数据栈等,所以只能使用进程间通讯(IPC),<br>而不能直接共享信息。</p>
+<p><strong>Python 实现多进程</strong><br>Unix/Linux提供一个<strong>fork()</strong>函数调用<br><strong>fork()</strong>函数把当前进程(父进程)复制了一份(子进程)，分别在父进程和子进程返回一个值<br>子进程永远返回0，父进程返回进程的ID，子进程可以通过<strong>getppid()</strong>拿到父进程PID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line"></div><div class="line">pid = os.fork()</div><div class="line"></div><div class="line">if pid == 0:</div><div class="line">    print &quot;my pid is &quot;,os.getppid()</div><div class="line">else:</div><div class="line">    print &quot;my pid is &quot;,pid</div></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">my pid is  19009</div><div class="line">my pid is  1950</div></pre></td></tr></table></figure>
+<h1 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程"></a>什么是线程</h1><p>线程(有时被称为<strong>轻量级进程</strong>)跟进程有些相似,不同的是,所有的线程运行在同一个进程中,<br><strong>共享相同的运行环境。</strong><br>它们可以想像成是在主进程或“主线程”中并行运行的“迷你进程”。<br>线程有开始,顺序执行和结束三部分。<br>它有一个自己的指令指针,记录自己运行到什么地方。<br>线程的运行可能被抢占(中断),或暂时的被挂起(也叫睡眠),让其它的线程运行,这叫做让步。<br><strong>一个进程中的各个线程之间共享同一片数据空间,所以线程之间可以比进程之间更方便地共享数据以及相互通讯。</strong><br>线程一般都是并发执行的,正是由于这种并行和数据共享的机制使得多个任务的合作变为可能。<br>实际上,在单 CPU 的系统中,真正的并发是不可能的,每个线程会被安排成每次只运行一小会,<br>然后就把 CPU 让出来,让其它的线程去运行。<br>在进程的整个运行过程中,每个线程都只做自己的事,在需要的时候跟其它的线程共享运行的结果。<br>当然,这样的共享并不是完全没有危险的。如果多个线程共同访问同一片数据,则由于数据访<br>问的顺序不一样,有可能导致数据结果的不一致的问题。这叫做竞态条件(race condition)。<br>幸运的是,大多数线程库都带有一系列的同步原语,来控制线程的执行和数据的访问。<br>另一个要注意的地方是,由于有的函数会在完成之前阻塞住,在没有特别为多线程做修改的情<br>况下,这种“贪婪”的函数会让 CPU 的时间分配有所倾斜。<br>导致各个线程分配到的运行时间可能不尽相同,不尽公平。</p>
+<h1 id="计算密集型程序和I-O密集型程序"><a href="#计算密集型程序和I-O密集型程序" class="headerlink" title="计算密集型程序和I/O密集型程序"></a>计算密集型程序和I/O密集型程序</h1><p>涉及到网络、磁盘IO的任务都是IO密集型任务，这类任务的特点是CPU消耗很少<br>任务的大部分时间都在等待IO操作完成（因为IO的速度远远低于CPU和内存的速度）。<br><strong>对于IO密集型任务，任务越多，CPU效率越高</strong>，但也有一个限度。<br>常见的大部分任务都是IO密集型任务，比如Web应用。<br><strong>IO密集型任务执行期间，99%的时间都花在IO上，花在CPU上的时间很少。</strong><br>因此，用运行速度极快的C语言替换用Python这样运行速度极低的脚本语言，完全无法提升运行效率。<br>对于IO密集型任务，最合适的语言就是开发效率最高（代码量最少）的语言，脚本语言是首选。</p>
+<p>计算密集型任务的特点是要进行<strong>大量的计算</strong>，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。<br>这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低。<br>所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。<br>Python这样的脚本语言运行效率很低，完全不适合计算密集型任务。</p>
+<h1 id="python-多线程"><a href="#python-多线程" class="headerlink" title="python 多线程"></a>python 多线程</h1><p>Python 代码的执行由 Python 虚拟机(也叫解释器主循环)来控制。<br>Python 在设计之初就考虑到要在主循环中,同时只有一个线程在执行,<br>就像单 CPU 的系统中运行多个进程那样,内存中可以存放多个程序,<br>但任意时刻,只有一个程序在 CPU 中运行。<br>同样地,虽然 Python 解释器中可以“运行”多个线程,但在任意时刻,只有一个线程在解释器中运行。</p>
+<p>python中使用多线程有两种方式，分别是使用函数传递和类包装。<br>python标准库提供了thread和threading两个模块。</p>
+<blockquote>
+<p>这两个模块中,我们不建议使用 thread模块。<br>这样做有很多原因,很明显的一个原因是,当主线程退出的时候,所有其它线程没有被清除<br>就退出了。但另一个模块 threading 就能确保所有“重要的”子线程都退出后,进程才会结束。</p>
+</blockquote>
+<hr>
+<p>thread 模块提为线程提供了一个低级接口</p>
+<p>thread.start_new_thread(function, args[,kwargs])</p>
+<p>创建一个新线程，第二个参数必须是一个元祖，如果只有没有参数<br>或者只有一个，要在括号里加一个‘，’<br>函数返回值是一个整数标识符</p>
+<p>thread.exit()</p>
+<p>结束当前线程，可以在函数中调用，以关闭进程<br>当主线程退出的时候, 所有的线程也随着退出</p>
+<p>thread.get_ident()</p>
+<p>获取当前线程的标识符</p>
+<p>thread.interrupt_main ()</p>
+<p>在主线程触发 KeyboardInterrupt 异常，用于中断线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import thread, time</div><div class="line">thread.start_new_thread(lambda : (thread.interrupt_main(), ), ())</div><div class="line">try:</div><div class="line">    time.sleep(2)</div><div class="line">except KeyboardInterrupt, e:</div><div class="line">    print &apos;error:&apos;, e</div><div class="line">print &apos;over&apos;</div></pre></td></tr></table></figure>
+<hr>
+<p>thread锁</p>
+<p>thread.allocate_lock()</p>
+<p>创建锁</p>
+<p>lock.acquire(waitflag=None)</p>
+<p>获取锁</p>
+<p>lock.release()</p>
+<p>释放锁</p>
+<hr>
+<p>threading</p>
+<p>threading是thread模块的二次封装版本<br>threading 模块为线程提供了一个高级接口</p>
+<p>threading 模块支持守护线程,它们是这样工作的:<br>守护线程一般是一个等待客户请求的服务器,如果没有客户提出请求,它就在那等着。<br>如果主线程要退出的时候,不用等待那些子线程完成,那就设定这些线程的 daemon 属性。<br>即,<strong>在线程开始(调用 thread.start())之前,调用 setDaemon()函数设定线程的 daemon 标志<br>thread.setDaemon(True)就表示这个线程“不重要”<br>如果你想要等待子线程完成再退出,那就什么都不用做,或者显式地调用<br>thread.setDaemon(False)以保证其 daemon 标志为 False。</strong><br>可以调用 thread.isDaemon()函数来判断其 daemon 标志的值。<br>新的子线程会继承其父线程的 daemon 标志。整个 Python 会在所有的非守护<br>线程退出后才会结束,即进程中没有非守护线程存在的时候才结束。</p>
+<p>threading.Thread()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">thread = threading.Thread(target=function,args=(...))</div></pre></td></tr></table></figure>
+<p>继承Thread类，定义run方法，就可以创建一个新线程<br>然后调用start方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line">import time</div><div class="line"></div><div class="line">class Counter:</div><div class="line">    def __init__(self):</div><div class="line">        self.lock = threading.Lock()</div><div class="line">        self.value = 0</div><div class="line"></div><div class="line">    def increment(self):</div><div class="line">        self.lock.acquire() #获取锁</div><div class="line">        self.value += 1</div><div class="line">        self.lock.release() #释放锁</div><div class="line">        return self.value</div><div class="line"></div><div class="line">count = Counter()</div><div class="line"></div><div class="line">class MyThread(threading.Thread):</div><div class="line">    def run(self):</div><div class="line">        for i in range(10):</div><div class="line">            value = count.increment()  # 自增</div><div class="line">            time.sleep(1)</div><div class="line">            print self.getName(),&quot;value: %d&quot;%value</div><div class="line"></div><div class="line"># 依次开启十个线程</div><div class="line">for i in range(10):</div><div class="line">    MyThread().start()</div></pre></td></tr></table></figure>
+<p>类初始化模型<br>def <strong>init</strong>(self, group=None, target=None, name=None, args=(), kwargs{})</p>
+<ul>
+<li>group: 预留</li>
+<li>target: 可调用函数</li>
+<li>name: 线程名</li>
+<li>args,kwargs: 参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*-coding:utf-8 -*-</div><div class="line"></div><div class="line">import threading</div><div class="line">from time import sleep, ctime</div><div class="line"></div><div class="line">class MyThread(threading.Thread):</div><div class="line">    def  __init__(self, target, args, name=&apos;&apos;):</div><div class="line">        super(MyThread, self).__init__()</div><div class="line">        self.target = target</div><div class="line">        self.args = args</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        print &apos;starting&apos;, self.name, &apos;at:&apos;, ctime()</div><div class="line">        self.res = apply(self.target, self.args)</div><div class="line">        print self.name, &apos;finished at:&apos;, ctime()</div><div class="line"></div><div class="line">    def get_res(self):</div><div class="line">        return self.res</div><div class="line"></div><div class="line">def loop(time):</div><div class="line">    sleep(time)</div><div class="line"></div><div class="line">thread = MyThread(loop, (2,))</div><div class="line">thread.start()</div></pre></td></tr></table></figure>
+<p>threading.Thread()的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">thread.getName() 获取线程名称</div><div class="line"></div><div class="line">thread.ident() 获取线程标识符</div><div class="line"></div><div class="line">thread.is_alive()</div><div class="line">thread.isAlive()</div><div class="line">判断线程是否是激活的。从调用start()方法启动线程，到run()方法执行完毕或者</div><div class="line">遇到未处理异常而中断,这段时间线程是激活的。</div><div class="line"></div><div class="line">thread.join([timeout])</div><div class="line">调用join会使主调线路阻塞，直到该线程运行结束或超时，参数timeout是数值类</div><div class="line">型，表示时间，单位秒</div></pre></td></tr></table></figure>
+<p>举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*-coding:utf-8 -*-</div><div class="line"></div><div class="line">import threading</div><div class="line">from time import sleep, ctime</div><div class="line">loops = [4,2]</div><div class="line">def loop(nloop, nsec):</div><div class="line">    print &apos;start loop&apos;, nloop, &apos;at:&apos;, ctime()</div><div class="line">    sleep(nsec)</div><div class="line">    print &apos;loop&apos;, nloop, &apos;done at:&apos;, ctime()</div><div class="line">    </div><div class="line">def main():</div><div class="line">    print &apos;starting at:&apos;, ctime()</div><div class="line">    threads = []</div><div class="line">    nloops = range(len(loops))</div><div class="line"></div><div class="line">    for i in nloops: #创建线程</div><div class="line">        thread = threading.Thread(target=loop,args=(i, loops[i]))</div><div class="line">        threads.append(thread)</div><div class="line">    </div><div class="line">    for thread in threads: #开始所有线程</div><div class="line">        thread.start()</div><div class="line">    </div><div class="line">    for thread in threads: #阻塞等待</div><div class="line">        thread.join()</div><div class="line">    </div><div class="line">    print &apos;all DONE at:&apos;, ctime()</div><div class="line">    </div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>终止线程 自定义线程类</p>
+<p>循环检测Event，然后终止循环<br>重写join方法，在join方法内设置Event</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line">import time</div><div class="line"></div><div class="line">class myThread(threading.Thread):</div><div class="line">    def __init__(self, name=&quot;myThread&quot;):</div><div class="line">        threading.Thread.__init__(self, name=name)</div><div class="line">        self._stopevent = threading.Event()</div><div class="line">    def run(self):</div><div class="line">        while not self._stopevent.isSet():</div><div class="line">            print &quot;loop&quot;</div><div class="line">            self._stopevent.wait(1.0)</div><div class="line">        print &quot;ends&quot;</div><div class="line">    def join(self, timeout=None):</div><div class="line">        self._stopevent.set()</div><div class="line">        threading.Thread.join(self, timeout)</div><div class="line"></div><div class="line">thread = myThread()</div><div class="line">thread.start()</div><div class="line">time.sleep(5) #等待5秒</div><div class="line">thread.join() #终止线程</div></pre></td></tr></table></figure>
+<hr>
+<p>threading模块有threading.Lock和threading.RLock</p>
+<p>RLock允许同一线程中多次获取锁，但是对应着也要多次release，Lock不能在同一线程多次获取锁</p>
+<p>使用Lock</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line">import time</div><div class="line"></div><div class="line"></div><div class="line">class A(threading.Thread):</div><div class="line">    def __init__(self, lock):</div><div class="line">        super(A, self).__init__()</div><div class="line">        self.lock = lock</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        self.lock.acquire()</div><div class="line">        time.sleep(1)</div><div class="line">        print &quot;ok&quot;</div><div class="line">        self.lock.release()</div><div class="line"></div><div class="line">a_lock = threading.Lock()</div><div class="line">a1 = A(a_lock)</div><div class="line">a2 = A(a_lock)</div><div class="line">a3 = A(a_lock)</div><div class="line"></div><div class="line">a1.start()</div><div class="line">a2.start()</div><div class="line">a3.start()</div></pre></td></tr></table></figure>
+<p>因为锁的存在，每隔一秒输出一个ok</p>
+<p>在同一个线程获取多次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line"></div><div class="line">lock = threading.Lock()</div><div class="line">lock.acquire()</div><div class="line">lock.acquire()  # 锁死了</div><div class="line">lock.release()</div><div class="line">lock.release()</div></pre></td></tr></table></figure>
+<p>使用RLock，正常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import threading</div><div class="line"></div><div class="line">lock = threading.Lock()</div><div class="line">lock.acquire()</div><div class="line">lock.acquire()</div><div class="line">lock.release()</div><div class="line">lock.release()  # 需要多次release，与acquire一一对应</div></pre></td></tr></table></figure>
+<hr>
+<p>threading.Condition()</p>
+<p>条件同步机制，一个线程等待特定条件，另一个线程发出特定条件满足的信号，可以传入一个锁参数，默认为一个RLock</p>
+<p>condition.wait([timeout])</p>
+<p>释放占用的锁，挂起线程，直到被唤醒或者超时</p>
+<p>condition.nodify()</p>
+<p>唤醒一个被挂起的线程，不会释放锁</p>
+<p>condition.notify_all()</p>
+<p>condition.notifyAll()</p>
+<p>唤醒所有被挂起的线程</p>
+<p>用poster和geter之间的对话模拟</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-  </div><div class="line">import threading</div><div class="line">import time</div><div class="line">import random</div><div class="line"></div><div class="line"></div><div class="line">class Poster(threading.Thread):</div><div class="line">    def __init__(self, cond, name):</div><div class="line">        super(Poster, self).__init__()</div><div class="line">        self.cond = cond</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        self.cond.acquire()</div><div class="line">        print &quot;我要登录~&quot;</div><div class="line">        self.cond.wait()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;给你一个数据1,你还要啥?&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.wait()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;给你一个数据2,好了没?&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.wait()</div><div class="line">        self.cond.release()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;幸苦了&quot;</div><div class="line"></div><div class="line"></div><div class="line">class Getter(threading.Thread):</div><div class="line">    def __init__(self, cond, name):</div><div class="line">        super(Getter, self).__init__()</div><div class="line">        self.cond = cond</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    def run(self):</div><div class="line">        self.cond.acquire()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;好的，我要一个数据1!&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.wait()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;我还要一个数据2~&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.wait()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;好了！&quot;</div><div class="line">        self.cond.notify()</div><div class="line">        self.cond.release()</div><div class="line">        time.sleep(random.randint(1, 5))</div><div class="line">        print &quot;多谢合作&quot;</div><div class="line"></div><div class="line">c = threading.Condition(lock)</div><div class="line">poster = Poster(c, &quot;poster&quot;)</div><div class="line">getter = Getter(c, &quot;getter&quot;)</div><div class="line">poster.start()</div><div class="line">getter.start()</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">我要登录~</div><div class="line">好的，我要一个数据1!</div><div class="line">给你一个数据1,你还要啥?</div><div class="line">我还要一个数据2~</div><div class="line">给你一个数据2,好了没?</div><div class="line">好了！</div><div class="line">多谢合作</div><div class="line">幸苦了</div></pre></td></tr></table></figure>
+<p>参考<br><a href="http://python.jobbole.com/81544/" target="_blank" rel="external">http://python.jobbole.com/81544/</a><br><a href="http://python.jobbole.com/81546/" target="_blank" rel="external">http://python.jobbole.com/81546/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/19/threading/" data-id="cj5c7k43i004xm0u405bri9gn" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/20/spider/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          爬图
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/15/python-spider/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">python_spider</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

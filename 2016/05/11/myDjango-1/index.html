@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>myDjango-1 数据库 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="添加一个功能(app)命令行1python manage.py startapp toon 更改配置文件：myDjango/myDjango/settings.py123456789INSTALLED_APPS = [    &amp;apos;django.contrib.admin&amp;apos;,    &amp;apos;django.contrib.auth&amp;apos;,    &amp;apos;django.c">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="myDjango-1 数据库">
+<meta property="og:url" content="http://yoursite.com/2016/05/11/myDjango-1/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="添加一个功能(app)命令行1python manage.py startapp toon 更改配置文件：myDjango/myDjango/settings.py123456789INSTALLED_APPS = [    &amp;apos;django.contrib.admin&amp;apos;,    &amp;apos;django.contrib.auth&amp;apos;,    &amp;apos;django.c">
+<meta property="og:updated_time" content="2017-03-15T04:50:36.083Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="myDjango-1 数据库">
+<meta name="twitter:description" content="添加一个功能(app)命令行1python manage.py startapp toon 更改配置文件：myDjango/myDjango/settings.py123456789INSTALLED_APPS = [    &amp;apos;django.contrib.admin&amp;apos;,    &amp;apos;django.contrib.auth&amp;apos;,    &amp;apos;django.c">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-myDjango-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/11/myDjango-1/" class="article-date">
+  <time datetime="2016-05-11T10:51:46.000Z" itemprop="datePublished">2016-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      myDjango-1 数据库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="添加一个功能-app"><a href="#添加一个功能-app" class="headerlink" title="添加一个功能(app)"></a>添加一个功能(app)</h1><p>命令行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp toon</div></pre></td></tr></table></figure></p>
+<p>更改配置<br>文件：<strong>myDjango/myDjango/settings.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = [</div><div class="line">    &apos;django.contrib.admin&apos;,</div><div class="line">    &apos;django.contrib.auth&apos;,</div><div class="line">    &apos;django.contrib.contenttypes&apos;,</div><div class="line">    &apos;django.contrib.sessions&apos;,</div><div class="line">    &apos;django.contrib.messages&apos;,</div><div class="line">    &apos;django.contrib.staticfiles&apos;,</div><div class="line">    &apos;toon&apos;,</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h1 id="添加模型"><a href="#添加模型" class="headerlink" title="添加模型"></a>添加模型</h1><p>在之前添加app的命令执行后会创建一个模型文件<br>文件：<strong>myDjango/myDjango/toon/models.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Pic(models.Model):</div><div class="line">    picname = models.CharField(max_length=32)</div><div class="line">    pic = models.ImageField(null=True,blank=True)</div><div class="line">    tips = models.TextField()</div></pre></td></tr></table></figure></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">1、models.AutoField　　自增列=int(11)</div><div class="line">　 如果没有的话，默认会生成一个名称为id的列，如果要显示的定义一个自增列，必须把该列设置为主键(primary_key=True)</div><div class="line">2、models.CharField　　字符串类型字段 必须加max_length参数</div><div class="line">3、models.BooleanField　布尔类型字段=tinyint(1)  不能为空，Blank=True</div><div class="line">4、models.ComaSeparatedIntegerField　　用逗号分割的数字类型=varchar 继承CharField，所以必须加max_lenght参数</div><div class="line">5、models.DateField　　日期字段类型date</div><div class="line">　 参数auto_now=True表示每次更新都会更新这个时间；参数auto_now_add表示只是第一次创建时添加，之后的更新不再改变</div><div class="line">6、models.DateTimeField　　日期字段类型datetime  同DateField的参数</div><div class="line">7、models.Decimal　　十进制小数类型=decimal</div><div class="line">　 必须指定整数位max_digits和小数位decimal_places</div><div class="line">8、models.EmailField　　字符串类型(正则表达式邮箱)=varchar  对字符串进行正则表达式验证</div><div class="line">9、models.FloatField　　浮点类型=double</div><div class="line">10、models.IntegerField　　整形</div><div class="line">11、models.BigIntegerField　长整形</div><div class="line">　　integer_field_ranges = &#123;</div><div class="line">　　　　&apos;SmallIntegerField&apos;: (-32768, 32767),</div><div class="line">　　　　&apos;IntegerField&apos;: (-2147483648, 2147483647),</div><div class="line">　　　　&apos;BigIntegerField&apos;: (-9223372036854775808, 9223372036854775807),</div><div class="line">　　　　&apos;PositiveSmallIntegerField&apos;: (0, 32767),</div><div class="line">　　　　&apos;PositiveIntegerField&apos;: (0, 2147483647),</div><div class="line">　　&#125;</div><div class="line">12、models.IPAddressField　　字符串类型(ip4正则表达式)</div><div class="line">13、models.GenericIPAddressField　　字符串类型（ip4和ip6是可选的）</div><div class="line">　　参数protocol可以是：both、ipv4、ipv6  验证时，会根据设置进行报错</div><div class="line">14、models.NullBooleanField　　允许为空的布尔类型</div><div class="line">15、models.PositiveIntegerFiel　　正Integer</div><div class="line">16、models.PositiveSmallIntegerField　　正smallInteger</div><div class="line">17、models.SlugField　　减号、下划线、字母、数字</div><div class="line">18、models.SmallIntegerField　　数字</div><div class="line">　　数据库中的字段有：tinyint、smallint、int、bigint</div><div class="line">19、models.TextField　　字符串=longtext</div><div class="line">20、models.TimeField　　时间 HH:MM[:ss[.uuuuuu]]</div><div class="line">21、models.URLField　　字符串类型，地址正则表达式</div><div class="line">22、models.BinaryField　二进制</div><div class="line">23、models.ImageField   图片</div><div class="line">24、models.FilePathField 文件</div></pre></td></tr></table></figure>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">1、null=True 数据库中字段是否可以为空</div><div class="line">2、blank=True django的Admin中添加数据时是否可允许空值</div><div class="line">3、primary_key=False 主键，对AutoField设置主键后，就会代替原来默认的自增id列</div><div class="line">4、auto_now和auto_now_add</div><div class="line">　　auto_now  自动创建---无论添加或修改，都是当前操作的时间</div><div class="line">　　auto_now_add  自动创建---永远是创建时的时间</div><div class="line">5、choices</div><div class="line">     GENDER_CHOICE = (</div><div class="line">          (u&apos;M&apos;, u&apos;Male&apos;),</div><div class="line">          (u&apos;F&apos;, u&apos;Female&apos;),</div><div class="line">      )</div><div class="line">     gender = models.CharField(max_length=2,choices=GENDER_CHOICE)</div><div class="line">6、max_length 最大长度</div><div class="line">7、default　　默认值</div><div class="line">8、verbose_name　　Admin中字段的显示名称</div><div class="line">9、name|db_column　数据库中的字段名称</div><div class="line">10、unique=True　　不允许重复</div><div class="line">11、db_index = True　　数据库索引</div><div class="line">12、editable=True　　在Admin里是否可编辑</div><div class="line">13、error_messages=None　　错误提示</div><div class="line">14、auto_created=False　　自动创建</div><div class="line">15、help_text　　在Admin中提示帮助信息</div><div class="line">16、validators=[]  验证</div><div class="line">17、upload-to  文件上传路径</div></pre></td></tr></table></figure>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><h3 id="多对一"><a href="#多对一" class="headerlink" title="多对一"></a>多对一</h3><p>使用ForeignKey定义</p>
+<p>这里Tag是Pic的外键，一个Pic对应一个Tag，一个Tag对应多个Pic<br>每个图片只能有一个标签，每个标签可以属于多个图片<br>文件：<strong>myDjango/myDjango/toon/models.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Tag(models.Model):</div><div class="line">    tagname = models.CharField(max_length=32)</div><div class="line">    def __unicode__(self):</div><div class="line">        return self.tagname</div><div class="line"></div><div class="line">class Pic(models.Model):</div><div class="line">    picname = models.CharField(max_length=32)</div><div class="line">    pic = models.ImageField(null=True,blank=True)</div><div class="line">    tags = models.ForeignKey(Tag)</div><div class="line">    def __unicode__(self):</div><div class="line">        return self.picname</div></pre></td></tr></table></figure></p>
+<h3 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h3><p>使用ManyToManyField定义</p>
+<p>把上例改为多对多关系，一个Pic对应多个Tag，一个Tag对应多个Pic<br>每个图片可以有多个标签，每个标签可以属于多个图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Tag(models.Model):</div><div class="line">    tagname = models.CharField(max_length=32)</div><div class="line">    def __unicode__(self):</div><div class="line">        return self.tagname</div><div class="line"></div><div class="line">class Pic(models.Model):</div><div class="line">    picname = models.CharField(max_length=32)</div><div class="line">    pic = models.ImageField(null=True,blank=True,upload_to=&apos;uploads&apos;)</div><div class="line">    tags = models.ManyToManyField(Tag) </div><div class="line">    def __unicode__(self):</div><div class="line">        return self.picname</div></pre></td></tr></table></figure></p>
+<h3 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h3><p>使用OneToOneField定义</p>
+<h1 id="Meta"><a href="#Meta" class="headerlink" title="Meta"></a>Meta</h1><p>使用(Meta)元数据设置默认排序方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class Tag(models.Model):</div><div class="line">    #...</div><div class="line">    class Meta:</div><div class="line">        ordering = [&apos;tagname&apos;]</div><div class="line"></div><div class="line">class Pic(models.Model):</div><div class="line">    #...</div><div class="line">    class Meta:</div><div class="line">        ordering = [&apos;picname&apos;]</div></pre></td></tr></table></figure></p>
+<h1 id="更新数据库"><a href="#更新数据库" class="headerlink" title="更新数据库"></a>更新数据库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python manage.py makemigrations //生成py文件</div><div class="line">python manage.py migrate</div></pre></td></tr></table></figure>
+<p>启动数据库交互<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py dbshell</div></pre></td></tr></table></figure></p>
+<p>基本操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># 增--3种方法</div><div class="line"># 第1种方法</div><div class="line">models.tb.objects.create(c1=&apos;xx&apos;, c2=&apos;oo&apos;) </div><div class="line"># 第2种方法</div><div class="line">obj = models.tb(c1=&apos;xx&apos;, c2=&apos;oo&apos;)</div><div class="line">obj.save()</div><div class="line"># 第3种方法--可以接受字典类型数据 **kwargs</div><div class="line">dic = &#123;&apos;c1&apos;:&apos;xx&apos;,&apos;c2&apos;:&apos;oo&apos;&#125;</div><div class="line">models.tb.objects.create(**dic)</div><div class="line"></div><div class="line"># 查</div><div class="line">models.tb.objects.get(id=123)         #获取单条数据，不存在则报错（不建议）</div><div class="line">models.tb.objects.all()               #获取全部数据</div><div class="line">models.tb.objects.all().first()       #获取全部数据的第1条数据</div><div class="line">models.tb.objects.filter(name=&apos;seven&apos;) #1个参数，获取指定条件的数据</div><div class="line">models.tb.objects.filter(name=&apos;seven&apos;,password=&apos;123&apos;) #2个参数，获取指定条件的数据</div><div class="line">dic = &#123;&apos;name&apos;:&apos;seven&apos;,&apos;password&apos;:&apos;123&apos;&#125;  </div><div class="line">models.tb.objects.filter(**dic)       #参数可以是字典形式，获取指定条件的数据</div><div class="line"></div><div class="line"># 删</div><div class="line">models.tb.objects.filter(name=&apos;seven&apos;).delete() # 删除指定条件的数据</div><div class="line">dic = &#123;&apos;name&apos;:&apos;seven&apos;,&apos;password&apos;:&apos;123&apos;&#125;</div><div class="line">models.tb.objects.filter(**dic).delete()  #参数是字典形式</div><div class="line"></div><div class="line"># 改</div><div class="line"># 第1种方法</div><div class="line">models.tb.objects.filter(name=&apos;seven&apos;).update(password=&apos;123&apos;) #将指定条件的数据更新</div><div class="line"># 第2种方法</div><div class="line">obj = models.tb.objects.get(id=1)</div><div class="line">obj.c1 = &apos;111&apos;</div><div class="line">obj.save()        # 修改单条数据</div><div class="line"># 第3种方法--字典参数</div><div class="line">dic = &#123;&apos;name&apos;:&apos;seven&apos;,&apos;password&apos;:&apos;123&apos;&#125;</div><div class="line">models.tb.objects.filter(**dic).update(**dic)  #参数是字典形式</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from toon.models import Pic</div><div class="line">&gt;&gt;&gt; p1 = Pic(picname=&quot;aaa&quot;,pic=&quot;&quot;,tips=&quot;a&quot;)</div><div class="line">&gt;&gt;&gt; p1.save()</div><div class="line">&gt;&gt;&gt; ps = Pic.objects.all()</div><div class="line">&gt;&gt;&gt; for p in ps:</div><div class="line">...  print p.picname</div><div class="line">... </div><div class="line">aaa</div><div class="line">&gt;&gt;&gt; ps = Pic.objects.all().order_by(&quot;picname&quot;)</div><div class="line">&gt;&gt;&gt; for p in ps:</div><div class="line">...  print p.picname</div><div class="line">... </div><div class="line">aaa</div><div class="line">bbb</div><div class="line">&gt;&gt;&gt; ps = Pic.objects.all().order_by(&quot;-picname&quot;)</div><div class="line">&gt;&gt;&gt; for p in ps:</div><div class="line">...  print p.picname</div><div class="line">... </div><div class="line">bbb</div><div class="line">aaa</div></pre></td></tr></table></figure>
+<h1 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h1><h2 id="编写路由"><a href="#编写路由" class="headerlink" title="编写路由"></a>编写路由</h2><p>在主文件中添加路由<br>文件：<strong>myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, url</div><div class="line">from myDjango.views import hello, current_datetime, hours_ahead</div><div class="line">from toon.views import showpic</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    #...</div><div class="line">    url(r&apos;^toon/pic$&apos;,showpic)</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="编写视图函数"><a href="#编写视图函数" class="headerlink" title="编写视图函数"></a>编写视图函数</h2><p>在应用文件中添加视图函数，注意要导入模型文件<br>文件：<strong>myDjango/myDjango/toon/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">from django.http import HttpResponse</div><div class="line"></div><div class="line">from toon.models import Pic</div><div class="line"></div><div class="line">def showpic(request):</div><div class="line">    ps_str = &apos;&apos;</div><div class="line">    ps = Pic.objects.all()</div><div class="line">    for p in ps:</div><div class="line">        ps_str += p.picname</div><div class="line">        ps_str += &apos; &apos;</div><div class="line">    return HttpResponse(ps_str)</div></pre></td></tr></table></figure></p>
+<h2 id="分开路由"><a href="#分开路由" class="headerlink" title="分开路由"></a>分开路由</h2><p>对于不同功能的应用，可以把路由放在不同文件中</p>
+<p>在主文件夹的路由中使用include<br>文件：<strong>myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, url, include</div><div class="line"></div><div class="line">from myDjango.views import hello, current_datetime, hours_ahead</div><div class="line">from toon.views import showpic</div><div class="line">from django.contrib import admin</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    #...</div><div class="line">    url(r&apos;^toon/&apos;,include(&apos;toon.urls&apos;))</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>文件：<strong>myDjango/myDjango/toon/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, url, include</div><div class="line"></div><div class="line">from toon.views import showpic</div><div class="line">from django.contrib import admin</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^pic/&apos;,showpic)</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h1 id="admin"><a href="#admin" class="headerlink" title="admin"></a>admin</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在配置文件中已经默认添加了admin功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = [</div><div class="line">    &apos;django.contrib.admin&apos;,</div><div class="line">    &apos;django.contrib.auth&apos;,</div><div class="line">    &apos;django.contrib.contenttypes&apos;,</div><div class="line">    &apos;django.contrib.sessions&apos;,</div><div class="line">    &apos;django.contrib.messages&apos;,</div><div class="line">    &apos;django.contrib.staticfiles&apos;,</div><div class="line">    &apos;toon&apos;,</div><div class="line">]</div><div class="line"></div><div class="line">MIDDLEWARE_CLASSES = [</div><div class="line">    &apos;django.middleware.security.SecurityMiddleware&apos;,</div><div class="line">    &apos;django.contrib.sessions.middleware.SessionMiddleware&apos;,</div><div class="line">    &apos;django.middleware.common.CommonMiddleware&apos;,</div><div class="line">    &apos;django.middleware.csrf.CsrfViewMiddleware&apos;,</div><div class="line">    &apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,</div><div class="line">    &apos;django.contrib.auth.middleware.SessionAuthenticationMiddleware&apos;,</div><div class="line">    &apos;django.contrib.messages.middleware.MessageMiddleware&apos;,</div><div class="line">    &apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;,</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="添加管理路由"><a href="#添加管理路由" class="headerlink" title="添加管理路由"></a>添加管理路由</h2><p>admin界面默认位于[site]/admin这个URL<br>文件：<strong>myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, url, include</div><div class="line"></div><div class="line">from myDjango.views import hello, current_datetime, hours_ahead</div><div class="line">from toon.views import showpic</div><div class="line">from django.contrib import admin</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^admin/&apos;, include(admin.site.urls)),</div><div class="line">    #...</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>为了让admin界面能够管理某个数据模型，修改admin.py文件<br>文件：<strong>myDjango/myDjango/toon/admin.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from django.contrib import admin</div><div class="line"></div><div class="line">from toon.models import Pic</div><div class="line"></div><div class="line">admin.site.register(Pic)</div></pre></td></tr></table></figure></p>
+<h2 id="创建超级用户"><a href="#创建超级用户" class="headerlink" title="创建超级用户"></a>创建超级用户</h2><p>在shell界面创建超级用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py createsuperuser</div></pre></td></tr></table></figure></p>
+<h2 id="自定义页面"><a href="#自定义页面" class="headerlink" title="自定义页面"></a>自定义页面</h2><h3 id="添加搜索"><a href="#添加搜索" class="headerlink" title="添加搜索"></a>添加搜索</h3><p>文件：<strong>myDjango/myDjango/toon/admin.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class PicAdmin(admin.ModelAdmin):</div><div class="line">    search_fields = (&apos;picname&apos;, &apos;tips&apos;)</div><div class="line">    #...</div></pre></td></tr></table></figure></p>
+<h3 id="自定义显示列表"><a href="#自定义显示列表" class="headerlink" title="自定义显示列表"></a>自定义显示列表</h3><p>默认只显示对象的<strong>unicode</strong>值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class PicAdmin(admin.ModelAdmin):</div><div class="line">    list_display = (&apos;picname&apos;,&apos;tips&apos;)</div><div class="line">    #...</div></pre></td></tr></table></figure></p>
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>根据字段筛选过滤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class PicAdmin(admin.ModelAdmin):</div><div class="line">    list_filter = (&apos;tips&apos;,)</div><div class="line">    #...</div></pre></td></tr></table></figure></p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>如果是降序，就在前面加个’-‘号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class TagAdmin(admin.ModelAdmin):</div><div class="line">    ordering = (&apos;tagname&apos;,)</div></pre></td></tr></table></figure></p>
+<h2 id="自定义编辑页面"><a href="#自定义编辑页面" class="headerlink" title="自定义编辑页面"></a>自定义编辑页面</h2><p>当使用admin管理数据库时，可以自定义编辑页面<br>只显示指定的内容<br>文件：<strong>myDjango/myDjango/toon/admin.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">from django.contrib import admin</div><div class="line"></div><div class="line">from toon.models import Pic, Tag</div><div class="line"></div><div class="line">class TagAdmin(admin.ModelAdmin):</div><div class="line">    fields = (&apos;pic&apos;, &apos;tags&apos;)</div><div class="line"></div><div class="line">class PicAdmin(admin.ModelAdmin):</div><div class="line">    fields = (&apos;picname&apos;, &apos;pic&apos;)</div><div class="line"></div><div class="line">admin.site.register(Tag, TagAdmin)</div><div class="line">admin.site.register(Pic, PicAdmin)</div></pre></td></tr></table></figure></p>
+<p>也可以把不同内容分开显示分割成字段集<br>也可以给每个字段添加类<br>文件：<strong>myDjango/myDjango/toon/admin.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class PicAdmin(admin.ModelAdmin):</div><div class="line">    fieldsets = (</div><div class="line">        [</div><div class="line">            &apos;Main&apos;,&#123;</div><div class="line">                &apos;fields&apos;: (&apos;picname&apos;, &apos;pic&apos;),</div><div class="line">            &#125;</div><div class="line">        ],</div><div class="line">        [</div><div class="line">            &apos;Advance&apos;,&#123;</div><div class="line">                &apos;classes&apos;: (&apos;collapse&apos;,), #CSS 隐藏</div><div class="line">                &apos;fields&apos;: (&apos;tips&apos;,),</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    )</div></pre></td></tr></table></figure></p>
+<h3 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h3><p>在Pic页面，通过inline把Tag也显示出来<br>文件：<strong>myDjango/myDjango/toon/admin.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class TagInLine(admin.TabularInline):</div><div class="line">    model = Tag</div><div class="line"></div><div class="line">class PicAdmin(admin.ModelAdmin):</div><div class="line">    inlines = [TagInLine]</div><div class="line">    #...</div></pre></td></tr></table></figure></p>
+<h3 id="filter-horizontal"><a href="#filter-horizontal" class="headerlink" title="filter_horizontal"></a>filter_horizontal</h3><p>只能用于多对多关系<br>在创建一个Pic对象时，在选择Tag的页面可以使用搜索功能，方便查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class PicAdmin(admin.ModelAdmin):</div><div class="line">    filter_horizontal = (&apos;tags&apos;,)</div></pre></td></tr></table></figure></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.cnblogs.com/maociping/p/5255834.html" target="_blank" rel="external">http://www.cnblogs.com/maociping/p/5255834.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/11/myDjango-1/" data-id="cj5c7k428003qm0u4h9i3wg5g" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/13/myDjango-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          myDjango-2 表单、路由、静态文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/09/requests/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">requests 爬虫</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

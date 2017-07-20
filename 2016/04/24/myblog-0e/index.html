@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>myblog-0e 部署 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="部署部署流程文件：manage.py1234567891011121314@manager.commanddef deploy():    &amp;quot;&amp;quot;&amp;quot;Run deployment tasks.&amp;quot;&amp;quot;&amp;quot;    from flask.ext.migrate import upgrade    from app.models import Role,">
+<meta name="keywords" content="flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="myblog-0e 部署">
+<meta property="og:url" content="http://yoursite.com/2016/04/24/myblog-0e/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="部署部署流程文件：manage.py1234567891011121314@manager.commanddef deploy():    &amp;quot;&amp;quot;&amp;quot;Run deployment tasks.&amp;quot;&amp;quot;&amp;quot;    from flask.ext.migrate import upgrade    from app.models import Role,">
+<meta property="og:updated_time" content="2017-03-15T04:50:24.364Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="myblog-0e 部署">
+<meta name="twitter:description" content="部署部署流程文件：manage.py1234567891011121314@manager.commanddef deploy():    &amp;quot;&amp;quot;&amp;quot;Run deployment tasks.&amp;quot;&amp;quot;&amp;quot;    from flask.ext.migrate import upgrade    from app.models import Role,">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-myblog-0e" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/24/myblog-0e/" class="article-date">
+  <time datetime="2016-04-24T06:49:56.000Z" itemprop="datePublished">2016-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      myblog-0e 部署
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><p>文件：<strong>manage.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@manager.command</div><div class="line">def deploy():</div><div class="line">    &quot;&quot;&quot;Run deployment tasks.&quot;&quot;&quot;</div><div class="line">    from flask.ext.migrate import upgrade</div><div class="line">    from app.models import Role, User</div><div class="line"></div><div class="line">    # 数据库迁移更新</div><div class="line">    upgrade()</div><div class="line"></div><div class="line">    # 创建角色</div><div class="line">    Role.insert_roles()</div><div class="line"></div><div class="line">    # 自我关注</div><div class="line">    User.add_self_follows()</div></pre></td></tr></table></figure></p>
+<p>运行deploy更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(venv)$ python manage.py deploy</div></pre></td></tr></table></figure></p>
+<h2 id="把生产环境中的错误写入日志"><a href="#把生产环境中的错误写入日志" class="headerlink" title="把生产环境中的错误写入日志"></a>把生产环境中的错误写入日志</h2><p>出错时发送电子邮件<br>文件：<strong>config.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class ProductionConfig(Config):</div><div class="line">    SQLALCHEMY_DATABASE_URI =&apos;mysql://flask:admin@localhost/flaskdb&apos;</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def init_app(cls, app):</div><div class="line">        Config.init_app(app)</div><div class="line"></div><div class="line">        # email errors to the administrators</div><div class="line">        import logging</div><div class="line">        from logging.handlers import SMTPHandler</div><div class="line">        credentials = None</div><div class="line">        secure = None</div><div class="line">        if getattr(cls, &apos;MAIL_USERNAME&apos;, None) is not None:</div><div class="line">            credentials = (cls.MAIL_USERNAME, cls.MAIL_PASSWORD)</div><div class="line">            if getattr(cls, &apos;MAIL_USE_TLS&apos;, None):</div><div class="line">                secure = ()</div><div class="line">        mail_handler = SMTPHandler(</div><div class="line">            mailhost=(cls.MAIL_SERVER, cls.MAIL_PORT),</div><div class="line">            fromaddr=cls.FLASKY_MAIL_SENDER,</div><div class="line">            toaddrs=[cls.FLASKY_ADMIN],</div><div class="line">            subject=cls.FLASKY_MAIL_SUBJECT_PREFIX + &apos; Application Error&apos;,</div><div class="line">            credentials=credentials,</div><div class="line">            secure=secure)</div><div class="line">        mail_handler.setLevel(logging.ERROR)</div><div class="line">        app.logger.addHandler(mail_handler)</div></pre></td></tr></table></figure></p>
+<h2 id="Gunicorn"><a href="#Gunicorn" class="headerlink" title="Gunicorn"></a>Gunicorn</h2><p>Gunicorn是一个给Unix用的WSGI HTTP服务器<br>运行一个Flask应用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(venv)$ gunicorn manage:app</div></pre></td></tr></table></figure></p>
+<p>用4个worker进程运行一个flask应用，绑定到localhost的4000端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(venv)$ gunicorn -w 4 -b 127.0.0.1:4000 manage:app</div></pre></td></tr></table></figure></p>
+<h2 id="使用Flask-SSLify启用安全HTTP"><a href="#使用Flask-SSLify启用安全HTTP" class="headerlink" title="使用Flask-SSLify启用安全HTTP"></a>使用Flask-SSLify启用安全HTTP</h2><p>文件：app/<strong>init</strong>.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def create_app(config_name):</div><div class="line"></div><div class="line">    #...</div><div class="line">    if not app.debug and not app.testing and not app.config[&apos;SSL_DISABLE&apos;]:</div><div class="line">        from flask.ext.sslify import SSLify</div><div class="line">        sslify = SSLify(app)</div></pre></td></tr></table></figure></p>
+<h1 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h1><p>后台运行，记录日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver &gt;&gt; flask.log 2&gt;&amp;1 &amp;</div><div class="line">python manage.py runserver &amp;&gt;&gt;flask.log</div></pre></td></tr></table></figure></p>
+<h1 id="语言问题"><a href="#语言问题" class="headerlink" title="语言问题"></a>语言问题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apt-get install localepurge //选择en_US.UTF-8 和 zh_CN.UTF-8</div><div class="line">locale-gen zh_CN.UTF-8 en_US.UTF-8 //生成语言</div><div class="line">locale //打印配置</div></pre></td></tr></table></figure>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">apt-get install python-virtualenv</div><div class="line">apt-get install python-pip</div><div class="line">source venv/bin/activate</div><div class="line">pip install -r requirements/common.txt</div></pre></td></tr></table></figure>
+<h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">apt-get install mysql-server</div><div class="line">apt-get install python-setuptools</div><div class="line">apt-get install libmysqld-dev</div><div class="line">apt-get install libmysqlclient-dev</div><div class="line">apt-get install python-dev</div><div class="line">easy_install mysql-python</div></pre></td></tr></table></figure>
+<p>创建新用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p //登录</div><div class="line">use mysql</div><div class="line">create user &quot;flask&quot;@&quot;localhost&quot; identified by &quot;admin&quot;</div><div class="line">flush privileges  //刷新</div><div class="line">create database flaskdb //创建数据库</div><div class="line">grant all privileges on flaskdb.* to flask@localhost identified  by &apos;admin&apos; //赋予权限</div><div class="line">flush privileges</div></pre></td></tr></table></figure></p>
+<h1 id="终语"><a href="#终语" class="headerlink" title="终语"></a>终语</h1><p>至此，当初搭建博客的目标基本达成<br>后面是更基础的学习</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/24/myblog-0e/" data-id="cj5c7k42a003tm0u4d9g4j7s2" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/25/javascript-00/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          javascript-00 简述
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/23/myblog-0d/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">myblog-0d API</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

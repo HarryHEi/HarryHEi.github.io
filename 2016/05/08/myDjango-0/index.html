@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>myDjango-0 基础 | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简述Django是python下的另一款服务器网络框架，属于重量级框架MVC架构指的是：模型(model)，视图(views)，控制(controller)由于Django自行处理控制部分即C，所以Django也被称为MTV框架，这里T指的是模板(Template) 项目结构可以直接使用命令创建项目1django-admin.py startproject myDjango 创建的项目结构如下12">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="myDjango-0 基础">
+<meta property="og:url" content="http://yoursite.com/2016/05/08/myDjango-0/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="简述Django是python下的另一款服务器网络框架，属于重量级框架MVC架构指的是：模型(model)，视图(views)，控制(controller)由于Django自行处理控制部分即C，所以Django也被称为MTV框架，这里T指的是模板(Template) 项目结构可以直接使用命令创建项目1django-admin.py startproject myDjango 创建的项目结构如下12">
+<meta property="og:updated_time" content="2017-03-15T04:50:30.309Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="myDjango-0 基础">
+<meta name="twitter:description" content="简述Django是python下的另一款服务器网络框架，属于重量级框架MVC架构指的是：模型(model)，视图(views)，控制(controller)由于Django自行处理控制部分即C，所以Django也被称为MTV框架，这里T指的是模板(Template) 项目结构可以直接使用命令创建项目1django-admin.py startproject myDjango 创建的项目结构如下12">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-myDjango-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/08/myDjango-0/" class="article-date">
+  <time datetime="2016-05-08T10:58:41.000Z" itemprop="datePublished">2016-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      myDjango-0 基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>Django是python下的另一款服务器网络框架，属于重量级框架<br>MVC架构指的是：模型(model)，视图(views)，控制(controller)<br>由于Django自行处理控制部分即C，所以Django也被称为MTV框架，这里T指的是模板(Template)</p>
+<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><p>可以直接使用命令创建项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startproject myDjango</div></pre></td></tr></table></figure></p>
+<p>创建的项目结构如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">myDjango</div><div class="line">├── manage.py</div><div class="line">└── myDjango</div><div class="line">    ├── __init__.py</div><div class="line">    ├── settings.py</div><div class="line">    ├── urls.py</div><div class="line">    └── wsgi.py</div></pre></td></tr></table></figure></p>
+<p>启动测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver 5000</div></pre></td></tr></table></figure></p>
+<h1 id="视图和URL配置-路由"><a href="#视图和URL配置-路由" class="headerlink" title="视图和URL配置(路由)"></a>视图和URL配置(路由)</h1><p>一个简单的视图<br>文件：<strong>myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#导入HttpResponse类</div><div class="line">from django.http import HttpResponse</div><div class="line"></div><div class="line">def hello(request):</div><div class="line">    return HttpResponse(&quot;hello world&quot;)</div></pre></td></tr></table></figure></p>
+<p>默认的urls.py注释了很多常用功能</p>
+<p>url()除了常用的两个参数外，还有kwargs和name参数<br>kwargs参数是一个字典形式参数，用来传递参数给视图函数<br>name参数据是URL的名字</p>
+<p>文件：<strong>myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, url</div><div class="line"></div><div class="line">#第一个元素是模式匹配字符串(正则表达式)</div><div class="line">#第二个元素是视图函数</div><div class="line">#这里^$分别匹配开头和结尾</div><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^$&apos;, &apos;myDjango.views.hello&apos;),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h2><p>render()第一个参数是请求对象，第二个参数是模板名字，第三个参数是字典<br>返回一个HttpResponse对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return render(request, &quot;index.html&quot;, c)</div></pre></td></tr></table></figure></p>
+<h2 id="引发一个404错误"><a href="#引发一个404错误" class="headerlink" title="引发一个404错误"></a>引发一个404错误</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">from django.http import Http404</div><div class="line"></div><div class="line">raise Http404(&quot;Not found&quot;)</div></pre></td></tr></table></figure>
+<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><p>可以在路由开头使用import导入视图函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, url</div><div class="line">from myDjango.views import hello, current_datetime</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(r&apos;^$&apos;, hello),</div><div class="line">    url(r&apos;^time$&apos;,current_datetime)</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>添加一个显示时间的视图函数<br>注意在显示中文时要在开头指定编码格式<br>文件：<strong>myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">#!-*-coding:utf-8-*-</div><div class="line"></div><div class="line">from django.http import HttpResponse</div><div class="line">import datetime</div><div class="line"></div><div class="line">def hello(request):</div><div class="line">    return HttpResponse(&quot;hello world&quot;)</div><div class="line"></div><div class="line">def current_datetime(request):</div><div class="line">    now = datetime.datetime.now()</div><div class="line">    html = &quot;&lt;html&gt;&lt;body&gt;现在时间:%s&lt;/body&gt;&lt;/html&gt;&quot; %now</div><div class="line">    return HttpResponse(html)</div></pre></td></tr></table></figure></p>
+<p>时区是在setting.py中设置的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TIME_ZONE = &apos;Asia/Shanghai&apos;</div></pre></td></tr></table></figure></p>
+<p>使用通配符处理URL，这里是匹配1位数及以上的数字<br><strong>如果作为参数传递，需要使用圆括号括起来</strong><br>文件：<strong>myDjango/myDjango/urls.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(r&apos;^time/plus/(\d+)/$&apos;,hours_ahead)</div></pre></td></tr></table></figure></p>
+<p>视图函数需要接收传递的参数<br>request是一个HttpRequest对象，每个视图都是以它为第一个参数<br>文件：<strong>myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def hours_ahead(request, offset):</div><div class="line">    try:</div><div class="line">        offset = int(offset)</div><div class="line">    except ValueError:</div><div class="line">        raise Http404()</div><div class="line">    now = datetime.datetime.now() + datetime.timedelta(hours=offset)</div><div class="line">    html = &quot;&lt;html&gt;&lt;body&gt;现在时间:%s&lt;/body&gt;&lt;/html&gt;&quot; %now</div><div class="line">    return HttpResponse(html)</div></pre></td></tr></table></figure></p>
+<h1 id="T-模板-Template"><a href="#T-模板-Template" class="headerlink" title="T 模板(Template)"></a>T 模板(Template)</h1><p>Django的模板指的是文本，用于产生HTML<br>可以在HTML中写python<br>变量的写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; something &#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>if语句和for循环<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;% if a %&#125;</div><div class="line">    something</div><div class="line">&#123;% else %&#125;</div><div class="line">    another</div><div class="line">&#123;% endif %&#125;</div><div class="line"></div><div class="line">&#123;% for a in as %&#125;</div><div class="line">    do something</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure></p>
+<p>注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;# 这是注释 #&#125;</div></pre></td></tr></table></figure></p>
+<p>反向迭代<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% for a in as reversed %&#125;</div><div class="line">    do something</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure></p>
+<p>过滤器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; name|lower &#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>创建一个template实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from django.template import Template</div><div class="line">&gt;&gt;&gt; t=Template(&quot;i am &#123;&#123; name &#125;&#125;&quot;)</div></pre></td></tr></table></figure></p>
+<p>可以使用context来传递参数给这个template对象<br>context在Django中是一个Context(上下文)对象<br>template对象的render()方法可以用来接收传递参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from django.template import Context</div><div class="line">&gt;&gt;&gt; c=Context(&#123;&quot;name&quot;:&quot;harry&quot;&#125;)</div><div class="line">&gt;&gt;&gt; t.render(c)</div><div class="line">u&apos;i am harry&apos;</div><div class="line">&gt;&gt;&gt; print t.render(c)</div><div class="line">i am harry</div></pre></td></tr></table></figure></p>
+<p>同一个模板对象可以渲染多个context<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; c2=Context(&#123;&quot;name&quot;:&quot;herui&quot;&#125;)</div><div class="line">&gt;&gt;&gt; print t.render(c2)</div><div class="line">i am herui</div></pre></td></tr></table></figure></p>
+<h2 id="导入模板"><a href="#导入模板" class="headerlink" title="导入模板"></a>导入模板</h2><p>配置<br>BACKEND 是一个指向Django后端API，内置的有<br>django.template.backends.django.DjangoTemplates<br>django.template.backends.jinja2.Jinja2 (Jinja2引擎)<br>必须使用绝对路径<br>文件：<strong>myDjango/myDjango/setting.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">TEMPLATES = [</div><div class="line">    &#123;</div><div class="line">        &apos;BACKEND&apos;: &apos;django.template.backends.django.DjangoTemplates&apos;,</div><div class="line">        &apos;DIRS&apos;: [os.path.join(os.path.dirname(__file__),&quot;templates&quot;)],</div><div class="line">        &apos;APP_DIRS&apos;: True,</div><div class="line">        &apos;OPTIONS&apos;: &#123;</div><div class="line">            &apos;context_processors&apos;: [</div><div class="line">                &apos;django.template.context_processors.debug&apos;,</div><div class="line">                &apos;django.template.context_processors.request&apos;,</div><div class="line">                &apos;django.contrib.auth.context_processors.auth&apos;,</div><div class="line">                &apos;django.contrib.messages.context_processors.messages&apos;,</div><div class="line">            ],</div><div class="line">        &#125;,</div><div class="line">    &#125;,</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>视图函数<br>django.template.loader定义了两个函数加载模板</p>
+<p>使用get_template()加载模板，返回一个Template对象<br>如果模板文件在templates子目录中，添相应的斜杠，get_template(“west/example.html”)<br>获得Template对象之后，使用Context渲染<br>文件：<strong>myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from django.http import HttpResponse</div><div class="line">from django.template.loader import get_template</div><div class="line">from django.template import Context</div><div class="line"></div><div class="line">def hello(request):</div><div class="line">    return HttpResponse(get_template(&quot;index.html&quot;)\</div><div class="line">        .render(&#123;&quot;label&quot;:&quot;hello&quot;&#125;))</div></pre></td></tr></table></figure></p>
+<p>select_template()用模板名称列表作为参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select_template([&apos;story_%s_detail.html&apos; % story.id, &apos;story_detail.html&apos;])</div></pre></td></tr></table></figure></p>
+<p>简单的模板<br>文件：<strong>myDjango/myDjango/templates/index.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h2&gt;&#123;&#123; label &#125;&#125;&lt;/h2&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="render-to-response"><a href="#render-to-response" class="headerlink" title="render_to_response()"></a>render_to_response()</h3><p>render_to_response()能直接实现载入模板并渲染</p>
+<ul>
+<li>第一个参数是使用的模板名称</li>
+<li>第二个参数是Context字典，可选参数</li>
+</ul>
+<p>文件：<strong>myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from django.shortcuts import render_to_response</div><div class="line"></div><div class="line">def hello(request):</div><div class="line">    return render_to_response(&quot;index.html&quot;,\</div><div class="line">        &#123;&quot;label&quot;:&quot;hello world&quot;&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="locals"><a href="#locals" class="headerlink" title="locals()"></a>locals()</h3><p>locals()包括了到执行时间点所有变量的映射<br>这里的locals()就相当于之前的字典<br>locals()的值为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &apos;request&apos;: &lt;WSGIRequest: GET &apos;/time&apos;&gt;, </div><div class="line">    &apos;label&apos;: datetime.datetime(2016, 5, 11, 16, 34, 19, 157325)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>文件：<strong>myDjango/myDjango/views.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">def current_datetime(request):</div><div class="line">    label = datetime.datetime.now()</div><div class="line">    return render_to_response(&quot;index.html&quot;,locals())</div></pre></td></tr></table></figure></p>
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><p>在模板文件中可以导入其他模板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% include &quot;index2.html&quot; %&#125;</div><div class="line">&#123;% include &quot;ano/index3.html&quot; %&#125;</div><div class="line">&#123;% include temp_name %&#125;</div></pre></td></tr></table></figure></p>
+<p>在index中导入include/time.html<br>如果在debug模式，没找到导入的文件会报错<br>如果不在debug模式，会无视这个导入<br>文件：<strong>myDjango/myDjango/templates/include/time.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h2&gt;&#123;&#123; current_time &#125;&#125;&lt;/h2&gt;</div></pre></td></tr></table></figure></p>
+<p>文件：<strong>myDjango/myDjango/templates/index.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% include &quot;include/time.html&quot; %&#125;</div><div class="line">&lt;h2&gt;&#123;&#123; label &#125;&#125;&lt;/h2&gt;</div></pre></td></tr></table></figure></p>
+<p>视图函数<br>访问页面显示时间和问候语<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from django.shortcuts import render_to_response</div><div class="line">import datetime</div><div class="line"></div><div class="line">def current_datetime(request):</div><div class="line">    current_time = datetime.datetime.now()</div><div class="line">    label = &quot;hello&quot;</div><div class="line">    return render_to_response(&quot;index.html&quot;,locals())</div></pre></td></tr></table></figure></p>
+<h2 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h2><p>先构造一个基础模板，然后子模板对块进行修改<br>基础模板中把可以更改的地方用block块包起来<br>文件：<strong>myDjango/myDjango/templates/base.html</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">    &#123;% block head %&#125;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;meta charset=utf-8 / &gt;</div><div class="line">        &lt;title&gt;&#123;% block title %&#125;myDjango&#123;% endblock %&#125;&lt;/title&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &#123;% endblock %&#125;</div><div class="line"></div><div class="line">    &#123;% block body %&#125;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;h1&gt;welcome to my Django&lt;/h1&gt;</div><div class="line">        &#123;% block content %&#125;&#123;% endblock %&#125;</div><div class="line">        &lt;p&gt;thanks&lt;/p&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">    &#123;% endblock %&#125;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>使用extends继承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &quot;base.html&quot; %&#125;</div><div class="line"></div><div class="line">&#123;% block title %&#125;Home&#123;% endblock %&#125;</div><div class="line"></div><div class="line">&#123;% block content %&#125;</div><div class="line">&lt;p&gt;lalalala&lt;/p&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<p>参考<br><a href="http://python.usyiyi.cn/django/index.html" target="_blank" rel="external">http://python.usyiyi.cn/django/index.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/08/myDjango-0/" data-id="cj5c7k424003nm0u477powdzs" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/09/requests/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          requests 爬虫
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/07/jQuery-06/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">jQuery-06 Ajax</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

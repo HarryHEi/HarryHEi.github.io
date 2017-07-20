@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>numpy | Harryx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="numpy简介numpy是一个多维数组对象（ndarray）numpy数组的维度称为秩（rank），每个线性数组称为轴（axes）  ndarray.ndim:数组的维度秩（rank），即表示轴的个数 ndarray.shape:返回一个元祖，如果是二位数组，则表示“行数”和“列数”如果是如果是一个三通道图片，则表示“高”“宽”和“通道数” ndarray.size:返回数组的元素的总个数，如果是">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numpy">
+<meta property="og:url" content="http://yoursite.com/2016/04/01/numpy/index.html">
+<meta property="og:site_name" content="Harryx">
+<meta property="og:description" content="numpy简介numpy是一个多维数组对象（ndarray）numpy数组的维度称为秩（rank），每个线性数组称为轴（axes）  ndarray.ndim:数组的维度秩（rank），即表示轴的个数 ndarray.shape:返回一个元祖，如果是二位数组，则表示“行数”和“列数”如果是如果是一个三通道图片，则表示“高”“宽”和“通道数” ndarray.size:返回数组的元素的总个数，如果是">
+<meta property="og:updated_time" content="2017-03-15T04:51:06.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="numpy">
+<meta name="twitter:description" content="numpy简介numpy是一个多维数组对象（ndarray）numpy数组的维度称为秩（rank），每个线性数组称为轴（axes）  ndarray.ndim:数组的维度秩（rank），即表示轴的个数 ndarray.shape:返回一个元祖，如果是二位数组，则表示“行数”和“列数”如果是如果是一个三通道图片，则表示“高”“宽”和“通道数” ndarray.size:返回数组的元素的总个数，如果是">
+  
+    <link rel="alternate" href="/atom.xml" title="Harryx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harryx</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-numpy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/01/numpy/" class="article-date">
+  <time datetime="2016-04-01T12:00:58.000Z" itemprop="datePublished">2016-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      numpy
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="numpy简介"><a href="#numpy简介" class="headerlink" title="numpy简介"></a>numpy简介</h1><p>numpy是一个多维数组对象（ndarray）<br>numpy数组的维度称为秩（rank），每个线性数组称为轴（axes）</p>
+<ul>
+<li>ndarray.ndim:数组的维度秩（rank），即表示轴的个数</li>
+<li>ndarray.shape:返回一个元祖，如果是二位数组，则表示“行数”和“列数”如果是如果是一个三通道图片，则表示“高”“宽”和“通道数”</li>
+<li>ndarray.size:返回数组的元素的总个数，如果是三通道图片，值为“高”<em>“宽”</em>“通道数3”</li>
+<li>ndarray.dtype:返回数组元素的数据类型对象，常见的比如uint8，float64</li>
+<li>ndarray.itemsize:返回数组中每个元素大小，单位为字节，比如uint8是1字节，float64是8字节</li>
+<li>ndarray.data:返回数组元素存储的缓冲区</li>
+</ul>
+<h1 id="创建一个numpy数组"><a href="#创建一个numpy数组" class="headerlink" title="创建一个numpy数组"></a>创建一个numpy数组</h1><h2 id="array"><a href="#array" class="headerlink" title="array()"></a>array()</h2><p>使用array创建一个三维数组，注意参数要用括号括起来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import numpy as np</div><div class="line">&gt;&gt;&gt; a = np.array([[[255,255,255]]])</div><div class="line">&gt;&gt;&gt; a.shape</div><div class="line">(1, 1, 3)</div><div class="line">&gt;&gt;&gt; a[0][0]</div><div class="line">array([255, 255, 255])</div></pre></td></tr></table></figure></p>
+<p>创建一个二位数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import numpy as np</div><div class="line">&gt;&gt;&gt; a = np.array([[1,2,3],[4,5,6]])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2, 3],</div><div class="line">       [4, 5, 6]])</div><div class="line">&gt;&gt;&gt; a.shape</div><div class="line">(2, 3)</div></pre></td></tr></table></figure></p>
+<p>创建数组时可以显式指定元祖的数值类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.array([[[255,255,255]]],dtype=&apos;uint8&apos;)</div><div class="line">&gt;&gt;&gt; a.dtype</div><div class="line">dtype(&apos;uint8&apos;)</div><div class="line">&gt;&gt;&gt; a.itemsize</div><div class="line">1</div><div class="line">&gt;&gt;&gt; a = np.array([[[255,255,255]]],dtype=&apos;float64&apos;)</div><div class="line">&gt;&gt;&gt; a.dtype</div><div class="line">dtype(&apos;float64&apos;)</div><div class="line">&gt;&gt;&gt; a.itemsize</div><div class="line">8</div></pre></td></tr></table></figure></p>
+<h2 id="arange"><a href="#arange" class="headerlink" title="arange()"></a>arange()</h2><p>返回一个数列形式数组<br>第一个参数表示开始的值，第二个参数表示截止的值(不包括)，第三个参数表示步长<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.arange(1,10,2)</div><div class="line">array([1, 3, 5, 7, 9])</div></pre></td></tr></table></figure></p>
+<p>第一个和第三个参数是可选的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.arange(7)</div><div class="line">array([0, 1, 2, 3, 4, 5, 6])</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
+<p>同样，也可以指定类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.arange(7,dtype=&quot;uint8&quot;)</div><div class="line">array([0, 1, 2, 3, 4, 5, 6], dtype=uint8)</div></pre></td></tr></table></figure></p>
+<h1 id="自定义结构数组"><a href="#自定义结构数组" class="headerlink" title="自定义结构数组"></a>自定义结构数组</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; student = np.dtype(&#123;&quot;names&quot;:[&quot;name&quot;, &quot;age&quot;, &quot;weight&quot;], &quot;formats&quot;:[&quot;S32&quot;, &quot;i&quot;, &quot;f&quot;]&#125;, align=True)</div><div class="line">&gt;&gt;&gt; student</div><div class="line">dtype([(&apos;name&apos;, &apos;S32&apos;), (&apos;age&apos;, &apos;&lt;i4&apos;), (&apos;weight&apos;, &apos;&lt;f4&apos;)], align=True)</div><div class="line">&gt;&gt;&gt; a = np.array([(&quot;zhang&quot;, 32, 65.5), (&quot;wang&quot;, 24, 55.2)], dtype = student)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([(&apos;zhang&apos;, 32, 65.5), (&apos;wang&apos;, 24, 55.20000076293945)], </div><div class="line">      dtype=&#123;&apos;names&apos;:[&apos;name&apos;,&apos;age&apos;,&apos;weight&apos;], &apos;formats&apos;:[&apos;S32&apos;,&apos;&lt;i4&apos;,&apos;&lt;f4&apos;], &apos;offsets&apos;:[0,32,36], &apos;itemsize&apos;:40, &apos;aligned&apos;:True&#125;)</div></pre></td></tr></table></figure>
+<h2 id="reshape"><a href="#reshape" class="headerlink" title="reshape"></a>reshape</h2><p>如果一个数组按照特定次序排列，可以使用reshape重定形<br>对一维数组重定形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.arange(9).reshape(3,3)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[0, 1, 2],</div><div class="line">       [3, 4, 5],</div><div class="line">       [6, 7, 8]])</div></pre></td></tr></table></figure></p>
+<p>对二维数组重定形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.array([[1,2,3,4],[7,8,9,10]])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[ 1,  2,  3,  4],</div><div class="line">       [ 7,  8,  9, 10]])</div><div class="line">&gt;&gt;&gt; a.reshape(4,2)</div><div class="line">array([[ 1,  2],</div><div class="line">       [ 3,  4],</div><div class="line">       [ 7,  8],</div><div class="line">       [ 9, 10]])</div></pre></td></tr></table></figure></p>
+<h2 id="水平组合"><a href="#水平组合" class="headerlink" title="水平组合"></a>水平组合</h2><p>使用<strong>hstack</strong>函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2, 3, 4],</div><div class="line">       [5, 6, 7, 8]])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([[ 9, 10, 11],</div><div class="line">       [13, 14, 15]])</div><div class="line">&gt;&gt;&gt; np.hstack((a,b))</div><div class="line">array([[ 1,  2,  3,  4,  9, 10, 11],</div><div class="line">       [ 5,  6,  7,  8, 13, 14, 15]])</div></pre></td></tr></table></figure></p>
+<p>使用<strong>concatenate</strong>函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.concatenate((a,b),axis=1)</div><div class="line">array([[ 1,  2,  3,  4,  9, 10, 11],</div><div class="line">       [ 5,  6,  7,  8, 13, 14, 15]])</div></pre></td></tr></table></figure></p>
+<h2 id="垂直组合"><a href="#垂直组合" class="headerlink" title="垂直组合"></a>垂直组合</h2><p>使用<strong>vstack</strong>函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.vstack((a,b))</div><div class="line">array([[ 1,  2,  3,  4],</div><div class="line">       [ 5,  6,  7,  8],</div><div class="line">       [ 9, 10, 11, 12],</div><div class="line">       [13, 14, 15, 16]])</div></pre></td></tr></table></figure></p>
+<p>使用<strong>concatenate</strong>函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.concatenate((a,b),axis=0)</div><div class="line">array([[ 1,  2,  3,  4],</div><div class="line">       [ 5,  6,  7,  8],</div><div class="line">       [ 9, 10, 11, 12],</div><div class="line">       [13, 14, 15, 16]])</div></pre></td></tr></table></figure></p>
+<h2 id="深度组合"><a href="#深度组合" class="headerlink" title="深度组合"></a>深度组合</h2><p>使用<strong>dstack</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2, 3, 4],</div><div class="line">       [5, 6, 7, 8]])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([[ 9, 10, 11, 12],</div><div class="line">       [13, 14, 15, 16]])</div><div class="line">&gt;&gt;&gt; np.dstack((a,b))</div><div class="line">array([[[ 1,  9],</div><div class="line">        [ 2, 10],</div><div class="line">        [ 3, 11],</div><div class="line">        [ 4, 12]],</div><div class="line">       [[ 5, 13],</div><div class="line">        [ 6, 14],</div><div class="line">        [ 7, 15],</div><div class="line">        [ 8, 16]]])</div></pre></td></tr></table></figure></p>
+<h2 id="行组合"><a href="#行组合" class="headerlink" title="行组合"></a>行组合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2],</div><div class="line">       [3, 4]])</div><div class="line">&gt;&gt;&gt; row_stack((a,a))</div><div class="line">&gt;&gt;&gt; np.row_stack((a,a))</div><div class="line">array([[1, 2],</div><div class="line">       [3, 4],</div><div class="line">       [1, 2],</div><div class="line">       [3, 4]])</div></pre></td></tr></table></figure>
+<h2 id="列组合"><a href="#列组合" class="headerlink" title="列组合"></a>列组合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.column_stack((a,a))</div><div class="line">array([[1, 2, 1, 2],</div><div class="line">       [3, 4, 3, 4]])</div></pre></td></tr></table></figure>
+<h2 id="水平分割"><a href="#水平分割" class="headerlink" title="水平分割"></a>水平分割</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a=np.arange(9).reshape((3,3))</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[0, 1, 2],</div><div class="line">       [3, 4, 5],</div><div class="line">       [6, 7, 8]])</div><div class="line">&gt;&gt;&gt; np.hsplit(a,3)</div><div class="line">[array([[0],</div><div class="line">       [3],</div><div class="line">       [6]]), array([[1],</div><div class="line">       [4],</div><div class="line">       [7]]), array([[2],</div><div class="line">       [5],</div><div class="line">       [8]])]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.split(a,3,axis=1)</div><div class="line">[array([[0],</div><div class="line">       [3],</div><div class="line">       [6]]), array([[1],</div><div class="line">       [4],</div><div class="line">       [7]]), array([[2],</div><div class="line">       [5],</div><div class="line">       [8]])]</div></pre></td></tr></table></figure>
+<h2 id="垂直分割"><a href="#垂直分割" class="headerlink" title="垂直分割"></a>垂直分割</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[0, 1, 2],</div><div class="line">       [3, 4, 5],</div><div class="line">       [6, 7, 8]])</div><div class="line">&gt;&gt;&gt; np.vsplit(a,3)</div><div class="line">[array([[0, 1, 2]]), array([[3, 4, 5]]), array([[6, 7, 8]])]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; np.split(a,3,axis=0)</div><div class="line">[array([[0, 1, 2]]), array([[3, 4, 5]]), array([[6, 7, 8]])]</div></pre></td></tr></table></figure>
+<h2 id="深度分割"><a href="#深度分割" class="headerlink" title="深度分割"></a>深度分割</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.arange(8).reshape(2,2,2)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[[0, 1],</div><div class="line">        [2, 3]],</div><div class="line"></div><div class="line">       [[4, 5],</div><div class="line">        [6, 7]]])</div><div class="line">&gt;&gt;&gt; np.dsplit(a,2)</div><div class="line">[array([[[0],</div><div class="line">        [2]],</div><div class="line"></div><div class="line">       [[4],</div><div class="line">        [6]]]), array([[[1],</div><div class="line">        [3]],</div><div class="line"></div><div class="line">       [[5],</div><div class="line">        [7]]])]</div></pre></td></tr></table></figure>
+<h1 id="复制和镜像"><a href="#复制和镜像" class="headerlink" title="复制和镜像"></a>复制和镜像</h1><h2 id="简单的赋值"><a href="#简单的赋值" class="headerlink" title="简单的赋值"></a>简单的赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.array([1,2,3,4])</div><div class="line">&gt;&gt;&gt; b = a</div><div class="line">&gt;&gt;&gt; b is a</div><div class="line">True</div><div class="line">&gt;&gt;&gt; a.shape=2,2 #a形状改变</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2],</div><div class="line">       [3, 4]])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([[1, 2],	#b形状也改变了</div><div class="line">       [3, 4]])</div></pre></td></tr></table></figure>
+<h2 id="视图和浅复制"><a href="#视图和浅复制" class="headerlink" title="视图和浅复制"></a>视图和浅复制</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; c = a.view()</div><div class="line">&gt;&gt;&gt; c is a</div><div class="line">False</div><div class="line">&gt;&gt;&gt; c.base is a</div><div class="line">True</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2],</div><div class="line">       [3, 4]])</div><div class="line">&gt;&gt;&gt; c.shape=4, #c形状改变</div><div class="line">&gt;&gt;&gt; c</div><div class="line">array([1, 2, 3, 4])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[1, 2], #a形状没有改变</div><div class="line">       [3, 4]])</div><div class="line">&gt;&gt;&gt; c[0]=100 #c数值改变</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([[100,   2], #a数值也改变了</div><div class="line">       [  3,   4]])</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a=np.arange(10)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</div><div class="line">&gt;&gt;&gt; b=a[:5]</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([0, 1, 2, 3, 4])</div><div class="line">&gt;&gt;&gt; a[:]=10</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([10, 10, 10, 10, 10])</div></pre></td></tr></table></figure>
+<h2 id="深复制"><a href="#深复制" class="headerlink" title="深复制"></a>深复制</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; b = a.copy()</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10])</div><div class="line">&gt;&gt;&gt; a[:]=9</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([9, 9, 9, 9, 9, 9, 9, 9, 9, 9])</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10])</div></pre></td></tr></table></figure>
+<h1 id="json"><a href="#json" class="headerlink" title="json"></a>json</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。<br>ndarray不能被json识别，先使用ndarray.tolist()转化成list，然后在转化成json<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import cv2</div><div class="line">import numpy as np</div><div class="line">import json</div><div class="line"></div><div class="line">#创建一个numpy.ndarray</div><div class="line">a = np.array([[[255,255,255]]])</div><div class="line">print &quot;1:&quot;,type(a)</div><div class="line"></div><div class="line">#ndarray转化成list</div><div class="line">s = a.tolist()</div><div class="line">print &quot;2:&quot;,type(s)</div><div class="line"></div><div class="line">#json编码</div><div class="line">j = json.dumps(s)</div><div class="line">print &quot;3:&quot;,type(j)</div><div class="line"></div><div class="line">#json解码</div><div class="line">l = json.loads(j)</div><div class="line">print &quot;4:&quot;,type(l)</div><div class="line"></div><div class="line">#list转化为numpy.ndarray</div><div class="line">c = np.array(l)</div><div class="line">print &quot;5:&quot;,type(c)</div></pre></td></tr></table></figure></p>
+<p>输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1: &lt;type &apos;numpy.ndarray&apos;&gt;</div><div class="line">2: &lt;type &apos;list&apos;&gt;</div><div class="line">3: &lt;type &apos;str&apos;&gt;</div><div class="line">4: &lt;type &apos;list&apos;&gt;</div><div class="line">5: &lt;type &apos;numpy.ndarray&apos;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Json-自定义"><a href="#Json-自定义" class="headerlink" title="Json 自定义"></a>Json 自定义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line"></div><div class="line">class Student():</div><div class="line">    def __init__(self, name, age, score):</div><div class="line">        self.name = name</div><div class="line">        self.age = age</div><div class="line">        self.score = score</div><div class="line"></div><div class="line">def Student2Dic(std):</div><div class="line">    return &#123;</div><div class="line">        &quot;name&quot;:std.name,</div><div class="line">        &quot;age&quot;:std.age,</div><div class="line">        &quot;score&quot;:std.score</div><div class="line">    &#125;</div><div class="line"></div><div class="line">def Dic2Student(d):</div><div class="line">    return Student(d[&apos;name&apos;], d[&apos;age&apos;], d[&apos;score&apos;])</div><div class="line"></div><div class="line">s = Student(&quot;harry&quot;, 22, 90)</div><div class="line">j = json.dumps(s, default=Student2Dic)</div><div class="line">print type(j),j</div><div class="line">d = json.loads(j, object_hook=Dic2Student)</div><div class="line">print type(d),d</div></pre></td></tr></table></figure>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;type &apos;str&apos;&gt; &#123;&quot;age&quot;: 22, &quot;score&quot;: 90, &quot;name&quot;: &quot;harry&quot;&#125;</div><div class="line">&lt;type &apos;instance&apos;&gt; &lt;__main__.Student instance at 0xb70cd3cc&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>用一个字节存储的布尔类型（True或False）</td>
+</tr>
+<tr>
+<td>inti</td>
+<td>由所在平台决定其大小的整数（一般为int32或int64）</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>一个字节大小，-128 至 127</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>整数，-32768 至 32767</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>整数，-2 <strong>31</strong> 至 2 <strong>32 -1</strong></td>
+</tr>
+<tr>
+<td>int64</td>
+<td>整数，-2 <strong>63</strong> 至 2 <strong>63 - 1</strong></td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>无符号整数，0 至 255</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>无符号整数，0 至 65535</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>无符号整数，0 至 2 ** 32 - 1</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>无符号整数，0 至 2 ** 64 - 1</td>
+</tr>
+<tr>
+<td>float16</td>
+<td>半精度浮点数：16位，正负号1位，指数5位，精度10位</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>单精度浮点数：32位，正负号1位，指数8位，精度23位</td>
+</tr>
+<tr>
+<td>float64或float</td>
+<td>双精度浮点数：64位，正负号1位，指数11位，精度52位</td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>复数，分别用两个32位浮点数表示实部和虚部</td>
+</tr>
+<tr>
+<td>complex128或complex</td>
+<td>复数，分别用两个64位浮点数表示实部和虚部</td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://blog.csdn.net/sunny2038" target="_blank" rel="external">http://blog.csdn.net/sunny2038</a><br><a href="http://www.cnblogs.com/coser/archive/2011/12/14/2287739.html" target="_blank" rel="external">http://www.cnblogs.com/coser/archive/2011/12/14/2287739.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/01/numpy/" data-id="cj5c7k42k0044m0u4nxparv10" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/04/video/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          远程视频
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/29/opencv/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">opencv</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acg/">acg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bb/">bb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/haskell/">haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/">sicp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soket/">soket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spider/">spider</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/acg/" style="font-size: 10px;">acg</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/bb/" style="font-size: 10px;">bb</a> <a href="/tags/c/" style="font-size: 12.86px;">c++</a> <a href="/tags/django/" style="font-size: 12.86px;">django</a> <a href="/tags/flask/" style="font-size: 20px;">flask</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/haskell/" style="font-size: 10px;">haskell</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15.71px;">jquery</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 12.86px;">mysql</a> <a href="/tags/python/" style="font-size: 18.57px;">python</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/soket/" style="font-size: 10px;">soket</a> <a href="/tags/spider/" style="font-size: 14.29px;">spider</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/03/effective-C/">effective_C++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/traceback/">异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/logging/">打印日志</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/construct/">二进制数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/Csharp/">C#面向对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 HeRui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
