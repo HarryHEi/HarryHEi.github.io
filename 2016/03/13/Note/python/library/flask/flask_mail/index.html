@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Ben Wong,wenbinben@gmail.com"><title>flask_send_mail · Harryx</title><meta name="description" content="配置SMTP服务器配置
+
+
+配置
+默认值
+说明
+
+
+
+
+MAIL_SERVER
+localhost
+电子邮件服务器的主机名或 IP 地址
+
+
+MAIL_PORT
+25
+电子邮件服务器的端口
+
+
+MAIL_USE_TLS
+False
+启用传输层安全(Transport Layer Security,T"><meta name="keywords" content="Hexo,HTML,Ben,CSS,安卓,android,Linux,linuxdeepin"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Harryx</a></h3><div class="description"><p>good good study good good play~</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/harryx520"><i class="fa fa-twitter"></i></a></li><li><a href="http://weibo.com/Booooyakasha"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://7xrooc.com1.z0.glb.clouddn.com/avatar.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>flask_send_mail</a></h3></div><div class="post-content"><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="SMTP服务器配置"><a href="#SMTP服务器配置" class="headerlink" title="SMTP服务器配置"></a>SMTP服务器配置</h2><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAIL_SERVER</td>
+<td>localhost</td>
+<td>电子邮件服务器的主机名或 IP 地址</td>
+</tr>
+<tr>
+<td>MAIL_PORT</td>
+<td>25</td>
+<td>电子邮件服务器的端口</td>
+</tr>
+<tr>
+<td>MAIL_USE_TLS</td>
+<td>False</td>
+<td>启用传输层安全(Transport Layer Security,TLS)协议</td>
+</tr>
+<tr>
+<td>MAIL_USE_SSL</td>
+<td>False</td>
+<td>启用安全套接层(Secure Sockets Layer,SSL)协议</td>
+</tr>
+<tr>
+<td>MAIL_USERNAME</td>
+<td>None</td>
+<td>邮件账户的用户名</td>
+</tr>
+<tr>
+<td>MAIL_PASSWORD</td>
+<td>None</td>
+<td>邮件账户的密码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="保存密码到环境变量"><a href="#保存密码到环境变量" class="headerlink" title="保存密码到环境变量"></a>保存密码到环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(venv) $ set MAIL_USERNAME=&lt;Gmail username&gt;</div><div class="line">(venv) $ set MAIL_PASSWORD=&lt;Gmail password&gt;</div></pre></td></tr></table></figure>
+<h2 id="使用gmail发送邮件配置"><a href="#使用gmail发送邮件配置" class="headerlink" title="使用gmail发送邮件配置"></a>使用gmail发送邮件配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">app.config[&apos;MAIL_SERVER&apos;] = &apos;smtp.googlemail.com&apos;</div><div class="line">app.config[&apos;MAIL_PORT&apos;] = 587</div><div class="line">app.config[&apos;MAIL_USE_TLS&apos;] = True</div><div class="line">app.config[&apos;MAIL_USERNAME&apos;] = os.environ.get(&apos;MAIL_USERNAME&apos;)</div><div class="line">app.config[&apos;MAIL_PASSWORD&apos;] = os.environ.get(&apos;MAIL_PASSWORD&apos;)</div><div class="line">app.config[&apos;FLASKY_MAIL_SUBJECT_PREFIX&apos;] = &apos;[Flasky]&apos;</div><div class="line">app.config[&apos;FLASKY_MAIL_SENDER&apos;] = &apos;1099143767@qq.com&apos;</div><div class="line">app.config[&apos;FLASKY_ADMIN&apos;] = os.environ.get(&apos;FLASKY_ADMIN&apos;)</div></pre></td></tr></table></figure>
+<h1 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">app.config[&apos;FLASKY_MAIL_SUBJECT_PREFIX&apos;] = &apos;[Flasky]&apos;</div><div class="line">app.config[&apos;FLASKY_MAIL_SENDER&apos;] = &apos;Flasky Admin &lt;flasky@example.com&gt;&apos;</div><div class="line"></div><div class="line">msg = Message(app.config[&apos;FLASKY_MAIL_SUBJECT_PREFIX&apos;] + subject,</div><div class="line">                          sender=app.config[&apos;FLASKY_MAIL_SENDER&apos;], recipients=[to])</div><div class="line">msg.body = render_template(template + &apos;.txt&apos;, **kwargs)</div><div class="line">msg.html = render_template(template + &apos;.html&apos;, **kwargs)</div><div class="line">mail.send(msg)</div></pre></td></tr></table></figure>
+<h2 id="异步发送邮件"><a href="#异步发送邮件" class="headerlink" title="异步发送邮件"></a>异步发送邮件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">def send_async_email(app, msg):</div><div class="line">    with app.app_context():</div><div class="line">        mail.send(msg)</div><div class="line"></div><div class="line">def send_email(to, subject, template, **kwargs):</div><div class="line">    msg = Message(app.config[&apos;FLASKY_MAIL_SUBJECT_PREFIX&apos;] + &apos; &apos; + subject,</div><div class="line">                  sender=app.config[&apos;FLASKY_MAIL_SENDER&apos;], recipients=[to])</div><div class="line">    msg.body = render_template(template + &apos;.txt&apos;, **kwargs)</div><div class="line">    msg.html = render_template(template + &apos;.html&apos;, **kwargs)</div><div class="line">    thr = Thread(target=send_async_email, args=[app, msg])</div><div class="line">    thr.start()</div><div class="line">    return thr</div></pre></td></tr></table></figure>
+<h2 id="发送邮件-1"><a href="#发送邮件-1" class="headerlink" title="发送邮件"></a>发送邮件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">send_email(app.config[&apos;FLASKY_ADMIN&apos;], &apos;New User&apos;,</div><div class="line">           &apos;mail/new_user&apos;, user=user)</div></pre></td></tr></table></figure>
+<p>目标地址是环境变量中的FLASKY_ADMIN，主题是[flasky]New User，<br>调用mail目录下的模板，传递参数user。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from flask.ext.mail import Message</div><div class="line">&gt;&gt;&gt; from flask.ext.mail import Mail</div><div class="line">&gt;&gt;&gt; mail=Mail()</div><div class="line">&gt;&gt;&gt; msg=Message(&quot;test&quot;,sender=&quot;harryx520@qq.com&quot;,recipients=[&quot;harryx520@qq.com&quot;])</div><div class="line">&gt;&gt;&gt; mail.send(msg)</div></pre></td></tr></table></figure>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-13</span><i class="fa fa-tag"></i><a href="/tags/flask/" title="flask" class="tag">flask </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://yoursite.com/2016/03/13/Note/python/library/flask/flask_mail/,Harryx,flask_send_mail,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2016/03/15/Note/python/demo/spider/" title="python_spider" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2016/03/12/Note/python/library/flask/flask_mysql/" title="flask_mysql" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

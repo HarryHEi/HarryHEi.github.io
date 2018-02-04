@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Ben Wong,wenbinben@gmail.com"><title>effective_C++ · Harryx</title><meta name="description" content="绪论0.除非有需要使用隐式转换的构造函数，否则构造函数声明为explicit
+123456class Person&amp;#123;public:	explicit Person(std::string name = &amp;quot;None&amp;quot;, unsigned int age = 0);	..."><meta name="keywords" content="Hexo,HTML,Ben,CSS,安卓,android,Linux,linuxdeepin"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Harryx</a></h3><div class="description"><p>good good study good good play~</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/harryx520"><i class="fa fa-twitter"></i></a></li><li><a href="http://weibo.com/Booooyakasha"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://7xrooc.com1.z0.glb.clouddn.com/avatar.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>effective_C++</a></h3></div><div class="post-content"><h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>0.除非有需要使用隐式转换的构造函数，否则构造函数声明为<code>explicit</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class Person</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">	explicit Person(std::string name = &quot;None&quot;, unsigned int age = 0);</div><div class="line">	...</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h1 id="让自己习惯C"><a href="#让自己习惯C" class="headerlink" title="让自己习惯C++"></a>让自己习惯<code>C++</code></h1><p>1.把C++视为语言联邦：</p>
+<ul>
+<li>C</li>
+<li>面相对象</li>
+<li>泛型编程</li>
+<li>STL</li>
+</ul>
+<p>2.尽量以<code>const</code>，<code>enum</code>，<code>inline</code>替换<code>#define</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Person</div><div class="line">&#123;</div><div class="line">private:</div><div class="line">	static const int number = 1; //有初值的声明</div><div class="line">	int array[number];</div><div class="line">&#125;;</div><div class="line"></div><div class="line">const int Person::number; //定义</div></pre></td></tr></table></figure>
+<p>使用<code>enum hack</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class Person</div><div class="line">&#123;</div><div class="line">private:</div><div class="line">	enum &#123; number = 1 &#125;; //number成为1的记号</div><div class="line">	int array[number];</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>3.尽量使用<code>const</code></p>
+<p>当const和non-const成员函数有等价的实现时，可以用non-const版本调用const版本，避免代码重复，<br>但是不能反过来调用，因为可能带来风险。</p>
+<p>4.确定对象使用前已被初始化</p>
+<p>类构造函数进入函数体之前用成员初始化列表初始化</p>
+<p>为避免初始化顺序问题，使用local static代替non-local static</p>
+<h1 id="构造、析构、赋值运算"><a href="#构造、析构、赋值运算" class="headerlink" title="构造、析构、赋值运算"></a>构造、析构、赋值运算</h1><p>5.了解<code>C++</code>默默编写并调用哪些函数</p>
+<p>如果含有引用成员，或者const成员，必须自己定义拷贝赋值操作符</p>
+<p>如果基类将拷贝赋值运算符声明为private，编译器将拒绝为其派生类生成拷贝赋值运算符</p>
+<p>6.若不想使用编译器自动生成的函数，就应该明确拒绝</p>
+<p>将其声明为<code>private</code></p>
+<p>7.为多态基类声明<code>virtual</code>析构函数</p>
+<p>给基类添加virtual析构函数，当销毁基类指针指向的派生类对象时，正确销毁整个对象</p>
+<p>如果不希望基类被实例化，可以把析构函数声明为纯虚函数</p>
+<p>析构函数运作方式是先最深的开始，然后往基类调用，所以需要先实现基类析构函数的定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class A</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">	virtual ~A() = 0;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">A::A() &#123;&#125; //定义纯虚函数的定义</div></pre></td></tr></table></figure>
+<p>如果设计目的不是具有多态性质，就不该声明virtual函数</p>
+<p>8.别让异常逃离析构函数</p>
+<p>析构函数绝对不要抛出异常，如果析构函数调用的函数可能抛出异常，析构函数应该捕捉任何异常，吞下或结束程序</p>
+<p>9.绝不在构造和析构过程中调用<code>virtual</code>函数</p>
+<p>在析构函数和构造函数不要调用virtual函数，因为这类调用不会下降到派生类</p>
+<p>10.令<code>operate=</code>返回一个<code>*this</code>的引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Widget&amp; operator=(const Widget&amp; rhs)</div><div class="line">&#123;</div><div class="line">	return *this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>11.在<code>operator=</code>处理自我赋值</p>
+<p>通过调整语句顺序实现自我赋值和异常安全</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Widget&amp; operator=(const Widtget&amp; rhs)</div><div class="line">&#123;</div><div class="line">	int* pOrig = pb;  //先备份</div><div class="line">	pb = new int(*rhs.pb);  //创建副本</div><div class="line">	delete pOrig; //删除原先的</div><div class="line">	return *this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>12.复制对象时勿忘其每一个成分</p>
+<p>拷贝函数应该确保复制对象内的所有成员变量以及所有基类成分</p>
+<p>不要尝试以一个拷贝函数实现另外一个拷贝函数，应该将共同机能放在第三个函数中，由另外两个拷贝函数调用</p>
+<h1 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h1><p>13.以对象管理资源</p>
+<p>RAII对象：构造函数中获取资源，析构函数中释放资源</p>
+<p>常被使用的是<code>auto_ptr</code>和<code>shared_ptr</code></p>
+<p>14.在资源管理类中小心拷贝行为</p>
+<p>对资源进行引用计数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Lock</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">	explicit Lock(Mutex *pm)   //以某个mutex初始化shared_ptr</div><div class="line">		: mutexPtr(pm, unlock)  //以unlock作为删除器</div><div class="line">	&#123;</div><div class="line">		lock(mutexPtr.get()); //用以返回智能指针内部的原始指针</div><div class="line">	&#125;</div><div class="line">private:</div><div class="line">	std::shared_ptr&lt;Mutex&gt; mutexPtr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>复制RAII对象必须一并复制它所管理的资源</p>
+<p>创建的RAII复制行为是：抑制复制行为、使用引用计数法</p>
+<p>15.在资源管理中提供对原始资源的访问</p>
+<p>对原始资源的访问可能经由显式转换或隐式转换，显示比较安全，隐式比较方便</p>
+<p>16.成对使用 <code>new</code>和<code>delete</code>时要采取相同形式</p>
+<p>如果在调用<code>new</code>时使用<code>[]</code>，必须字对应调用<code>delete</code>时也使用<code>[]</code></p>
+<p>17.以独立语句将newed对象置入智能指针</p>
+<p>以独立语句将newed对象置入智能指针，如果不这样做，一旦异常被抛出，可能发生资源泄漏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">processWidget(std::shared_ptr&lt;Widget&gt;(new Widget), priority())</div></pre></td></tr></table></figure>
+<p>应该使用独立的语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">std::shared_ptr&lt;Widget&gt; pw(new Widget);</div><div class="line">processWidget(pw, priority());</div></pre></td></tr></table></figure>
+<h1 id="设计与声明"><a href="#设计与声明" class="headerlink" title="设计与声明"></a>设计与声明</h1><p>18.让接口容易被正确使用，不易被误用</p>
+<p>19.设计<code>class</code>犹如设计<code>type</code></p>
+<p>20.宁以pass-by-reference-to-const替换pass-by-value</p>
+<p>可以避免copy构造函数被调用</p>
+<p>可以避免出现对象切割问题，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void printName(window w);</div></pre></td></tr></table></figure>
+<p>如果传入的参数是w的派生类，对象将被切割成window类。</p>
+<p>如果使用reference-to-const</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void printName(const window&amp; w);</div></pre></td></tr></table></figure>
+<p>传入的参数可以正确的表示该类型</p>
+<p>21.返回对象时，不能返回reference</p>
+<p>22.将成员变量声明为private</p>
+<p>23.已non-member、 non-friend替换member函数</p>
+<p>将多个头文件放在多个文件，但是隶属于同一个命名空间，<br>有利于便利函数的扩充。</p>
+<p>while(1); //待续</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-03</span><i class="fa fa-tag"></i><a href="/tags/c-plus/" title="c_plus" class="tag">c_plus </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://yoursite.com/2017/06/03/Note/cpp/effective_cpp/,Harryx,effective_C++,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/07/20/Note/gstreamer/gstreamer/" title="gstreamer多媒体" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/04/01/Note/python/library/traceback/" title="异常处理" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

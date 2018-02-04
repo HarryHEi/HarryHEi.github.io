@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Ben Wong,wenbinben@gmail.com"><title>二进制数据处理 · Harryx</title><meta name="description" content="costruct是python的二进制数据解析器和构造器
+基本类型：
+整数
+Int{8,16,24,32,64}{u,s}{l,b,n}  对应选择位数、符号、字节序
+Byte 等同于 Int8ub
+浮点数
+Float{32,64}{b,l,n}
+Single、Double等同于Float{32,6"><meta name="keywords" content="Hexo,HTML,Ben,CSS,安卓,android,Linux,linuxdeepin"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Harryx</a></h3><div class="description"><p>good good study good good play~</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/harryx520"><i class="fa fa-twitter"></i></a></li><li><a href="http://weibo.com/Booooyakasha"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://7xrooc.com1.z0.glb.clouddn.com/avatar.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>二进制数据处理</a></h3></div><div class="post-content"><p><code>costruct</code>是python的二进制数据解析器和构造器</p>
+<p>基本类型：</p>
+<p>整数</p>
+<p>Int{8,16,24,32,64}{u,s}{l,b,n}  对应选择位数、符号、字节序</p>
+<p>Byte 等同于 Int8ub</p>
+<p>浮点数</p>
+<p>Float{32,64}{b,l,n}</p>
+<p>Single、Double等同于Float{32,64}b</p>
+<p>变长整型</p>
+<p>VarInt</p>
+<p>字段</p>
+<p>Bytes</p>
+<hr>
+<p>用Struct建立一个format</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">c1 = Struct(</div><div class="line">    &apos;a&apos; / Byte,</div><div class="line">    &apos;b&apos; / Int16ul,</div><div class="line">    &apos;c&apos; / Single,</div><div class="line">    &apos;d&apos; / Const(b&apos;hello&apos;),</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>传入一个字符串，解析成Container，Container就相当于一个普通的字典，并且具有具有自己的输出格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p1 = c1.parse(b&apos;\x07\x00\x01\x00\x00\x00\x01hello&apos;)</div><div class="line">print p1</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Container: </div><div class="line">    a = 7</div><div class="line">    b = 256</div><div class="line">    c = 1.40129846432e-45</div><div class="line">    d = hello</div></pre></td></tr></table></figure>
+<hr>
+<p>建立10个单字节的格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c2 = Byte[10]</div></pre></td></tr></table></figure>
+<p>build函数的参数是个Container对象或者类似的鸭子类型（比如一个普通的类）</p>
+<p>构建一个格式化的字符串，使用ord()获得对应的ASCII值输出查看效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">b2 = c2.build([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])</div><div class="line">print [ord(b) for b in b2]</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]</div></pre></td></tr></table></figure>
+<p>解析刚才构建的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p2 = c2.parse(b2)</div><div class="line">print p2</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ListContainer: </div><div class="line">    1</div><div class="line">    2</div><div class="line">    3</div><div class="line">    4</div><div class="line">    5</div><div class="line">    6</div><div class="line">    7</div><div class="line">    8</div><div class="line">    9</div><div class="line">    0</div></pre></td></tr></table></figure>
+<hr>
+<p>可以在Struct内放入Struct</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">c3 = Struct(</div><div class="line">    &apos;a&apos; / Byte,</div><div class="line">    &apos;b&apos; / Struct(</div><div class="line">        &apos;c&apos; / Byte,</div><div class="line">        &apos;d&apos; / Int16ul,</div><div class="line">    )</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>传入Container对象构建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">b3 = c3.build(Container(a=1, b=Container(c=2, d=3)))</div><div class="line">print [ord(b) for b in b3]</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[1, 2, 3, 0]</div></pre></td></tr></table></figure>
+<p>解析之前构建的对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p3 = c3.parse(b3)</div><div class="line">print p3</div></pre></td></tr></table></figure>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Container: </div><div class="line">    a = 1</div><div class="line">    b = Container: </div><div class="line">        c = 2</div><div class="line">        d = 3</div></pre></td></tr></table></figure></p>
+<hr>
+<p>可以通过&gt;&gt;构建格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c4 = Int16ul &gt;&gt; Byte &gt;&gt; Bytes(5)</div></pre></td></tr></table></figure>
+<p>解析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p4 = c4.parse(b&apos;\x01\x02\x03hello&apos;)</div><div class="line">print p4</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ListContainer: </div><div class="line">    513</div><div class="line">    3</div><div class="line">    hello</div></pre></td></tr></table></figure>
+<p>Embedded用于嵌入格式<br>Switch类似于其他语言的switch语句，以一个lambda语句作为参数，lambda有个ctx上下文参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">from construct import *</div><div class="line"></div><div class="line">header = Struct(</div><div class="line">    &apos;head&apos; / Const(b&apos;hello&apos;),</div><div class="line">)</div><div class="line"></div><div class="line">frame = Struct(</div><div class="line">    Embedded(header),</div><div class="line">    &apos;a&apos; / Int8ul,</div><div class="line">    &apos;b&apos; / Switch(lambda ctx: ctx[&apos;a&apos;],</div><div class="line">                 &#123;</div><div class="line">                     0x01: Int8ul,</div><div class="line">                     0x02: Int16ul,</div><div class="line">                     0x03: Int32ul,</div><div class="line">                     0x04: VarInt,</div><div class="line">                 &#125;)</div><div class="line">)</div><div class="line"></div><div class="line">b = frame.build(Container(head=&apos;hello&apos;, a=4, b=1231231312))</div><div class="line">print [ord(c) for c in b]</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[104, 101, 108, 108, 111, 4, 208, 178, 140, 203, 4]</div></pre></td></tr></table></figure>
+<p>使用<code>this</code>关键字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">frame = Struct(</div><div class="line">    &apos;length&apos; / Int8ul,</div><div class="line">    &apos;payload&apos; / Bytes(this.length)</div><div class="line">)</div><div class="line"></div><div class="line">b = frame.build(Container(length=2, payload=b&apos;hi&apos;))</div><div class="line">print [ord(c) for c in b]</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[2, 104, 105]</div></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://construct.readthedocs.io/en/latest/" target="_blank" rel="external">文档</a></p>
+<p>以上是2.8版本的，2.5版本略有不同<a href="http://www.thinksaas.cn/topics/0/435/435656.html" target="_blank" rel="external">参考</a></p>
+<hr>
+<p>在网络编程中也常使用struct模块用于数据的打包和解包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">struct.pack(&apos;3B&apos;,1,2,3)</div><div class="line">&apos;\x01\x02\x03&apos;</div></pre></td></tr></table></figure>
+<p>打包和解包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import struct</div><div class="line"></div><div class="line">s = struct.pack(&apos;!3BI&apos;, 1, 2, 3, 4)</div><div class="line">t = struct.unpack(&apos;!3BI&apos;, s)</div><div class="line">print [ord(c) for c in s]</div><div class="line">print t</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[1, 2, 3, 0, 0, 0, 4]</div><div class="line">(1, 2, 3, 4)</div></pre></td></tr></table></figure>
+<p>在前面使用不同符号表示字节不同的位排序</p>
+<p><img src="http://7xrooc.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170406102515.png" alt=""></p>
+<p>如果第一个字符不是当中的任何一个，自动添加一个<code>@</code>，启动本机序本机序是大端或者小端，取决于本机系统</p>
+<p><code>@</code>尺寸取决本机系统，<code>=</code>尺寸为标准大小</p>
+<p><code>&lt;</code>小端 <code>&gt;</code>大端 <code>!</code>网络序</p>
+<p>各类型</p>
+<p><img src="http://7xrooc.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170406101144.png" alt=""></p>
+<p><a href="https://docs.python.org/2/library/struct.html" target="_blank" rel="external">文档</a><br><a href="http://www.cnblogs.com/coser/archive/2011/12/17/2291160.html" target="_blank" rel="external">参考</a></p>
+<hr>
+<p>socket提供函数用于ip地址字符串与整型之间的转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; socket.inet_aton(&quot;192.168.1.1&quot;)</div><div class="line">&apos;\xc0\xa8\x01\x01&apos;</div><div class="line">&gt;&gt;&gt; socket.inet_ntoa(&apos;\x01\x02\x03\x04&apos;)</div><div class="line">&apos;1.2.3.4&apos;</div></pre></td></tr></table></figure></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-01</span><i class="fa fa-tag"></i><a href="/tags/python/" title="python" class="tag">python </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://yoursite.com/2017/04/01/Note/python/language/construct/,Harryx,二进制数据处理,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/01/Note/python/library/logging/" title="打印日志" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/03/29/Note/c_sharp/c_sharp/" title="C#面向对象" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
