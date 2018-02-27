@@ -21,8 +21,14 @@ profiler内置分析器用于捕获场景实时数据并分析性能。window -&
 <p>可以用图层指定对象绘制顺序或者照相机是否可见等。</p>
 <p>通过对象的inspector窗口选择layer，通过add layer或者edit-&gt;project setting-&gt;Tags and Layers自定义layer。</p>
 <h1 id="场景视图"><a href="#场景视图" class="headerlink" title="场景视图"></a>场景视图</h1><p>当需要移动场景时，右键长摁，通过<code>WASD</code>按钮可以进行”飞行模式”移动，通过按下<code>shift</code>加快移动速度。</p>
+<p>按下鼠标右键，移动鼠标可以调整视角，按下<code>ctrl + alt</code>和鼠标右键，哟东鼠标可以调整距离。</p>
 <p>如果想要移动视角到某个游戏对象，在Hierarchy(层级试图)窗口选中该对象，然后鼠标移动到场景窗口，按下<code>F</code>。</p>
+<p>选中某个对象，然后按下<code>shift + F</code>，场景视图画面画面会跟着物体移动。</p>
 <p>当选中某个照相机时，场景视图会出现照相机的预览。</p>
+<p>按下<code>shift + space</code>全屏。</p>
+<h1 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h1><p>2d游戏坐标系为表示左右方向的x和表示上下方向的y，3d坐标系增加了一个前后方向的z。</p>
+<p>旋转方向沿坐标根据左右定律。</p>
+<p>如果A是B的子对象，那么A坐标显示的是相对B的坐标。</p>
 <h1 id="声音"><a href="#声音" class="headerlink" title="声音"></a>声音</h1><p>unity3D支持mp3、wav、ogg等多种音频格式。</p>
 <p>要想声音生效，必须要有声音源和接收器两个组件，一个负责播放声音，另一个负责接收。<br>对于3D声音来说，如果音源和接收器相对位置发生变化，听到的声音也会随之改变。</p>
 <p>AudioSource组件是一个音源组件，常用属性：</p>
