@@ -37,9 +37,9 @@ os.system(command)
 在子Shell执行一个命令串，通过调用标准C函数system()实现。
 如果调用的串中含有中文，需要先encode()成utf-8编码的bytes字符串，然后调用该方法。
 在Unix，返...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-01-23</span><i class="fa fa-tag"></i><a href="/tags/python/" title="python" class="tag">python </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/01/08/Note/python/language/data_model/">数据模式</a></h3></div><div class="post-content"><p>文档
-特殊方法名属性接口属性接口用于获取类实例的属性。
-object.__getattr__(self, name)当通过通常的方式没有找到属性时(即不是实例的属性也不是类属性)调用。
-object.__getattribute__(self, name)当需要获取参数时无条件执行。如果同时定义了__getatt...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-01-08</span><i class="fa fa-tag"></i><a href="/tags/python/" title="python" class="tag">python </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/01/02/Note/python/library/random/">伪随机</a></h3></div><div class="post-content"><p>文档
+特殊方法名通过定义特殊名称的方法，类可以使用特定语法实现特定操作。这是Python的运算符重载，允许类定义自己的运算符行为。可以设置一个特殊方法为None标识相应操作不可用。
+基础定制方法object.__new__(cls[, ...])
+一个静态方法，用于创建一个类的实例，第一个参数是这个实例的类。剩下...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-01-08</span><i class="fa fa-tag"></i><a href="/tags/python/" title="python" class="tag">python </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/01/02/Note/python/library/random/">伪随机</a></h3></div><div class="post-content"><p>文档
 本模块提供伪随机数生成器。
 大部分功能都是以random()函数为基础的，生成[0.0, 1.0)的一个随机数。
 函数random.seed(a=None, version=2)如果a为None，使用系统时间作为seed；如果a为一个整数，会被直接作为seed使用；version默认为2，str、bytes...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-01-02</span><i class="fa fa-tag"></i><a href="/tags/python/" title="python" class="tag">python </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/12/24/Note/python/library/collections/">容器类型模块</a></h3></div><div class="post-content"><p>文档官方文档
