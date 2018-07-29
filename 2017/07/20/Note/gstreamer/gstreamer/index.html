@@ -24,6 +24,7 @@
 <h1 id="windows环境下的安装"><a href="#windows环境下的安装" class="headerlink" title="windows环境下的安装"></a>windows环境下的安装</h1><p>Windiws 安装 <code>gstreamer</code> 需要下载两个安装包，分别是devel安装包和普通安装包。</p>
 <p>这里选择的是：<code>gstreamer-1.0-x86_64-1.11.2.msi</code><br>          <code>gstreamer-1.0-devel-x86_64-1.11.2.msi</code></p>
 <p>选择安装完整版，安装完成后，D盘会多了一个gstreamer目录。</p>
+<p>添加目录<code>E:\gstreamer\1.0\x86_64\bin</code>到环境变量。</p>
 <p>Visual Studio配置：</p>
 <p>C/C++ -&gt; 常规 -&gt; 附加包含目录:<br><code>D:\gstreamer\1.0\x86_64\include\gstreamer-1.0;</code><br><code>D:\gstreamer\1.0\x86_64\lib\gstreamer-1.0\include;</code><br><code>D:\gstreamer\1.0\x86_64\include\glib-2.0;</code><br><code>D:\gstreamer\1.0\x86_64\include\libxml2;</code><br><code>D:\gstreamer\1.0\x86_64\include;</code><br><code>D:\gstreamer\1.0\x86_64\lib\glib-2.0\include;</code><br><code>%(AdditionalIncludeDirectories)</code></p>
 <p>链接器 -&gt; 常规 -&gt; 附加库目录：<br>D:\gstreamer\1.0\x86_64\lib;<br>%(AdditionalLibraryDirectories)</p>
