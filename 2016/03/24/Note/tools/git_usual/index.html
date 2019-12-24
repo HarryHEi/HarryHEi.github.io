@@ -7,99 +7,52 @@ HEADgit init切换到工作目录，使用git init初始化仓库git config信�
 <li>工作目录</li>
 <li>暂存区</li>
 <li>HEAD<h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2>切换到工作目录，使用git init初始化仓库<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2>信息配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;name&quot; </span><br><span class="line">git config --global user. email &quot;somebody@any.com&quot;</span><br><span class="line">git config --list  #列出配置</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
-<h2 id="git-help"><a href="#git-help" class="headerlink" title="git help"></a>git help</h2><p>获得帮助，后面可以添加参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help commit</span><br></pre></td></tr></table></figure>
-
+<h2 id="git-help"><a href="#git-help" class="headerlink" title="git help"></a>git help</h2><p>获得帮助，后面可以添加参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help commit</span><br></pre></td></tr></table></figure></p>
 <h2 id="git-add"><a href="#git-add" class="headerlink" title="git add "></a>git add <filename></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-
-<p>将文件添加到暂存区，可以使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-
+<p>将文件添加到暂存区，可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
 <p>添加所有文件</p>
 <h2 id="git-mv"><a href="#git-mv" class="headerlink" title="git mv  "></a>git mv <filename> <newname></newname></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv &lt;filename&gt; &lt;newname&gt;</span><br></pre></td></tr></table></figure>
-
 <p>使用mv指令更改文件名或者移动文件</p>
 <h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm "></a>git rm <filename></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-
 <p>删除文件</p>
 <h2 id="git-commit-m-“some-message”"><a href="#git-commit-m-“some-message”" class="headerlink" title="git commit -m “some message”"></a>git commit -m “some message”</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;some message&quot;</span><br></pre></td></tr></table></figure>
-
-<p>将改动提交到HEAD，并标注一段信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -am &quot;some message&quot;</span><br></pre></td></tr></table></figure>
-
+<p>将改动提交到HEAD，并标注一段信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -am &quot;some message&quot;</span><br></pre></td></tr></table></figure></p>
 <p>加上a将会更新暂存区内容并commit</p>
-<h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><p>查看commit id</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --author=&quot;name&quot;</span><br></pre></td></tr></table></figure>
-
+<h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><p>查看commit id<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --author=&quot;name&quot;</span><br></pre></td></tr></table></figure></p>
 <p>查看特定author的提交信息</p>
 <h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>查看工作区状态<br>如果工作区有改动，会和暂存区对比并显示</p>
-<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>显示工作区和暂存区的不同点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --staged</span><br></pre></td></tr></table></figure>
-
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>显示工作区和暂存区的不同点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --staged</span><br></pre></td></tr></table></figure></p>
 <p>加入参数staged，能够显示与HEAD之间的不同点</p>
 <h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout "></a>git checkout <filename></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-
-<p>将某个文件回滚到暂存区的状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &quot;commit number&quot; -- &quot;filename&quot;</span><br></pre></td></tr></table></figure>
-
-<p>新分支整合到主分支后面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase</span><br></pre></td></tr></table></figure>
-
-<p>给某个版本打上标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag ***</span><br></pre></td></tr></table></figure>
-
+<p>将某个文件回滚到暂存区的状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &quot;commit number&quot; -- &quot;filename&quot;</span><br></pre></td></tr></table></figure></p>
+<p>新分支整合到主分支后面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase</span><br></pre></td></tr></table></figure></p>
+<p>给某个版本打上标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag ***</span><br></pre></td></tr></table></figure></p>
 <p>将某个文件回滚到某个commit版本</p>
 <h2 id="git-reset-HEAD"><a href="#git-reset-HEAD" class="headerlink" title="git reset HEAD "></a>git reset HEAD <filename></filename></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-
 <p>将某个文件重置到HEAD里面的版本，注意，后面的版本会被删除</p>
 <h2 id="git-remote-add"><a href="#git-remote-add" class="headerlink" title="git remote add  "></a>git remote add <name> <your url></your></name></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;name&gt; &lt;your url&gt;</span><br></pre></td></tr></table></figure>
-
 <p>连接远程仓库</p>
 <h2 id="git-remote-v"><a href="#git-remote-v" class="headerlink" title="git remote -v"></a>git remote -v</h2><p>查看连接的远程仓库</p>
 <h2 id="git-push"><a href="#git-push" class="headerlink" title="git push  :"></a>git push <name> <localbranch>:<obj branch></obj></localbranch></name></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;name&gt; &lt;localbranch&gt;:&lt;obj branch&gt;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -a #查看所有分支</span><br><span class="line">git branch -r #查看远程分支</span><br></pre></td></tr></table></figure>
-
-<p>本地HEAD推送到远程仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push HarryHEi master:hexo</span><br></pre></td></tr></table></figure>
-
+<p>本地HEAD推送到远程仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push HarryHEi master:hexo</span><br></pre></td></tr></table></figure></p>
 <h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull  :"></a>git pull <name> <obj branch>:<local branch></local></obj></name></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;name&gt; &lt;obj branch&gt;:&lt;local branch&gt;</span><br></pre></td></tr></table></figure>
-
 <p>更新本地文件</p>
 <h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><p>创建一个名为.gitignore的文件，push无视某些文件</p>
 <h2 id="git-bisect"><a href="#git-bisect" class="headerlink" title="git bisect"></a>git bisect</h2><p><a href="http://www.oschina.net/translate/letting-git-bisect-help-you" target="_blank" rel="noopener">http://www.oschina.net/translate/letting-git-bisect-help-you</a><br>使用二分伐查找问题版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#开始</span><br><span class="line">git bisect start</span><br><span class="line"></span><br><span class="line">#如果当前版本为bug版本，就设置为bad</span><br><span class="line">git bisect bad</span><br><span class="line"></span><br><span class="line">#查看最一开始版本号</span><br><span class="line">git log | tail -n -5  </span><br><span class="line">#设置最开始版本为good</span><br><span class="line">#这时候会自动切换到中间版本，并返回版本号</span><br><span class="line">git bisect good</span><br><span class="line"></span><br><span class="line">#检查版本，并继续打上标记</span><br><span class="line">git bisect good</span><br><span class="line">git bisect bad</span><br><span class="line"></span><br><span class="line">直到找到问题版本</span><br></pre></td></tr></table></figure>
-
 <h1 id="git设置proxy"><a href="#git设置proxy" class="headerlink" title="git设置proxy"></a>git设置proxy</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 127.0.0.1:8787</span><br></pre></td></tr></table></figure>
-
 <h1 id="git取消proxy"><a href="#git取消proxy" class="headerlink" title="git取消proxy"></a>git取消proxy</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line">fatal: unable to access &apos;https://github.com/HarryHEi/HarryHEi.github.io.git/&apos;: Could not resolve host: github.com</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-<p>考虑到可能是ssh key的问题，然后重新设置key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;harryx520@qq.com&quot;</span><br><span class="line">cd /home/herui/.ssh/</span><br></pre></td></tr></table></figure>
-
-<p>复制id_rsa.put内容到github，添加ssh key<br>连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<p>然后报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh: Could not resolve hostname github.com: Name or service not known</span><br></pre></td></tr></table></figure>
-
-<p>又可能是host设置的问题<br>打开 /etc/hosts</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/hosts</span><br></pre></td></tr></table></figure>
-
-<p>添加一行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.30.252.130     github.com</span><br></pre></td></tr></table></figure>
-
-<p>连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<p>输入密码，设置完毕<br>push 成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line">Everything up-to-date</span><br></pre></td></tr></table></figure>
-
+<p>考虑到可能是ssh key的问题，然后重新设置key<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;harryx520@qq.com&quot;</span><br><span class="line">cd /home/herui/.ssh/</span><br></pre></td></tr></table></figure></p>
+<p>复制id_rsa.put内容到github，添加ssh key<br>连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+<p>然后报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh: Could not resolve hostname github.com: Name or service not known</span><br></pre></td></tr></table></figure></p>
+<p>又可能是host设置的问题<br>打开 /etc/hosts<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/hosts</span><br></pre></td></tr></table></figure></p>
+<p>添加一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.30.252.130     github.com</span><br></pre></td></tr></table></figure></p>
+<p>连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+<p>输入密码，设置完毕<br>push 成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line">Everything up-to-date</span><br></pre></td></tr></table></figure></p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://blog.csdn.net/ithomer/article/details/7529022" target="_blank" rel="noopener">http://blog.csdn.net/ithomer/article/details/7529022</a><br><a href="https://www.youtube.com/watch?v=cEGIFZDyszA&amp;index=1&amp;list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx" target="_blank" rel="noopener">https://www.youtube.com/watch?v=cEGIFZDyszA&amp;index=1&amp;list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx</a></p>
 </div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-24</span><i class="fa fa-tag"></i><a class="tag" href="/tags/git/" title="git">git </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/2016/03/24/Note/tools/git_usual/,Harryx,git常用,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2016/03/27/Note/python/library/gui/tkinter/" title="Tkinter">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2016/03/23/Note/python/demo/socket_chatroom/" title="聊天室">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

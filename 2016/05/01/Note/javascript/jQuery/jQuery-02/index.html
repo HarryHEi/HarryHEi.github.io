@@ -11,8 +11,9 @@ jQuery中的选择器完全继承了CSS风格
 
 
 
+
 #id
-根据给定id匹配一个"><meta name="keywords" content="Hexo,HTML,Ben,CSS,安卓,android,Linux,linuxdeepin"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title><a href="/">Harryx</a></h3><div class="description"><p>good good study good good play~</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/harryx520"><i class="fa fa-twitter"></i></a></li><li><a href="http://weibo.com/Booooyakasha"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="http://beian.miit.gov.cn/" target="_blank">苏ICP备19072417号-1</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/avator.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>jQuery-02 jQuery选择器</a></h3></div><div class="post-content"><h1 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h1><p>选择器是jQuery的根基，在jQuery中，对事件处理，遍历DOM和Ajax操作都依赖于选择器</p>
+根据给定id匹配一"><meta name="keywords" content="Hexo,HTML,Ben,CSS,安卓,android,Linux,linuxdeepin"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title><a href="/">Harryx</a></h3><div class="description"><p>good good study good good play~</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/harryx520"><i class="fa fa-twitter"></i></a></li><li><a href="http://weibo.com/Booooyakasha"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="http://beian.miit.gov.cn/" target="_blank">苏ICP备19072417号-1</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/avator.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>jQuery-02 jQuery选择器</a></h3></div><div class="post-content"><h1 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h1><p>选择器是jQuery的根基，在jQuery中，对事件处理，遍历DOM和Ajax操作都依赖于选择器</p>
 <p>jQuery中的选择器完全继承了CSS风格</p>
 <p>使用jQuery选择器不仅比传统DOM操作简介，并且能避免错误</p>
 <h2 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h2><table>
@@ -24,7 +25,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>示例</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>#id</td>
 <td>根据给定id匹配一个元素</td>
 <td>单个元素</td>
@@ -47,6 +49,7 @@ jQuery中的选择器完全继承了CSS风格
 <td>匹配所有元素</td>
 <td>匹配所有元素</td>
 <td>集合元素</td>
+<td>$(“*”)</td>
 </tr>
 <tr>
 <td>a,b,c,…</td>
@@ -54,7 +57,8 @@ jQuery中的选择器完全继承了CSS风格
 <td>集合元素</td>
 <td>$(“div,p,.myclass”)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>可以使用基本选择器完成大部分工作</p>
 <h2 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h2><table>
 <thead>
@@ -63,7 +67,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$(“div span”)</td>
 <td>选取div里面所有span子元素</td>
 </tr>
@@ -79,16 +84,11 @@ jQuery中的选择器完全继承了CSS风格
 <td>$(“.one ~ div”)</td>
 <td>class为one的后面所有兄弟元素</td>
 </tr>
-</tbody></table>
-<p>第一个和第二个比较常用，后面两种方法可以用更加简单的代替<br>使用<code>next()</code>方法代替</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.one&quot;).next(&quot;div&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>nextAll()</code>方法代替</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.one&quot;).nextAll(&quot;div&quot;)</span><br></pre></td></tr></table></figure>
-
-<p><code>siblings()</code>与前后位置无关，只要是同辈节点都能匹配</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.one&quot;).sibling(&quot;div&quot;)</span><br></pre></td></tr></table></figure>
-
+</tbody>
+</table>
+<p>第一个和第二个比较常用，后面两种方法可以用更加简单的代替<br>使用<code>next()</code>方法代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.one&quot;).next(&quot;div&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>nextAll()</code>方法代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.one&quot;).nextAll(&quot;div&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><code>siblings()</code>与前后位置无关，只要是同辈节点都能匹配<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.one&quot;).sibling(&quot;div&quot;)</span><br></pre></td></tr></table></figure></p>
 <h2 id="过滤选择器"><a href="#过滤选择器" class="headerlink" title="过滤选择器"></a>过滤选择器</h2><h3 id="基本过滤选择器"><a href="#基本过滤选择器" class="headerlink" title="基本过滤选择器"></a>基本过滤选择器</h3><table>
 <thead>
 <tr>
@@ -96,7 +96,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$(“div:first”)</td>
 <td>div元素中的第一个div元素</td>
 </tr>
@@ -136,7 +137,8 @@ jQuery中的选择器完全继承了CSS风格
 <td>$(“div:animated”)</td>
 <td>选取当前正在执行动画的所有元素</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <h3 id="内容过滤选择器"><a href="#内容过滤选择器" class="headerlink" title="内容过滤选择器"></a>内容过滤选择器</h3><p>内容过滤选择器主要体现在它所包含的子元素或文本内容上</p>
 <table>
 <thead>
@@ -145,7 +147,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$(“div:contains(‘你’)”)</td>
 <td>选取内容含有‘你’的元素</td>
 </tr>
@@ -161,7 +164,8 @@ jQuery中的选择器完全继承了CSS风格
 <td>$(“div:parent”)</td>
 <td>选取拥有子元素(包括文本元素)的div元素</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <h3 id="可见性过滤选择器"><a href="#可见性过滤选择器" class="headerlink" title="可见性过滤选择器"></a>可见性过滤选择器</h3><p>可见性过滤器是根据元素的可见和不可见状态来选择相应的元素</p>
 <table>
 <thead>
@@ -170,7 +174,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$(“:hidden”)</td>
 <td>选取所有不可见元素</td>
 </tr>
@@ -178,10 +183,9 @@ jQuery中的选择器完全继承了CSS风格
 <td>$(“div:visible”)</td>
 <td>选取所有可见div元素</td>
 </tr>
-</tbody></table>
-<p>显示所有隐藏的元素，show()和hide()可以有两个参数，分别是速度(ms)和结束后执行的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function()</span><br><span class="line">&#123;</span><br><span class="line">    $v = $(&quot;:hidden&quot;);</span><br><span class="line">    $v.show();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
+</tbody>
+</table>
+<p>显示所有隐藏的元素，show()和hide()可以有两个参数，分别是速度(ms)和结束后执行的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function()</span><br><span class="line">&#123;</span><br><span class="line">    $v = $(&quot;:hidden&quot;);</span><br><span class="line">    $v.show();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h3 id="属性过滤选择器"><a href="#属性过滤选择器" class="headerlink" title="属性过滤选择器"></a>属性过滤选择器</h3><p>属性过滤器的过滤规则是通过元素的属性来获取相应的元素</p>
 <table>
 <thead>
@@ -190,7 +194,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$(“div[id]”)</td>
 <td>选取具有属性id的div元素</td>
 </tr>
@@ -218,7 +223,8 @@ jQuery中的选择器完全继承了CSS风格
 <td>$(“div[…][…]”)</td>
 <td>允许多个过滤器复合</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <h3 id="子元素过滤选择器"><a href="#子元素过滤选择器" class="headerlink" title="子元素过滤选择器"></a>子元素过滤选择器</h3><table>
 <thead>
 <tr>
@@ -226,7 +232,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>:nth-child(index/even/…)</td>
 <td>每个父元素下第index个子元素(1开始)</td>
 </tr>
@@ -242,10 +249,9 @@ jQuery中的选择器完全继承了CSS风格
 <td>:only-child</td>
 <td>是唯一子元素的子元素</td>
 </tr>
-</tbody></table>
-<p>使用css()方法改变class为’haschildren’的第一个子元素的字体大小</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function()</span><br><span class="line">&#123;</span><br><span class="line">    var $v = $(&quot;.has_children:first-child&quot;);</span><br><span class="line">    $v.css(&quot;font-size&quot;,&quot;30px&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
+</tbody>
+</table>
+<p>使用css()方法改变class为’haschildren’的第一个子元素的字体大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function()</span><br><span class="line">&#123;</span><br><span class="line">    var $v = $(&quot;.has_children:first-child&quot;);</span><br><span class="line">    $v.css(&quot;font-size&quot;,&quot;30px&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h3 id="表单对象属性过滤选择器"><a href="#表单对象属性过滤选择器" class="headerlink" title="表单对象属性过滤选择器"></a>表单对象属性过滤选择器</h3><p>此选择器主要对所选择的表单元素进行过滤</p>
 <table>
 <thead>
@@ -254,7 +260,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>:enabled</td>
 <td>选取所有可用元素</td>
 </tr>
@@ -270,7 +277,8 @@ jQuery中的选择器完全继承了CSS风格
 <td>:selected</td>
 <td>选取所有被选中元素(下拉表)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <h2 id="表单选择器"><a href="#表单选择器" class="headerlink" title="表单选择器"></a>表单选择器</h2><p>jQuery加入了表单选择器，能方便地获得表单的某个或某类型元素</p>
 <table>
 <thead>
@@ -279,7 +287,8 @@ jQuery中的选择器完全继承了CSS风格
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>:input</td>
 <td>选取所有input、textarea、select和button元素</td>
 </tr>
@@ -323,24 +332,17 @@ jQuery中的选择器完全继承了CSS风格
 <td>:hidden</td>
 <td>不可见元素</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <h1 id="选择器中的注意事项"><a href="#选择器中的注意事项" class="headerlink" title="选择器中的注意事项"></a>选择器中的注意事项</h1><h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>选择器中如果含有’.’、’#’、’(‘或者’]’等，需要使用转义字符转义</p>
-<p>找到href为‘#’的元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function()</span><br><span class="line">&#123;</span><br><span class="line">    var $v = $(&quot;[href=\\#]&quot;); //转义字符&apos;#&apos;</span><br><span class="line">    alert($v.length)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="选择器中含有空格"><a href="#选择器中含有空格" class="headerlink" title="选择器中含有空格"></a>选择器中含有空格</h2><p>缺少或者添加空格，含义可能因此而变得不一样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.links:hidden&quot;) //隐藏的并且class为‘links’的元素</span><br><span class="line">$(&quot;.links :hidden&quot;) //class为‘links’的元素里面的隐藏元素(子元素)</span><br></pre></td></tr></table></figure>
-
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>建立一个显示动漫排行的文档</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;dongmanRange&quot;&gt;</span><br><span class="line">    &lt;h2&gt;动漫排行&lt;/h2&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;1 &lt;a href=&quot;#&quot;&gt;海贼王&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;2 &lt;a href=&quot;#&quot;&gt;七龙珠&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;3 &lt;a href=&quot;#&quot;&gt;火影忍者&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;4 &lt;a href=&quot;#&quot;&gt;死神&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;5 &lt;a href=&quot;#&quot;&gt;名侦探柯南&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;6 &lt;a href=&quot;#&quot;&gt;妖精的尾巴&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;7 &lt;a href=&quot;#&quot;&gt;东京食尸鬼&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;8 &lt;a href=&quot;#&quot;&gt;银魂&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;9 &lt;a href=&quot;#&quot;&gt;刀剑神域&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;10 &lt;a href=&quot;#&quot;&gt;约会大作战&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;div class=&quot;showmore&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot;&gt;显示全部&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
+<p>找到href为‘#’的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function()</span><br><span class="line">&#123;</span><br><span class="line">    var $v = $(&quot;[href=\\#]&quot;); //转义字符&apos;#&apos;</span><br><span class="line">    alert($v.length)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="选择器中含有空格"><a href="#选择器中含有空格" class="headerlink" title="选择器中含有空格"></a>选择器中含有空格</h2><p>缺少或者添加空格，含义可能因此而变得不一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.links:hidden&quot;) //隐藏的并且class为‘links’的元素</span><br><span class="line">$(&quot;.links :hidden&quot;) //class为‘links’的元素里面的隐藏元素(子元素)</span><br></pre></td></tr></table></figure></p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>建立一个显示动漫排行的文档<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;dongmanRange&quot;&gt;</span><br><span class="line">    &lt;h2&gt;动漫排行&lt;/h2&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;1 &lt;a href=&quot;#&quot;&gt;海贼王&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;2 &lt;a href=&quot;#&quot;&gt;七龙珠&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;3 &lt;a href=&quot;#&quot;&gt;火影忍者&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;4 &lt;a href=&quot;#&quot;&gt;死神&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;5 &lt;a href=&quot;#&quot;&gt;名侦探柯南&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;6 &lt;a href=&quot;#&quot;&gt;妖精的尾巴&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;7 &lt;a href=&quot;#&quot;&gt;东京食尸鬼&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;8 &lt;a href=&quot;#&quot;&gt;银魂&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;9 &lt;a href=&quot;#&quot;&gt;刀剑神域&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;10 &lt;a href=&quot;#&quot;&gt;约会大作战&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;div class=&quot;showmore&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot;&gt;显示全部&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>实现以下效果</p>
 <ul>
 <li>一开始只显示前五个，后面的全部隐藏</li>
 <li>当用户点击显示全部按钮之后，显示全部列表，高亮显示推荐，并把按钮内容改为“收回”</li>
 <li>当用户点击“收回时”，隐藏6个以外的所有列表，并把按钮内容改为“显示全部”</li>
 </ul>
-<p>JavaScript代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function() //等待DOM加载完成</span><br><span class="line">&#123;</span><br><span class="line">    var $overtop5 = $(&quot;ul li:gt(4)&quot;); //选取ul下所有li元素，筛选出li元素index大于4的</span><br><span class="line">    $overtop5.hide(); //隐藏</span><br><span class="line"></span><br><span class="line">    var $button = $(&quot;.showmore &gt; a&quot;); //选取class为showmore的子元素a</span><br><span class="line">    $button.click(function() //添加onclick事件</span><br><span class="line">    &#123;</span><br><span class="line">        if ($overtop5.is(&quot;:hidden&quot;)) //如果属性是隐藏</span><br><span class="line">        &#123;</span><br><span class="line">            $overtop5.show(); //显示</span><br><span class="line">            $button.text(&quot;收回&quot;); //按钮内容改为&quot;收回&quot;</span><br><span class="line">            $(&quot;ul li&quot;).filter(&quot;:contains(&apos;火影&apos;),:contains(&apos;刀剑&apos;),:contains(&apos;银魂&apos;)&quot;) //filter参数可以是多个选择器的集合</span><br><span class="line">                .addClass(&quot;promoted&quot;); //高亮</span><br><span class="line">            return false; //阻止链接跳转</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            $overtop5.hide(); //隐藏</span><br><span class="line">            $button.text(&quot;全部显示&quot;); //按钮内容改为&quot;全部显示&quot;</span><br><span class="line">            $(&quot;ul li&quot;).filter(&quot;:contains(&apos;火影&apos;),:contains(&apos;刀剑&apos;),:contains(&apos;银魂&apos;)&quot;) //filter参数可以是多个选择器的集合</span><br><span class="line">                .removeClass(&quot;promoted&quot;); //去除高亮</span><br><span class="line">            return false; //阻止链接跳转</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
+<p>JavaScript代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function() //等待DOM加载完成</span><br><span class="line">&#123;</span><br><span class="line">    var $overtop5 = $(&quot;ul li:gt(4)&quot;); //选取ul下所有li元素，筛选出li元素index大于4的</span><br><span class="line">    $overtop5.hide(); //隐藏</span><br><span class="line"></span><br><span class="line">    var $button = $(&quot;.showmore &gt; a&quot;); //选取class为showmore的子元素a</span><br><span class="line">    $button.click(function() //添加onclick事件</span><br><span class="line">    &#123;</span><br><span class="line">        if ($overtop5.is(&quot;:hidden&quot;)) //如果属性是隐藏</span><br><span class="line">        &#123;</span><br><span class="line">            $overtop5.show(); //显示</span><br><span class="line">            $button.text(&quot;收回&quot;); //按钮内容改为&quot;收回&quot;</span><br><span class="line">            $(&quot;ul li&quot;).filter(&quot;:contains(&apos;火影&apos;),:contains(&apos;刀剑&apos;),:contains(&apos;银魂&apos;)&quot;) //filter参数可以是多个选择器的集合</span><br><span class="line">                .addClass(&quot;promoted&quot;); //高亮</span><br><span class="line">            return false; //阻止链接跳转</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            $overtop5.hide(); //隐藏</span><br><span class="line">            $button.text(&quot;全部显示&quot;); //按钮内容改为&quot;全部显示&quot;</span><br><span class="line">            $(&quot;ul li&quot;).filter(&quot;:contains(&apos;火影&apos;),:contains(&apos;刀剑&apos;),:contains(&apos;银魂&apos;)&quot;) //filter参数可以是多个选择器的集合</span><br><span class="line">                .removeClass(&quot;promoted&quot;); //去除高亮</span><br><span class="line">            return false; //阻止链接跳转</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 </div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-05-01</span><i class="fa fa-tag"></i><a class="tag" href="/tags/jquery/" title="jquery">jquery </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/2016/05/01/Note/javascript/jQuery/jQuery-02/,Harryx,jQuery-02 jQuery选择器,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2016/05/02/Note/javascript/jQuery/jQuery-03/" title="jQuery-03 DOM操作">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2016/05/01/Note/javascript/jQuery/jQuery-01/" title="jQuery-01 简述">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
